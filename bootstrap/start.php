@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('sagar-desktop'),
+	'local' => array('sagar-K53SC'),
 
 ));
 
