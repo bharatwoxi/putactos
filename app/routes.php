@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('/', function()
-{
+Route::get('/', array('uses' => 'DBTestingController@index'));
+Route::get('places',function(){
+    return View::make('dataTesting.gplaces');
+});
 //    /* Create New Users */
 ////    $user = new User;
 ////    $user->username = 'bharat';
@@ -37,5 +39,4 @@ Route::get('/', function()
 
     /* Detect Environment */
     //echo App::environment();
-	return View::make('hello');
-});
+Route::post('testing-data/insert', array('uses' => 'DBTestingController@getFormData'));

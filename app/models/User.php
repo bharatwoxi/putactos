@@ -14,13 +14,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var string
 	 */
-	protected $table = 'users';
+	protected $table = 'system_users';
     /*
     -By default laraval consider primary key name is 'id'
     -To change My Default Primary key name
 
     */
-    protected $primaryKey = 'user_id';
+    //protected $primaryKey = 'user_id';
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
