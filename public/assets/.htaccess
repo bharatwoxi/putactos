@@ -1,0 +1,4 @@
+
+     # directory browsing
+     #Options All -Indexes #disallow
+     #Options +Indexes    #allow
