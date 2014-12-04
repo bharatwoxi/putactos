@@ -104,6 +104,21 @@ class RegistrationController extends BaseController {
             DB::table('system_users')
                 ->where('id', $systemUserInsertedId)
                 ->update(array('profile_image' => $filename));
+
+            /* Insert Data In service provider table & update id in system_users table */
+
+            $serviceProviderInsertedId = DB::table('service_providers')->insertGetId(
+                array(
+                    'riseme_up' =>0,
+                    'profile_completeness'=>NULL,
+                    'created_at'=>date('Y-m-d H:m:s'),
+                    'updated_at'=> date('Y-m-d H:m:s')
+                )
+            );
+
+            User::where('id', '=', $systemUserInsertedId)->update(array('service_provider_id' => $serviceProviderInsertedId,'updated_at'=> date('Y-m-d H:m:s')));
+
+
             /*Image Upload End */
             //$user = $systemUserInsertedId;
             /*if(app()->environment()!="local"){
