@@ -4,5 +4,6 @@ return array(
     'DB_UNAME' => 'root',
     'DB_PASSWORD' => 'root',
     'DB_NAME' => 'putactos',
+    'SP_FILE_UPLOAD_PATH' => public_path().'/uploads/userdata/service_provider',
 );
 ?>
