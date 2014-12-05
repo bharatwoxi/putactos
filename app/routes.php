@@ -13,8 +13,20 @@
 
 Route::get('/', array('uses' => 'DBTestingController@index'));
 Route::get('places',function(){
-    return View::make('dataTesting.gplaces');
+    // View::make('dataTesting.gplaces');
+        return Response::view('errors.missing', array(), 404);
 });
+Route::get('signup-sp',function(){
+    return View::make('registration.service_provider');
+});
+
+
+/* Check UserName While Registration */
+Route::post('check-username', array('uses' => 'RegistrationController@checkUserName'));
+/* Save Service Provider Data */
+Route::post('save-sp-data', array('uses' => 'RegistrationController@saveSpData'));
+
+
 //    /* Create New Users */
 ////    $user = new User;
 ////    $user->username = 'bharat';
