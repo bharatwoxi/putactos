@@ -53,7 +53,6 @@ class RegistrationController extends BaseController {
 
     public function saveSpData(){
         $input = Input::all();
-        //dd($input);
         $rules = array(
 
             'firstName' => 'required|min:5|max:20',
@@ -75,10 +74,6 @@ class RegistrationController extends BaseController {
                     'user_first_name'  =>Input::get('firstName'),
                     'user_last_name'  =>Input::get('lastName'),
                     'user_role_id'  =>2,
-//                    'latitude'  =>Input::get('latitude'),
-//                    'longitude'  =>Input::get('longitude'),
-//                    'city'  =>Input::get('city'),
-//                    'country'  =>Input::get('country'),
                     'created_at'=>date('Y-m-d H:m:s'),
                     'updated_at'=> date('Y-m-d H:m:s')
                 )
@@ -95,9 +90,6 @@ class RegistrationController extends BaseController {
             }
             $extension = Input::file('profilePicture')->getClientOriginalExtension();
             $filename = sha1($systemUserInsertedId.time()).".{$extension}";
-            //echo $spProfileUploadpath;echo "<br/>";
-            //echo $filename;
-            //exit;
             Input::file('profilePicture')->move($spProfileUploadpath, $filename);
 
 
@@ -120,6 +112,9 @@ class RegistrationController extends BaseController {
 
 
             /*Image Upload End */
+
+            /* Send Mail Functionality */
+
             //$user = $systemUserInsertedId;
             /*if(app()->environment()!="local"){
                 Mail::send('emails.welcome', $data, function($message) use ($input){

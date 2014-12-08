@@ -52,3 +52,6 @@ Route::post('save-sp-data', array('uses' => 'RegistrationController@saveSpData')
     /* Detect Environment */
     //echo App::environment();
 Route::post('testing-data/insert', array('uses' => 'DBTestingController@getFormData'));
+
+/* Profile Completeness (In future it should be run as cron or Update value on each profile update) */
+Route::get('profile-complete', array('uses' => 'ServiceProviderController@updateProfileCompleteness'));
