@@ -16,26 +16,33 @@ Route::get('places',function(){
     // View::make('dataTesting.gplaces');
         return Response::view('errors.missing', array(), 404);
 });
+Route::get('test',array('before'=>'auth','uses'=>'UserController@test'));
 
-/* User Registration */
-Route::get('signup-sp',function(){
-    return View::make('registration.service_provider');
-});
-Route::get('signup-customer',function(){
-    return View::make('registration.customer');
+/* Apply Filters To Group */
+Route::group(array('before' => 'logged_in'), function() {
+    /* User Registration */
+    Route::get('signup-sp',function(){
+        return View::make('registration.service_provider');
+    });
+    Route::get('signup-customer',function(){
+        return View::make('registration.customer');
+    });
+
+    /* User Login *& Authentication */
+    Route::get('login',function(){
+        return View::make('login.index');
+    });
 });
 
-/* User Login *& Authentication */
-Route::get('login',function(){
-    return View::make('login.index');
-});
+
 Route::post('authenticate', array('before' => 'csrf','uses' => 'UserController@checkLogin'));
+Route::get('logout', array('uses' => 'UserController@doLogout'));
 
 /* Check UserName While Registration */
 Route::post('check-username', array('uses' => 'RegistrationController@checkUserName'));
 /* Save Service Provider Data */
-Route::post('save-sp-data', array('uses' => 'RegistrationController@saveSpData'));
-Route::post('save-customer-data', array('uses' => 'RegistrationController@saveCustomerData'));
+Route::post('save-sp-data', array('before' => 'csrf','uses' => 'RegistrationController@saveSpData'));
+Route::post('save-customer-data', array('before' => 'csrf','uses' => 'RegistrationController@saveCustomerData'));
 
 
 //    /* Create New Users */
