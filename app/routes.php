@@ -16,8 +16,13 @@ Route::get('places',function(){
     // View::make('dataTesting.gplaces');
         return Response::view('errors.missing', array(), 404);
 });
+
+/* User Registration */
 Route::get('signup-sp',function(){
     return View::make('registration.service_provider');
+});
+Route::get('signup-customer',function(){
+    return View::make('registration.customer');
 });
 
 
@@ -25,6 +30,7 @@ Route::get('signup-sp',function(){
 Route::post('check-username', array('uses' => 'RegistrationController@checkUserName'));
 /* Save Service Provider Data */
 Route::post('save-sp-data', array('uses' => 'RegistrationController@saveSpData'));
+Route::post('save-customer-data', array('uses' => 'RegistrationController@saveCustomerData'));
 
 
 //    /* Create New Users */

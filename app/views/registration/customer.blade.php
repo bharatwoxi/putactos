@@ -1,4 +1,12 @@
-@extends('layouts.spRegistration')
+<?php
+/**
+ * Created by PhpStorm.
+ * User: sagar
+ * Date: 8/12/14
+ * Time: 11:56 AM
+ */
+?>
+@extends('layouts.customerRegistration')
 @section('content')
 <div class="container-fluid"> <!--Header start-->
     <div class="container">
@@ -25,7 +33,7 @@
     <div class="col-sm-3 col-md-10 col-lg-12">
         <div class="container">
             <div class="row" style="font-family:Roboto Th; color:#fff; padding: 20px;">
-                <span style="color:#fff;  font-size:36px">SERVICE PROVIDER REGISTRATION</span>
+                <span style="color:#fff;  font-size:36px">USER REGISTRATION</span>
                 <div class="mini_nav pull-right" style="color:#ffff; font-family:Calibri">
                     <a href="#" style="padding-right:20px;">MY PROFILE</a>
                     <a href="#" style="padding-right:20px;"><strong>INBOX 1/15</strong></a>
@@ -41,6 +49,7 @@
     </div>
 </div><!-- End of Container Fluid-->
 <div class="clearfix"></div>
+
 <!--Ajax errors-->
 <div id="validation-errors" style="display:none">
     <div class="alert alert-danger" id="display-errors">
@@ -56,10 +65,11 @@
 @if (Session::has('message'))
 <div class="alert alert-success">{{ Session::get('message') }}</div>
 @endif
+
 <div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;">
     <div class="col-sm-3 col-md-10 col-lg-12">
         <div class="container">
-            {{ Form::open(array('url' => 'save-sp-data','class'=>'form-horizontal','role'=>'form','files'=>true)) }}
+                {{ Form::open(array('url' => 'save-customer-data','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'customerRegistration')) }}
                 <div class="form-group">
                     {{ Form::label('firstName', 'First Name', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
@@ -97,26 +107,44 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Age Range</label>
+                    <div class="col-md-2" style="padding-top: 20px;">
+                        <!--<input class="slider" data-slider-max="50" data-slider-min="18" data-slider-orientation="horizontal" data-slider-value="18" type="text" style="width: 155px;">-->
+                        <input type="text" name="ageRange" id="ageRange" class="slider" data-slider-min="18" data-slider-max="50" data-slider-step="5" data-slider-value="[18,50]">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: -10px;">
+                    <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">I am looking for</label>
+                    <div class="col-sm-3">
+                        <!--<input type="text" class="form-control" id="name">-->
+                        <select class="form-control" id="lookingFor" name="lookingFor">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+                    {{ Form::hidden('latitude',NULL,array('class'=>'form-control','id'=>'latitude')) }}
+                    {{ Form::hidden('longitude',NULL,array('class'=>'form-control','id'=>'longitude')) }}
+                    {{ Form::hidden('city',NULL,array('class'=>'form-control','id'=>'city')) }}
+                    {{ Form::hidden('country',NULL,array('class'=>'form-control','id'=>'country')) }}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('location', 'Current Location', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
+                    <div class="col-sm-3">
+                        {{ Form::text('currentLocation',NULL,array('class'=>'form-control','id'=>'currentLocation')) }}
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Upload Picture</label>
                     <div class="col-md-2">
-                        <!--<input type="text" class="form-control" id="inputPassword3">-->
                         {{ Form::file('profilePicture',array('class'=>'btn btn-small btn-danger btn-inverse','id'=>'profilePicture')) }}
-                        <!--<input type="image"  src="{{URL::asset('public/assets/registration/img/Upload.png')}}" style="width:85px; margin-top: 15px; height: 32px;">-->
                     </div>
-                   <!-- <div class="col-md-2">
-                        <input type="image" src="{{URL::asset('public/assets/registration/img/Browse.png')}}" style="width: 85px; vertical-align: text-top;height: 32px; margin-left: -20px;">
-                    </div>-->
                 </div>
             <div style="margin-top: 30px; margin-bottom: 400px;">
-                <!--<input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
-                <input type="image" src="{{URL::asset('public/assets/registration/img/save-2.png')}}" style="width: 100px; margin-left: 20px;">-->
                 {{ Form::submit('Submit',array('name'=>'submit','id'=>'submit','class'=>'btn btn-small btn-danger btn-inverse','style'=>'width: 100px','disabled'=>'disabled'))}}
                 {{ Form::reset('Reset',array('id'=>'reset','class'=>'btn btn-small btn-danger btn-inverse','style'=>'width: 85px'))}}
             </div>
-
             {{ Form::close() }}
-
-
 
 
 
