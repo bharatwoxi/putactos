@@ -25,6 +25,11 @@ Route::get('signup-customer',function(){
     return View::make('registration.customer');
 });
 
+/* User Login *& Authentication */
+Route::get('login',function(){
+    return View::make('login.index');
+});
+Route::post('authenticate', array('before' => 'csrf','uses' => 'UserController@checkLogin'));
 
 /* Check UserName While Registration */
 Route::post('check-username', array('uses' => 'RegistrationController@checkUserName'));
