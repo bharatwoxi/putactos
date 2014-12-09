@@ -67,7 +67,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::to('/');
+	if (!Auth::check()) return Redirect::to('/');
 });
 
 /*
@@ -87,4 +87,9 @@ Route::filter('csrf', function()
 	{
 		throw new Illuminate\Session\TokenMismatchException;
 	}
+});
+
+Route::filter('logged_in', function()
+{
+    if (Auth::check()) return Redirect::to('/');
 });

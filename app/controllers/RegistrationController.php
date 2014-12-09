@@ -69,16 +69,13 @@ class RegistrationController extends BaseController {
             $systemUserInsertedId = DB::table('system_users')->insertGetId(
                 array(
                     'username'  =>Input::get('username'),
-                    'password'  =>Hash::make('password'),
+                    'password'  =>Hash::make(Input::get('password')),
                     'email'  =>Input::get('email'),
                     'is_active'  =>0,
                     'user_first_name'  =>Input::get('firstName'),
                     'user_last_name'  =>Input::get('lastName'),
                     'user_role_id'  =>2,
-//                    'latitude'  =>Input::get('latitude'),
-//                    'longitude'  =>Input::get('longitude'),
-//                    'city'  =>Input::get('city'),
-//                    'country'  =>Input::get('country'),
+                    'remember_token'  =>Input::get('_token'),
                     'created_at'=>date('Y-m-d H:m:s'),
                     'updated_at'=> date('Y-m-d H:m:s')
                 )
@@ -165,7 +162,7 @@ class RegistrationController extends BaseController {
             $systemUserInsertedId = DB::table('system_users')->insertGetId(
                 array(
                     'username'  =>Input::get('username'),
-                    'password'  =>Hash::make('password'),
+                    'password'  =>Hash::make(Input::get('password')),
                     'email'  =>Input::get('email'),
                     'is_active'  =>0,
                     'user_first_name'  =>Input::get('firstName'),
@@ -177,6 +174,7 @@ class RegistrationController extends BaseController {
                     'longitude'  =>Input::get('longitude'),
                     'city'  =>Input::get('city'),
                     'country'  =>Input::get('country'),
+                    'remember_token'  =>Input::get('_token'),
                     'created_at'=>date('Y-m-d H:m:s'),
                     'updated_at'=> date('Y-m-d H:m:s')
                 )
