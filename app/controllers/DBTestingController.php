@@ -28,8 +28,6 @@ class DBTestingController extends BaseController {
     }
 
     public function getFormData(){
-        //dd(Input::all());
-        //echo 1;exit;
         $systemUserInsertedId = DB::table('system_users')->insertGetId(
             array(
                 'username'  =>Input::get('username'),
@@ -102,7 +100,6 @@ class DBTestingController extends BaseController {
 
             $availability = Input::get('availability');
             $x = implode(",",$availability);
-            //echo implode(",",$availability);
             DB::table('service_provider_availabilities')->insert(
                 array(
                     'service_provider_id'=>$serviceProviderInsertedId,
