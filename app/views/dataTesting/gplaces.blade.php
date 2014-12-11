@@ -107,12 +107,13 @@
             var place = autocomplete.getPlace();
             /* Get Geo location */
             console.log(place.address_components);
+            console.log(place.geometry.location);
             var addressGeoCode = place.geometry.location;
-            document.getElementById('addressGeoCode').innerHTML='<span>Lat: <b>'+addressGeoCode.k+'</b></span>'+'<br><span>Long: <b>'+addressGeoCode.B+'</b></span>';
+            document.getElementById('addressGeoCode').innerHTML='<span>Lat: <b>'+addressGeoCode.k+'</b></span>'+'<br><span>Long: <b>'+addressGeoCode.D+'</b></span>';
             //$('#latitude').val(addressGeoCode.k);
             //$('#longitude').val(addressGeoCode.B);
             document.getElementById('latitude').value=addressGeoCode.k;
-            document.getElementById('longitude').value=addressGeoCode.B;
+            document.getElementById('longitude').value=addressGeoCode.D;
             document.getElementById('city').value=place.address_components[2].long_name;
             document.getElementById('country').value=place.address_components[5].long_name;
             //alert(addressGeoCode);
@@ -195,7 +196,7 @@
 
 <body onload="initialize()">
 <div class="welcome">
-    {{ Form::open(array('url' => 'testing-data/insert','id'=>'dbValidate')) }}
+    {{ Form::open(array('url' => 'testing-data/insert','id'=>'dbValidate','files'=>true)) }}
     {{ Form::label('username') }}
     {{ Form::text('username') }}
     {{ Form::label('password') }}
