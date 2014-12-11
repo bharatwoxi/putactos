@@ -246,7 +246,7 @@
     var map;
     function initializeGoogleMap(lat,long) {
         var mapOptions = {
-            zoom: 14,
+            zoom: 8,
             center: new google.maps.LatLng(lat,long)
         };
         map = new google.maps.Map(document.getElementById('map-canvas'),
