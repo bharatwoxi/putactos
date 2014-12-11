@@ -133,6 +133,7 @@
                     <div class="col-sm-3">
                         {{ Form::text('currentLocation',NULL,array('class'=>'form-control','id'=>'currentLocation')) }}
                     </div>
+                    <div id="map-canvas" style="height:500px;width:500px;display:none;float:left;"></div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Upload Picture</label>
@@ -145,15 +146,9 @@
                 {{ Form::reset('Reset',array('id'=>'reset','class'=>'btn btn-small btn-danger btn-inverse','style'=>'width: 85px'))}}
             </div>
             {{ Form::close() }}
-
-
-
-
         </div>
     </div>
 </div>
-
-
 
 
 

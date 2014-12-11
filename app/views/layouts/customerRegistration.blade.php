@@ -152,7 +152,8 @@
     });
 </script>
 <!-- Google Places -->
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
+
 <script>
     // This example displays an address form, using the autocomplete feature
     // of the Google Places API to help users fill in the information.
@@ -199,9 +200,13 @@
         }
         /* Get Geolocation */
         var addressGeoCode = place.geometry.location;
+        //console.log(place.geometry.location);
         //console.log('<span>Lat: <b>'+addressGeoCode.k+'</b></span>'+'<br><span>Long: <b>'+addressGeoCode.B+'</b></span>');
         $('#latitude').val(addressGeoCode.k);
-        $('#longitude').val(addressGeoCode.D);
+        $('#longitude').val(addressGeoCode.B);
+        $('#map-canvas').show();
+        initializeGoogleMap(addressGeoCode.k,addressGeoCode.B);
+
         //document.getElementById('addressGeoCode').innerHTML='<span>Lat: <b>'+addressGeoCode.k+'</b></span>'+'<br><span>Long: <b>'+addressGeoCode.B+'</b></span>';
         //alert(addressGeoCode);
         /*Get Geolocation end*/
@@ -236,6 +241,17 @@
         }
     }
     // [END region_geolocation]
+
+
+    var map;
+    function initializeGoogleMap(lat,long) {
+        var mapOptions = {
+            zoom: 14,
+            center: new google.maps.LatLng(lat,long)
+        };
+        map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+    }
 
 </script>
 </body>
