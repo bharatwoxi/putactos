@@ -201,7 +201,7 @@
         var addressGeoCode = place.geometry.location;
         //console.log('<span>Lat: <b>'+addressGeoCode.k+'</b></span>'+'<br><span>Long: <b>'+addressGeoCode.B+'</b></span>');
         $('#latitude').val(addressGeoCode.k);
-        $('#longitude').val(addressGeoCode.B);
+        $('#longitude').val(addressGeoCode.D);
         //document.getElementById('addressGeoCode').innerHTML='<span>Lat: <b>'+addressGeoCode.k+'</b></span>'+'<br><span>Long: <b>'+addressGeoCode.B+'</b></span>';
         //alert(addressGeoCode);
         /*Get Geolocation end*/
