@@ -21,31 +21,23 @@ class UserController extends BaseController {
         /* Check reCaptcha */
         $secret = "6LfCB_8SAAAAAIE7nuQD5Du0mJqWH6qDkhTh99wB";
         $reCaptcha = new ReCaptcha($secret);
-        // reCAPTCHA supported 40+ languages listed here: https://developers.google.com/recaptcha/docs/language
-        $lang = "en";
 
         // The response from reCAPTCHA
                 $resp = null;
         // The error code from reCAPTCHA, if any
                 $error = null;
         if ($input["g-recaptcha-response"]) {
-        //var_dump($resp);exit;
             $resp = $reCaptcha->verifyResponse(
                 $_SERVER["REMOTE_ADDR"],
                 $input["g-recaptcha-response"]
             );
         }
         if ($resp != null && $resp->success) {
-            //echo "You got it!";
         }else{
             Session::flash('message', 'Please re-enter your reCAPTCHA.');
-            //return View::make('signup-sp');
             return Redirect::to('login');
         }
 
-
-
-        //dd($input);
         $rules = array(
             'email' => 'required|email',
             'password' => 'required|min:6'
@@ -61,13 +53,11 @@ class UserController extends BaseController {
                 echo 123;
             }else{
                 /* Check Query Log With Time*/
-                $queries = DB::getQueryLog();
-                $last_query = end($queries);
-                echo 100;
-                //dd($last_query);
-                /*return Redirect::to('login')
+                /*$queries = DB::getQueryLog();
+                $last_query = end($queries);*/
+                return Redirect::to('login')
                     ->with('message', 'Your username/password combination was incorrect')
-                    ->withInput();*/
+                    ->withInput();
             }
         }else{
             return Redirect::to('login')->withInput()->withErrors($validation);

@@ -206,6 +206,7 @@
         $('#longitude').val(addressGeoCode.B);
         $('#map-canvas').show();
         initializeGoogleMap(addressGeoCode.k,addressGeoCode.B);
+
         //document.getElementById('addressGeoCode').innerHTML='<span>Lat: <b>'+addressGeoCode.k+'</b></span>'+'<br><span>Long: <b>'+addressGeoCode.B+'</b></span>';
         //alert(addressGeoCode);
         /*Get Geolocation end*/

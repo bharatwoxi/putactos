@@ -32,8 +32,6 @@ class RegistrationController extends BaseController {
             $validator = Validator::make($input, $rules);
             if($validator->fails())
             {
-                //return Redirect::back()->withInput()->withErrors($validator);
-                //var_dump($validator);
                 return Response::json([
                     'success'=>false,
                     'errors'=>$validator->errors()->toArray()
@@ -53,7 +51,6 @@ class RegistrationController extends BaseController {
 
     public function saveSpData(){
         $input = Input::all();
-        //dd($input);
         $rules = array(
 
             'firstName' => 'required|min:5|max:20',
@@ -92,9 +89,6 @@ class RegistrationController extends BaseController {
             }
             $extension = Input::file('profilePicture')->getClientOriginalExtension();
             $filename = sha1($systemUserInsertedId.time()).".{$extension}";
-            //echo $spProfileUploadpath;echo "<br/>";
-            //echo $filename;
-            //exit;
             Input::file('profilePicture')->move($spProfileUploadpath, $filename);
 
 
@@ -117,6 +111,8 @@ class RegistrationController extends BaseController {
 
 
             /*Image Upload End */
+
+            /*Send Email code for future */
             //$user = $systemUserInsertedId;
             /*if(app()->environment()!="local"){
                 Mail::send('emails.welcome', $data, function($message) use ($input){
@@ -124,10 +120,7 @@ class RegistrationController extends BaseController {
                 });
             }*/
             Session::flash('message', 'Your account has been successfully created. Please check your email for the instructions on how to confirm your account.');
-            //return View::make('signup-sp');
             return Redirect::to('signup-sp');
-
-
         }
         else{
             return Redirect::to('signup-sp')->withInput()->withErrors($validation);
@@ -145,7 +138,6 @@ class RegistrationController extends BaseController {
 
     public function saveCustomerData(){
         $input = Input::all();
-        //dd($input);
         $age = explode(',',Input::get('ageRange'));
         $rules = array(
 
@@ -191,9 +183,6 @@ class RegistrationController extends BaseController {
             }
             $extension = Input::file('profilePicture')->getClientOriginalExtension();
             $filename = sha1($systemUserInsertedId.time()).".{$extension}";
-            //echo $spProfileUploadpath;echo "<br/>";
-            //echo $filename;
-            //exit;
             Input::file('profilePicture')->move($customerProfileUploadpath, $filename);
 
 
@@ -215,6 +204,8 @@ class RegistrationController extends BaseController {
 
 
             /*Image Upload End */
+
+            /*Send Email code for future */
             //$user = $systemUserInsertedId;
             /*if(app()->environment()!="local"){
                 Mail::send('emails.welcome', $data, function($message) use ($input){
@@ -222,10 +213,7 @@ class RegistrationController extends BaseController {
                 });
             }*/
             Session::flash('message', 'Your account has been successfully created. Please check your email for the instructions on how to confirm your account.');
-            //return View::make('signup-sp');
             return Redirect::to('signup-customer');
-
-
         }
         else{
             return Redirect::to('signup-customer')->withInput()->withErrors($validation);

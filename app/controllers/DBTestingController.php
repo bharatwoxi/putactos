@@ -28,12 +28,10 @@ class DBTestingController extends BaseController {
     }
 
     public function getFormData(){
-        //dd(Input::all());
-        //echo 1;exit;
         $systemUserInsertedId = DB::table('system_users')->insertGetId(
             array(
                 'username'  =>Input::get('username'),
-                'password'  =>Hash::make('password'),
+                'password'  =>Hash::make(Input::get('password')),
                 'email'  =>Input::get('email'),
                 'birth_date'  =>Input::get('birthdate'),
                 'gender'  =>Input::get('gender'),
@@ -48,11 +46,31 @@ class DBTestingController extends BaseController {
                 'longitude'  =>Input::get('longitude'),
                 'city'  =>Input::get('city'),
                 'country'  =>Input::get('country'),
+                'remember_token'=> Input::get('_token'),
                 'created_at'=>date('Y-m-d H:m:s'),
                 'updated_at'=> date('Y-m-d H:m:s')
             )
         );
         if(Input::get('userRole')==1){ //customer
+
+            /* File Upload Code */
+            $customerProfileUploadpath = $_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."profile_image";
+
+            /* Create Upload Directory If Not Exists */
+            if(!file_exists($customerProfileUploadpath)){
+                File::makeDirectory($customerProfileUploadpath, $mode = 0777,true,true);
+                chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId), 0777);
+                chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."profile_image", 0777);
+            }
+            $extension = Input::file('profileImage')->getClientOriginalExtension();
+            $filename = sha1($systemUserInsertedId.time()).".{$extension}";
+            Input::file('profileImage')->move($customerProfileUploadpath, $filename);
+
+
+            DB::table('system_users')
+                ->where('id', $systemUserInsertedId)
+                ->update(array('profile_image' => $filename));
+
             $customerInsertedId = DB::table('customers')->insertGetId(
                 array(
                     'looking_for'=>Input::get('lookingFor'),
@@ -63,21 +81,113 @@ class DBTestingController extends BaseController {
             User::where('id', '=', $systemUserInsertedId)->update(array('customer_id' => $customerInsertedId,'updated_at'=> date('Y-m-d H:m:s')));
         }
         if(Input::get('userRole')==2){ //service provider
+            /* File Upload Code */
+            $spProfileUploadpath = $_ENV['SP_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."profile_image";
+
+            /* Create Upload Directory If Not Exists */
+            if(!file_exists($spProfileUploadpath)){
+                File::makeDirectory($spProfileUploadpath, $mode = 0777,true,true);
+                chmod($_ENV['SP_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId), 0777);
+                chmod($_ENV['SP_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."profile_image", 0777);
+            }
+            $extension = Input::file('profileImage')->getClientOriginalExtension();
+            $filename = sha1($systemUserInsertedId.time()).".{$extension}";
+            Input::file('profileImage')->move($spProfileUploadpath, $filename);
+
+
+            DB::table('system_users')
+                ->where('id', $systemUserInsertedId)
+                ->update(array('profile_image' => $filename));
+
+            /* Insert Null if empty */
+
+            if(Input::get('visitFrequency')==''){
+                $visitFrequency = NULL;
+            }else{
+                $visitFrequency = Input::get('visitFrequency');
+            }
+
+            if(Input::get('turnsMeOn')==''){
+                $turnsMeOn = NULL;
+            }else{
+                $turnsMeOn = Input::get('turnsMeOn');
+            }
+
+            if(Input::get('pubicHair')==''){
+                $pubicHair = NULL;
+            }else{
+                $pubicHair = Input::get('pubicHair');
+            }
+
+            if(Input::get('bust')==''){
+                $bust = NULL;
+            }else{
+                $bust = Input::get('bust');
+            }
+
+            if(Input::get('cupSize')==''){
+                $cupSize = NULL;
+            }else{
+                $cupSize = Input::get('cupSize');
+            }
+
+            if(Input::get('waist')==''){
+                $waist = NULL;
+            }else{
+                $waist = Input::get('waist');
+            }
+
+            if(Input::get('hips')==''){
+                $hips = NULL;
+            }else{
+                $hips = Input::get('hips');
+            }
+
+            if(Input::get('weight')==''){
+                $weight = NULL;
+            }else{
+                $weight = Input::get('weight');
+            }
+
+            if(Input::get('height')==''){
+                $height = NULL;
+            }else{
+                $height = Input::get('height');
+            }
+
+            if(Input::get('eyeColor')==''){
+                $eyeColor = NULL;
+            }else{
+                $eyeColor = Input::get('eyeColor');
+            }
+
+            if(Input::get('hairColor')==''){
+                $hairColor = NULL;
+            }else{
+                $hairColor = Input::get('hairColor');
+            }
+
+            if(Input::get('ethnicity')==''){
+                $ethnicity = NULL;
+            }else{
+                $ethnicity = Input::get('ethnicity');
+            }
+
             $serviceProviderInsertedId = DB::table('service_providers')->insertGetId(
                 array(
                     'riseme_up' =>0,
-                    'visit_frequency'=>Input::get('visitFrequency'),
-                    'turns_me_on'=>Input::get('turnsMeOn'),
-                    'pubic_hair'=>Input::get('pubicHair'),
-                    'bust'=>Input::get('bust'),
-                    'cup_size'=>Input::get('cupSize'),
-                    'waist'=>Input::get('waist'),
-                    'hips'=>Input::get('hips'),
-                    'ethnicity'=>Input::get('ethnicity'),
-                    'weight'=>Input::get('weight'),
-                    'height'=>Input::get('height'),
-                    'eye_color'=>Input::get('eyeColor'),
-                    'hair_color'=>Input::get('hairColor'),
+                    'visit_frequency'=>$visitFrequency,
+                    'turns_me_on'=>$turnsMeOn,
+                    'pubic_hair'=>$pubicHair,
+                    'bust'=>$bust,
+                    'cup_size'=>$cupSize,
+                    'waist'=>$waist,
+                    'hips'=>$hips,
+                    'ethnicity'=>$ethnicity,
+                    'weight'=>$weight,
+                    'height'=>$height,
+                    'eye_color'=>$eyeColor,
+                    'hair_color'=>$hairColor,
                     'created_at'=>date('Y-m-d H:m:s'),
                     'updated_at'=> date('Y-m-d H:m:s')
                 )
@@ -102,17 +212,18 @@ class DBTestingController extends BaseController {
 
             $availability = Input::get('availability');
             $x = implode(",",$availability);
-            //echo implode(",",$availability);
-            DB::table('service_provider_availabilities')->insert(
-                array(
-                    'service_provider_id'=>$serviceProviderInsertedId,
-                    'day'=>1,
-                    'from_time'=>Input::get('fromTime'),
-                    'to_time'=>Input::get('toTime'),
-                    'created_at'=>date('Y-m-d H:m:s'),
-                    'updated_at'=> date('Y-m-d H:m:s')
-                )
-            );
+            for($i=0;$i<count($x);$i++){
+                DB::table('service_provider_availabilities')->insert(
+                    array(
+                        'service_provider_id'=>$serviceProviderInsertedId,
+                        'day'=>$x[$i],
+                        'from_time'=>Input::get('fromTime'),
+                        'to_time'=>Input::get('toTime'),
+                        'created_at'=>date('Y-m-d H:m:s'),
+                        'updated_at'=> date('Y-m-d H:m:s')
+                    )
+                );
+            }
         }
     }
 }
