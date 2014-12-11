@@ -195,7 +195,7 @@
 
 <body onload="initialize()">
 <div class="welcome">
-    {{ Form::open(array('url' => 'testing-data/insert','id'=>'dbValidate')) }}
+    {{ Form::open(array('url' => 'testing-data/insert','id'=>'dbValidate','files'=>true)) }}
     {{ Form::label('username') }}
     {{ Form::text('username') }}
     {{ Form::label('password') }}
