@@ -33,6 +33,7 @@ class UserController extends BaseController {
             );
         }
         if ($resp != null && $resp->success) {
+            echo 1;
         }else{
             Session::flash('message', 'Please re-enter your reCAPTCHA.');
             return Redirect::to('login');

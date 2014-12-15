@@ -21,10 +21,10 @@ Route::get('test',array('before'=>'auth','uses'=>'UserController@test'));
 /* Apply Filters To Group */
 Route::group(array('before' => 'logged_in'), function() {
     /* User Registration */
-    Route::get('signup-sp',function(){
+    Route::get('signup/service-provider',function(){
         return View::make('registration.service_provider');
     });
-    Route::get('signup-customer',function(){
+    Route::get('signup/customer',function(){
         return View::make('registration.customer');
     });
 
