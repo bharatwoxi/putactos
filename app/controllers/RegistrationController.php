@@ -113,6 +113,9 @@ class RegistrationController extends BaseController {
             /*Image Upload End */
 
             /*Send Email code for future */
+
+            /* Send Mail Functionality */
+
             //$user = $systemUserInsertedId;
             /*if(app()->environment()!="local"){
                 Mail::send('emails.welcome', $data, function($message) use ($input){
