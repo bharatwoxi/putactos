@@ -45,6 +45,7 @@ class SearchController extends BaseController {
         return View::make('search.index');
     }
 
+
     /*
      *function Name: showDataAfterLogin
      *Desc: show search data initially if login
@@ -94,20 +95,70 @@ class SearchController extends BaseController {
                 }
             }
         }
-        dd($totalServiceProviderFound);
-exit;
 
-
-
-
-        //dd($systemUsers);
-        //echo $systemUser->id;
-
-
-        foreach($systemUsers as $systemUser){
-
-
+        /* Get Data Using Algorithm logic p,q,r */
+        if($totalServiceProviderFound!=NULL){
+            $i=0;
+            $serviceProviderData = NULL;
+            foreach($totalServiceProviderFound as $systemUserSpId){
+                $serviceProviderData[$i]['system_user'] = User::find($systemUserSpId);
+                $serviceProviderData[$i]['service_provider'] = ServiceProvider::find($serviceProviderData[$i]['system_user']->service_provider_id);
+                $serviceProviderData[$i]['profile_plus_visit'] = $serviceProviderData[$i]['service_provider']->profile_completeness + $serviceProviderData[$i]['service_provider']->visit_frequency;
+                $serviceProviderData[$i]['rise_me_up'] = $serviceProviderData[$i]['service_provider']->riseme_up;
+                $i++;
+            }
         }
+
+        $riseMeUpZero = array();
+        $riseMeUpOne = array();
+        $i =0;
+        $j = 0;
+        foreach($serviceProviderData as $serviceProvider){
+            if($serviceProvider['rise_me_up']==0){
+                array_push($riseMeUpZero,$serviceProvider);
+                //$riseMeUpZero[$i] = $serviceProvider;
+                $i++;
+            }
+            else{
+                array_push($riseMeUpOne,$serviceProvider);
+                //$riseMeUpOne[$j] = $serviceProvider;
+                $j++;
+            }
+        }
+
+        uasort($riseMeUpOne, array("SearchController","sortByProfilePlusVisit"));
+        uasort($riseMeUpZero, array("SearchController","sortByProfilePlusVisit"));
+
+        $serviceProviderData = array();
+        array_push($serviceProviderData,$riseMeUpOne,$riseMeUpZero);
+        dd($serviceProviderData);
+        exit;
+        //uasort($serviceProviderData, array("SearchController","sortByRiseUp"));
+        //dd($serviceProviderData);
         //return Response::json(['success'=>true]);
+    }
+
+    /*
+     *function Name: sortByProfilePlusVisit
+     *Desc: sort multidimentional array using addition of profile completeness & visit frequency
+     *Created By: Sagar Acharya
+     *Created Date: 16 December 2014
+     * Reference:  http://www.paulund.co.uk/sort-multi-dimensional-array-value
+                   http://php.net/manual/en/function.uasort.php
+     *return: true/false based on result
+    */
+    public function sortByProfilePlusVisit($a,$b){
+
+        if ($a['profile_plus_visit'] == $b['profile_plus_visit']) {
+            return 0;
+        }
+        return ($a['profile_plus_visit'] > $b['profile_plus_visit']) ? -1 : 1;
+    }
+
+    public function sortByRiseUp($a,$b){
+//        if ($a['rise_me_up'] == $b['rise_me_up']) {
+//            return 0;
+//        }
+        return ($a['rise_me_up'] > $b['rise_me_up']) ? -1 : 1;
     }
 }
