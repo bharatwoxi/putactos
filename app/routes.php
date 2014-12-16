@@ -44,6 +44,12 @@ Route::post('check-username', array('uses' => 'RegistrationController@checkUserN
 Route::post('save-sp-data', array('before' => 'csrf','uses' => 'RegistrationController@saveSpData'));
 Route::post('save-customer-data', array('before' => 'csrf','uses' => 'RegistrationController@saveCustomerData'));
 
+/* Search */
+Route::get('search/login=true', array('before' => 'auth|isCustomer','uses' => 'SearchController@index'));
+Route::get('search/results/login=true', array('before' => 'auth|isCustomer','uses' => 'SearchController@showDataAfterLogin'));
+
+
+
 /* Detect Environment */
 //echo App::environment();
 Route::post('testing-data/insert', array('uses' => 'DBTestingController@getFormData'));
