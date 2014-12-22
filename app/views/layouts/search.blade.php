@@ -138,18 +138,20 @@
                             $.ajax({
                                 type: "GET", // HTTP method POST or GET
                                 url: "{{URL::to('/').'/search/results/login=true'}}", //Where to make Ajax calls
-                                dataType:"json", // Data type, HTML, json etc.
+                                dataType:"html", // Data type, HTML, json etc.
                                 data:mydata, //Form variables
                                 success:function(response){
-                                    if(response.success == false)
-                                    {
-
-
+                                    /*if(response.success == true){
+                                        alert('record found');
+                                        console.log(response.serviceProviderData);
                                     }
                                     else{
 //                                        $("#validation-errors").hide();
 //                                        $('#submit').removeAttr('disabled');
-                                    }
+                                        alert('No records found');
+                                    }*/
+
+                                    $('#container').html(response);
 
 
 

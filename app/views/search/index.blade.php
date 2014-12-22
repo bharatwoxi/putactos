@@ -297,36 +297,8 @@
     </div>
 </div>
 <div class="clearfix"></div>
-<div class="container">
-    <div class="col-md-12">
-        <div class="row">
+<div class="container" id="container">
 
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-        </div>
-    </div><!-- end of col-md-12-->
 
     <!--<div class="col-md-12">
         <div class="row">

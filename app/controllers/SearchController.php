@@ -97,6 +97,7 @@ class SearchController extends BaseController {
         }
 
         /* Get Data Using Algorithm logic p,q,r */
+        $serviceProviderData = NULL;
         if($totalServiceProviderFound!=NULL){
             $i=0;
             $serviceProviderData = NULL;
@@ -107,35 +108,43 @@ class SearchController extends BaseController {
                 $serviceProviderData[$i]['rise_me_up'] = $serviceProviderData[$i]['service_provider']->riseme_up;
                 $i++;
             }
-        }
-
-        $riseMeUpZero = array();
-        $riseMeUpOne = array();
-        $i =0;
-        $j = 0;
-        foreach($serviceProviderData as $serviceProvider){
-            if($serviceProvider['rise_me_up']==0){
-                array_push($riseMeUpZero,$serviceProvider);
-                //$riseMeUpZero[$i] = $serviceProvider;
-                $i++;
+            $riseMeUpZero = array();
+            $riseMeUpOne = array();
+            $i =0;
+            $j = 0;
+            foreach($serviceProviderData as $serviceProvider){
+                if($serviceProvider['rise_me_up']==0){
+                    array_push($riseMeUpZero,$serviceProvider);
+                    //$riseMeUpZero[$i] = $serviceProvider;
+                    $i++;
+                }
+                else{
+                    array_push($riseMeUpOne,$serviceProvider);
+                    //$riseMeUpOne[$j] = $serviceProvider;
+                    $j++;
+                }
             }
-            else{
-                array_push($riseMeUpOne,$serviceProvider);
-                //$riseMeUpOne[$j] = $serviceProvider;
-                $j++;
+
+            uasort($riseMeUpOne, array("SearchController","sortByProfilePlusVisit"));
+            uasort($riseMeUpZero, array("SearchController","sortByProfilePlusVisit"));
+
+            $serviceProviderData = array();
+            if(!empty($riseMeUpOne) && !empty($riseMeUpZero)){
+                $serviceProviderData = array_merge($riseMeUpOne,$riseMeUpZero);
+            }elseif(!empty($riseMeUpOne)){
+                $serviceProviderData = array_merge($riseMeUpOne);
+            }elseif(!empty($riseMeUpZero)){
+                $serviceProviderData = array_merge($riseMeUpZero);
             }
+
         }
+        //if($serviceProviderData!=NULL){
+            //return Response::json(['success'=>true,'serviceProviderData'=>json_encode($serviceProviderData)]);
+            return View::make('search.searchResults')->with('serviceProviderData', $serviceProviderData);
+        /*}else{
+            return Response::json(['success'=>false]);
+        }*/
 
-        uasort($riseMeUpOne, array("SearchController","sortByProfilePlusVisit"));
-        uasort($riseMeUpZero, array("SearchController","sortByProfilePlusVisit"));
-
-        $serviceProviderData = array();
-        array_push($serviceProviderData,$riseMeUpOne,$riseMeUpZero);
-        dd($serviceProviderData);
-        exit;
-        //uasort($serviceProviderData, array("SearchController","sortByRiseUp"));
-        //dd($serviceProviderData);
-        //return Response::json(['success'=>true]);
     }
 
     /*
