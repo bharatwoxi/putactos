@@ -211,17 +211,19 @@ class DBTestingController extends BaseController {
 
 
             $availability = Input::get('availability');
-            foreach($availability as $available){
-                DB::table('service_provider_availabilities')->insert(
-                    array(
-                        'service_provider_id'=>$serviceProviderInsertedId,
-                        'day'=>$available,
-                        'from_time'=>Input::get('fromTime'),
-                        'to_time'=>Input::get('toTime'),
-                        'created_at'=>date('Y-m-d H:m:s'),
-                        'updated_at'=> date('Y-m-d H:m:s')
-                    )
-                );
+            if(!empty($availability) || $availability!=NULL){
+                foreach($availability as $available){
+                    DB::table('service_provider_availabilities')->insert(
+                        array(
+                            'service_provider_id'=>$serviceProviderInsertedId,
+                            'day'=>$available,
+                            'from_time'=>Input::get('fromTime'),
+                            'to_time'=>Input::get('toTime'),
+                            'created_at'=>date('Y-m-d H:m:s'),
+                            'updated_at'=> date('Y-m-d H:m:s')
+                        )
+                    );
+                }
             }
         }
     }
