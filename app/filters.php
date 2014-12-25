@@ -93,3 +93,26 @@ Route::filter('logged_in', function()
 {
     if (Auth::check()) return Redirect::to('/');
 });
+
+/* Check User Role */
+//Check is Customer Accessing Page Or Not
+Route::filter('isCustomer', function()
+{
+    $user = Auth::user()->id;
+    $roleId = User::find($user);
+    if($roleId->user_role_id!=1){
+        Session::flash('unauth-msg','Oops.. You are not authorized to access this page');
+        return Redirect::to('/');
+    }
+});
+
+//Check is Service provider Accessing Page Or Not
+Route::filter('isServiceProvider', function()
+{
+    $user = Auth::user()->id;
+    $roleId = User::find($user);
+    if($roleId->user_role_id!=2){
+        Session::flash('unauth-msg','Oops.. You are not authorized to access this page');
+        return Redirect::to('/');
+    }
+});

@@ -33,7 +33,7 @@
                     $('#customerData').hide();
                 }
             });
-            $('#dbValidate').submit(function(event) {
+            /*$('#dbValidate').submit(function(event) {
                 event.preventDefault();
                 if($('#username').val()!='' && $('#password').val()!='' && $('#email').val()!='' && $('#birthdate').val()!='' && $('#firstName').val()!='' && $('#lastName').val()!='' && $('#fromAge').val()!='' && $('#toAge').val()!='' && $('#latitude').val()!='' && $('#longitude').val()!=''){
 
@@ -51,7 +51,7 @@
                 }
 
 
-            });
+            });*/
         });
     </script>
     <style>

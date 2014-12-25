@@ -113,6 +113,9 @@ class RegistrationController extends BaseController {
             /*Image Upload End */
 
             /*Send Email code for future */
+
+            /* Send Mail Functionality */
+
             //$user = $systemUserInsertedId;
             /*if(app()->environment()!="local"){
                 Mail::send('emails.welcome', $data, function($message) use ($input){
@@ -120,10 +123,10 @@ class RegistrationController extends BaseController {
                 });
             }*/
             Session::flash('message', 'Your account has been successfully created. Please check your email for the instructions on how to confirm your account.');
-            return Redirect::to('signup-sp');
+            return Redirect::to('login');
         }
         else{
-            return Redirect::to('signup-sp')->withInput()->withErrors($validation);
+            return Redirect::to('signup/service-provider')->withInput()->withErrors($validation);
         }
 
     }
@@ -213,10 +216,10 @@ class RegistrationController extends BaseController {
                 });
             }*/
             Session::flash('message', 'Your account has been successfully created. Please check your email for the instructions on how to confirm your account.');
-            return Redirect::to('signup-customer');
+            return Redirect::to('login');
         }
         else{
-            return Redirect::to('signup-customer')->withInput()->withErrors($validation);
+            return Redirect::to('signup/customer')->withInput()->withErrors($validation);
         }
     }
 }
