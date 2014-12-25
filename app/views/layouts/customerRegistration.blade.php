@@ -112,7 +112,7 @@
             //##### Send Ajax request to response.php #########
             $.ajax({
                 type: "POST", // HTTP method POST or GET
-                url: "check-username", //Where to make Ajax calls
+                url: "{{URL::to('/')}}/check-username", //Where to make Ajax calls
                 dataType:"json", // Data type, HTML, json etc.
                 data:mydata, //Form variables
                 success:function(response){
