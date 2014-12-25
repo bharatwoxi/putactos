@@ -259,13 +259,13 @@
                                 <input type="image" src="img/Bald_Button.png" style="padding: 15px;">-->
                                 <div class=" col-xs-offset-1">
                                     <h6 style="color:#FFF">HIPS</h6>
-                                    <input class="slider" data-slider-max="20" data-slider-min="-20" data-slider-orientation="horizontal" data-slider-value="-10" type="text">
+                                    <input class="slider" data-slider-max="60" data-slider-min="40" data-slider-orientation="horizontal" data-slider-value="-10" type="text">
                                     <h6 style="color:#FFF">BUST</h6>
-                                    <input class="slider" data-slider-max="20" data-slider-min="-20" data-slider-orientation="horizontal" data-slider-value="12" type="text">
+                                    <input class="slider" data-slider-max="60" data-slider-min="40" data-slider-orientation="horizontal" data-slider-value="12" type="text">
                                     <h6 style="color:#FFF">WAIST</h6>
-                                    <input class="slider" data-slider-max="20" data-slider-min="-20" data-slider-orientation="horizontal" data-slider-value="-2" type="text">
+                                    <input class="slider" data-slider-max="60" data-slider-min="40" data-slider-orientation="horizontal" data-slider-value="-2" type="text">
                                     <h6 style="color:#FFF">CUP SIZE</h6>
-                                    <input class="slider" data-slider-max="20" data-slider-min="-20" data-slider-orientation="horizontal" data-slider-value="-2" type="text">
+                                    <input class="slider" data-slider-max="60" data-slider-min="40" data-slider-orientation="horizontal" data-slider-value="-2" type="text">
                                 </div>
                             </div>
 

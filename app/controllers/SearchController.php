@@ -55,11 +55,14 @@ class SearchController extends BaseController {
     */
     public function showDataAfterLogin(){
         //dd(Input::all());
-//        $latitude = Input::get('latitude');
-//        $longitude = Input::get('longitude');
-
-        $latitude = '40.483936';
-        $longitude = '-3.567951999999991';
+        $latitude = Input::get('latitude');
+        $longitude = Input::get('longitude');
+        if($latitude==0 && $longitude==0){
+            $latitude = Auth::user()->latitude;
+            $longitude = Auth::user()->longitude;
+        }
+//        $latitude = '40.483936';
+//        $longitude = '-3.567951999999991';
         $customerFromAge = Auth::user()->from_age;
         $customerToAge = Auth::user()->to_age;
 //        echo '<br/>FromAge:'.$customerFromAge;
@@ -138,6 +141,8 @@ class SearchController extends BaseController {
             }
 
         }
+        //  dd($serviceProviderData);
+        //echo "<pre>";print_r($serviceProviderData);echo "</pre>";
         //if($serviceProviderData!=NULL){
             //return Response::json(['success'=>true,'serviceProviderData'=>json_encode($serviceProviderData)]);
             return View::make('search.searchResults')->with('serviceProviderData', $serviceProviderData);

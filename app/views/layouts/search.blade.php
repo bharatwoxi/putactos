@@ -101,7 +101,8 @@
     }
 
     function errorFunction(){
-        alert("Geocoder failed");
+        //alert("Geocoder failed");
+        getUserData(0,0);
     }
 
     function initialize() {
@@ -130,38 +131,8 @@
                             D:long
                             */
                             ?>
-                            console.log(entry.geometry.location);
-
-                            //
-                            var mydata = 'latitude='+entry.geometry.location.k+'&longitude='+entry.geometry.location.D;
-                            //##### Send Ajax request to response.php #########
-                            $.ajax({
-                                type: "GET", // HTTP method POST or GET
-                                url: "{{URL::to('/').'/search/results/login=true'}}", //Where to make Ajax calls
-                                dataType:"html", // Data type, HTML, json etc.
-                                data:mydata, //Form variables
-                                success:function(response){
-                                    /*if(response.success == true){
-                                        alert('record found');
-                                        console.log(response.serviceProviderData);
-                                    }
-                                    else{
-//                                        $("#validation-errors").hide();
-//                                        $('#submit').removeAttr('disabled');
-                                        alert('No records found');
-                                    }*/
-
-                                    $('#container').html(response);
-
-
-
-                                },
-                                error:function (xhr, ajaxOptions, thrownError){
-                                    //On error, we alert user
-                                    alert(thrownError);
-                                }
-                            });
-                            //
+                            //console.log(entry.geometry.location);
+                            getUserData(entry.geometry.location.k,entry.geometry.location.D);
                         }
                     });
 
@@ -191,6 +162,38 @@
                 }
             } else {
                 //alert("Geocoder failed due to: " + status);
+            }
+        });
+    }
+
+    function getUserData(lat,long){
+
+        var mydata = 'latitude='+lat+'&longitude='+long;
+        //##### Send Ajax request to response.php #########
+        $.ajax({
+            type: "GET", // HTTP method POST or GET
+            url: "{{URL::to('/').'/search/results/login=true'}}", //Where to make Ajax calls
+            dataType:"html", // Data type, HTML, json etc.
+            data:mydata, //Form variables
+            success:function(response){
+                /*if(response.success == true){
+                 alert('record found');
+                 console.log(response.serviceProviderData);
+                 }
+                 else{
+                 //                                        $("#validation-errors").hide();
+                 //                                        $('#submit').removeAttr('disabled');
+                 alert('No records found');
+                 }*/
+
+                $('#container').html(response);
+
+
+
+            },
+            error:function (xhr, ajaxOptions, thrownError){
+                //On error, we alert user
+                alert(thrownError);
             }
         });
     }
