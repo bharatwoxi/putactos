@@ -10,8 +10,10 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
-Route::get('/', array('uses' => 'DBTestingController@index'));
+Route::get('/',function(){
+    return View::make('home.index');
+});
+Route::get('test', array('uses' => 'DBTestingController@index'));
 Route::get('places',function(){
     // View::make('dataTesting.gplaces');
         return Response::view('errors.missing', array(), 404);
@@ -19,6 +21,7 @@ Route::get('places',function(){
 Route::get('test',array('before'=>'auth','uses'=>'UserController@test'));
 
 /* Apply Filters To Group */
+/* If user is not logged in then apply this filter */
 Route::group(array('before' => 'logged_in'), function() {
     /* User Registration */
     Route::get('signup/service-provider',function(){
@@ -29,6 +32,10 @@ Route::group(array('before' => 'logged_in'), function() {
     });
 
     /* User Login *& Authentication */
+    Route::get('login1',function(){
+        return View::make('login.index2');
+    });
+
     Route::get('login',function(){
         return View::make('login.index');
     });
