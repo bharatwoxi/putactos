@@ -51,7 +51,7 @@ class UserController extends BaseController {
         if($validation->passes()){
             if (Auth::attempt($data))
             {
-                echo 123;
+                return Redirect::to('search/login=true');
             }else{
                 /* Check Query Log With Time*/
                 /*$queries = DB::getQueryLog();

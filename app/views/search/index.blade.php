@@ -14,11 +14,11 @@
         <div class="col-lg-12" >
             <div>
                 <a href="#" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('public/assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
-                <div class="pull-right">
-                    <p  style="padding-top: 15px;">Not a Member?
-                        <button type="button" class="btn btn-default" style="background-color:#a92124; color:#ffffff">Join Putactos</button>
-                    </p>
-                </div>
+<!--                <div class="pull-right">-->
+<!--                    <p  style="padding-top: 15px;">Not a Member?-->
+<!--                        <button type="button" class="btn btn-default" style="background-color:#a92124; color:#ffffff">Join Putactos</button>-->
+<!--                    </p>-->
+<!--                </div>-->
             </div>
         </div><!-- navbar navbar-inverse navbar-static-top close-->
     </div> <!--Container close-->
@@ -31,12 +31,12 @@
             <div class="mini_nav pull-right" style="color:#ffff;padding: 10px 0px; height: 110px;">
                 <a href="#" style="padding-right:20px;">MY PROFILE</a>
                 <a href="#" style="padding-right:20px;"><strong>INBOX 1/15</strong></a>
-                <a href="#" style=""><strong>SIGN OUT</strong></a>
+                <a href="{{ URL::to('/logout') }}" style=""><strong>SIGN OUT</strong></a>
                 <br>
                 <br>
                 <span style="padding-right:20px; color:#fff">Select Language</span>
-                <a href="people_near_by_en.html" class="lan_nav" style="padding-right:20px; color:#fff; text-decoration:underline;">ENGLISH</a>
-                <a href="people_near_by_es.html" class="lan_nav" style="">SPANISH</a>
+                <a href="#" class="lan_nav" style="padding-right:20px; color:#fff; text-decoration:underline;">ENGLISH</a>
+                <a href="#" class="lan_nav" style="">SPANISH</a>
             </div>
         </div> <!--End of col-md-12-->
 
