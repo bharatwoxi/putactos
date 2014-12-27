@@ -6,8 +6,8 @@
  * Time: 11:01 AM
  */
 // Register API keys at https://www.google.com/recaptcha/admin
-$siteKey = "6LfCB_8SAAAAAFvqUDtRc63oBduhiMJ09kfn60Xv";
-$secret = "6LfCB_8SAAAAAIE7nuQD5Du0mJqWH6qDkhTh99wB";
+$siteKey = $_ENV['reCaptchSiteKey'];
+$secret = $_ENV['reCaptchaSecretKey'];
 // reCAPTCHA supported 40+ languages listed here: https://developers.google.com/recaptcha/docs/language
 $lang = "en";
 
@@ -21,117 +21,117 @@ $error = null;
 @extends('layouts.home')
 @section('content')
 <div class="container-fluid">
-    <div class="container">
-        <div class="col-lg-12" >
-            <div>
-                <a href="#" class="navbar-static pull-left" style="margin:0"><img src="{{ URL::to('/public/assets/registration/img/Puktatos 3 b.png') }}" class="img-responsive" width="150"  /></a>
-                <div class="pull-right">
-                    @if(!Auth::check())
-                    <p  style="padding-top: 15px;">Not a Member?
-                        <button type="button" class="btn btn-default" style="background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModa">
-                            <a href="user_registration.html" target="_blank" style="text-decoration:none; color:#ffffff"><strong>Join Putactos</strong></a></button>
-                        <button type="button" class="btn btn-primary" style="background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModal1"><strong>Login Now</strong></button>
-                    </p>
-                    @endif
+<div class="container">
+    <div class="col-lg-12" >
+        <div>
+            <a href="#" class="navbar-static pull-left" style="margin:0"><img src="{{ URL::to('/public/assets/registration/img/Puktatos 3 b.png') }}" class="img-responsive" width="150"  /></a>
+            <div class="pull-right">
+                @if(!Auth::check())
+                <p  style="padding-top: 15px;">Not a Member?
+                    <button type="button" class="btn btn-default" style="background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModa">
+                        <a href="{{ URL::to('/signup/customer') }}" style="text-decoration:none; color:#ffffff"><strong>Join Putactos</strong></a></button>
+                    <button type="button" class="btn btn-primary" style="background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModal1"><strong>Login Now</strong></button>
+                </p>
+                @endif
 
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content" style="border-radius: 15px;">
-                                <div class="modal-header" style="background: url(../../public/assets/registration/img/background1.png); background-repeat: repeat; border-top-right-radius: 10px; border-top-left-radius: 10px; border-bottom: none;">
-                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                </div>
-                                <div class="modal-body" style="background: url(../../public/assets/registration/img/background1.png);
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="border-radius: 15px;">
+                            <div class="modal-header" style="background: url(../../public/assets/registration/img/background1.png); background-repeat: repeat; border-top-right-radius: 10px; border-top-left-radius: 10px; border-bottom: none;">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            </div>
+                            <div class="modal-body" style="background: url(../../public/assets/registration/img/background1.png);
 background-repeat: repeat;background-repeat: repeat; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;">
-                                    <div class="container-fluid">
-                                        <div class="container">
-                                            <form class="form-horizontal" role="form">
-                                                <div class="form-group">
-                                                    <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Age Range</label>
-                                                    <div class="col-sm-3">
-                                                        <div class="nstSlider" data-range_min="14" data-range_max="50"
-                                                             data-cur_min="10"  data-cur_max="90" style="width: 240px;">
+                                <div class="container-fluid">
+                                    <div class="container">
+                                        <form class="form-horizontal" role="form">
+                                            <div class="form-group">
+                                                <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Age Range</label>
+                                                <div class="col-sm-3">
+                                                    <div class="nstSlider" data-range_min="14" data-range_max="50"
+                                                         data-cur_min="10"  data-cur_max="90" style="width: 240px;">
 
-                                                            <div class="highlightPanel"></div>
-                                                            <div class="bar"></div>
-                                                            <div class="leftGrip"></div>
-                                                            <div class="rightGrip"></div>
-                                                        </div>
-
-                                                        <div class="leftLabel" style=""></div>
-                                                        <div class="rightLabel" style="margin-top: -25px; padding-left: 224px;"></div>
+                                                        <div class="highlightPanel"></div>
+                                                        <div class="bar"></div>
+                                                        <div class="leftGrip"></div>
+                                                        <div class="rightGrip"></div>
                                                     </div>
+
+                                                    <div class="leftLabel" style=""></div>
+                                                    <div class="rightLabel" style="margin-top: -25px; padding-left: 224px;"></div>
                                                 </div>
-                                                <div class="form-group">
+                                            </div>
+                                            <div class="form-group">
 
-                                                    <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Looking for</label>
-                                                    <div class="col-sm-3">
-                                                        <label class="radio-inline">
-                                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Male
-                                                        </label>
-                                                        <label class="radio-inline">
-                                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Female
-                                                        </label>
-                                                        <label class="radio-inline">
-                                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Both
-                                                        </label>
-                                                        <a href="people_near_by_en.html" target="_blank" style="text-decoration:none"><input type="image" src="{{ URL::to('/public/assets/registration/img/Go.png')}}" class="img-responsive" style="width:60px; padding-top:20px">
-                                                        </a>
-
-                                                    </div>
+                                                <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Looking for</label>
+                                                <div class="col-sm-3">
+                                                    <label class="radio-inline">
+                                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Male
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Female
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Both
+                                                    </label>
+                                                    <a href="people_near_by_en.html" target="_blank" style="text-decoration:none"><input type="image" src="{{ URL::to('/public/assets/registration/img/Go.png')}}" class="img-responsive" style="width:60px; padding-top:20px">
+                                                    </a>
 
                                                 </div>
 
-                                            </form>
-                                        </div><!--End of container-->
-                                    </div> <!--End of container-fluid-->
-                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div><!--End of container-->
+                                </div> <!--End of container-fluid-->
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header" style="background: url(../../public/assets/registration/img/background1.png);
+                <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background: url(../../public/assets/registration/img/background1.png);
 background-repeat: repeat; border-top-right-radius: 10px; border-top-left-radius: 10px; border-bottom: none;">
-                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                </div>
-                                <div class="modal-body" style="background: url(../../public/assets/registration/img/background1.png);
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            </div>
+                            <div class="modal-body" style="background: url(../../public/assets/registration/img/background1.png);
 background-repeat: repeat;
  border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; border-bottom: none;">
-                                    <div class="container-fluid">
-                                        <div class="container">
-                                            {{ Form::open(array('url' => 'authenticate','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'customerRegistration')) }}
-                                                <div class="form-group">
-                                                    {{ Form::label('email', 'Email address', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
-                                                    <div class="col-sm-3">
-                                                        {{ Form::email('email',Input::old('email'),array('class'=>'form-control','style'=>'padding-left:5px','id'=>'email','required'=>'required')) }}
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    {{ Form::label('password', 'Password', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
-                                                    <div class="col-sm-3" style="overflow: hidden;">
-                                                        {{ Form::password('password',array('class'=>'form-control','style'=>'padding-left:5px','id'=>'password','required'=>'required')) }}
-                                                        <p style="font-size:12px; padding-bottom: 30px;"><a href="#" style="text-decoration:none; color:#000">Forgot Password</a></p>
+                                <div class="container-fluid">
+                                    <div class="container">
+                                        {{ Form::open(array('url' => 'authenticate','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'login')) }}
+                                        <div class="form-group">
+                                            {{ Form::label('email', 'Email address', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
+                                            <div class="col-sm-3">
+                                                {{ Form::email('email',Input::old('email'),array('class'=>'form-control','style'=>'padding-left:5px','id'=>'email','required'=>'required')) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            {{ Form::label('password', 'Password', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
+                                            <div class="col-sm-3" style="overflow: hidden;">
+                                                {{ Form::password('password',array('class'=>'form-control','style'=>'padding-left:5px','id'=>'password','required'=>'required')) }}
+                                                <p style="font-size:12px; padding-bottom: 30px;"><a href="#" style="text-decoration:none; color:#000">Forgot Password</a></p>
 
-                                                        <!-- <input type="image" src="img/Captcha.png" class="img-responsive">
-                                                          <p style="font-size:16px; font-weight:bold">Type the words</p>
-                                                            <input type="text" class="form-control" id="name">-->
-                                                    </div>
+                                                <!-- <input type="image" src="img/Captcha.png" class="img-responsive">
+                                                  <p style="font-size:16px; font-weight:bold">Type the words</p>
+                                                    <input type="text" class="form-control" id="name">-->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            {{ Form::label('captcha', 'Captcha', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
+                                            <div class="col-sm-3">
+                                                <div class="g-recaptcha" data-sitekey="<?php echo $siteKey;?>" data-theme="dark"></div>
+                                                <script type="text/javascript"
+                                                        src="https://www.google.com/recaptcha/api.js?hl=<?php echo $lang;?>">
+                                                </script>
+                                            </div><br/> <div class="clearfix"></div>
+                                            <div class="form-group">
+                                                <div class="col-sm-5" style="overflow: hidden; margin-left: 10px;">
+                                                    <input type="image" src="{{ URL::to('/public/assets/registration/img/LOgin.png')}}" class="img-responsive center-block" style="width:70px; margin-top: 20px;cursor:pointer;" id="login-image">
                                                 </div>
-                                                <div class="form-group">
-                                                    {{ Form::label('captcha', 'Captcha', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
-                                                    <div class="col-sm-3"">
-                                                    <div class="g-recaptcha" data-sitekey="<?php echo $siteKey;?>" data-theme="dark"></div>
-                                                    <script type="text/javascript"
-                                                            src="https://www.google.com/recaptcha/api.js?hl=<?php echo $lang;?>">
-                                                    </script>
-                                                </div><br/>
-                                                <div class="form-group">
-                                                    <div class="col-sm-3" style="overflow: hidden;">
-                                                        <input type="image" src="{{ URL::to('/public/assets/registration/img/LOgin.png')}}" class="img-responsive center-block" style="width:70px; margin-top: 15px;">
-                                                    </div>
-                                                </div>
+                                            </div>
                                             </form>
                                         </div><!--End of container-->
                                     </div> <!--End of container-fluid-->

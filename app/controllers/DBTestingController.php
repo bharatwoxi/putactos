@@ -226,5 +226,6 @@ class DBTestingController extends BaseController {
                 }
             }
         }
+        return Redirect::to('dummy');
     }
 }
