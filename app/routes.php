@@ -13,7 +13,7 @@
 Route::get('/',function(){
     return View::make('home.index');
 });
-Route::get('test', array('uses' => 'DBTestingController@index'));
+Route::get('dummy', array('uses' => 'DBTestingController@index'));
 Route::get('places',function(){
     // View::make('dataTesting.gplaces');
         return Response::view('errors.missing', array(), 404);
