@@ -168,7 +168,7 @@
 
     function getUserData(lat,long){
 
-        var mydata = 'latitude='+lat+'&longitude='+long;
+        var mydata = 'latitude='+lat+'&longitude='+long+'&skip='+0+'&take='+4+'&isAjax='+0+'&isScroll='+1;
         //##### Send Ajax request to response.php #########
         $.ajax({
             type: "GET", // HTTP method POST or GET
@@ -197,6 +197,50 @@
             }
         });
     }
+</script>
+<script type="text/javascript">
+    var skip = 8;
+    var take = 4;
+    var isPreviousEventComplete = true;
+    var isDataAvailable = true;
+    $(window).scroll(function () {
+        if ($(document).height() - 50 <= $(window).scrollTop() + $(window).height()) {
+            if (isPreviousEventComplete && isDataAvailable) {
+
+                isPreviousEventComplete = false;
+                //$(".LoaderImage").css("display", "block");
+                var mydata = 'skip='+skip+'&take='+take+'&isAjax='+0+'&isScroll='+1;
+                $("#loaderImage").css("display", "block");
+                $.ajax({
+                    type: "GET",
+                    url: "{{URL::to('/').'/search/results/login=true'}}", //Where to make Ajax calls
+                    dataType:"html", // Data type, HTML, json etc.
+                    data:mydata, //Form variables
+                    success: function (result) {
+                        $("#loaderImage").css("display", "none");
+                        if (result == '1'){  //When data is not available
+                            isDataAvailable = false;
+                        }
+                        else{
+                            $('#container').append(result);
+                            skip = skip + take;
+                            isPreviousEventComplete = true;
+                        }
+
+
+
+
+
+                        //$(".LoaderImage").css("display", "none");
+                    },
+                    error: function (error) {
+                        alert(error);
+                    }
+                });
+
+            }
+        }
+    });
 </script>
 </body>
 </html>

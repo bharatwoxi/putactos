@@ -61,5 +61,9 @@ Route::get('search/results/login=true', array('before' => 'auth|isCustomer','use
 //echo App::environment();
 Route::post('testing-data/insert', array('uses' => 'DBTestingController@getFormData'));
 
+
+
+/* Cron Routes */
+Route::get('update/age', array('uses' => 'CronController@updateUserAge'));
 /* Profile Completeness (In future it should be run as cron or Update value on each profile update) */
 Route::get('profile-complete', array('uses' => 'ServiceProviderController@updateProfileCompleteness'));
