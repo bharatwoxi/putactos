@@ -12,7 +12,7 @@
     <div class="container">
         <div class="col-sm-3 col-md-5 col-lg-12" >
             <div>
-                <a href="#" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('public/assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
+                <a href="{{ URL::to('/') }}" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('public/assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
 <!--                <div class="pull-right">-->
 <!--                    <p  style="padding-top: 15px;">Not a Member?-->
 <!--                        <button type="button" class="btn btn-default" style="background-color:#a92124; color:#ffffff">Join Putactos</button>-->
@@ -66,7 +66,7 @@
 <div class="alert alert-success">{{ Session::get('message') }}</div>
 @endif
 
-<div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;">
+<div class="container-fluid rconta">
     <div class="col-sm-3 col-md-10 col-lg-12">
         <div class="container">
                 {{ Form::open(array('url' => 'save-customer-data','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'customerRegistration')) }}
@@ -108,9 +108,14 @@
                 </div>
                 <div class="form-group">
                     <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Age Range</label>
-                    <div class="col-md-2" style="padding-top: 20px;">
+                    <div class="col-md-3" style="padding-top: 20px;">
                         <!--<input class="slider" data-slider-max="50" data-slider-min="18" data-slider-orientation="horizontal" data-slider-value="18" type="text" style="width: 155px;">-->
-                        <input type="text" name="ageRange" id="ageRange" class="slider" data-slider-min="18" data-slider-max="50" data-slider-step="5" data-slider-value="[18,50]">
+                        <!--<input type="text" name="ageRange" id="ageRange" class="slider" data-slider-min="18" data-slider-max="50" data-slider-step="5" data-slider-value="[18,50]">-->
+                        <div class='slider-example'>
+                            <div class="well" style="padding: 5px 10px 5px 10px;">
+                                <b>16&nbsp;&nbsp;</b><input name="ageRange" id="ex2" type="text" class="span2" value="" data-slider-min="15" data-slider-max="60" data-slider-step="5" data-slider-value="[15,60]"/><b>&nbsp;&nbsp;&nbsp;60</b>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group" style="margin-top: -10px;">
