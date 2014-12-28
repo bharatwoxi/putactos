@@ -170,29 +170,19 @@
 
         var mydata = 'latitude='+lat+'&longitude='+long+'&skip='+0+'&take='+4+'&isAjax='+0+'&isScroll='+1;
         //##### Send Ajax request to response.php #########
+        $("#loaderImage").css("display", "block");
         $.ajax({
             type: "GET", // HTTP method POST or GET
             url: "{{URL::to('/').'/search/results/login=true'}}", //Where to make Ajax calls
             dataType:"html", // Data type, HTML, json etc.
             data:mydata, //Form variables
             success:function(response){
-                /*if(response.success == true){
-                 alert('record found');
-                 console.log(response.serviceProviderData);
-                 }
-                 else{
-                 //                                        $("#validation-errors").hide();
-                 //                                        $('#submit').removeAttr('disabled');
-                 alert('No records found');
-                 }*/
-
                 $('#container').html(response);
-
-
-
+                $("#loaderImage").css("display", "none");
             },
             error:function (xhr, ajaxOptions, thrownError){
                 //On error, we alert user
+                $("#loaderImage").css("display", "none");
                 alert(thrownError);
             }
         });
@@ -226,12 +216,6 @@
                             skip = skip + take;
                             isPreviousEventComplete = true;
                         }
-
-
-
-
-
-                        //$(".LoaderImage").css("display", "none");
                     },
                     error: function (error) {
                         alert(error);
