@@ -36,12 +36,5 @@
 <?php
     }
 }else{
-?>
-        <div class="col-md-12">
-            <div class="row">
-            Opps....No Records Found!!!!!!~
-            </div>
-        </div>
-<?php
-    }
-?>
+        echo 1;
+    }?>

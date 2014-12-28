@@ -449,6 +449,7 @@
         </div>
     </div><!-- end of col-md-12-->
 </div>
+<div id="loaderImage" class="row text-center" style="display:none;"><img style="margin: 0 auto;" src="{{ URL::to('/public/assets/images/loader/heart.GIF') }}"></div>
 
 </div> <!--Content ends-->
 

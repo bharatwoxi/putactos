@@ -54,49 +54,60 @@ class SearchController extends BaseController {
      *return: true/false based on result
     */
     public function showDataAfterLogin(){
-        //dd(Input::all());
-        $latitude = Input::get('latitude');
-        $longitude = Input::get('longitude');
-        if($latitude==0 && $longitude==0){
-            $latitude = Auth::user()->latitude;
-            $longitude = Auth::user()->longitude;
+
+        $skip = Input::get('skip');
+        $take = Input::get('take');
+
+
+        if(Input::get('isScroll')==1){
+            $latitude = Session::get('latitude');
+            $longitude = Session::get('longitude');
+        }else{
+            $latitude = Input::get('latitude');
+            $longitude = Input::get('longitude');
+            if($latitude==0 && $longitude==0){
+                $latitude = Auth::user()->latitude;
+                $longitude = Auth::user()->longitude;
+            }
+            Session::put('latitude', $latitude);
+            Session::put('longitude', $longitude);
         }
-//        $latitude = '40.483936';
-//        $longitude = '-3.567951999999991';
+
         $customerFromAge = Auth::user()->from_age;
         $customerToAge = Auth::user()->to_age;
-//        echo '<br/>FromAge:'.$customerFromAge;
-//        echo '<br/>ToAge:'.$customerToAge;
+
         $customerData  = Customer::find(Auth::user()->customer_id);
-        $systemUsers = User::where('user_role_id','=','2')->get();
+        if($customerData->looking_for=='male'){
+
+            $systemUsers = User::where('user_role_id','=','2')
+                               ->where('gender','LIKE','male')
+                               ->where('from_age','>=',$customerFromAge)
+                               ->where('to_age','<=',$customerToAge)
+                               ->where('is_active','=',1)
+                               ->skip($skip)->take($take)->get();
+        }elseif($customerData->looking_for=='female'){
+            $systemUsers = User::where('user_role_id','=','2')
+                                ->where('gender','LIKE','female')
+                                ->where('from_age','>=',$customerFromAge)
+                                ->where('to_age','<=',$customerToAge)
+                                ->where('is_active','=',1)
+                                ->skip($skip)->take($take)->get();
+        }else{
+            $systemUsers = User::where('user_role_id','=','2')
+                                ->where('from_age','>=',$customerFromAge)
+                                ->where('to_age','<=',$customerToAge)
+                                ->where('is_active','=',1)
+                                ->skip($skip)->take($take)->get();
+        }
+
         $totalServiceProviderFound = NULL;
         $i=0;
         foreach($systemUsers as $systemUser){
-            $distance = round($this->distance($systemUser->latitude,$systemUser->longitude,$latitude,$longitude,'K'));
-            if($distance>=0 && $distance <=15){
-                $dayDiff=floor((abs(strtotime(date("Y-m-d")) - strtotime($systemUser->birth_date))/(60*60*24)));
-                $years = ($dayDiff / 365) ; // days / 365 days
-                $years = floor($years); // Remove all decimals
-//                echo "<br/>";
-//                echo 'Years:'.$years;
-//                echo 'Id:'.$systemUser->id;
-                if($years>=$customerFromAge && $years<=$customerToAge){
-                    if($customerData->looking_for=='male'){
-                        if($systemUser->gender=='male'){
-                            $totalServiceProviderFound[$i] = $systemUser->id;
-                            $i++;
-                        }
-                    }elseif($customerData->looking_for=='female'){
-                        if($systemUser->gender=='female'){
-                            $totalServiceProviderFound[$i] = $systemUser->id;
-                            $i++;
-                        }
-                    }else{
-                        $totalServiceProviderFound[$i] = $systemUser->id;
-                        $i++;
-                    }
-                }
-            }
+            //$distance = round($this->distance($systemUser->latitude,$systemUser->longitude,$latitude,$longitude,'K'));
+//            if($distance>=0 && $distance <=500){
+                $totalServiceProviderFound[$i] = $systemUser->id;
+                $i++;
+            //}
         }
 
         /* Get Data Using Algorithm logic p,q,r */
@@ -141,6 +152,10 @@ class SearchController extends BaseController {
             }
 
         }
+        /* Maintain Global Data
+            http://laravel.io/forum/07-23-2014-global-data-object
+        */
+        //Data::set('serviceProviderSearchResult', $serviceProviderData);
         //  dd($serviceProviderData);
         //echo "<pre>";print_r($serviceProviderData);echo "</pre>";
         //if($serviceProviderData!=NULL){
