@@ -19,7 +19,7 @@ class UserController extends BaseController {
 
         $input = Input::all();
         /* Check reCaptcha */
-        $secret = "6LfCB_8SAAAAAIE7nuQD5Du0mJqWH6qDkhTh99wB";
+        $secret = $_ENV['reCaptchaSecretKey'];
         $reCaptcha = new ReCaptcha($secret);
 
         // The response from reCAPTCHA
