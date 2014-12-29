@@ -168,7 +168,7 @@
 
     function getUserData(lat,long){
 
-        var mydata = 'latitude='+lat+'&longitude='+long+'&skip='+0+'&take='+4+'&isAjax='+0+'&isScroll='+1;
+        var mydata = 'latitude='+lat+'&longitude='+long+'&skip='+0+'&take='+4+'&isFilter='+0+'&isScroll='+1;
         //##### Send Ajax request to response.php #########
         $("#loaderImage").css("display", "block");
         $.ajax({
@@ -199,7 +199,7 @@
 
                 isPreviousEventComplete = false;
                 //$(".LoaderImage").css("display", "block");
-                var mydata = 'skip='+skip+'&take='+take+'&isAjax='+0+'&isScroll='+1;
+                var mydata = 'skip='+skip+'&take='+take+'&isFilter='+0+'&isScroll='+1;
                 $("#loaderImage").css("display", "block");
                 $.ajax({
                     type: "GET",
@@ -224,6 +224,27 @@
 
             }
         }
+    });
+    $(document).ready(function(){
+        $('#advanceSearch').submit(function(event){
+            event.preventDefault();
+            var searchFilters = $('#advanceSearch').serializeArray();
+            searchFilters.push({name: 'hips', value: $('#hips').val()},{name: 'bust', value: $('#bust').val()},{name: 'waist', value: $('#waist').val()},{name: 'cup', value: $('#cup').val()},{name: 'isFilter', value:1});
+
+            $.ajax({
+                type: "GET",
+                url: "{{URL::to('/').'/advance/search/login=true'}}", //Where to make Ajax calls
+                dataType:"html", // Data type, HTML, json etc.
+                data:searchFilters, //Form variables
+                success: function (result) {
+                    console.log(this.url);
+                },
+                error: function (error) {
+                    console.log(this.url);
+                    alert(error);
+                }
+            });
+        });
     });
 </script>
 </body>
