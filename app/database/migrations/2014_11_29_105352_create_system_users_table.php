@@ -21,7 +21,7 @@ class CreateSystemUsersTable extends Migration {
             $table->string('email',255)->unique();
             $table->string('contact_no',255)->nullable();
             $table->date('birth_date')->nullable();
-            $table->string('gender',255)->nullable();
+            $table->integer('gender')->nullable();
             $table->integer('is_active')->default(1);
             $table->string('user_first_name',255)->nullable();
             $table->string('user_last_name',255)->nullable();

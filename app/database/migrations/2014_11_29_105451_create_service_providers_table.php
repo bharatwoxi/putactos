@@ -17,20 +17,20 @@ class CreateServiceProvidersTable extends Migration {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id')->unique();
             $table->integer('riseme_up')->default(0);
-            $table->string('profile_completeness',255)->nullable();
-            $table->string('visit_frequency',255)->nullable();
+            $table->decimal('profile_completeness',5,5)->nullable();
+            $table->integer('visit_frequency')->nullable();
             $table->string('turns_me_on',255)->nullable();
             $table->string('expertise',255)->nullable();
-            $table->string('pubic_hair',255)->nullable();
-            $table->string('bust',255)->nullable();
-            $table->string('cup_size',255)->nullable();
-            $table->string('waist',255)->nullable();
-            $table->string('hips',255)->nullable();
-            $table->string('ethnicity',255)->nullable();
-            $table->string('weight',255)->nullable();
-            $table->string('height',255)->nullable();
-            $table->string('eye_color',255)->nullable();
-            $table->string('hair_color',255)->nullable();
+            $table->tinyInteger('pubic_hair')->nullable();
+            $table->integer('bust')->nullable();
+            $table->integer('cup_size')->nullable();
+            $table->integer('waist')->nullable();
+            $table->integer('hips')->nullable();
+            $table->integer('ethnicity')->nullable();
+            $table->integer('weight')->nullable();
+            $table->integer('height')->nullable();
+            $table->integer('eye_color')->nullable();
+            $table->integer('hair_color')->nullable();
             $table->timestamps(); //For created & updated at
 		});
 	}
