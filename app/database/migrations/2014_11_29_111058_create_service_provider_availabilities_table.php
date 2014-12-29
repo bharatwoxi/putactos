@@ -17,9 +17,9 @@ class CreateServiceProviderAvailabilitiesTable extends Migration {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id')->unique();
             $table->bigInteger('service_provider_id')->unsigned();
-            $table->string('day',255);
-            $table->time('to_time');
+            $table->integer('week_day');
             $table->time('from_time');
+            $table->time('to_time');
             $table->timestamps();
 		});
 	}
