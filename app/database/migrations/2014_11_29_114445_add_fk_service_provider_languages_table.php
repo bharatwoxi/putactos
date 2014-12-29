@@ -28,7 +28,7 @@ class AddFkServiceProviderLanguagesTable extends Migration {
 	{
 		Schema::table('service_provider_languages', function(Blueprint $table)
 		{
-            $table->dropForeign('service_provider_languages_known_languages_master_id_foreign');
+            $table->dropForeign('service_provider_languages_known_languages_id_foreign');
             $table->dropForeign('service_provider_languages_service_provider_id_foreign');
 		});
 	}

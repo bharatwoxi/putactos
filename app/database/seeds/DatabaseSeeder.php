@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder {
         $this->command->info('hair_color_master table seeded!');
         $this->call('WeekDaySeeder');
         $this->command->info('week_day_master table seeded!');
+        $this->call('GenderSeeder');
+        $this->command->info('gender_master table seeded!');
 	}
 
 }

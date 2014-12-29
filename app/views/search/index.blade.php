@@ -140,7 +140,7 @@
                                         <div class="col-sm-6">
                                             <div class="btn-group" data-toggle="buttons">
                                                 <label class="btn btn-default"  style="font-family:Calibri Light; font-weight:bold;">
-                                                    <input type="radio" name="gender1" value="male" /> Male
+                                                    <input type="radio" name="gender" value="male" /> Male
                                                 </label>
                                                 <label class="btn btn-default" style="font-family:Calibri Light; font-weight:bold;">
                                                     <input type="radio" name="gender" value="female" / > Female
@@ -159,9 +159,10 @@
                                         <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">Hair Color</label>
                                         <div class="col-sm-6 selectContainer">
                                             <select class="form-control" name="hairColor" style="font-family:Calibri Light; font-weight:bold;">
-                                                <option value="black">Black</option>
-                                                <option value="brown">Brown</option>
-                                                <option value="white">White</option>
+                                               <?php $hairColorCount = count($hairColor); ?>
+                                                @for($i=0;$i<$hairColorCount;$i++)
+                                                    <option value="{{ $hairColor[$i]->id }}">{{ $hairColor[$i]->hair_color }}</option>
+                                                @endfor
                                             </select>
                                         </div>
                                     </div>
@@ -172,11 +173,10 @@
                                         <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">Eye Color</label>
                                         <div class="col-sm-6 selectContainer">
                                             <select class="form-control" name="eyeColor" style="font-family:Calibri Light; font-weight:bold;">
-                                                <option value="black">Black</option>
-                                                <option value="blue">Blue</option>
-                                                <option value="green">Green</option>
-                                                <option value="brown">Brown</option>
-                                                <option value="grey">Grey</option>
+                                                <?php $eyeColorCount = count($eyeColor); ?>
+                                                @for($i=0;$i<$eyeColorCount;$i++)
+                                                <option value="{{ $eyeColor[$i]->id }}">{{ $eyeColor[$i]->eye_color }}</option>
+                                                @endfor
                                             </select>
                                         </div>
                                     </div>
@@ -187,9 +187,10 @@
                                         <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">Ethnicity</label>
                                         <div class="col-sm-6 selectContainer">
                                             <select class="form-control" name="ethnicity" style="font-family:Calibri Light; font-weight:bold;">
-                                                <option value="black">Black</option>
-                                                <option value="white">White</option>
-                                                <option value="asian">Asian</option>
+                                                <?php $ethnicityColorCount = count($ethnicity); ?>
+                                                @for($i=0;$i<$ethnicityColorCount;$i++)
+                                                <option value="{{ $ethnicity[$i]->id }}">{{ $ethnicity[$i]->ethnicity }}</option>
+                                                @endfor
                                             </select>
                                         </div>
                                     </div>
@@ -229,10 +230,10 @@
 
                                 <div class="btn-group" data-toggle="buttons" style="padding-left: 60px;">
                                     <label class="btn btn-default btn-lg fonza">
-                                        <input type="radio" name="pubicHair" value="Y" /> Yes
+                                        <input type="radio" name="pubicHair" value="1" /> Yes
                                     </label>
                                     <label class="btn btn-default btn-lg fonza">
-                                        <input type="radio" name="pubicHair" value="N" / > No
+                                        <input type="radio" name="pubicHair" value="0" / > No
                                     </label>
                                 </div>
 

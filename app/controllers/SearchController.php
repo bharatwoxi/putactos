@@ -43,7 +43,10 @@ class SearchController extends BaseController {
 
     public function index(){
         $knownLanguages = KnownLanguages::all();
-        return View::make('search.index')->with('knownLanguages', $knownLanguages);;
+        $ethnicity = Ethnicity::all();
+        $eyeColor = EyeColor::all();
+        $hairColor = HairColor::all();
+        return View::make('search.index',array('knownLanguages' => $knownLanguages,'knownLanguages'=>$knownLanguages,'ethnicity'=>$ethnicity,'eyeColor'=>$eyeColor,'hairColor'=>$hairColor));
     }
 
 
