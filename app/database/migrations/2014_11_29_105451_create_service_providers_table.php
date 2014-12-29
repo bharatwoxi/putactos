@@ -17,7 +17,7 @@ class CreateServiceProvidersTable extends Migration {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id')->unique();
             $table->integer('riseme_up')->default(0);
-            $table->decimal('profile_completeness',5,5)->nullable();
+            $table->string('profile_completeness',255)->nullable();
             $table->integer('visit_frequency')->nullable();
             $table->string('turns_me_on',255)->nullable();
             $table->string('expertise',255)->nullable();

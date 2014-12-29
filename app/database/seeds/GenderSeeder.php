@@ -18,7 +18,6 @@ class GenderSeeder extends Seeder {
         DB::table('gender_master')->insert(array(
             array('gender' => 'MALE','created_at'=>date('Y-m-d H:i:s'),'updated_at' =>date('Y-m-d H:i:s')),
             array('gender' => 'FEMALE','created_at'=>date('Y-m-d H:i:s'),'updated_at' =>date('Y-m-d H:i:s')),
-            array('hair_color' => 'WHITE','created_at'=>date('Y-m-d H:i:s'),'updated_at' =>date('Y-m-d H:i:s')),
         ));
     }
 }
