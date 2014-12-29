@@ -118,154 +118,146 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="col-md-5">
-                                <form>
+                                {{ Form::open(array('url' => 'advance/search/login=true','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'advanceSearch')) }}
                                     <div class="form-group">
-                                        <label class="col-sm-5 control-label" style="font-family: calibri; font-size: 20px;">Distance Range</label>
+                                        <label class="col-sm-5" style="font-family: calibri; font-size: 20px;">Distance Range</label>
                                         <div class="col-sm-6 selectContainer">
-                                            <select class="form-control" name="color" style="font-family:Calibri Light; font-weight:bold;">
-                                                <option value="">5-10 Km</option>
-                                                <option value="blue">10-15 km</option>
-                                                <option value="green">15-20 km</option>
-                                                <option value="red">20-25 km</option>
-                                                <option value="yellow">25-30 km</option>
-                                                <option value="white">30-35 km</option>
+                                            <select class="form-control" name="distanceRange" style="font-family:Calibri Light; font-weight:bold;">
+                                                <option value="5-10">5-10 Km</option>
+                                                <option value="10-15">10-15 Km</option>
+                                                <option value="15-20">15-20 Km</option>
+                                                <option value="20-25">20-25 Km</option>
+                                                <option value="25-30">25-30 Km</option>
+                                                <option value="30-35">30-35 Km</option>
                                             </select>
                                         </div>
                                     </div>
-                                </form>
 
                                 <div class="clearfix"></div>
 
-                                <form>
                                     <div class="form-group">
                                         <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">Gender</label>
                                         <div class="col-sm-6">
                                             <div class="btn-group" data-toggle="buttons">
                                                 <label class="btn btn-default"  style="font-family:Calibri Light; font-weight:bold;">
-                                                    <input type="radio" name="gender" value="male" /> Male
+                                                    <input type="radio" name="gender1" value="male" /> Male
                                                 </label>
                                                 <label class="btn btn-default" style="font-family:Calibri Light; font-weight:bold;">
                                                     <input type="radio" name="gender" value="female" / > Female
                                                 </label>
+                                                <label class="btn btn-default active" style="font-family:Calibri Light; font-weight:bold;">
+                                                    <input type="radio" name="gender" value="both" checked/ > Both
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+
                                 <div class="clearfix"></div>
 
 
-                                <form>
                                     <div class="form-group">
                                         <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">Hair Color</label>
                                         <div class="col-sm-6 selectContainer">
-                                            <select class="form-control" name="color" style="font-family:Calibri Light; font-weight:bold;">
-                                                <option value="">Black</option>
-                                                <option value="blue">10-15 km</option>
-                                                <option value="green">15-20 km</option>
-                                                <option value="red">20-25 km</option>
-                                                <option value="yellow">25-30 km</option>
-                                                <option value="white">30-35 km</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </form>
-
-                                <div class="clearfix"></div>
-
-                                <form>
-                                    <div class="form-group">
-                                        <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">Eye Color</label>
-                                        <div class="col-sm-6 selectContainer">
-                                            <select class="form-control" name="color" style="font-family:Calibri Light; font-weight:bold;">
-                                                <option value="">Black</option>
-                                                <option value="blue">10-15 km</option>
-                                                <option value="green">15-20 km</option>
-                                                <option value="red">20-25 km</option>
-                                                <option value="yellow">25-30 km</option>
-                                                <option value="white">30-35 km</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </form>
-
-                                <div class="clearfix"></div>
-
-
-                                <form>
-                                    <div class="form-group">
-                                        <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">Ethnicity</label>
-                                        <div class="col-sm-6 selectContainer">
-                                            <select class="form-control" name="color" style="font-family:Calibri Light; font-weight:bold;">
-                                                <option value="">Black</option>
-                                                <option value="blue">10-15 km</option>
-                                                <option value="green">15-20 km</option>
-                                                <option value="red">20-25 km</option>
-                                                <option value="yellow">25-30 km</option>
-                                                <option value="white">30-35 km</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </form>
-
-                                <div class="clearfix"></div>
-
-                                <form>
-                                    <div class="form-group">
-                                        <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">Language Spoken</label>
-                                        <div class="col-sm-6 selectContainer">
-                                            <select class="form-control" name="color" style="font-family:Calibri Light; font-weight:bold;">
-                                                <option value="">English</option>
-                                                <option value="blue">Blue</option>
-                                                <option value="green">Green</option>
-                                                <option value="red">Red</option>
-                                                <option value="yellow">Yellow</option>
+                                            <select class="form-control" name="hairColor" style="font-family:Calibri Light; font-weight:bold;">
+                                                <option value="black">Black</option>
+                                                <option value="brown">Brown</option>
                                                 <option value="white">White</option>
                                             </select>
                                         </div>
                                     </div>
-                                </form>
+
                                 <div class="clearfix"></div>
-                                <form>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">Eye Color</label>
+                                        <div class="col-sm-6 selectContainer">
+                                            <select class="form-control" name="eyeColor" style="font-family:Calibri Light; font-weight:bold;">
+                                                <option value="black">Black</option>
+                                                <option value="blue">Blue</option>
+                                                <option value="green">Green</option>
+                                                <option value="brown">Brown</option>
+                                                <option value="grey">Grey</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                <div class="clearfix"></div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">Ethnicity</label>
+                                        <div class="col-sm-6 selectContainer">
+                                            <select class="form-control" name="ethnicity" style="font-family:Calibri Light; font-weight:bold;">
+                                                <option value="black">Black</option>
+                                                <option value="white">White</option>
+                                                <option value="asian">Asian</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                <div class="clearfix"></div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">Language Spoken</label>
+                                        <div class="col-sm-6 selectContainer">
+                                            <select class="form-control" name="languages" style="font-family:Calibri Light; font-weight:bold;">
+                                                @foreach($knownLanguages as $knownLanguage)
+                                                    <option value="{{ $knownLanguage->id }}">{{$knownLanguage->language_name}}</option>
+                                                @endforeach
+                                                <option value="0">BOTH</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                <div class="clearfix"></div>
+
                                     <div class="form-group">
                                         <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">Availability</label>
                                         <div class="col-sm-7">
                                             <div class="btn-group" data-toggle="buttons">
-                                                <label class="btn btn-default" style="font-family: Calibri Light; font-weight: bold;">
-                                                    <input type="radio" name="" value="" / > Available Now
+                                                <label class="btn btn-default fonza">
+                                                    <input type="checkbox" name="availability" value="1" / > Available Now
                                                 </label>
                                                 <span style="font-family:Calibri; font-size:10.02px; color:#f74d4d">&nbsp;(Available at this time)</span>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+
                             </div><!-- /.col-lg-6 -->
 
                             <div class="col-xs-12 col-md-3 center-block" style="background-color:#f74d4d">
                                 <h4 style="color:#FFF; font-family:Calibri">PUBIC HAIR</h4>
 
-                                <div class="btn-group" data-toggle="buttons" style="padding-right: 40px; padding-left: 20px;">
-                                    <label class="btn btn-default btn-lg" style="font-family: Calibri Light; font-weight: bold;">
-                                        <input type="radio" name="" value=""  style="padding:15px"/ > Yes
+                                <div class="btn-group" data-toggle="buttons" style="padding-left: 60px;">
+                                    <label class="btn btn-default btn-lg fonza">
+                                        <input type="radio" name="pubicHair" value="Y" /> Yes
                                     </label>
-                                </div>
-                                <div class="btn-group" data-toggle="buttons">
-                                    <label class="btn btn-default btn-lg" style="font-family: Calibri Light; font-weight: bold;">
-                                        <input type="radio" name="" value=""  style="padding:15px"/ > No
+                                    <label class="btn btn-default btn-lg fonza">
+                                        <input type="radio" name="pubicHair" value="N" / > No
                                     </label>
                                 </div>
 
 
                                 <!--<input type="image" src="img/Hairy_Button.png" style="padding: 15px;">
                                 <input type="image" src="img/Bald_Button.png" style="padding: 15px;">-->
+                                <!--<div class=" col-xs-offset-1">
+                                    <h6 style="color:#FFF">HIPS</h6>
+                                    <input class="slider" name="hips" data-slider-max="80" data-slider-min="40" data-slider-orientation="horizontal" data-slider-value="50" type="text">
+                                    <h6 style="color:#FFF">BUST</h6>
+                                    <input class="slider" name="bust" data-slider-max="80" data-slider-min="40" data-slider-orientation="horizontal" data-slider-value="60" type="text">
+                                    <h6 style="color:#FFF">WAIST</h6>
+                                    <input class="slider" name="waist" data-slider-max="80" data-slider-min="40" data-slider-orientation="horizontal" data-slider-value="70" type="text">
+                                    <h6 style="color:#FFF">CUP SIZE</h6>
+                                    <input class="slider" name="cup" data-slider-max="80" data-slider-min="40" data-slider-orientation="horizontal" data-slider-value="65" type="text">
+                                </div>-->
                                 <div class=" col-xs-offset-1">
                                     <h6 style="color:#FFF">HIPS</h6>
-                                    <input class="slider" data-slider-max="60" data-slider-min="40" data-slider-orientation="horizontal" data-slider-value="-10" type="text">
+                                    <input class="slider" name="hips" id="hips" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">
                                     <h6 style="color:#FFF">BUST</h6>
-                                    <input class="slider" data-slider-max="60" data-slider-min="40" data-slider-orientation="horizontal" data-slider-value="12" type="text">
+                                    <input class="slider" name="bust" id="bust" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">
                                     <h6 style="color:#FFF">WAIST</h6>
-                                    <input class="slider" data-slider-max="60" data-slider-min="40" data-slider-orientation="horizontal" data-slider-value="-2" type="text">
+                                    <input class="slider" name="waist" id="waist" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">
                                     <h6 style="color:#FFF">CUP SIZE</h6>
-                                    <input class="slider" data-slider-max="60" data-slider-min="40" data-slider-orientation="horizontal" data-slider-value="-2" type="text">
+                                    <input class="slider" name="cup" id="cup" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">
                                 </div>
                             </div>
 
@@ -276,7 +268,7 @@
                                 <input type="image" src="{{URL::asset('public/assets/registration/img/Search.png')}}" style="width: 110px; margin-left: 20px;">
                                 <!-- <button type="button" class="btn btn-default col-lg-5" style="background:#f83233; color:#FFF">CANCEL</button>
                                  <button type="button" class="btn btn-default col-lg-5" style="background:#f83233; color:#FFF; margin-left:20px;">SEARCH</button>-->
-
+                                {{ Form::close() }}
 
                                 <nav style="padding-top: 55px;">
                                     <span style="font-size: 18px; font-family:Calibri;">86 result found</span>

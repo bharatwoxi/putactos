@@ -54,7 +54,7 @@ Route::post('save-customer-data', array('before' => 'csrf','uses' => 'Registrati
 /* Search */
 Route::get('search/login=true', array('before' => 'auth|isCustomer','uses' => 'SearchController@index'));
 Route::get('search/results/login=true', array('before' => 'auth|isCustomer','uses' => 'SearchController@showDataAfterLogin'));
-
+Route::get('advance/search/login=true',array('before' => 'auth|isCustomer','uses' => 'SearchController@showDataAfterLogin'));
 
 
 /* Detect Environment */
