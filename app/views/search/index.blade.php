@@ -232,8 +232,8 @@
                                     <label class="btn btn-default btn-lg fonza">
                                         <input type="radio" name="pubicHair" value="1" /> Yes
                                     </label>
-                                    <label class="btn btn-default btn-lg fonza">
-                                        <input type="radio" name="pubicHair" value="0" / > No
+                                    <label class="btn btn-default btn-lg fonza active">
+                                        <input type="radio" name="pubicHair" value="0" checked/ > No
                                     </label>
                                 </div>
 
@@ -270,7 +270,7 @@
                                 <!-- <button type="button" class="btn btn-default col-lg-5" style="background:#f83233; color:#FFF">CANCEL</button>
                                  <button type="button" class="btn btn-default col-lg-5" style="background:#f83233; color:#FFF; margin-left:20px;">SEARCH</button>-->
                                 {{ Form::close() }}
-
+                                <input type="hidden" name="isFilter" id="isFilter" value="0" />
                                 <nav style="padding-top: 55px;">
                                     <span style="font-size: 18px; font-family:Calibri;">86 result found</span>
                                     <ul class="pagination pagination-sm" style="margin: -10px 10px;">

@@ -36,5 +36,5 @@
 <?php
     }
 }else{
-        echo 1;
+        echo 123;
     }?>

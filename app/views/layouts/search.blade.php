@@ -168,7 +168,7 @@
 
     function getUserData(lat,long){
 
-        var mydata = 'latitude='+lat+'&longitude='+long+'&skip='+0+'&take='+4+'&isFilter='+0+'&isScroll='+1;
+        var mydata = 'latitude='+lat+'&longitude='+long+'&skip='+0+'&take='+4+'&isFilter='+0+'&isScroll='+0;
         //##### Send Ajax request to response.php #########
         $("#loaderImage").css("display", "block");
         $.ajax({
@@ -189,7 +189,7 @@
     }
 </script>
 <script type="text/javascript">
-    var skip = 8;
+    var skip = 4;
     var take = 4;
     var isPreviousEventComplete = true;
     var isDataAvailable = true;
@@ -229,7 +229,23 @@
         $('#advanceSearch').submit(function(event){
             event.preventDefault();
             var searchFilters = $('#advanceSearch').serializeArray();
-            searchFilters.push({name: 'hips', value: $('#hips').val()},{name: 'bust', value: $('#bust').val()},{name: 'waist', value: $('#waist').val()},{name: 'cup', value: $('#cup').val()},{name: 'isFilter', value:1});
+            var hips = 0;
+            var bust = 0;
+            var waist = 0;
+            var cup = 0;
+            if($('#hips').val()!=''){
+                hips = $('#hips').val();
+            }
+            if($('#bust').val()!=''){
+                bust = $('#bust').val();
+            }
+            if($('#waist').val()!=''){
+                waist = $('#waist').val();
+            }
+            if($('#cup').val()!=''){
+                cup = $('#cup').val();
+            }
+            searchFilters.push({name: 'hips', value:hips },{name: 'bust', value: bust},{name: 'waist', value: waist},{name: 'cup', value: cup},{name: 'isFilter', value:1});
 
             $.ajax({
                 type: "GET",
