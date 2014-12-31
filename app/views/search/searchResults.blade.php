@@ -1,3 +1,5 @@
+<input type="hidden" id="skip" value="{{ $skip }}" />
+<input type="hidden" id="take" value="{{ $take }}" />
 <?php
 /**
  * Created by PhpStorm.
@@ -35,6 +37,7 @@
         </div><!-- end of col-md-12-->
 <?php
     }
-}else{
-        echo 123;
-    }?>
+}
+//    else{
+//        echo 123;
+//    }?>

@@ -291,6 +291,8 @@
 </div>
 <div class="clearfix"></div>
 <div class="container" id="container">
+    <input type="hidden" id="skip" value="4" />
+    <input type="hidden" id="take" value="4" />
 
 
     <!--<div class="col-md-12">

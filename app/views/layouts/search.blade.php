@@ -189,18 +189,28 @@
     }
 </script>
 <script type="text/javascript">
-    var skip = 4;
-    var take = 4;
     var isPreviousEventComplete = true;
     var isDataAvailable = true;
+
     $(window).scroll(function () {
         if ($(document).height() - 50 <= $(window).scrollTop() + $(window).height()) {
             if (isPreviousEventComplete && isDataAvailable) {
 
                 isPreviousEventComplete = false;
                 //$(".LoaderImage").css("display", "block");
-                var mydata = 'skip='+skip+'&take='+take+'&isFilter='+0+'&isScroll='+1;
+                var skip = $('#skip').val();
+                var take = $('#take').val();
+                var isFilter = $('#isFilter').val();
+                $('#skip').remove();
+                $('#take').remove();
+
                 $("#loaderImage").css("display", "block");
+                if(isFilter==1){
+                    var mydata = 'isFilter='+isFilter+'&isScroll='+1;
+                }else{
+                    var mydata = 'skip='+skip+'&take='+take+'&isFilter='+isFilter+'&isScroll='+1;
+                }
+
                 $.ajax({
                     type: "GET",
                     url: "{{URL::to('/').'/search/results/login=true'}}", //Where to make Ajax calls
@@ -213,7 +223,9 @@
                         }
                         else{
                             $('#container').append(result);
-                            skip = skip + take;
+                            //if(isFilter!=1){
+                                skip = skip + take;
+                            //}
                             isPreviousEventComplete = true;
                         }
                     },
@@ -228,6 +240,7 @@
     $(document).ready(function(){
         $('#advanceSearch').submit(function(event){
             event.preventDefault();
+            $('#isFilter').val(1);
             var searchFilters = $('#advanceSearch').serializeArray();
             var hips = 0;
             var bust = 0;
@@ -245,7 +258,7 @@
             if($('#cup').val()!=''){
                 cup = $('#cup').val();
             }
-            searchFilters.push({name: 'hips', value:hips },{name: 'bust', value: bust},{name: 'waist', value: waist},{name: 'cup', value: cup},{name: 'isFilter', value:1});
+            searchFilters.push({name: 'hips', value:hips },{name: 'bust', value: bust},{name: 'waist', value: waist},{name: 'cup', value: cup},{name: 'isFilter', value:1},{name: 'skip', value:0},{name: 'take', value:3});
 
             $.ajax({
                 type: "GET",
@@ -253,6 +266,7 @@
                 dataType:"html", // Data type, HTML, json etc.
                 data:searchFilters, //Form variables
                 success: function (result) {
+                    $('#container').html(result);
                     console.log(this.url);
                 },
                 error: function (error) {
