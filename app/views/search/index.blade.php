@@ -123,6 +123,7 @@
                                         <label class="col-sm-5" style="font-family: calibri; font-size: 20px;">Distance Range</label>
                                         <div class="col-sm-6 selectContainer">
                                             <select class="form-control" name="distanceRange" style="font-family:Calibri Light; font-weight:bold;">
+                                                <option value="0-5">0-5 Km</option>
                                                 <option value="5-10">5-10 Km</option>
                                                 <option value="10-15">10-15 Km</option>
                                                 <option value="15-20">15-20 Km</option>
@@ -140,13 +141,13 @@
                                         <div class="col-sm-6">
                                             <div class="btn-group" data-toggle="buttons">
                                                 <label class="btn btn-default"  style="font-family:Calibri Light; font-weight:bold;">
-                                                    <input type="radio" name="gender" value="male" /> Male
+                                                    <input type="radio" name="gender" value="1" /> Male
                                                 </label>
                                                 <label class="btn btn-default" style="font-family:Calibri Light; font-weight:bold;">
-                                                    <input type="radio" name="gender" value="female" / > Female
+                                                    <input type="radio" name="gender" value="2" / > Female
                                                 </label>
                                                 <label class="btn btn-default active" style="font-family:Calibri Light; font-weight:bold;">
-                                                    <input type="radio" name="gender" value="both" checked/ > Both
+                                                    <input type="radio" name="gender" value="0" checked/ > Both
                                                 </label>
                                             </div>
                                         </div>
@@ -232,8 +233,8 @@
                                     <label class="btn btn-default btn-lg fonza">
                                         <input type="radio" name="pubicHair" value="1" /> Yes
                                     </label>
-                                    <label class="btn btn-default btn-lg fonza">
-                                        <input type="radio" name="pubicHair" value="0" / > No
+                                    <label class="btn btn-default btn-lg fonza active">
+                                        <input type="radio" name="pubicHair" value="0" checked/ > No
                                     </label>
                                 </div>
 
@@ -270,7 +271,7 @@
                                 <!-- <button type="button" class="btn btn-default col-lg-5" style="background:#f83233; color:#FFF">CANCEL</button>
                                  <button type="button" class="btn btn-default col-lg-5" style="background:#f83233; color:#FFF; margin-left:20px;">SEARCH</button>-->
                                 {{ Form::close() }}
-
+                                <input type="hidden" name="isFilter" id="isFilter" value="0" />
                                 <nav style="padding-top: 55px;">
                                     <span style="font-size: 18px; font-family:Calibri;">86 result found</span>
                                     <ul class="pagination pagination-sm" style="margin: -10px 10px;">
@@ -291,6 +292,9 @@
 </div>
 <div class="clearfix"></div>
 <div class="container" id="container">
+    <input type="hidden" id="skip" value="4" />
+    <input type="hidden" id="take" value="4" />
+    <input type="hidden" id="isDataAvailable" value="1"/>
 
 
     <!--<div class="col-md-12">

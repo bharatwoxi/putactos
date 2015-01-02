@@ -113,7 +113,6 @@
     }
 
     function codeLatLng(lat, lng) {
-
         var latlng = new google.maps.LatLng(lat, lng);
         geocoder.geocode({'latLng': latlng}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
@@ -122,25 +121,20 @@
                 if(json_data=='Geocoder failed'){
                     alert(1);
                 }else{
-                    //alert(json_data);
-                    results.forEach(function(entry) {
-                        if(entry.types=='route'){
+                    //results.forEach(function(entry) {
                             <?php
                             /*
                             k:lat
                             D:long
                             */
                             ?>
-                            //console.log(entry.geometry.location);
-                            getUserData(entry.geometry.location.k,entry.geometry.location.D);
-                        }
-                    });
+                        getUserData(latlng.k,latlng.D);
+                    //});
 
 
                 }
                 if (results[1]) {
                     //formatted address
-                    //alert(results[0].formatted_address)
                     //find country name
                     for (var i=0; i<results[0].address_components.length; i++) {
                         for (var b=0;b<results[0].address_components[i].types.length;b++) {
@@ -168,7 +162,7 @@
 
     function getUserData(lat,long){
 
-        var mydata = 'latitude='+lat+'&longitude='+long+'&skip='+0+'&take='+4+'&isFilter='+0+'&isScroll='+1;
+        var mydata = 'latitude='+lat+'&longitude='+long+'&skip='+0+'&take='+4+'&isFilter='+0+'&isScroll='+0;
         //##### Send Ajax request to response.php #########
         $("#loaderImage").css("display", "block");
         $.ajax({
@@ -189,18 +183,28 @@
     }
 </script>
 <script type="text/javascript">
-    var skip = 8;
-    var take = 4;
     var isPreviousEventComplete = true;
-    var isDataAvailable = true;
     $(window).scroll(function () {
         if ($(document).height() - 50 <= $(window).scrollTop() + $(window).height()) {
-            if (isPreviousEventComplete && isDataAvailable) {
+            var isDataAvailable = $('#isDataAvailable').val();
 
+            if (isPreviousEventComplete && isDataAvailable==1) {
                 isPreviousEventComplete = false;
                 //$(".LoaderImage").css("display", "block");
-                var mydata = 'skip='+skip+'&take='+take+'&isFilter='+0+'&isScroll='+1;
+                var skip = $('#skip').val();
+                var take = $('#take').val();
+                var isFilter = $('#isFilter').val();
+                $('#skip').remove();
+                $('#take').remove();
+                $('#isDataAvailable').remove();
+
                 $("#loaderImage").css("display", "block");
+                if(isFilter==1){
+                    var mydata = 'isFilter='+isFilter+'&isScroll='+1;
+                }else{
+                    var mydata = 'skip='+skip+'&take='+take+'&isFilter='+isFilter+'&isScroll='+1;
+                }
+
                 $.ajax({
                     type: "GET",
                     url: "{{URL::to('/').'/search/results/login=true'}}", //Where to make Ajax calls
@@ -209,11 +213,13 @@
                     success: function (result) {
                         $("#loaderImage").css("display", "none");
                         if (result == '1'){  //When data is not available
-                            isDataAvailable = false;
+                            //isDataAvailable = false;
                         }
                         else{
                             $('#container').append(result);
-                            skip = skip + take;
+                            //if(isFilter!=1){
+                                skip = skip + take;
+                            //}
                             isPreviousEventComplete = true;
                         }
                     },
@@ -228,18 +234,38 @@
     $(document).ready(function(){
         $('#advanceSearch').submit(function(event){
             event.preventDefault();
+            $('#isFilter').val(1);
             var searchFilters = $('#advanceSearch').serializeArray();
-            searchFilters.push({name: 'hips', value: $('#hips').val()},{name: 'bust', value: $('#bust').val()},{name: 'waist', value: $('#waist').val()},{name: 'cup', value: $('#cup').val()},{name: 'isFilter', value:1});
-
+            var hips = 0;
+            var bust = 0;
+            var waist = 0;
+            var cup = 0;
+            if($('#hips').val()!=''){
+                hips = $('#hips').val();
+            }
+            if($('#bust').val()!=''){
+                bust = $('#bust').val();
+            }
+            if($('#waist').val()!=''){
+                waist = $('#waist').val();
+            }
+            if($('#cup').val()!=''){
+                cup = $('#cup').val();
+            }
+            searchFilters.push({name: 'hips', value:hips },{name: 'bust', value: bust},{name: 'waist', value: waist},{name: 'cup', value: cup},{name: 'isFilter', value:1},{name: 'isScroll', value:0},{name: 'skip', value:0},{name: 'take', value:3});
+            $("#loaderImage").css("display", "block");
             $.ajax({
                 type: "GET",
                 url: "{{URL::to('/').'/advance/search/login=true'}}", //Where to make Ajax calls
                 dataType:"html", // Data type, HTML, json etc.
                 data:searchFilters, //Form variables
                 success: function (result) {
+                    $("#loaderImage").css("display", "none");
+                    $('#container').html(result);
                     console.log(this.url);
                 },
                 error: function (error) {
+                    $("#loaderImage").css("display", "none");
                     console.log(this.url);
                     alert(error);
                 }

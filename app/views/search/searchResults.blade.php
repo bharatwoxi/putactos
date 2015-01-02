@@ -1,3 +1,5 @@
+<input type="hidden" id="skip" value="{{ $skip }}" />
+<input type="hidden" id="take" value="{{ $take }}" />
 <?php
 /**
  * Created by PhpStorm.
@@ -35,6 +37,13 @@
         </div><!-- end of col-md-12-->
 <?php
     }
-}else{
-        echo 1;
+?>
+<input type="hidden" id="isDataAvailable" value="1"/>
+<?php
+}
+   else{
+?>
+       <input type="hidden" id="isDataAvailable" value="0"/>
+<?php
+        echo "<h2 class='row text-center'>NO MORE RESULTS </h2>";
     }?>
