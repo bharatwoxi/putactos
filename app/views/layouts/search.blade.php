@@ -113,7 +113,6 @@
     }
 
     function codeLatLng(lat, lng) {
-
         var latlng = new google.maps.LatLng(lat, lng);
         geocoder.geocode({'latLng': latlng}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
@@ -122,25 +121,20 @@
                 if(json_data=='Geocoder failed'){
                     alert(1);
                 }else{
-                    //alert(json_data);
-                    results.forEach(function(entry) {
-                        if(entry.types=='route'){
+                    //results.forEach(function(entry) {
                             <?php
                             /*
                             k:lat
                             D:long
                             */
                             ?>
-                            //console.log(entry.geometry.location);
-                            getUserData(entry.geometry.location.k,entry.geometry.location.D);
-                        }
-                    });
+                        getUserData(latlng.k,latlng.D);
+                    //});
 
 
                 }
                 if (results[1]) {
                     //formatted address
-                    //alert(results[0].formatted_address)
                     //find country name
                     for (var i=0; i<results[0].address_components.length; i++) {
                         for (var b=0;b<results[0].address_components[i].types.length;b++) {
@@ -190,12 +184,11 @@
 </script>
 <script type="text/javascript">
     var isPreviousEventComplete = true;
-    var isDataAvailable = true;
-
     $(window).scroll(function () {
         if ($(document).height() - 50 <= $(window).scrollTop() + $(window).height()) {
-            if (isPreviousEventComplete && isDataAvailable) {
+            var isDataAvailable = $('#isDataAvailable').val();
 
+            if (isPreviousEventComplete && isDataAvailable==1) {
                 isPreviousEventComplete = false;
                 //$(".LoaderImage").css("display", "block");
                 var skip = $('#skip').val();
@@ -203,6 +196,7 @@
                 var isFilter = $('#isFilter').val();
                 $('#skip').remove();
                 $('#take').remove();
+                $('#isDataAvailable').remove();
 
                 $("#loaderImage").css("display", "block");
                 if(isFilter==1){
@@ -219,7 +213,7 @@
                     success: function (result) {
                         $("#loaderImage").css("display", "none");
                         if (result == '1'){  //When data is not available
-                            isDataAvailable = false;
+                            //isDataAvailable = false;
                         }
                         else{
                             $('#container').append(result);
@@ -258,18 +252,20 @@
             if($('#cup').val()!=''){
                 cup = $('#cup').val();
             }
-            searchFilters.push({name: 'hips', value:hips },{name: 'bust', value: bust},{name: 'waist', value: waist},{name: 'cup', value: cup},{name: 'isFilter', value:1},{name: 'skip', value:0},{name: 'take', value:3});
-
+            searchFilters.push({name: 'hips', value:hips },{name: 'bust', value: bust},{name: 'waist', value: waist},{name: 'cup', value: cup},{name: 'isFilter', value:1},{name: 'isScroll', value:0},{name: 'skip', value:0},{name: 'take', value:3});
+            $("#loaderImage").css("display", "block");
             $.ajax({
                 type: "GET",
                 url: "{{URL::to('/').'/advance/search/login=true'}}", //Where to make Ajax calls
                 dataType:"html", // Data type, HTML, json etc.
                 data:searchFilters, //Form variables
                 success: function (result) {
+                    $("#loaderImage").css("display", "none");
                     $('#container').html(result);
                     console.log(this.url);
                 },
                 error: function (error) {
+                    $("#loaderImage").css("display", "none");
                     console.log(this.url);
                     alert(error);
                 }

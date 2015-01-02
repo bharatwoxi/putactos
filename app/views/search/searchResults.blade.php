@@ -37,7 +37,13 @@
         </div><!-- end of col-md-12-->
 <?php
     }
+?>
+<input type="hidden" id="isDataAvailable" value="1"/>
+<?php
 }
-//    else{
-//        echo 123;
-//    }?>
+   else{
+?>
+       <input type="hidden" id="isDataAvailable" value="0"/>
+<?php
+        echo "<h2 class='row text-center'>NO MORE RESULTS </h2>";
+    }?>
