@@ -28,8 +28,10 @@ $error = null;
             <div class="pull-right">
                 @if(!Auth::check())
                 <p  style="padding-top: 15px;">Not a Member?
+                    <a href="{{ URL::to('/signup/customer') }}" style="text-decoration:none; color:#ffffff">
                     <button type="button" class="btn btn-default" style="background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModa">
-                        <a href="{{ URL::to('/signup/customer') }}" style="text-decoration:none; color:#ffffff"><strong>Join Putactos</strong></a></button>
+                        <strong>Join Putactos</strong></button>
+                    </a>
                     <button type="button" class="btn btn-primary" style="background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModal1"><strong>Login Now</strong></button>
                 </p>
                 @endif
@@ -467,7 +469,10 @@ background-repeat: repeat;
     <p style="text-align:center; font-family:Roboto Th; font-size:54px;color: #fff;padding-top: 70px;">
         SIGN IN NOW
     </p>
-
+    <a href="{{ URL::to('/signup/service-provider') }}" style="text-decoration:none; color:#ffffff;">
+        <button type="button" class="btn btn-default center-block" style="background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModa">
+            <strong>Join Putactos</strong></button>
+    </a>
 
     <p style="text-align:center; font-family:Roboto Th; font-size:18px;color: #fff;">
         Join the fastest growing adult network in Europe
