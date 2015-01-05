@@ -75,7 +75,7 @@
 
 
 </style>
-<body onload="initialize()">
+<body onload="initializeGetLocation()">
 
 @yield('content')
 
@@ -86,7 +86,7 @@
 <script src="{{URL::asset('public/assets/registration/js/jquery-1.10.2.min.js')}}"></script>
 <script src="{{URL::asset('public/assets/registration/js/plugin.js')}}"></script>
 <script src="{{URL::asset('public/assets/registration/js/main.js')}}"></script>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
 <script type="text/javascript">
     var geocoder;
 
@@ -105,11 +105,8 @@
         getUserData(0,0);
     }
 
-    function initialize() {
+    function initializeGetLocation() {
         geocoder = new google.maps.Geocoder();
-
-
-
     }
 
     function codeLatLng(lat, lng) {
@@ -136,6 +133,7 @@
                 if (results[1]) {
                     //formatted address
                     //find country name
+                    $('#selectedLocation').html(results[2]['formatted_address']);
                     for (var i=0; i<results[0].address_components.length; i++) {
                         for (var b=0;b<results[0].address_components[i].types.length;b++) {
 
@@ -272,6 +270,51 @@
             });
         });
     });
+</script>
+
+<script>
+    // This example displays an address form, using the autocomplete feature
+    // of the Google Places API to help users fill in the information.
+
+    var placeSearch, autocomplete;
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    function initializeAutoSuggest() {
+        // Create the autocomplete object, restricting the search
+        // to geographical location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {HTMLInputElement} */(document.getElementById('currentLocation')),
+            { types: ['geocode'] });
+        // When the user selects an address from the dropdown,
+        // populate the address fields in the form.
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            fillInAddress();
+        });
+    }
+
+    // [START region_fillform]
+    function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+        /* Get Geo location */
+        var obj = '';
+        /* Traverse Array To get City & Country*/
+        for (var i = 0, l = place.address_components.length; i < l; i++) {
+            obj=  obj +' '+ place.address_components[i].long_name;
+        }
+        /* Get Geolocation */
+        var addressGeoCode = place.geometry.location;
+        $('#selectedLocation').html(obj);
+        getUserData(addressGeoCode.k,addressGeoCode.D);
+    }
+    initializeAutoSuggest();
 </script>
 </body>
 </html>

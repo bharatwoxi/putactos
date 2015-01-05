@@ -29,7 +29,7 @@ $error = null;
                 @if(!Auth::check())
                 <p  style="padding-top: 15px;">Not a Member?
                     <a href="{{ URL::to('/signup/customer') }}" style="text-decoration:none; color:#ffffff">
-                    <button type="button" class="btn btn-default" style="background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModa">
+                    <button type="button" class="btn btn-default" style="background-color:#a92124; color:#ffffff">
                         <strong>Join Putactos</strong></button>
                     </a>
                     <button type="button" class="btn btn-primary" style="background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModal1"><strong>Login Now</strong></button>
