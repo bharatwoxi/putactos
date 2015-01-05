@@ -24,7 +24,10 @@ class DBTestingController extends BaseController {
     {
         $userRole = UserRole::all();
         $knownLanguages = KnownLanguages::all();
-        return View::make('dataTesting.gplaces', array('userRole' => $userRole,'knownLanguages'=>$knownLanguages));
+        $ethnicity = Ethnicity::all();
+        $eyeColor = EyeColor::all();
+        $hairColor = HairColor::all();
+        return View::make('dataTesting.gplaces', array('userRole' => $userRole,'knownLanguages'=>$knownLanguages,'ethnicity'=>$ethnicity,'eyeColor'=>$eyeColor,'hairColor'=>$hairColor));
     }
 
     public function getFormData(){
@@ -216,7 +219,7 @@ class DBTestingController extends BaseController {
                     DB::table('service_provider_availabilities')->insert(
                         array(
                             'service_provider_id'=>$serviceProviderInsertedId,
-                            'day'=>$available,
+                            'week_day'=>$available,
                             'from_time'=>Input::get('fromTime'),
                             'to_time'=>Input::get('toTime'),
                             'created_at'=>date('Y-m-d H:m:s'),
