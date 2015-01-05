@@ -52,47 +52,19 @@
 
             <div class="col-md-5">
 
-                <!--<p style="padding:20px 15px 0;font-size: 13px; font-family:Calibri Light;">Your location is set automatically <br>
+                <p style="padding:20px 15px 0;font-size: 13px; font-family:Calibri Light;">Your location is set automatically <strong><span id="selectedLocation"> </span></strong><br>
                     If you think we have got is wrong please select
                 </p>
-                <!-- Split button -->
-                <!--<div class="row">
-                    <div class="col-md-6">
-                        <form>
-                            <div class="form-group">
-                                <div class="col-lg-12 selectContainer" style="font-family:Calibri Light; font-weight:bold;">
-                                    <select class="form-control custom selectpicker" name="color">
-                                        <option >Country</option>
-                                        <option >10-15 km</option>
-                                        <option>15-20 km</option>
-                                        <option>20-25 km</option>
-                                        <option>25-30 km</option>
-                                        <option>30-35 km</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </form>
-                    </div><!-- /.col-lg-3 -->
-
-                    <!--<div class="col-md-6">
-                        <form>
-                            <div class="form-group">
-                                <div class="col-lg-12 selectContainer" style="font-family:Calibri Light; font-weight:bold;">
-                                    <select class="form-control custom" name="color">
-                                        <option >City</option>
-                                        <option >10-15 km</option>
-                                        <option>15-20 km</option>
-                                        <option>20-25 km</option>
-                                        <option>25-30 km</option>
-                                        <option>30-35 km</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </form>
+                <div class="container">
+                    {{ Form::open(array('class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'setNewLocation')) }}
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            {{ Form::text('currentLocation',NULL,array('class'=>'form-control','id'=>'currentLocation','placeholder'=>'Set New Location')) }}
+                        </div>
                     </div>
-                </div><!-- /.row -->
+                    {{ Form::close() }}
+                </div>
             </div><!-- End of row-->
-
         </div>
     </div><!-- End of row-->
     <div style="border-bottom:1px solid #dbdbdb;padding: 5px 0px;"></div>
@@ -238,19 +210,6 @@
                                     </label>
                                 </div>
 
-
-                                <!--<input type="image" src="img/Hairy_Button.png" style="padding: 15px;">
-                                <input type="image" src="img/Bald_Button.png" style="padding: 15px;">-->
-                                <!--<div class=" col-xs-offset-1">
-                                    <h6 style="color:#FFF">HIPS</h6>
-                                    <input class="slider" name="hips" data-slider-max="80" data-slider-min="40" data-slider-orientation="horizontal" data-slider-value="50" type="text">
-                                    <h6 style="color:#FFF">BUST</h6>
-                                    <input class="slider" name="bust" data-slider-max="80" data-slider-min="40" data-slider-orientation="horizontal" data-slider-value="60" type="text">
-                                    <h6 style="color:#FFF">WAIST</h6>
-                                    <input class="slider" name="waist" data-slider-max="80" data-slider-min="40" data-slider-orientation="horizontal" data-slider-value="70" type="text">
-                                    <h6 style="color:#FFF">CUP SIZE</h6>
-                                    <input class="slider" name="cup" data-slider-max="80" data-slider-min="40" data-slider-orientation="horizontal" data-slider-value="65" type="text">
-                                </div>-->
                                 <div class=" col-xs-offset-1">
                                     <h6 style="color:#FFF">HIPS</h6>
                                     <input class="slider" name="hips" id="hips" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">
@@ -268,19 +227,8 @@
                                 <br>
                                 <input type="image" src="{{URL::asset('public/assets/registration/img/Cancel.png')}}" style="width: 110px;">
                                 <input type="image" src="{{URL::asset('public/assets/registration/img/Search.png')}}" style="width: 110px; margin-left: 20px;">
-                                <!-- <button type="button" class="btn btn-default col-lg-5" style="background:#f83233; color:#FFF">CANCEL</button>
-                                 <button type="button" class="btn btn-default col-lg-5" style="background:#f83233; color:#FFF; margin-left:20px;">SEARCH</button>-->
                                 {{ Form::close() }}
                                 <input type="hidden" name="isFilter" id="isFilter" value="0" />
-                                <!--<nav style="padding-top: 55px;">
-                                    <span style="font-size: 18px; font-family:Calibri;">86 result found</span>
-                                    <ul class="pagination pagination-sm" style="margin: -10px 10px;">
-                                        <li><a href="#" style="color:#aaaaaa"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
-                                        <li><a href="#" >1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#" style="color:#aaaaaa"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
-                                    </ul>
-                                </nav>-->
                             </div>
                         </div>
                     </div> <!--End of row-->
@@ -295,156 +243,6 @@
     <input type="hidden" id="skip" value="4" />
     <input type="hidden" id="take" value="4" />
     <input type="hidden" id="isDataAvailable" value="1"/>
-
-
-    <!--<div class="col-md-12">
-        <div class="row">
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-        </div>
-    </div><!-- end of col-md-12-->
-
-    <!--<div class="col-md-12">
-        <div class="row">
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-        </div>
-    </div><!-- end of col-md-12-->
-
-    <!--<div class="col-md-12">
-        <div class="row">
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-        </div>
-    </div><!-- end of col-md-12-->
-
-    <!--<div class="col-md-12">
-        <div class="row">
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-        </div>
-    </div><!-- end of col-md-12-->
-
-    <!--<div class="col-md-12">
-        <div class="row">
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-            <div class="col-md-3">
-                <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                    <img src="img/Melting-Ice-Bulbs-HD-Wallpaper.jpg" class="img-responsive" width="250px">
-                    <span style="font-size:24px"> Name</span> <br> <span style="font-size:18px">Near your area</span></p>
-            </div>
-
-        </div>
-    </div><!-- end of col-md-12-->
 </div>
 <div id="loaderImage" class="row text-center" style="display:none;"><img style="margin: 0 auto;" src="{{ URL::to('/public/assets/images/loader/heart.GIF') }}"></div>
 
