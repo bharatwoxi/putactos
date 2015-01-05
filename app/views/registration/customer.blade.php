@@ -35,11 +35,6 @@
             <div class="row" style="font-family:Roboto Th; color:#fff; padding: 20px;">
                 <span style="color:#fff;  font-size:36px">USER REGISTRATION</span>
 <!--                <div class="mini_nav pull-right" style="color:#ffff; font-family:Calibri">-->
-<!--                    <a href="#" style="padding-right:20px;">MY PROFILE</a>-->
-<!--                    <a href="#" style="padding-right:20px;"><strong>INBOX 1/15</strong></a>-->
-<!--                    <a href="#" style=""><strong>SIGN OUT</strong></a>-->
-<!--                    <br>-->
-<!--                    <br>-->
 <!--                    <span style="padding-right:20px; color:#fff">Select Language</span>-->
 <!--                    <a href="people_near_by_en.html" class="lan_nav" style="padding-right:20px; color:#fff; text-decoration:underline;">ENGLISH</a>-->
 <!--                    <a href="people_near_by_es.html" class="lan_nav" style="">SPANISH</a>-->
@@ -49,7 +44,10 @@
     </div>
 </div><!-- End of Container Fluid-->
 <div class="clearfix"></div>
-
+<div class="alert alert-danger">
+    <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
+    All fields are mandatory
+</div>
 <!--Ajax errors-->
 <div id="validation-errors" style="display:none">
     <div class="alert alert-danger" id="display-errors">
@@ -107,18 +105,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Age Range</label>
-                    <div class="col-md-3" style="padding-top: 20px;">
-                        <!--<input class="slider" data-slider-max="50" data-slider-min="18" data-slider-orientation="horizontal" data-slider-value="18" type="text" style="width: 155px;">-->
-                        <!--<input type="text" name="ageRange" id="ageRange" class="slider" data-slider-min="18" data-slider-max="50" data-slider-step="5" data-slider-value="[18,50]">-->
-                        <div class='slider-example'>
-                            <div class="well" style="padding: 5px 10px 5px 10px;">
-                                <b>16&nbsp;&nbsp;</b><input name="ageRange" id="ex2" type="text" class="span2" value="" data-slider-min="15" data-slider-max="60" data-slider-step="5" data-slider-value="[15,60]"/><b>&nbsp;&nbsp;&nbsp;60</b>
-                            </div>
-                        </div>
+                    {{ Form::label('location', 'Location', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
+                    <div class="col-sm-3">
+                        {{ Form::text('currentLocation',NULL,array('class'=>'form-control','id'=>'currentLocation')) }}
                     </div>
+                    <!--<div id="map-canvas" style="height:500px;width:500px;display:none;float:left;"></div>-->
                 </div>
-                <div class="form-group" style="margin-top: -10px;">
+                <div class="form-group" style="margin-top:10px;">
                     <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">I am looking for</label>
                     <div class="col-sm-3">
                         <!--<input type="text" class="form-control" id="name">-->
@@ -134,11 +127,16 @@
                     {{ Form::hidden('country',NULL,array('class'=>'form-control','id'=>'country')) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('location', 'Current Location', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
-                    <div class="col-sm-3">
-                        {{ Form::text('currentLocation',NULL,array('class'=>'form-control','id'=>'currentLocation')) }}
+                    <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Age Range</label>
+                    <div class="col-md-3" style="padding-top: 20px;">
+                        <!--<input class="slider" data-slider-max="50" data-slider-min="18" data-slider-orientation="horizontal" data-slider-value="18" type="text" style="width: 155px;">-->
+                        <!--<input type="text" name="ageRange" id="ageRange" class="slider" data-slider-min="18" data-slider-max="50" data-slider-step="5" data-slider-value="[18,50]">-->
+                        <div class='slider-example'>
+                            <div class="well" style="padding: 5px 10px 5px 10px;">
+                                <b>16&nbsp;&nbsp;</b><input name="ageRange" id="ex2" type="text" class="span2" value="" data-slider-min="15" data-slider-max="60" data-slider-step="5" data-slider-value="[15,60]"/><b>&nbsp;&nbsp;&nbsp;60</b>
+                            </div>
+                        </div>
                     </div>
-                    <div id="map-canvas" style="height:500px;width:500px;display:none;float:left;"></div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Upload Picture</label>

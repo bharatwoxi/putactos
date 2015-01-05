@@ -35,7 +35,7 @@
                 <br>
                 <br>
                 <span style="padding-right:20px; color:#fff">Select Language</span>
-                <a href="#" class="lan_nav" style="padding-right:20px; color:#fff; text-decoration:underline;">ENGLISH</a>
+                <a href="#" class="lan_nav" style="padding-right:20px; color:#fff;">ENGLISH</a>
                 <a href="#" class="lan_nav" style="">SPANISH</a>
             </div>
         </div> <!--End of col-md-12-->
@@ -52,11 +52,11 @@
 
             <div class="col-md-5">
 
-                <p style="padding:20px 15px 0;font-size: 13px; font-family:Calibri Light;">Your location is set automatically <br>
+                <!--<p style="padding:20px 15px 0;font-size: 13px; font-family:Calibri Light;">Your location is set automatically <br>
                     If you think we have got is wrong please select
                 </p>
                 <!-- Split button -->
-                <div class="row">
+                <!--<div class="row">
                     <div class="col-md-6">
                         <form>
                             <div class="form-group">
@@ -74,7 +74,7 @@
                         </form>
                     </div><!-- /.col-lg-3 -->
 
-                    <div class="col-md-6">
+                    <!--<div class="col-md-6">
                         <form>
                             <div class="form-group">
                                 <div class="col-lg-12 selectContainer" style="font-family:Calibri Light; font-weight:bold;">
@@ -272,7 +272,7 @@
                                  <button type="button" class="btn btn-default col-lg-5" style="background:#f83233; color:#FFF; margin-left:20px;">SEARCH</button>-->
                                 {{ Form::close() }}
                                 <input type="hidden" name="isFilter" id="isFilter" value="0" />
-                                <nav style="padding-top: 55px;">
+                                <!--<nav style="padding-top: 55px;">
                                     <span style="font-size: 18px; font-family:Calibri;">86 result found</span>
                                     <ul class="pagination pagination-sm" style="margin: -10px 10px;">
                                         <li><a href="#" style="color:#aaaaaa"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
@@ -280,7 +280,7 @@
                                         <li><a href="#">2</a></li>
                                         <li><a href="#" style="color:#aaaaaa"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
                                     </ul>
-                                </nav>
+                                </nav>-->
                             </div>
                         </div>
                     </div> <!--End of row-->
