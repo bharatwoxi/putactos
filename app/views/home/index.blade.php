@@ -463,7 +463,7 @@ background-repeat: repeat;
         </div>
     </div>
 </div>
-
+ 
 <div class="container-fluid" style="background-image: url(../../public/assets/registration/img/blacl_strip.png);background-repeat: repeat;height: 286px;">
 
     <p style="text-align:center; font-family:Roboto Th; font-size:54px;color: #fff;padding-top: 70px;">
