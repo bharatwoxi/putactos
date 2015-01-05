@@ -15,9 +15,10 @@ class UserRoleSeeder extends Seeder {
      */
     public function run()
     {
+        DB::table('user_role')->delete(); // deleting old records.
         DB::table('user_role')->insert(array(
-            array('role' => 'CUSTOMER','created_at'=>date('Y-m-d H:m:s'),'updated_at' => date('Y-m-d H:m:s')),
-            array('role' => 'SERVICE PROVIDER','created_at'=>date('Y-m-d H:m:s'),'updated_at' =>date('Y-m-d H:m:s')),
+            array('role' => 'CUSTOMER','created_at'=>date('Y-m-d H:i:s'),'updated_at' => date('Y-m-d H:i:s')),
+            array('role' => 'SERVICE PROVIDER','created_at'=>date('Y-m-d H:i:s'),'updated_at' =>date('Y-m-d H:i:s')),
         ));
     }
 

@@ -26,21 +26,15 @@
         <div class="container">
             <div class="row" style="font-family:Roboto Th; color:#fff; padding: 20px;">
                 <span style="color:#fff;  font-size:36px">SERVICE PROVIDER REGISTRATION</span>
-<!--                <div class="mini_nav pull-right" style="color:#ffff; font-family:Calibri">-->
-<!--                    <a href="#" style="padding-right:20px;">MY PROFILE</a>-->
-<!--                    <a href="#" style="padding-right:20px;"><strong>INBOX 1/15</strong></a>-->
-<!--                    <a href="#" style=""><strong>SIGN OUT</strong></a>-->
-<!--                    <br>-->
-<!--                    <br>-->
-<!--                    <span style="padding-right:20px; color:#fff">Select Language</span>-->
-<!--                    <a href="people_near_by_en.html" class="lan_nav" style="padding-right:20px; color:#fff; text-decoration:underline;">ENGLISH</a>-->
-<!--                    <a href="people_near_by_es.html" class="lan_nav" style="">SPANISH</a>-->
-<!--                </div>-->
             </div>
         </div>
     </div>
 </div><!-- End of Container Fluid-->
 <div class="clearfix"></div>
+<div class="alert alert-danger">
+    <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
+    All fields are mandatory
+</div>
 <!--Ajax errors-->
 <div id="validation-errors" style="display:none">
     <div class="alert alert-danger" id="display-errors">

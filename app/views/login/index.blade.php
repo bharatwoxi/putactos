@@ -6,8 +6,8 @@
  * Time: 11:01 AM
  */
 // Register API keys at https://www.google.com/recaptcha/admin
-$siteKey = "6LfCB_8SAAAAAFvqUDtRc63oBduhiMJ09kfn60Xv";
-$secret = "6LfCB_8SAAAAAIE7nuQD5Du0mJqWH6qDkhTh99wB";
+$siteKey = $_ENV['reCaptchSiteKey'];
+$secret = $_ENV['reCaptchaSecretKey'];
 // reCAPTCHA supported 40+ languages listed here: https://developers.google.com/recaptcha/docs/language
 $lang = "en";
 

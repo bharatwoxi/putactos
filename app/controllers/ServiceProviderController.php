@@ -34,14 +34,14 @@ class ServiceProviderController extends BaseController {
                 $i++;
             }
         }
-
         $count = count($serviceProviderProfileData);
         for($i=0;$i<$count;$i++){
             $serviceProvider = ServiceProvider::find($serviceProviderProfileData[$i]['service_provider_id']);
+            $serviceProviderProfileData[$i]['service_provider_id'];
             $serviceProviderProfileData[$i]['turns_me_on'] = $serviceProvider->turns_me_on;
             $serviceProviderProfileData[$i]['expertise'] = $serviceProvider->expertise;
             $serviceProviderProfileData[$i]['pubic_hair'] = $serviceProvider->pubic_hair;
-            $serviceProviderProfileData[$i]['bust'] = $serviceProvider->bust    ;
+            $serviceProviderProfileData[$i]['bust'] = $serviceProvider->bust;
             $serviceProviderProfileData[$i]['cup_size'] = $serviceProvider->cup_size;
             $serviceProviderProfileData[$i]['waist'] = $serviceProvider->waist;
             $serviceProviderProfileData[$i]['hips'] = $serviceProvider->hips;

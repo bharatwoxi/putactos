@@ -210,8 +210,8 @@
     {{ Form::label('lastname') }}
     {{ Form::text('lastName',null,array('id'=>'lastName')) }}<br/>
     {{ Form::label('gender') }}::
-    Male:{{ Form::radio('gender', 'male', true) }}
-    Female:{{ Form::radio('gender', 'female') }}<br/>
+    Male:{{ Form::radio('gender', '1', true) }}
+    Female:{{ Form::radio('gender', '2') }}<br/>
     {{ Form::label('profileImage') }}
     {{ Form::file('profileImage') }}<br/>
     {{ Form::label('UserRole') }}
@@ -289,8 +289,8 @@
             {{ Form::label('Turns Me On') }}
             {{ Form::text('turnsMeOn',Input::old('turnsMeOn'),array('placeholder'=>'enter number','id'=>'turnsMeOn')) }}<br/>
             {{ Form::label('pubic hair') }}::
-            Yes:{{ Form::radio('pubicHair', 'Y', true) }}
-            No:{{ Form::radio('pubicHair', 'N') }}<br/>
+            Yes:{{ Form::radio('pubicHair', '1', true) }}
+            No:{{ Form::radio('pubicHair', '0') }}<br/>
             {{ Form::label('bust') }}
             {{ Form::text('bust',Input::old('bust'),array('placeholder'=>'enter number')) }}<br/>
             {{ Form::label('cup size') }}
@@ -301,9 +301,12 @@
             {{ Form::text('hips',Input::old('hips'),array('placeholder'=>'enter number','id'=>'hips')) }}<br/>
             {{ Form::label('ethnicity') }}
             <select name="ethnicity" id="ethnicity">
-                <option value="black">Black</option>
-                <option value="white">White</option>
-                <option value="asian">Asian</option>
+                <?php
+                for($i=0;$i<count($ethnicity);$i++){ ?>
+                    <option value="{{ $ethnicity[$i]->id }}">{{ $ethnicity[$i]->ethnicity }}</option>
+                <?php
+                }
+                ?>
             </select>
             <br/>
             {{ Form::label('weight') }}
@@ -312,18 +315,22 @@
             {{ Form::text('height',Input::old('height'),array('placeholder'=>'in cm')) }}<br/>
             {{ Form::label('eye color') }}
             <select name="eyeColor" id="eyeColor">
-                <option value="black">Black</option>
-                <option value="brown">Brown</option>
-                <option value="blue">Blue</option>
-                <option value="green">Green</option>
-                <option value="grey">Grey</option>
+                <?php
+                for($i=0;$i<count($eyeColor);$i++){ ?>
+                    <option value="{{ $eyeColor[$i]->id }}">{{ $eyeColor[$i]->eye_color }}</option>
+                <?php
+                }
+                ?>
             </select>
             <br/>
             {{ Form::label('hair color') }}
             <select name="hairColor" id="hairColor">
-                <option value="black">Black</option>
-                <option value="brown">Brown</option>
-                <option value="white">White</option>
+                <?php
+                for($i=0;$i<count($hairColor);$i++){ ?>
+                    <option value="{{ $hairColor[$i]->id }}">{{ $hairColor[$i]->hair_color }}</option>
+                <?php
+                }
+                ?>
             </select>
             <br/>
             {{ Form::label('known languages') }}:
@@ -334,13 +341,13 @@
             }
             ?><br/>
             {{ Form::label('availability') }}:
-            Mon:<input type="checkbox" name="availability[]" value="mon" checked/>
-            Tue:<input type="checkbox" name="availability[]" value="tue"/>
-            Wed:<input type="checkbox" name="availability[]" value="wed"/>
-            Thu:<input type="checkbox" name="availability[]" value="thu"/>
-            Fri:<input type="checkbox" name="availability[]" value="fri" checked/>
-            Sat:<input type="checkbox" name="availability[]" value="sat" checked/>
-            Sun:<input type="checkbox" name="availability[]" value="sun"/><br/>
+            Mon:<input type="checkbox" name="availability[]" value="1" checked/>
+            Tue:<input type="checkbox" name="availability[]" value="2"/>
+            Wed:<input type="checkbox" name="availability[]" value="3"/>
+            Thu:<input type="checkbox" name="availability[]" value="4"/>
+            Fri:<input type="checkbox" name="availability[]" value="5" checked/>
+            Sat:<input type="checkbox" name="availability[]" value="6" checked/>
+            Sun:<input type="checkbox" name="availability[]" value="7"/><br/>
             {{ Form::label('from time') }}
             {{ Form::text('fromTime',Input::old('fromTime'),array('placeholder'=>'22:00','id'=>'fromTime')) }}
             -{{ Form::label('to time') }}

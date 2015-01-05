@@ -14,7 +14,7 @@ class KnownLanguages extends Eloquent implements UserInterface, RemindableInterf
      *
      * @var string
      */
-    protected $table = 'known_languages';
+    protected $table = 'known_languages_master';
     /*
     -By default laraval consider primary key name is 'id'
     -To change My Default Primary key name

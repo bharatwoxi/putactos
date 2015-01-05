@@ -12,7 +12,7 @@ class CreateKnownLanguagesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('known_languages', function(Blueprint $table)
+		Schema::create('known_languages_master', function(Blueprint $table)
 		{
             $table->engine = 'InnoDB';
             $table->bigIncrements('id')->unique();
@@ -28,7 +28,7 @@ class CreateKnownLanguagesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('known_languages');
+		Schema::dropIfExists('known_languages_master');
 	}
 
 }
