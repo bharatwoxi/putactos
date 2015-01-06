@@ -467,13 +467,10 @@ background-repeat: repeat;
 <div class="container-fluid" style="background-image: url(../../public/assets/registration/img/blacl_strip.png);background-repeat: repeat;height: 286px;">
 
     <p style="text-align:center; font-family:Roboto Th; font-size:54px;color: #fff;padding-top: 70px;">
-        SIGN IN NOW
+        SIGN UP NOW
     </p>
-    <a href="{{ URL::to('/signup/service-provider') }}" style="text-decoration:none; color:#ffffff;">
-        <button type="button" class="btn btn-default center-block" style="background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModa">
+        <button type="button" class="btn btn-default center-block" onclick="redirect()" style="background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModa">
             <strong>Join Putactos</strong></button>
-    </a>
-
     <p style="text-align:center; font-family:Roboto Th; font-size:18px;color: #fff;">
         Join the fastest growing adult network in Europe
     </p>

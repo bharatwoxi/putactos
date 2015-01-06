@@ -60,57 +60,96 @@ class SearchController extends BaseController {
     public function showDataAfterLogin(){
         /* If There is Normal Request */
         if(Input::get('isFilter')==0){
-            $skip = Input::get('skip');
-            $take = Input::get('take');
+            $customerData  = Customer::find(Auth::user()->customer_id);
+            $customerFromAge = Auth::user()->from_age;
+            $customerToAge = Auth::user()->to_age;
 
             if(Input::get('isScroll')==1){
                 $latitude = Session::get('latitude');
                 $longitude = Session::get('longitude');
+                $skip = Session::get('skip');
+                $take = 3;
             }else{
                 $latitude = Input::get('latitude');
                 $longitude = Input::get('longitude');
+                $skip = 0;
+                $take = 3;
                 if($latitude==0 && $longitude==0){
                     $latitude = Auth::user()->latitude;
                     $longitude = Auth::user()->longitude;
                 }
                 Session::put('latitude', $latitude);
                 Session::put('longitude', $longitude);
-            }
-            $customerFromAge = Auth::user()->from_age;
-            $customerToAge = Auth::user()->to_age;
 
-            $customerData  = Customer::find(Auth::user()->customer_id);
-            if($customerData->looking_for=='male'){
+                /* Get Total Query Count Result */
+                if($customerData->looking_for=='male'){
 
-                $systemUsers = User::where('user_role_id','=','2')
-                    ->where('gender','=',1)
-                    ->where('current_age','>=',$customerFromAge)
-                    ->where('current_age','<=',$customerToAge)
-                    ->where('is_active','=',1)
-                    ->skip($skip)->take($take)->get();
-            }elseif($customerData->looking_for=='female'){
-                $systemUsers = User::where('user_role_id','=','2')
-                    ->where('gender','=',2)
-                    ->where('current_age','>=',$customerFromAge)
-                    ->where('current_age','<=',$customerToAge)
-                    ->where('is_active','=',1)
-                    ->skip($skip)->take($take)->get();
-            }else{
-                $systemUsers = User::where('user_role_id','=','2')
-                    ->where('current_age','>=',$customerFromAge)
-                    ->where('current_age','<=',$customerToAge)
-                    ->where('is_active','=',1)
-                    ->skip($skip)->take($take)->get();
+                    $queryCount = User::where('user_role_id','=','2')
+                        ->where('gender','=',1)
+                        ->where('current_age','>=',$customerFromAge)
+                        ->where('current_age','<=',$customerToAge)
+                        ->where('is_active','=',1)
+                        ->count();
+                }elseif($customerData->looking_for=='female'){
+                    $queryCount = User::where('user_role_id','=','2')
+                        ->where('gender','=',2)
+                        ->where('current_age','>=',$customerFromAge)
+                        ->where('current_age','<=',$customerToAge)
+                        ->where('is_active','=',1)
+                        ->count();
+                }else{
+                    $queryCount = User::where('user_role_id','=','2')
+                        ->where('current_age','>=',$customerFromAge)
+                        ->where('current_age','<=',$customerToAge)
+                        ->where('is_active','=',1)
+                        ->count();
+                }
+                Session::put('queryCount', $queryCount);
             }
-            $totalServiceProviderFound = NULL;
-            $i=0;
-            foreach($systemUsers as $systemUser){
-                //$distance = round($this->distance($systemUser->latitude,$systemUser->longitude,$latitude,$longitude,'K'));
-//            if($distance>=0 && $distance <=500){
-                $totalServiceProviderFound[$i] = $systemUser->id;
-                $i++;
-                //}
-            }
+
+            $queryCount = Session::get('queryCount');
+            $queryRecord = 0;
+            do{
+                $queryRecord++;
+                $take = $take + 1;
+                if($customerData->looking_for=='male'){
+                    $systemUsers = User::where('user_role_id','=','2')
+                        ->where('gender','=',1)
+                        ->where('current_age','>=',$customerFromAge)
+                        ->where('current_age','<=',$customerToAge)
+                        ->where('is_active','=',1)
+                        ->skip($skip)->take($take)->get();
+                }elseif($customerData->looking_for=='female'){
+                    $systemUsers = User::where('user_role_id','=','2')
+                        ->where('gender','=',2)
+                        ->where('current_age','>=',$customerFromAge)
+                        ->where('current_age','<=',$customerToAge)
+                        ->where('is_active','=',1)
+                        ->skip($skip)->take($take)->get();
+                }else{
+                    $systemUsers = User::where('user_role_id','=','2')
+                        ->where('current_age','>=',$customerFromAge)
+                        ->where('current_age','<=',$customerToAge)
+                        ->where('is_active','=',1)
+                        ->skip($skip)->take($take)->get();
+                }
+                $totalServiceProviderFound = NULL;
+                $i=0;
+                if(!empty($systemUsers) || $systemUsers!=NULL){
+                    foreach($systemUsers as $systemUser){
+                        $distance = round($this->distance($systemUser->latitude,$systemUser->longitude,$latitude,$longitude,'K'));
+                        if($distance>=0 && $distance <=5){
+                            $totalServiceProviderFound[$i] = $systemUser->id;
+                            $i++;
+                        }
+                    }
+                }else{
+                    break;
+                }
+            }while(count($totalServiceProviderFound)<4 && $queryRecord<=$queryCount);
+            $skip = $skip + $take;
+            Session::put('skip', $skip);
+
 
             /* Get Data Using Algorithm logic p,q,r */
             $serviceProviderData = NULL;
@@ -131,12 +170,10 @@ class SearchController extends BaseController {
                 foreach($serviceProviderData as $serviceProvider){
                     if($serviceProvider['rise_me_up']==0){
                         array_push($riseMeUpZero,$serviceProvider);
-                        //$riseMeUpZero[$i] = $serviceProvider;
                         $i++;
                     }
                     else{
                         array_push($riseMeUpOne,$serviceProvider);
-                        //$riseMeUpOne[$j] = $serviceProvider;
                         $j++;
                     }
                 }
@@ -156,23 +193,11 @@ class SearchController extends BaseController {
             }
             $skip = $skip + $take;
 
-            /* Maintain Global Data
-                http://laravel.io/forum/07-23-2014-global-data-object
-            */
-            //Data::set('serviceProviderSearchResult', $serviceProviderData);
-            //  dd($serviceProviderData);
-            //echo "<pre>";print_r($serviceProviderData);echo "</pre>";
-            //if($serviceProviderData!=NULL){
-            //return Response::json(['success'=>true,'serviceProviderData'=>json_encode($serviceProviderData)]);
             return View::make('search.searchResults')->with(array('serviceProviderData'=> $serviceProviderData,'skip'=>$skip,'take'=>$take));
-            /*}else{
-                return Response::json(['success'=>false]);
-            }*/
+
         }else{ /* If there is ajax request filter */
-            //dd(Input::all());
             if(Input::get('isScroll')==1){
                 $input = Session::get('input');
-                //dd($input);
             }else{
                 $input = Input::all();
                 if(!isset($input['pubicHair'])){
@@ -183,7 +208,6 @@ class SearchController extends BaseController {
                 }
 
             }
-            //dd($input['queryCount']);
 
             $distanceRange = explode('-',$input['distanceRange']);
 
@@ -198,31 +222,6 @@ class SearchController extends BaseController {
             }else{
                 $languageId = array($input['languages']);
             }
-
-            /* Check if Filter is Used Or NOT */
-//            if($input['isScroll']==0){
-//                $filterHair =  $input['hairColor'];
-//                $filterEyeColor = $input['eyeColor'];
-//                $filterEthnicity = $input['ethnicity'];
-//                if(isset($input['pubicHair'])){
-//                    $filterPubicHair = $input['pubicHair'];
-//                }else{
-//                    $filterPubicHair = NULL;
-//                }
-//                if(isset($input['availability'])){
-//                    $filterAvailability = $input['availability'];
-//                }else{
-//                    $filterAvailability = NULL;
-//                }
-//
-//                $filterHips = $input['hips'];
-//                $filterBust = $input['bust'];
-//                $filterCup = $input['cup'];
-//                $filterWaist = $input['waist'];
-//                $filterGender = $input['gender'];
-//                $filterLanguages = $input['languages'];
-//                $filterDistanceRange = $input['distanceRange'];
-//            }
 
             $currentDate=date('d-m-Y');
             $dayName = strtolower(date("D",strtotime($currentDate)));
@@ -482,8 +481,8 @@ class SearchController extends BaseController {
                             ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
                             ->skip($skip)->take($take)->get();
                     }
-                    $queries = DB::getQueryLog();
-                    $last_query = end($queries);
+//                    $queries = DB::getQueryLog();
+//                    $last_query = end($queries);
                     //echo "<pre>";print_r($last_query);echo "</pre>";exit;
                 }
 

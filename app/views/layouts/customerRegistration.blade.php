@@ -23,6 +23,11 @@
 
 </head>
 <style type="text/css">
+    /* Disclaimer: remove 'powered by Google' */
+    .pac-container:after {
+        background-image: none !important;
+        height: 0px;
+    }
     #buttonGroupForm .btn-group .form-control-feedback {
         top: 0;
         right: -30px;
