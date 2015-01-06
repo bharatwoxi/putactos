@@ -114,6 +114,11 @@
 
         });
     </script>
+    <script>
+        function redirect(){
+            window.location.href ='{{ URL::to('/signup/service-provider') }}';
+        }
+    </script>
 
     <!--fade js -->
 

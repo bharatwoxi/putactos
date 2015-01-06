@@ -22,6 +22,12 @@
 
 </head>
 <style type="text/css">
+    /* Disclaimer: remove 'powered by Google' */
+    .pac-container:after {
+        background-image: none !important;
+        height: 0px;
+    }
+
     #buttonGroupForm .btn-group .form-control-feedback {
         top: 0;
         right: -30px;
@@ -75,7 +81,7 @@
 
 
 </style>
-<body onload="initializeGetLocation()">
+<body>
 
 @yield('content')
 
@@ -102,6 +108,7 @@
 
     function errorFunction(){
         //alert("Geocoder failed");
+        $('#selectedLocation').html('{{Auth::user()->city}} {{Auth::user()->country}}');
         getUserData(0,0);
     }
 
@@ -313,7 +320,9 @@
         var addressGeoCode = place.geometry.location;
         $('#selectedLocation').html(obj);
         getUserData(addressGeoCode.k,addressGeoCode.D);
+        $('#currentLocation').val('');
     }
+    initializeGetLocation();
     initializeAutoSuggest();
 </script>
 </body>
