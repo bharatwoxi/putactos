@@ -101,6 +101,7 @@ class RegistrationController extends BaseController {
             $serviceProviderInsertedId = DB::table('service_providers')->insertGetId(
                 array(
                     'riseme_up' =>0,
+                    'visit_frequency' =>0,
                     'profile_completeness'=>NULL,
                     'created_at'=>date('Y-m-d H:m:s'),
                     'updated_at'=> date('Y-m-d H:m:s')
