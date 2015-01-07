@@ -147,7 +147,6 @@ class RegistrationController extends BaseController {
         }else{
             $age = explode(',',Input::get('ageRange'));
         }
-        dd($age);
         $rules = array(
 
             'firstName' => 'required|min:5|max:20',
