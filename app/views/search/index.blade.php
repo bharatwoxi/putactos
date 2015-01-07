@@ -52,7 +52,7 @@
 
             <div class="col-md-5">
 
-                <p style="padding:20px 15px 0;font-size: 13px; font-family:Calibri Light;">Your location is set automatically <strong><span id="selectedLocation"> </span></strong><br>
+                <p style="padding:20px 15px 0;font-size: 13px; font-family:Calibri Light;">Your location is set automatically to <strong><span id="selectedLocation"> </span></strong><br>
                     If you think we have got is wrong please select
                 </p>
                 <div class="container">

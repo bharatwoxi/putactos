@@ -41,7 +41,8 @@ Route::group(array('before' => 'logged_in'), function() {
     });
 });
 
-
+/*Confirm User When Click On Email */
+Route::get('user/confirm/{confirmation}', 'UserController@confirmUser');
 Route::post('authenticate', array('before' => 'csrf','uses' => 'UserController@checkLogin'));
 Route::get('logout', array('uses' => 'UserController@doLogout'));
 
