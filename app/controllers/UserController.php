@@ -5,6 +5,9 @@
  * Date: 9/12/14
  * Time: 11:13 AM
  */
+/* For Browser & OS Detection */
+use Browser\Browser;
+use Browser\Os;
 class UserController extends BaseController {
 
     /*
@@ -16,7 +19,6 @@ class UserController extends BaseController {
     */
 
     public function checkLogin(){
-
         $input = Input::all();
         /* Check reCaptcha */
         $secret = $_ENV['reCaptchaSecretKey'];
@@ -33,44 +35,105 @@ class UserController extends BaseController {
             );
         }
         if ($resp != null && $resp->success) {
-            echo 1;
+            $rules = array(
+                'email' => 'required|email',
+                'password' => 'required|min:6'
+            );
+            $validation = Validator::make($input,$rules);
+            $data = array(
+                'email' => $input['email'],
+                'password' => $input['password']
+            );
+            if($validation->passes()){
+                $id = DB::table('system_users')->where('email', $input['email'])->pluck('id');
+                $user = User::find($id);
+                if($id == NULL || $user == NULL){
+                    Session::flash('message', 'It looks like you entered the wrong email or password');
+                    return Redirect::to('login')->withInput();;
+                }elseif($user->is_active == 0){
+                    Session::flash('message', 'Please confirm your email address');
+                    return Redirect::to('login');
+                }elseif (Auth::attempt($data))
+                {
+                    $this->saveIpBrowserInformation();
+                    return Redirect::to('search/login=true');
+                }else{
+                    /* Check Query Log With Time*/
+                    /*$queries = DB::getQueryLog();
+                    $last_query = end($queries);*/
+                    return Redirect::to('login')
+                        ->with('message', 'It looks like you entered the wrong email or password')
+                        ->withInput();
+                }
+            }else{
+                return Redirect::to('login')->withInput()->withErrors($validation);
+            }
         }else{
             Session::flash('message', 'Please re-enter your reCAPTCHA.');
             return Redirect::to('login');
         }
+    }
 
-        $rules = array(
-            'email' => 'required|email',
-            'password' => 'required|min:6'
+    /*
+    *function Name: saveIpBrowserInformation
+    *Desc: Save Browser and Information and Increment Login count
+    *Created By: Sagar Acharya
+    *Created Date: 7 JAN 2014
+    *return: NA
+   */
+
+    public function saveIpBrowserInformation(){
+        $browser = new Browser;
+        $os = new Os;
+        $browserInformation = 'name:'.$browser->getName().' version:'.$browser->getVersion();
+        $osInformation = 'name:'.$os->getName().' version:'.$os->getVersion();
+        $ipAddress = getenv('HTTP_CLIENT_IP')?:
+                     getenv('HTTP_X_FORWARDED_FOR')?:
+                     getenv('HTTP_X_FORWARDED')?:
+                     getenv('HTTP_FORWARDED_FOR')?:
+                     getenv('HTTP_FORWARDED')?:
+                     getenv('REMOTE_ADDR');
+
+        DB::table('system_user_ip_logs')->insert(
+            array(
+                'system_user_id'  =>Auth::user()->id,
+                'ip_address'  =>$ipAddress,
+                'browser'  =>$browserInformation,
+                'os'  =>$osInformation,
+                'login_time'  =>date('Y-m-d H:m:s'),
+                'created_at'=>date('Y-m-d H:m:s'),
+                'updated_at'=> date('Y-m-d H:m:s')
+            )
         );
-        $validation = Validator::make($input,$rules);
-        $data = array(
-                'email' => $input['email'],
-                'password' => $input['password']
-            );
-        if($validation->passes()){
-            if (Auth::attempt($data))
-            {
-                return Redirect::to('search/login=true');
-            }else{
-                /* Check Query Log With Time*/
-                /*$queries = DB::getQueryLog();
-                $last_query = end($queries);*/
-                return Redirect::to('login')
-                    ->with('message', 'Your username/password combination was incorrect')
-                    ->withInput();
-            }
-        }else{
-            return Redirect::to('login')->withInput()->withErrors($validation);
+        if(Auth::user()->service_provider_id!=NULL || !empty(Auth::user()->service_provider_id)){
+            $serviceProvider = ServiceProvider::find(Auth::user()->service_provider_id);
+            $visitCount = $serviceProvider->visit_frequency;
+            $visitCount = $visitCount + 1;
+            ServiceProvider::where('id', '=',$serviceProvider['id'])->update(array('visit_frequency' => $visitCount,'updated_at'=> date('Y-m-d H:m:s')));
         }
     }
 
-    public function doLogout(){
+        public function doLogout(){
         Auth::logout(); // log the user out of our application
         return Redirect::to('/'); // redirect the user to the login screen
     }
 
     public function test(){
         echo Auth::check();
+    }
+
+
+    /*
+    *function Name: confirmUser
+    *Desc: Confirm User Identity
+    *Created By: Sagar Acharya
+    *Created Date: 7 JAN 2014
+    *return: redirect to login page
+   */
+    public function confirmUser($confirmation){
+
+        DB::table('system_users')->where('remember_token', $confirmation)->update(array('is_active' => 1));
+        Session::flash('message', 'Thank you for confirming your account, you can now login');
+        return Redirect::to('login');
     }
 }

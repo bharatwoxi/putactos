@@ -112,16 +112,14 @@ class RegistrationController extends BaseController {
 
             /*Image Upload End */
 
-            /*Send Email code for future */
 
             /* Send Mail Functionality */
 
-            //$user = $systemUserInsertedId;
-            /*if(app()->environment()!="local"){
-                Mail::send('emails.welcome', $data, function($message) use ($input){
-                    $message->to($input['localEmail'])->subject('Account Confirmation');
+            if(app()->environment()!="local"){
+                Mail::send('email.activation', $input, function($message) use ($input){
+                    $message->to($input['email'])->subject('Account Confirmation');
                 });
-            }*/
+            }
             Session::flash('message', 'Your account has been successfully created. Please check your email for the instructions on how to confirm your account.');
             return Redirect::to('login');
         }
@@ -208,13 +206,11 @@ class RegistrationController extends BaseController {
 
             /*Image Upload End */
 
-            /*Send Email code for future */
-            //$user = $systemUserInsertedId;
-            /*if(app()->environment()!="local"){
-                Mail::send('emails.welcome', $data, function($message) use ($input){
-                    $message->to($input['localEmail'])->subject('Account Confirmation');
+            if(app()->environment()!="local"){
+                Mail::send('email.activation', $input, function($message) use ($input){
+                    $message->to($input['email'])->subject('Account Confirmation');
                 });
-            }*/
+            }
             Session::flash('message', 'Your account has been successfully created. Please check your email for the instructions on how to confirm your account.');
             return Redirect::to('login');
         }
