@@ -116,11 +116,11 @@ class RegistrationController extends BaseController {
 
             /* Send Mail Functionality */
 
-            if(app()->environment()!="local"){
+            //if(app()->environment()!="local"){
                 Mail::send('email.activation', $input, function($message) use ($input){
                     $message->to($input['email'])->subject('Account Confirmation');
                 });
-            }
+            //}
             Session::flash('message', 'Your account has been successfully created. Please check your email for the instructions on how to confirm your account.');
             return Redirect::to('login');
         }
@@ -213,11 +213,11 @@ class RegistrationController extends BaseController {
 
             /*Image Upload End */
 
-            if(app()->environment()!="local"){
+            //if(app()->environment()!="local"){
                 Mail::send('email.activation', $input, function($message) use ($input){
                     $message->to($input['email'])->subject('Account Confirmation');
                 });
-            }
+            //}
             Session::flash('message', 'Your account has been successfully created. Please check your email for the instructions on how to confirm your account.');
             return Redirect::to('login');
         }
