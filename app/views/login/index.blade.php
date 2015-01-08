@@ -60,7 +60,10 @@ $error = null;
 </div>
 @endif
 @if (Session::has('message'))
-<div class="alert alert-danger">{{ Session::get('message') }}</div>
+<div class="alert alert-danger">
+    <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
+    {{ Session::get('message') }}
+</div>
 @endif
 
 <div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;">
