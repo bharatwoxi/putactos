@@ -14,6 +14,7 @@ return array(
     'AddFkSystemUserIpLogsTable' => $baseDir . '/app/database/migrations/2014_11_29_111456_add_fk_system_user_ip_logs_table.php',
     'AddFkSystemUsersTable' => $baseDir . '/app/database/migrations/2014_11_29_113200_add_fk_system_users_table.php',
     'AddFkUserMessagesTable' => $baseDir . '/app/database/migrations/2014_11_29_123013_add_fk_user_messages_table.php',
+    'AddIsNewFlagToUserMessage' => $baseDir . '/app/database/migrations/2015_01_09_120140_add_is_new_flag_to_user_message.php',
     'AddRememberTokenToSystemUsersTable' => $baseDir . '/app/database/migrations/2014_12_09_085547_add_remember_token_to_system_users_table.php',
     'Barryvdh\\Debugbar\\Console\\ClearCommand' => $vendorDir . '/barryvdh/laravel-debugbar/src/Console/ClearCommand.php',
     'Barryvdh\\Debugbar\\Console\\PublishCommand' => $vendorDir . '/barryvdh/laravel-debugbar/src/Console/PublishCommand.php',
