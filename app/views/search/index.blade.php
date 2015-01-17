@@ -30,7 +30,7 @@
         <div class="col-md-12" style="font-family:Calibri">
             <div class="mini_nav pull-right" style="color:#ffff;padding: 10px 0px; height: 110px;">
                 <a href="#" style="padding-right:20px;">MY PROFILE</a>
-                <a href="#" style="padding-right:20px;"><strong>INBOX 1/15</strong></a>
+                <a href="{{ URL::to('/messages') }}" style="padding-right:20px;"><strong>INBOX</strong></a>
                 <a href="{{ URL::to('/logout') }}" style=""><strong>SIGN OUT</strong></a>
                 <br>
                 <br>

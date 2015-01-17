@@ -285,7 +285,7 @@ background-repeat: repeat;
 
 
                 <p style="font-weight: 600;">
-                    Putactosis free, and there are<br> no additional charges when<br> you use it.
+                    Putactos is free, and there are<br> no additional charges when<br> you use it.
                     It’s like swiping your<br> card - only faster, safer and<br> more convenient.
                 </p>
             </div>
@@ -420,7 +420,7 @@ background-repeat: repeat;
             <p class="pull-left" style="font-family:Roboto Th; padding-left:40px;font-size: 32px;line-height: 36px;padding-top: 10px;color: #fff;
     text-transform: uppercase;font-weight: 600;">
                 We won’t show your exact <br>
-                location, but you’ll be ABLE<br>
+                location, but you’ll be<br>
                 able to find people nearby who<br>
                 like the same things you do.
             </p>
@@ -463,7 +463,7 @@ background-repeat: repeat;
         </div>
     </div>
 </div>
- 
+@if(!Auth::check())
 <div class="container-fluid" style="background-image: url(../../public/assets/registration/img/blacl_strip.png);background-repeat: repeat;height: 286px;">
 
     <p style="text-align:center; font-family:Roboto Th; font-size:54px;color: #fff;padding-top: 70px;">
@@ -476,7 +476,7 @@ background-repeat: repeat;
     </p>
 
 </div>
-
+@endif
 
 <div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png);background-repeat: repeat; background-color:#dbdbdb;">
     <div class="container" style="padding:0; background:url(../../public/assets/registration/img/bg_pelple.png); width:100%; max-width:1327px; min-height:944px;margin-top: 80px;">
