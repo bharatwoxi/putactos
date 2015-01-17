@@ -14,7 +14,7 @@ class AddIsNewFlagToUserMessage extends Migration {
 	{
 		Schema::table('user_messages', function(Blueprint $table)
 		{
-			//
+            $table->tinyInteger('is_new')->default(1)->after('message');
 		});
 	}
 
@@ -27,7 +27,7 @@ class AddIsNewFlagToUserMessage extends Migration {
 	{
 		Schema::table('user_messages', function(Blueprint $table)
 		{
-			//
+            $table->dropColumn('is_new');
 		});
 	}
 

@@ -57,6 +57,11 @@ Route::get('search/login=true', array('before' => 'auth|isCustomer','uses' => 'S
 Route::get('search/results/login=true', array('before' => 'auth|isCustomer','uses' => 'SearchController@showDataAfterLogin'));
 Route::get('advance/search/login=true',array('before' => 'auth|isCustomer','uses' => 'SearchController@showDataAfterLogin'));
 
+/* Messages Between Users */
+Route::get('messages',array('before' => 'auth','uses' => 'MessageController@index'));
+Route::get('messages/userlist',array('before' => 'auth','uses' => 'MessageController@showUserList'));
+Route::get('get/messages',array('before' => 'auth','uses' => 'MessageController@showMessages'));
+Route::post('messages/addnew',array('before' => 'auth','uses' => 'MessageController@insertNewMessage'));
 
 /* Detect Environment */
 //echo App::environment();
