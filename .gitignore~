@@ -1,6 +1,6 @@
 /bootstrap/compiled.php
 .env.*.php
 .env.php
-#.idea/
+.idea/
 /public/uploads/
 #app/storage/debugbar/
