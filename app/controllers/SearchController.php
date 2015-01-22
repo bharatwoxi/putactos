@@ -481,9 +481,6 @@ class SearchController extends BaseController {
                             ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
                             ->skip($skip)->take($take)->get();
                     }
-//                    $queries = DB::getQueryLog();
-//                    $last_query = end($queries);
-                    //echo "<pre>";print_r($last_query);echo "</pre>";exit;
                 }
 
                 /* Apply Distance Range Filter */
@@ -528,12 +525,10 @@ class SearchController extends BaseController {
                 foreach($serviceProviderData as $serviceProvider){
                     if($serviceProvider['rise_me_up']==0){
                         array_push($riseMeUpZero,$serviceProvider);
-                        //$riseMeUpZero[$i] = $serviceProvider;
                         $i++;
                     }
                     else{
                         array_push($riseMeUpOne,$serviceProvider);
-                        //$riseMeUpOne[$j] = $serviceProvider;
                         $j++;
                     }
                 }
@@ -551,9 +546,7 @@ class SearchController extends BaseController {
                 }
 
             }
-            //dd($serviceProviderData);
             return View::make('search.searchResults')->with(array('serviceProviderData'=> $serviceProviderData,'skip'=>$skip,'take'=>$take));
-            //dd($totalServiceProviderFound);
         }
     }
 
@@ -567,7 +560,6 @@ class SearchController extends BaseController {
      *return: true/false based on result
     */
     public function sortByProfilePlusVisit($a,$b){
-
         if ($a['profile_plus_visit'] == $b['profile_plus_visit']) {
             return 0;
         }
@@ -575,9 +567,525 @@ class SearchController extends BaseController {
     }
 
     public function sortByRiseUp($a,$b){
-//        if ($a['rise_me_up'] == $b['rise_me_up']) {
-//            return 0;
-//        }
         return ($a['rise_me_up'] > $b['rise_me_up']) ? -1 : 1;
+    }
+
+    /*
+     *function Name: guestSearch
+     *Desc: view guest search page
+     *Created By: Sagar Acharya
+     *Created Date: 22 January 2014
+     *return: N/A
+    */
+
+    public function guestSearchView(){
+        $input = Input::all();
+        Session::put('guestMinimumAge', $input['minimumAge']);
+        Session::put('guestMaximumAge', $input['maximumAge']);
+        Session::put('guestLookingFor', $input['looking_for']);
+        $knownLanguages = KnownLanguages::all();
+        $ethnicity = Ethnicity::all();
+        $eyeColor = EyeColor::all();
+        $hairColor = HairColor::all();
+        return View::make('search.guestSearchIndex',array('knownLanguages' => $knownLanguages,'knownLanguages'=>$knownLanguages,'ethnicity'=>$ethnicity,'eyeColor'=>$eyeColor,'hairColor'=>$hairColor));
+    }
+
+    /*
+     *function Name: showDataToGuest
+     *Desc: show search data initially if guest
+     *Created By: Sagar Acharya
+     *Created Date: 22 January 2014
+     *return: true/false based on result
+    */
+    public function showDataToGuest(){
+        /* If There is Normal Request */
+        if(Input::get('isFilter')==0){
+            $customerFromAge = Session::get('guestMinimumAge');
+            $customerToAge = Session::get('guestMaximumAge');
+
+            if(Input::get('isScroll')==1){
+                $latitude = Session::get('latitude');
+                $longitude = Session::get('longitude');
+                $skip = Session::get('skip');
+                $take = 3;
+            }else{
+                $latitude = Input::get('latitude');
+                $longitude = Input::get('longitude');
+                $skip = 0;
+                $take = 3;
+                if($latitude==0 && $longitude==0){
+                    $latitude = '18.5204303';
+                    $longitude = '73.85674369999992';
+                }
+                Session::put('latitude', $latitude);
+                Session::put('longitude', $longitude);
+
+                /* Get Total Query Count Result */
+                if(Session::get('guestLookingFor')=='male'){
+
+                    $queryCount = User::where('user_role_id','=','2')
+                        ->where('gender','=',1)
+                        ->where('current_age','>=',$customerFromAge)
+                        ->where('current_age','<=',$customerToAge)
+                        ->where('is_active','=',1)
+                        ->count();
+                }elseif(Session::get('guestLookingFor')=='female'){
+                    $queryCount = User::where('user_role_id','=','2')
+                        ->where('gender','=',2)
+                        ->where('current_age','>=',$customerFromAge)
+                        ->where('current_age','<=',$customerToAge)
+                        ->where('is_active','=',1)
+                        ->count();
+                }else{
+                    $queryCount = User::where('user_role_id','=','2')
+                        ->where('current_age','>=',$customerFromAge)
+                        ->where('current_age','<=',$customerToAge)
+                        ->where('is_active','=',1)
+                        ->count();
+                }
+                Session::put('queryCount', $queryCount);
+            }
+
+            $queryCount = Session::get('queryCount');
+            $queryRecord = 0;
+            do{
+                $queryRecord++;
+                $take = $take + 1;
+                if(Session::get('guestLookingFor')=='male'){
+                    $systemUsers = User::where('user_role_id','=','2')
+                        ->where('gender','=',1)
+                        ->where('current_age','>=',$customerFromAge)
+                        ->where('current_age','<=',$customerToAge)
+                        ->where('is_active','=',1)
+                        ->skip($skip)->take($take)->get();
+                }elseif(Session::get('guestLookingFor')=='female'){
+                    $systemUsers = User::where('user_role_id','=','2')
+                        ->where('gender','=',2)
+                        ->where('current_age','>=',$customerFromAge)
+                        ->where('current_age','<=',$customerToAge)
+                        ->where('is_active','=',1)
+                        ->skip($skip)->take($take)->get();
+                }else{
+                    $systemUsers = User::where('user_role_id','=','2')
+                        ->where('current_age','>=',$customerFromAge)
+                        ->where('current_age','<=',$customerToAge)
+                        ->where('is_active','=',1)
+                        ->skip($skip)->take($take)->get();
+                }
+                $totalServiceProviderFound = NULL;
+                $i=0;
+                if(!empty($systemUsers) || $systemUsers!=NULL){
+                    foreach($systemUsers as $systemUser){
+                        $distance = round($this->distance($systemUser->latitude,$systemUser->longitude,$latitude,$longitude,'K'));
+                        if($distance>=0 && $distance <=5){
+                            $totalServiceProviderFound[$i] = $systemUser->id;
+                            $i++;
+                        }
+                    }
+                }else{
+                    break;
+                }
+            }while(count($totalServiceProviderFound)<4 && $queryRecord<=$queryCount);
+            $skip = $skip + $take;
+            Session::put('skip', $skip);
+
+
+            /* Get Data Using Algorithm logic p,q,r */
+            $serviceProviderData = NULL;
+            if($totalServiceProviderFound!=NULL){
+                $i=0;
+                $serviceProviderData = NULL;
+                foreach($totalServiceProviderFound as $systemUserSpId){
+                    $serviceProviderData[$i]['system_user'] = User::find($systemUserSpId);
+                    $serviceProviderData[$i]['service_provider'] = ServiceProvider::find($serviceProviderData[$i]['system_user']->service_provider_id);
+                    $serviceProviderData[$i]['profile_plus_visit'] = $serviceProviderData[$i]['service_provider']->profile_completeness + $serviceProviderData[$i]['service_provider']->visit_frequency;
+                    $serviceProviderData[$i]['rise_me_up'] = $serviceProviderData[$i]['service_provider']->riseme_up;
+                    $i++;
+                }
+                $riseMeUpZero = array();
+                $riseMeUpOne = array();
+                $i =0;
+                $j = 0;
+                foreach($serviceProviderData as $serviceProvider){
+                    if($serviceProvider['rise_me_up']==0){
+                        array_push($riseMeUpZero,$serviceProvider);
+                        $i++;
+                    }
+                    else{
+                        array_push($riseMeUpOne,$serviceProvider);
+                        $j++;
+                    }
+                }
+
+                uasort($riseMeUpOne, array("SearchController","sortByProfilePlusVisit"));
+                uasort($riseMeUpZero, array("SearchController","sortByProfilePlusVisit"));
+
+                $serviceProviderData = array();
+                if(!empty($riseMeUpOne) && !empty($riseMeUpZero)){
+                    $serviceProviderData = array_merge($riseMeUpOne,$riseMeUpZero);
+                }elseif(!empty($riseMeUpOne)){
+                    $serviceProviderData = array_merge($riseMeUpOne);
+                }elseif(!empty($riseMeUpZero)){
+                    $serviceProviderData = array_merge($riseMeUpZero);
+                }
+
+            }
+            $skip = $skip + $take;
+
+            return View::make('search.searchResults')->with(array('serviceProviderData'=> $serviceProviderData,'skip'=>$skip,'take'=>$take));
+
+        }else{ /* If there is ajax request filter */
+            if(Input::get('isScroll')==1){
+                $input = Session::get('input');
+            }else{
+                $input = Input::all();
+                if(!isset($input['pubicHair'])){
+                    $input['pubicHair'] = NULL;
+                }
+                if(!isset($input['availability'])){
+                    $input['availability'] = NULL;
+                }
+
+            }
+
+            $distanceRange = explode('-',$input['distanceRange']);
+
+            $latitude = Session::get('latitude');
+            $longitude = Session::get('longitude');
+            /* To get atleast 4 records for lazy loading */
+            $skip = $input['skip'];
+            $take = $input['take'];
+            /* 0 For Both Languages */
+            if($input['languages']==0){
+                $languageId = array(1,2);
+            }else{
+                $languageId = array($input['languages']);
+            }
+
+            $currentDate=date('d-m-Y');
+            $dayName = strtolower(date("D",strtotime($currentDate)));
+            if($dayName=='mon'){
+                $day = 1;
+            }elseif($dayName=='tue'){
+                $day = 2;
+            }elseif($dayName=='wed'){
+                $day = 3;
+            }elseif($dayName=='thu'){
+                $day = 4;
+            }elseif($dayName=='fri'){
+                $day = 5;
+            }elseif($dayName=='sat'){
+                $day = 6;
+            }elseif($dayName=='sun'){
+                $day = 7;
+            }
+            $currentTime = date('H:m:s');
+            if($input['isScroll']==0){
+                /* Get Query Count For Total Records*/
+                if($input['availability']!=NULL && $input['pubicHair']!=NULL){
+                    if($input['gender']==0){
+                        $queryCount = DB::table('service_providers')
+                            ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
+                            ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
+                            ->join('service_provider_availabilities', 'service_providers.id', '=', 'service_provider_availabilities.service_provider_id')
+                            ->where('service_providers.hair_color','=',$input['hairColor'])
+                            ->where('service_providers.eye_color','=',$input['eyeColor'])
+                            ->where('service_providers.ethnicity','=',$input['ethnicity'])
+                            ->where('service_providers.pubic_hair','=',$input['pubicHair'])
+                            ->where('service_providers.hips','>=',$input['hips'])
+                            ->where('service_providers.bust','>=',$input['bust'])
+                            ->where('service_providers.cup_size','>=',$input['cup'])
+                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->whereIn('service_provider_languages.known_languages_id',$languageId)
+                            ->where('service_provider_availabilities.week_day','=',$day)
+                            ->where('service_provider_availabilities.from_time','<=',$currentTime)
+                            ->where('service_provider_availabilities.to_time','>=',$currentTime)
+                            ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_provider_availabilities.id AS availabilytId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
+                            ->count();
+                    }else{
+                        $queryCount = DB::table('service_providers')
+                            ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
+                            ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
+                            ->join('service_provider_availabilities', 'service_providers.id', '=', 'service_provider_availabilities.service_provider_id')
+                            ->where('system_users.gender','=',$input['gender'])
+                            ->where('service_providers.hair_color','=',$input['hairColor'])
+                            ->where('service_providers.eye_color','=',$input['eyeColor'])
+                            ->where('service_providers.ethnicity','=',$input['ethnicity'])
+                            ->where('service_providers.pubic_hair','=',$input['pubicHair'])
+                            ->where('service_providers.hips','>=',$input['hips'])
+                            ->where('service_providers.bust','>=',$input['bust'])
+                            ->where('service_providers.cup_size','>=',$input['cup'])
+                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->whereIn('service_provider_languages.known_languages_id',$languageId)
+                            ->where('service_provider_availabilities.week_day','=',$day)
+                            ->where('service_provider_availabilities.from_time','<=',$currentTime)
+                            ->where('service_provider_availabilities.to_time','>=',$currentTime)
+                            ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_provider_availabilities.id AS availabilytId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
+                            ->count();
+                    }
+                }elseif($input['availability']!=NULL){
+                    if($input['gender']==0){
+                        $queryCount = DB::table('service_providers')
+                            ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
+                            ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
+                            ->join('service_provider_availabilities', 'service_providers.id', '=', 'service_provider_availabilities.service_provider_id')
+                            ->where('service_providers.hair_color','=',$input['hairColor'])
+                            ->where('service_providers.eye_color','=',$input['eyeColor'])
+                            ->where('service_providers.ethnicity','=',$input['ethnicity'])
+                            ->where('service_providers.hips','>=',$input['hips'])
+                            ->where('service_providers.bust','>=',$input['bust'])
+                            ->where('service_providers.cup_size','>=',$input['cup'])
+                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->whereIn('service_provider_languages.known_languages_id',$languageId)
+                            ->where('service_provider_availabilities.week_day','=',$day)
+                            ->where('service_provider_availabilities.from_time','<=',$currentTime)
+                            ->where('service_provider_availabilities.to_time','>=',$currentTime)
+                            ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_provider_availabilities.id AS availabilytId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
+                            ->count();
+                    }else{
+                        $queryCount = DB::table('service_providers')
+                            ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
+                            ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
+                            ->join('service_provider_availabilities', 'service_providers.id', '=', 'service_provider_availabilities.service_provider_id')
+                            ->where('system_users.gender','=',$input['gender'])
+                            ->where('service_providers.hair_color','=',$input['hairColor'])
+                            ->where('service_providers.eye_color','=',$input['eyeColor'])
+                            ->where('service_providers.ethnicity','=',$input['ethnicity'])
+                            ->where('service_providers.hips','>=',$input['hips'])
+                            ->where('service_providers.bust','>=',$input['bust'])
+                            ->where('service_providers.cup_size','>=',$input['cup'])
+                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->whereIn('service_provider_languages.known_languages_id',$languageId)
+                            ->where('service_provider_availabilities.week_day','=',$day)
+                            ->where('service_provider_availabilities.from_time','<=',$currentTime)
+                            ->where('service_provider_availabilities.to_time','>=',$currentTime)
+                            ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_provider_availabilities.id AS availabilytId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
+                            ->count();
+                    }
+                }elseif($input['pubicHair']!=NULL){
+                    if($input['gender']==0){
+                        $queryCount = DB::table('service_providers')
+                            ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
+                            ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
+                            ->join('service_provider_availabilities', 'service_providers.id', '=', 'service_provider_availabilities.service_provider_id')
+                            ->where('service_providers.hair_color','=',$input['hairColor'])
+                            ->where('service_providers.eye_color','=',$input['eyeColor'])
+                            ->where('service_providers.ethnicity','=',$input['ethnicity'])
+                            ->where('service_providers.pubic_hair','=',$input['pubicHair'])
+                            ->where('service_providers.hips','>=',$input['hips'])
+                            ->where('service_providers.bust','>=',$input['bust'])
+                            ->where('service_providers.cup_size','>=',$input['cup'])
+                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->whereIn('service_provider_languages.known_languages_id',$languageId)
+                            ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
+                            ->count();
+                    }else{
+                        $queryCount = DB::table('service_providers')
+                            ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
+                            ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
+                            ->join('service_provider_availabilities', 'service_providers.id', '=', 'service_provider_availabilities.service_provider_id')
+                            ->where('system_users.gender','=',$input['gender'])
+                            ->where('service_providers.hair_color','=',$input['hairColor'])
+                            ->where('service_providers.eye_color','=',$input['eyeColor'])
+                            ->where('service_providers.ethnicity','=',$input['ethnicity'])
+                            ->where('service_providers.pubic_hair','=',$input['pubicHair'])
+                            ->where('service_providers.hips','>=',$input['hips'])
+                            ->where('service_providers.bust','>=',$input['bust'])
+                            ->where('service_providers.cup_size','>=',$input['cup'])
+                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->whereIn('service_provider_languages.known_languages_id',$languageId)
+                            ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
+                            ->count();
+                    }
+                }
+                $input['queryCount'] = $queryCount;
+            }
+            $queryCount = $input['queryCount'];
+            $queryRecord = 0;
+            do{
+                $queryRecord++;
+                $take = $take + 1;
+                if($input['availability']!=NULL && $input['pubicHair']!=NULL){
+                    if($input['gender']==0){
+                        $queryResult = DB::table('service_providers')
+                            ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
+                            ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
+                            ->join('service_provider_availabilities', 'service_providers.id', '=', 'service_provider_availabilities.service_provider_id')
+                            ->where('service_providers.hair_color','=',$input['hairColor'])
+                            ->where('service_providers.eye_color','=',$input['eyeColor'])
+                            ->where('service_providers.ethnicity','=',$input['ethnicity'])
+                            ->where('service_providers.pubic_hair','=',$input['pubicHair'])
+                            ->where('service_providers.hips','>=',$input['hips'])
+                            ->where('service_providers.bust','>=',$input['bust'])
+                            ->where('service_providers.cup_size','>=',$input['cup'])
+                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->whereIn('service_provider_languages.known_languages_id',$languageId)
+                            ->where('service_provider_availabilities.week_day','=',$day)
+                            ->where('service_provider_availabilities.from_time','<=',$currentTime)
+                            ->where('service_provider_availabilities.to_time','>=',$currentTime)
+                            ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_provider_availabilities.id AS availabilytId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
+                            ->skip($skip)->take($take)->get();
+                    }else{
+                        $queryResult = DB::table('service_providers')
+                            ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
+                            ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
+                            ->join('service_provider_availabilities', 'service_providers.id', '=', 'service_provider_availabilities.service_provider_id')
+                            ->where('system_users.gender','=',$input['gender'])
+                            ->where('service_providers.hair_color','=',$input['hairColor'])
+                            ->where('service_providers.eye_color','=',$input['eyeColor'])
+                            ->where('service_providers.ethnicity','=',$input['ethnicity'])
+                            ->where('service_providers.pubic_hair','=',$input['pubicHair'])
+                            ->where('service_providers.hips','>=',$input['hips'])
+                            ->where('service_providers.bust','>=',$input['bust'])
+                            ->where('service_providers.cup_size','>=',$input['cup'])
+                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->whereIn('service_provider_languages.known_languages_id',$languageId)
+                            ->where('service_provider_availabilities.week_day','=',$day)
+                            ->where('service_provider_availabilities.from_time','<=',$currentTime)
+                            ->where('service_provider_availabilities.to_time','>=',$currentTime)
+                            ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_provider_availabilities.id AS availabilytId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
+                            ->skip($skip)->take($take)->get();
+                    }
+                }elseif($input['availability']!=NULL){
+                    if($input['gender']==0){
+                        $queryResult = DB::table('service_providers')
+                            ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
+                            ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
+                            ->join('service_provider_availabilities', 'service_providers.id', '=', 'service_provider_availabilities.service_provider_id')
+                            ->where('service_providers.hair_color','=',$input['hairColor'])
+                            ->where('service_providers.eye_color','=',$input['eyeColor'])
+                            ->where('service_providers.ethnicity','=',$input['ethnicity'])
+                            ->where('service_providers.hips','>=',$input['hips'])
+                            ->where('service_providers.bust','>=',$input['bust'])
+                            ->where('service_providers.cup_size','>=',$input['cup'])
+                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->whereIn('service_provider_languages.known_languages_id',$languageId)
+                            ->where('service_provider_availabilities.week_day','=',$day)
+                            ->where('service_provider_availabilities.from_time','<=',$currentTime)
+                            ->where('service_provider_availabilities.to_time','>=',$currentTime)
+                            ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_provider_availabilities.id AS availabilytId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
+                            ->skip($skip)->take($take)->get();
+                    }else{
+                        $queryResult = DB::table('service_providers')
+                            ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
+                            ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
+                            ->join('service_provider_availabilities', 'service_providers.id', '=', 'service_provider_availabilities.service_provider_id')
+                            ->where('system_users.gender','=',$input['gender'])
+                            ->where('service_providers.hair_color','=',$input['hairColor'])
+                            ->where('service_providers.eye_color','=',$input['eyeColor'])
+                            ->where('service_providers.ethnicity','=',$input['ethnicity'])
+                            ->where('service_providers.hips','>=',$input['hips'])
+                            ->where('service_providers.bust','>=',$input['bust'])
+                            ->where('service_providers.cup_size','>=',$input['cup'])
+                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->whereIn('service_provider_languages.known_languages_id',$languageId)
+                            ->where('service_provider_availabilities.week_day','=',$day)
+                            ->where('service_provider_availabilities.from_time','<=',$currentTime)
+                            ->where('service_provider_availabilities.to_time','>=',$currentTime)
+                            ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_provider_availabilities.id AS availabilytId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
+                            ->skip($skip)->take($take)->get();
+                    }
+                }elseif($input['pubicHair']!=NULL){
+                    if($input['gender']==0){
+                        $queryResult = DB::table('service_providers')
+                            ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
+                            ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
+                            ->join('service_provider_availabilities', 'service_providers.id', '=', 'service_provider_availabilities.service_provider_id')
+                            ->where('service_providers.hair_color','=',$input['hairColor'])
+                            ->where('service_providers.eye_color','=',$input['eyeColor'])
+                            ->where('service_providers.ethnicity','=',$input['ethnicity'])
+                            ->where('service_providers.pubic_hair','=',$input['pubicHair'])
+                            ->where('service_providers.hips','>=',$input['hips'])
+                            ->where('service_providers.bust','>=',$input['bust'])
+                            ->where('service_providers.cup_size','>=',$input['cup'])
+                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->whereIn('service_provider_languages.known_languages_id',$languageId)
+                            ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
+                            ->skip($skip)->take($take)->get();
+                    }else{
+                        $queryResult = DB::table('service_providers')
+                            ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
+                            ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
+                            ->join('service_provider_availabilities', 'service_providers.id', '=', 'service_provider_availabilities.service_provider_id')
+                            ->where('system_users.gender','=',$input['gender'])
+                            ->where('service_providers.hair_color','=',$input['hairColor'])
+                            ->where('service_providers.eye_color','=',$input['eyeColor'])
+                            ->where('service_providers.ethnicity','=',$input['ethnicity'])
+                            ->where('service_providers.pubic_hair','=',$input['pubicHair'])
+                            ->where('service_providers.hips','>=',$input['hips'])
+                            ->where('service_providers.bust','>=',$input['bust'])
+                            ->where('service_providers.cup_size','>=',$input['cup'])
+                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->whereIn('service_provider_languages.known_languages_id',$languageId)
+                            ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
+                            ->skip($skip)->take($take)->get();
+                    }
+                }
+
+                /* Apply Distance Range Filter */
+                $i = 0;
+                $totalServiceProviderFound = NULL;
+                if(!empty($queryResult) || $queryResult!=NULL){
+                    foreach($queryResult as $serviceProvider){
+                        $distance = round($this->distance($serviceProvider->latitude,$serviceProvider->longitude,$latitude,$longitude,'K'));
+                        if($distance>=$distanceRange[0] && $distance <=$distanceRange[1]){
+                            $totalServiceProviderFound[$i]['serviceProviderId'] = $serviceProvider->spId;
+                            $totalServiceProviderFound[$i]['systemUserId'] = $serviceProvider->systemUserId;
+                            $totalServiceProviderFound[$i]['riseUp'] = $serviceProvider->riseme_up;
+                            $totalServiceProviderFound[$i]['profileComplete'] = $serviceProvider->profile_completeness;
+                            $totalServiceProviderFound[$i]['visitFrequency'] = $serviceProvider->visit_frequency;
+                            $i++;
+                        }
+                    }
+                }else{
+                    break;
+                }
+            }while(count($totalServiceProviderFound)<4 && $queryRecord<=$queryCount);
+            $skip = $skip + $take;
+            $input['skip'] = "$skip";
+            Session::put('input', $input);
+
+
+            $serviceProviderData = NULL;
+            if($totalServiceProviderFound!=NULL){
+                $i=0;
+                $serviceProviderData = NULL;
+                foreach($totalServiceProviderFound as $serviceProvider){
+                    $serviceProviderData[$i]['system_user'] = User::find($serviceProvider['systemUserId']);
+                    $serviceProviderData[$i]['service_provider'] = ServiceProvider::find($serviceProvider['serviceProviderId']);
+                    $serviceProviderData[$i]['profile_plus_visit'] = $serviceProvider['profileComplete'] + $serviceProvider['visitFrequency'];
+                    $serviceProviderData[$i]['rise_me_up'] = $serviceProvider['riseUp'];
+                    $i++;
+                }
+                $riseMeUpZero = array();
+                $riseMeUpOne = array();
+                $i =0;
+                $j = 0;
+                foreach($serviceProviderData as $serviceProvider){
+                    if($serviceProvider['rise_me_up']==0){
+                        array_push($riseMeUpZero,$serviceProvider);
+                        $i++;
+                    }
+                    else{
+                        array_push($riseMeUpOne,$serviceProvider);
+                        $j++;
+                    }
+                }
+
+                uasort($riseMeUpOne, array("SearchController","sortByProfilePlusVisit"));
+                uasort($riseMeUpZero, array("SearchController","sortByProfilePlusVisit"));
+
+                $serviceProviderData = array();
+                if(!empty($riseMeUpOne) && !empty($riseMeUpZero)){
+                    $serviceProviderData = array_merge($riseMeUpOne,$riseMeUpZero);
+                }elseif(!empty($riseMeUpOne)){
+                    $serviceProviderData = array_merge($riseMeUpOne);
+                }elseif(!empty($riseMeUpZero)){
+                    $serviceProviderData = array_merge($riseMeUpZero);
+                }
+
+            }
+            return View::make('search.searchResults')->with(array('serviceProviderData'=> $serviceProviderData,'skip'=>$skip,'take'=>$take));
+        }
     }
 }

@@ -25,8 +25,8 @@
 
                     <div class="col-md-3">
                         <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
-                            <img src="{{$profileImage}}" class="img-responsive" width="250px">
-                            <span style="font-size:24px"> {{ $serviceProviderDetails[$i]['service_provider']['id'] }} {{ $serviceProviderDetails[$i]['system_user']['user_first_name'] }}  {{ $serviceProviderDetails[$i]['system_user']['user_last_name'] }}</span> <br> <span style="font-size:18px">Near your area</span></p>
+                            <img src="{{$profileImage}}" class="img-responsive" width="250px" style="display: block;max-width: 204px;height:180px;">
+                            <span style="font-size:24px">{{ $serviceProviderDetails[$i]['system_user']['user_first_name'] }}  {{ $serviceProviderDetails[$i]['system_user']['user_last_name'] }}</span> <br> <span style="font-size:18px">Near your area</span></p>
                     </div>
 
 

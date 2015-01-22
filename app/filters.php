@@ -116,3 +116,13 @@ Route::filter('isServiceProvider', function()
         return Redirect::to('/');
     }
 });
+
+/* Check if user is Guest i.e. User is not logged in */
+Route::filter('isGuest', function()
+{
+    if (!Auth::guest())
+    {
+        Session::flash('unauth-msg','Oops.. You are not authorized to access this page');
+        return Redirect::to('/');
+    }
+});
