@@ -56,6 +56,10 @@ Route::post('save-customer-data', array('before' => 'csrf','uses' => 'Registrati
 Route::get('search/login=true', array('before' => 'auth|isCustomer','uses' => 'SearchController@index'));
 Route::get('search/results/login=true', array('before' => 'auth|isCustomer','uses' => 'SearchController@showDataAfterLogin'));
 Route::get('advance/search/login=true',array('before' => 'auth|isCustomer','uses' => 'SearchController@showDataAfterLogin'));
+/* Guest Search (If User IS NOT Logged In) */
+Route::post('search/login=guest',array('before' => 'isGuest','uses' => 'SearchController@guestSearchView'));
+Route::get('search/results/login=guest', array('before' => 'isGuest','uses' => 'SearchController@showDataToGuest'));
+Route::get('advance/search/login=guest',array('before' => 'isGuest','uses' => 'SearchController@showDataToGuest'));
 
 /* Messages Between Users */
 Route::get('messages',array('before' => 'auth','uses' => 'MessageController@index'));

@@ -96,6 +96,8 @@
             "value_changed_callback": function(cause, leftValue, rightValue) {
                 $(this).parent().find('.leftLabel').text(leftValue);
                 $(this).parent().find('.rightLabel').text(rightValue);
+                $('#minimumAge').val(leftValue);
+                $('#maximumAge').val(rightValue);
             }
         });
     </script>
