@@ -80,7 +80,7 @@ $error = null;
                     {{ Form::label('password', 'Password', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3" style="overflow: hidden;">
                         {{ Form::password('password',array('class'=>'form-control','style'=>'padding-left:5px','id'=>'password','required'=>'required')) }}
-                        <p style="font-size:12px;"><a href="#" style="text-decoration:none; color:#000">Forgot Password</a></p>
+                        <p style="font-size:12px;"><a href="{{ URL::to('/forgot-passowrd') }}" style="text-decoration:none; color:#000">Forgot Password</a></p>
 
                         <!--<input type="image" src="img/Captcha.png" class="img-responsive">
                          <p style="font-size:16px; font-weight:bold">Type the words</p>
