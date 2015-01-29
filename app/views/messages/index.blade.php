@@ -17,12 +17,24 @@
 
 
 <div class="container-fluid" style="background-color:#f74d4d;">
-    <div class="col-sm-3 col-md-10 col-lg-12">
-        <div class="container">
-            <div class="row" style="font-family:Roboto Th; color:#fff; padding: 20px;">
-                        <span style="color:#fff;  font-size:36px">MESSAGE 
-                			<div id="inbox" style="font-size:16px;"><b>INBOX</b></div></span>
-
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="row erawa">
+                <span style="color:#fff;  font-size:43px">INBOX</span>
+                <div class="mini_nav pull-right enav">
+                    @if(Auth::user()->user_role_id==1)
+                        <a href="{{ URL::to('/user/editprofile') }}" style="padding-right:20px;">MY PROFILE</a>
+                    @else
+                        <a href="{{ URL::to('/service-provider/editprofile') }}" style="padding-right:20px;">MY PROFILE</a>
+                    @endif
+                    <a href="{{ URL::to('/messages') }}" style="padding-right:20px;"><strong>INBOX</strong></a>
+                    <a href="{{ URL::to('/logout') }}" style=""><strong>SIGN OUT</strong></a>
+                    <br>
+                    <br>
+                    <span style="padding-right:20px; color:#fff">Select Language</span>
+                    <a href="#" class="lan_nav" style="padding-right:20px; color:#fff; text-decoration:underline;">ENGLISH</a>
+                    <a href="#" class="lan_nav" style="">SPANISH</a>
+                </div>
             </div>
         </div>
     </div>
