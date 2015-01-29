@@ -77,3 +77,15 @@ Route::post('testing-data/insert', array('uses' => 'DBTestingController@getFormD
 Route::get('update/age', array('uses' => 'CronController@updateUserAge'));
 /* Profile Completeness (In future it should be run as cron or Update value on each profile update) */
 Route::get('profile-complete', array('uses' => 'ServiceProviderController@updateProfileCompleteness'));
+
+/* Profile Edit */
+/* Service Provider */
+Route::get('service-provider/editprofile',array('before' => 'auth|isServiceProvider','uses' => 'ServiceProviderController@profileEditView'));
+Route::post('service-provider/saveProfileData',array('before' => 'auth|isServiceProvider','uses' => 'ServiceProviderController@saveProfileData'));
+Route::post('service-provider/savePersonalData',array('before' => 'auth|isServiceProvider','uses' => 'ServiceProviderController@savePersonalData'));
+Route::post('service-provider/savePassword',array('before' => 'auth|isServiceProvider','uses' => 'ServiceProviderController@savePassword'));
+
+/* Customer */
+Route::get('user/editprofile',array('before' => 'auth|isCustomer','uses' => 'UserController@profileEditView'));
+Route::post('user/savePersonalData',array('before' => 'auth|isCustomer','uses' => 'UserController@savePersonalData'));
+Route::post('user/savePassword',array('before' => 'auth|isCustomer','uses' => 'UserController@savePassword'));
