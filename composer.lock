@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9b55aefefef7e578fd76501870a5eedc",
+    "hash": "3469259b312c3ed2f14eae5941ab38e8",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -510,6 +510,54 @@
                 "debug"
             ],
             "time": "2014-11-23 12:05:01"
+        },
+        {
+            "name": "mcamara/laravel-localization",
+            "version": "0.15.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcamara/laravel-localization.git",
+                "reference": "6dfcf17fe48ceb05c76b542cde648d8b6afe9e48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcamara/laravel-localization/zipball/6dfcf17fe48ceb05c76b542cde648d8b6afe9e48",
+                "reference": "6dfcf17fe48ceb05c76b542cde648d8b6afe9e48",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "4.2.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "2.2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [],
+                "psr-0": {
+                    "Mcamara\\LaravelLocalization": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Cámara",
+                    "email": "mcamara88@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easy localization for Laravel 4",
+            "homepage": "https://github.com/mcamara/laravel-localization",
+            "keywords": [
+                "laravel",
+                "localization",
+                "php"
+            ],
+            "time": "2014-11-24 09:54:46"
         },
         {
             "name": "monolog/monolog",
