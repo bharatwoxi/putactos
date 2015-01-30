@@ -21,20 +21,7 @@
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="row erawa">
                 <span style="color:#fff;  font-size:43px">INBOX</span>
-                <div class="mini_nav pull-right enav">
-                    @if(Auth::user()->user_role_id==1)
-                        <a href="{{ URL::to('/user/editprofile') }}" style="padding-right:20px;">MY PROFILE</a>
-                    @else
-                        <a href="{{ URL::to('/service-provider/editprofile') }}" style="padding-right:20px;">MY PROFILE</a>
-                    @endif
-                    <a href="{{ URL::to('/messages') }}" style="padding-right:20px;"><strong>INBOX</strong></a>
-                    <a href="{{ URL::to('/logout') }}" style=""><strong>SIGN OUT</strong></a>
-                    <br>
-                    <br>
-                    <span style="padding-right:20px; color:#fff">Select Language</span>
-                    <a href="#" class="lan_nav" style="padding-right:20px; color:#fff; text-decoration:underline;">ENGLISH</a>
-                    <a href="#" class="lan_nav" style="">SPANISH</a>
-                </div>
+                @include('header.userMenu')
             </div>
         </div>
     </div>

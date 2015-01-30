@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
         "barryvdh/laravel-debugbar": "1.*",
-        "gabrielbull/browser": "dev-master"
+        "gabrielbull/browser": "dev-master",
+        "mcamara/laravel-localization": " 0.15.*"
 	},
 	"autoload": {
 		"classmap": [

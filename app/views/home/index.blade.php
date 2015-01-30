@@ -282,7 +282,7 @@ background-repeat: repeat;
 
 
                 <p style="font-weight: 600;">
-                    Putactos is free, and there are<br> no additional charges when<br> you use it.
+                    Putactos is {{ trans('home.free') }}, and there are<br> no additional charges when<br> you use it.
                     It’s like swiping your<br> card - only faster, safer and<br> more convenient.
                 </p>
             </div>

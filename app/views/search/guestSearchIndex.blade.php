@@ -15,8 +15,8 @@
             <div>
                 <a href="{{ URL::to('/') }}" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('public/assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
                 <div class="pull-right">
-                    <p  style="padding-top: 15px;">Not a Member?
-                        <button type="button" class="btn btn-default" style="background-color:#a92124; color:#ffffff">Join Putactos</button>
+                    <p  style="padding-top: 15px;">{{ trans('peopleNearBy.NotaMember?') }}
+                        <button type="button" class="btn btn-default" style="background-color:#a92124; color:#ffffff">{{ trans('peopleNearBy.JoinPutactos') }}</button>
                     </p>
                 </div>
             </div>
@@ -29,9 +29,10 @@
     <div class="container">
         <div class="col-md-12" style="font-family:Calibri">
             <div class="mini_nav pull-right" style="color:#ffff;padding: 10px 0px; height: 110px;">
-                <span style="padding-right:20px; color:#fff">Select Language</span>
-                <a href="#" class="lan_nav" style="padding-right:20px; color:#fff;">ENGLISH</a>
-                <a href="#" class="lan_nav" style="">SPANISH</a>
+                <span style="padding-right:20px; color:#fff">{{ trans('peopleNearBy.SelectLanguage') }}</span>
+                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                <a class="lan_nav" style="padding-right:20px; color:#fff;" rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">{{{ $properties['native'] }}}</a>
+                @endforeach
             </div>
         </div> <!--End of col-md-12-->
 
@@ -47,8 +48,8 @@
 
             <div class="col-md-5">
 
-                <p style="padding:20px 15px 0;font-size: 13px; font-family:Calibri Light;">Your location is set automatically to <strong><span id="selectedLocation"> </span></strong><br>
-                    If you think we have got is wrong please select
+                <p style="padding:20px 15px 0;font-size: 13px; font-family:Calibri Light;">{{ trans('peopleNearBy.Yourlocationissetautomaticallyto') }} <strong><span id="selectedLocation"> </span></strong><br>
+                    {{ trans('peopleNearBy.Ifyouthinkwehavegotiswrongpleaseselect') }}
                 </p>
                 <div class="container">
                     {{ Form::open(array('class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'setNewLocation')) }}
@@ -75,7 +76,7 @@
         <div class="panel-heading" style="color: #333;padding: 5px 0px;outline: none;" role="tab" id="headingTwo">
             <h4 class="panel-title">
                 <a class="collapsed" data-toggle="collapse" style="color: #fff;" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    <h3 style="margin-top: -31px; color: white; font-family:Calibri;">ADVANCED SEARCH</h3>
+                    <h3 style="margin-top: -31px; color: white; font-family:Calibri;">{{ trans('peopleNearBy.ADVANCEDSEARCH') }}</h3>
                 </a>
             </h4>
         </div>
@@ -87,7 +88,7 @@
                             <div class="col-md-5">
                                 {{ Form::open(array('url' => 'advance/search/login=true','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'advanceSearch')) }}
                                     <div class="form-group">
-                                        <label class="col-sm-5" style="font-family: calibri; font-size: 20px;">Distance Range</label>
+                                        <label class="col-sm-5" style="font-family: calibri; font-size: 20px;">{{ trans('peopleNearBy.DistanceRange') }}</label>
                                         <div class="col-sm-6 selectContainer">
                                             <select class="form-control" name="distanceRange" style="font-family:Calibri Light; font-weight:bold;">
                                                 <option value="0-5">0-5 Km</option>
@@ -104,7 +105,7 @@
                                 <div class="clearfix"></div>
 
                                     <div class="form-group">
-                                        <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">Gender</label>
+                                        <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">{{ trans('peopleNearBy.Gender') }}</label>
                                         <div class="col-sm-6">
                                             <div class="btn-group" data-toggle="buttons">
                                                 <label class="btn btn-default"  style="font-family:Calibri Light; font-weight:bold;">
@@ -124,7 +125,7 @@
 
 
                                     <div class="form-group">
-                                        <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">Hair Color</label>
+                                        <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">{{ trans('peopleNearBy.HairColor') }}</label>
                                         <div class="col-sm-6 selectContainer">
                                             <select class="form-control" name="hairColor" style="font-family:Calibri Light; font-weight:bold;">
                                                <?php $hairColorCount = count($hairColor); ?>
@@ -152,7 +153,7 @@
                                 <div class="clearfix"></div>
 
                                     <div class="form-group">
-                                        <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">Ethnicity</label>
+                                        <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">{{ trans('peopleNearBy.Ethnicity') }}</label>
                                         <div class="col-sm-6 selectContainer">
                                             <select class="form-control" name="ethnicity" style="font-family:Calibri Light; font-weight:bold;">
                                                 <?php $ethnicityColorCount = count($ethnicity); ?>
@@ -166,7 +167,7 @@
                                 <div class="clearfix"></div>
 
                                     <div class="form-group">
-                                        <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">Language Spoken</label>
+                                        <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">{{ trans('peopleNearBy.LanguageSpoken') }}</label>
                                         <div class="col-sm-6 selectContainer">
                                             <select class="form-control" name="languages" style="font-family:Calibri Light; font-weight:bold;">
                                                 @foreach($knownLanguages as $knownLanguage)
@@ -179,40 +180,40 @@
 
                                 <div class="clearfix"></div>
 
-                                    <div class="form-group">
-                                        <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">Availability</label>
-                                        <div class="col-sm-7">
-                                            <div class="btn-group" data-toggle="buttons">
-                                                <label class="btn btn-default fonza">
-                                                    <input type="checkbox" name="availability" value="1" / > Available Now
-                                                </label>
-                                                <span style="font-family:Calibri; font-size:10.02px; color:#f74d4d">&nbsp;(Available at this time)</span>
-                                            </div>
+                                <div class="form-group">
+                                    <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">{{ trans('peopleNearBy.Availability') }}</label>
+                                    <div class="col-sm-7">
+                                        <div class="btn-group" data-toggle="buttons">
+                                            <label class="btn btn-default fonza">
+                                                <input type="checkbox" name="availability" value="1" / > {{ trans('peopleNearBy.AvailableNow') }}
+                                            </label>
+                                            <span style="font-family:Calibri; font-size:10.02px; color:#f74d4d">&nbsp;({{ trans('peopleNearBy.Availableatthistime') }})</span>
                                         </div>
                                     </div>
+                                </div>
 
                             </div><!-- /.col-lg-6 -->
 
                             <div class="col-xs-12 col-md-3 center-block" style="background-color:#f74d4d">
-                                <h4 style="color:#FFF; font-family:Calibri">PUBIC HAIR</h4>
+                                <h4 style="color:#FFF; font-family:Calibri">{{ trans('peopleNearBy.PUBICHAIR') }}</h4>
 
                                 <div class="btn-group" data-toggle="buttons" style="padding-left: 60px;">
                                     <label class="btn btn-default btn-lg fonza">
-                                        <input type="radio" name="pubicHair" value="1" /> Yes
+                                        <input type="radio" name="pubicHair" value="1" /> {{ trans('peopleNearBy.Yes') }}
                                     </label>
                                     <label class="btn btn-default btn-lg fonza active">
-                                        <input type="radio" name="pubicHair" value="0" checked/ > No
+                                        <input type="radio" name="pubicHair" value="0" checked/ > {{ trans('peopleNearBy.No') }}
                                     </label>
                                 </div>
 
                                 <div class=" col-xs-offset-1">
-                                    <h6 style="color:#FFF">HIPS</h6>
+                                    <h6 style="color:#FFF">{{ trans('peopleNearBy.HIPS') }}</h6>
                                     <input class="slider" name="hips" id="hips" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">
-                                    <h6 style="color:#FFF">BUST</h6>
+                                    <h6 style="color:#FFF">{{ trans('peopleNearBy.BUST') }}</h6>
                                     <input class="slider" name="bust" id="bust" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">
-                                    <h6 style="color:#FFF">WAIST</h6>
+                                    <h6 style="color:#FFF">{{ trans('peopleNearBy.WAIST') }}</h6>
                                     <input class="slider" name="waist" id="waist" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">
-                                    <h6 style="color:#FFF">CUP SIZE</h6>
+                                    <h6 style="color:#FFF">{{ trans('peopleNearBy.CUPSIZE') }}</h6>
                                     <input class="slider" name="cup" id="cup" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">
                                 </div>
                             </div>
