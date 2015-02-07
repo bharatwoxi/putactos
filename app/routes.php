@@ -196,3 +196,13 @@ Route::group(
         Route::post('password/reset/{token}', 'RemindersController@postReset');
         Route: Route::controller('password', 'RemindersController');
     });
+
+/* Admin Routes */
+Route::get('admin-master',array('before'=>'isGuestOrAdmin','uses'=>'AdminController@showLogin'));
+Route::post('admin/check-login',array('before'=>'isGuest','uses'=>'AdminController@checkLogin'));
+Route::get('admin/home',array('before'=>'auth|isAdmin','uses'=>'AdminController@homeView'));
+Route::get('admin/user-messages',array('before'=>'auth|isAdmin','uses'=>'AdminController@getUserMessages'));
+Route::get('admin/site-visitors/daily',array('before'=>'auth|isAdmin','uses'=>'AdminController@userLoginCountDaily'));
+Route::get('admin/site-visitors/hourly',array('before'=>'auth|isAdmin','uses'=>'AdminController@userLoginCountHourly'));
+Route::get('admin/user-stats-last10',array('before'=>'auth|isAdmin','uses'=>'AdminController@lastTenNewUsers'));
+Route::get('admin/user-count-detail',array('before'=>'auth|isAdmin','uses'=>'AdminController@userCount'));

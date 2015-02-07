@@ -126,3 +126,30 @@ Route::filter('isGuest', function()
         return Redirect::to('/');
     }
 });
+
+//Check is Admin Accessing Page Or Not
+Route::filter('isAdmin', function()
+{
+    $user = Auth::user()->id;
+    $roleId = User::find($user);
+    if($roleId->user_role_id!=3){
+        Session::flash('unauth-msg','Oops.. You are not authorized to access this page');
+        return Redirect::to('/');
+    }
+});
+Route::filter('isGuestOrAdmin', function()
+{
+    if(Auth::check()){
+        if(Auth::user()->user_role_id==3){
+            return Redirect::to('admin/home');
+        }else{
+            Session::flash('unauth-msg','Oops.. You are not authorized to access this page');
+            return Redirect::to('/');
+        }
+    }
+    elseif (!Auth::guest())
+    {
+        Session::flash('unauth-msg','Oops.. You are not authorized to access this page');
+        return Redirect::to('/');
+    }
+});
