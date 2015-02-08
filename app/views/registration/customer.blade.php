@@ -148,7 +148,7 @@
                     </div>
                 </div>
             <div style="margin-top: 30px; margin-bottom: 400px;">
-                {{ Form::submit('Submit',array('name'=>'submit','id'=>'submit','class'=>'btn btn-small btn-danger btn-inverse','style'=>'width: 100px','disabled'=>'disabled'))}}
+                {{ Form::submit('Submit',array('name'=>'submit','id'=>'submit','class'=>'btn btn-small btn-danger btn-inverse','style'=>'width: 100px'))}}
                 {{ Form::reset('Reset',array('id'=>'reset','class'=>'btn btn-small btn-danger btn-inverse','style'=>'width: 85px'))}}
             </div>
             {{ Form::close() }}

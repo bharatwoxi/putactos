@@ -140,14 +140,12 @@
                             {
                                 //$('#submit').attr('disabled','disabled');
                                 $("#validation-errors").show();
-                                $("#submit").attr("disabled", true);
                                 $("#display-errors").append('<li class="error"><strong>'+ value +'</strong></li>');
                             }
                         });
                     }
                     else{
                         $("#validation-errors").hide();
-                        $('#submit').removeAttr('disabled');
                     }
 
 

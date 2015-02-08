@@ -139,7 +139,7 @@ class MessageController extends BaseController {
             $userMessage[$i]['sent_time'] = $message['sent_time'];
             $i++;
         }
-        return View::make('messages.detailedMessages')->with(array('userMessage'=>$userMessage,'userFullName'=>$userFullName,'isScroll'=>Input::get('isScroll'),'sendMessageUserId'=>$sendMessageUserId));
+        return View::make('messages.detailedMessages')->with(array('userMessage'=>$userMessage,'userFullName'=>$userFullName,'isScroll'=>Input::get('isScroll'),'sendMessageUserId'=>$sendMessageUserId,'showMessageForUser'=>$showMessageForUser));
     }
     /*
     *function Name: insertNewMessage
