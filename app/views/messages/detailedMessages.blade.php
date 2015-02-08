@@ -2,7 +2,7 @@
     <?php sort($userMessage); $i=1;?>
     @if($isScroll==0)
         <div id="msg_name">
-            <a href="{{ URL::to($showMessageForUser->username) }}">{{$userFullName}}</a>
+            <a href="{{ URL::to('profile/'.$showMessageForUser->username) }}">{{$userFullName}}</a>
         </div>
         <div id="msg_desc">
         @foreach($userMessage as $message)

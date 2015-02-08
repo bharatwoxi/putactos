@@ -1,6 +1,6 @@
 <div class="mini_nav pull-right" style="color:#ffff;padding: 10px 0px; height: 110px;">
     <?php $username = Auth::user()->username; ?>
-    <a href="{{ URL::to($username) }}" style="padding-right:20px;">{{ trans('peopleNearBy.MYPROFILE') }}</a>
+    <a href="{{ URL::to('profile/'.$username) }}" style="padding-right:20px;">{{ trans('peopleNearBy.MYPROFILE') }}</a>
     @if(Auth::user()->user_role_id==1)
     <a href="{{ URL::to('/user/editprofile') }}" style="padding-right:20px;">{{ trans('peopleNearBy.EDITPROFILE') }}</a>
     @else

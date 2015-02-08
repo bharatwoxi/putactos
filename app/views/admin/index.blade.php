@@ -3339,7 +3339,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN FOOTER -->
 <div class="page-footer">
 	<div class="page-footer-inner">
-		 2014 &copy; Metronic by keenthemes.
+        2015 &copy; Putactos - Admin.
 	</div>
 	<div class="scroll-to-top">
 		<i class="icon-arrow-up"></i>

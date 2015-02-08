@@ -98,6 +98,11 @@ Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
     Route::get('password/reset/{token}', 'RemindersController@getReset');
     Route::post('password/reset/{token}', 'RemindersController@postReset');
     Route: Route::controller('password', 'RemindersController');
+    /* View Profile */
+    Route::get('profile/{username}', array('before' => 'auth','uses' => 'CommonController@viewProfile'));
+    Route::post('save/feedback', array('before' => 'auth|isCustomer','uses' => 'CommonController@saveFeedback'));
+    Route::post('sp/risemeup', array('before' => 'auth|isServiceProvider','uses' => 'CommonController@riseMeUp'));
+    Route::get('more/feedbacks', array('before' => 'auth','uses' => 'CommonController@getMoreFeedbacks'));
 });
 
 /* Localization Translated Routes*/
@@ -196,7 +201,7 @@ Route::group(
         Route::post('password/reset/{token}', 'RemindersController@postReset');
         Route: Route::controller('password', 'RemindersController');
         /* View Profile */
-        Route::get('{username}', array('before' => 'auth','uses' => 'CommonController@viewProfile'));
+        Route::get('profile/{username}', array('before' => 'auth','uses' => 'CommonController@viewProfile'));
         Route::post('save/feedback', array('before' => 'auth|isCustomer','uses' => 'CommonController@saveFeedback'));
         Route::post('sp/risemeup', array('before' => 'auth|isServiceProvider','uses' => 'CommonController@riseMeUp'));
         Route::get('more/feedbacks', array('before' => 'auth','uses' => 'CommonController@getMoreFeedbacks'));
