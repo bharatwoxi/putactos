@@ -3,6 +3,7 @@ return array(
     'PEOPLENEARBY'  => 'GENTE CERCA',
     'ADVANCEDSEARCH'    => 'BUSQUEDA AVANZADA',
     'MYPROFILE' => 'MI PERFIL',
+    'EDITPROFILE' => 'EDITAR PERFIL',
     'INBOX' =>  'MENSAJES',
     'SIGNOUT'   => 'SALIR',
     'SelectLanguage' => 'Selección de Idioma',

@@ -3,6 +3,7 @@ return array(
     'PEOPLENEARBY'  => 'PEOPLE NEARBY',
     'ADVANCEDSEARCH'    => 'ADVANCED SEARCH',
     'MYPROFILE' => 'MY PROFILE',
+    'EDITPROFILE' => 'EDIT PROFILE',
     'INBOX' =>  'INBOX',
     'SIGNOUT'   => 'SIGN OUT',
     'SelectLanguage' => 'Select Language',
