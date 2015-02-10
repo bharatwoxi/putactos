@@ -85,7 +85,8 @@ Route::filter('csrf', function()
 {
 	if (Session::token() != Input::get('_token'))
 	{
-		throw new Illuminate\Session\TokenMismatchException;
+		//throw new Illuminate\Session\TokenMismatchException;
+        return Redirect::to('/')->with('message', 'Your session has expired. Please try again.');
 	}
 });
 

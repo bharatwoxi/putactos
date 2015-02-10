@@ -107,7 +107,7 @@
             <div style="margin-top: 30px; margin-bottom: 400px;">
                 <!--<input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
                 <input type="image" src="{{URL::asset('public/assets/registration/img/save-2.png')}}" style="width: 100px; margin-left: 20px;">-->
-                {{ Form::submit('Submit',array('name'=>'submit','id'=>'submit','class'=>'btn btn-small btn-danger btn-inverse','style'=>'width: 100px','disabled'=>'disabled'))}}
+                {{ Form::submit('Submit',array('name'=>'submit','id'=>'submit','class'=>'btn btn-small btn-danger btn-inverse','style'=>'width: 100px'))}}
                 {{ Form::reset('Reset',array('id'=>'reset','class'=>'btn btn-small btn-danger btn-inverse','style'=>'width: 85px'))}}
             </div>
 

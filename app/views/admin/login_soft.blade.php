@@ -50,7 +50,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN LOGO -->
 <div class="logo">
 	<a href="index.html">
-	<img src="{{URL::asset('public/assets/admin/admin/layout/img/logo-big.png')}}" alt=""/>
+	<img src="{{URL::asset('public/assets/registration/img/Puktatos 3 b.png')}}" alt=""/>
 	</a>
 </div>
 <!-- END LOGO -->

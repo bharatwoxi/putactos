@@ -34,6 +34,14 @@ $error = null;
                     </a>
                     <button type="button" class="btn btn-primary" style="background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModal1"><strong>Login Now</strong></button>
                 </p>
+                @else
+                <p style="padding-top:15px;">
+                    @if(Auth::user()->user_role_id==1)
+                    <a href="{{ URL::to('/user/editprofile') }}" style="text-decoration:none;padding-right:20px;color:#AE2729">Hello, <span style="font-weight:900">{{ Auth::user()->username}}</span></a>
+                    @else
+                    <a href="{{ URL::to('/service-provider/editprofile') }}" style="text-decoration:none;padding-right:20px;color:#AE2729">Hello, <span style="font-weight:900">{{ Auth::user()->username}}</span></a>
+                    @endif
+                </p>
                 @endif
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">

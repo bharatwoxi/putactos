@@ -140,8 +140,8 @@
                                 </tr>
                             </table>
                         </div>-->
+                        @if($userData['feedbackData']!=NULL || !empty($userData['feedbackData']))
                         <div id="customer_feedback" class="col-sm-12">
-                            @if($userData['feedbackData']!=NULL || !empty($userData['feedbackData']))
                             @foreach($userData['feedbackData'] as $feedback)
                             <div id="feedback_customer" class="col-sm-12">
                                 <h3>Customer Feedback</h3>
@@ -161,11 +161,16 @@
                                 </div>
                             </div>
                             @endforeach
-                            @else
-                                No Feedbacks Found!!!
-                            @endif
                             <span id="feedback_loader" style="display:none;"><img style="display:block;margin: auto auto;" src="{{URL::asset('public/assets/registration/img/message_ajax_loader.gif')}}"></span>
                         </div>
+                        @else
+                        <div id="customer_feedback" class="col-sm-12">
+                            <div class="col-sm-12">
+                                <h3>Customer Feedback</h3>
+                                No Feedbacks Received
+                            </div>
+                        </div>
+                        @endif
                         @if(Auth::user()->user_role_id!=2)
                         <div id="feedback_customer_txt" class="col-sm-12">
                             {{ Form::open(array('url' => 'save/feedback','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveFeedback')) }}
@@ -177,11 +182,11 @@
                             </div>
                             <div>
                                 <input type="hidden" value="0" id="star_rating_original" name="heart_rating" />
-                                <input id="input-2b" class="original_star" type="number" class="rating form-control hide original_star" min="0" max="5" step="0.5" data-size="md" data-symbol="" data-default-caption="{rating} hearts" data-star-captions="{}">
+                                <input id="input-2b" class="original_star" type="number" class="rating form-control hide original_star" min="0" max="5" step="0.5" data-size="xs" data-symbol="" data-default-caption="{rating} hearts" data-star-captions="{}">
                             </div>
                             <div id="feed_rating" class="col-md-12 col-xs-8">
                                 <a href="#">
-                                    <div id="submit_feedback">SUBMIT FEEDBACK</div>
+                                    <div id="submit_feedback" style="width:175px;height:32px;font-size:18px;">SUBMIT FEEDBACK</div>
                                 </a>
                             </div>
                             {{ Form::close() }}

@@ -46,14 +46,14 @@ Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
 
     /*Confirm User When Click On Email */
     Route::get('user/confirm/{confirmation}', 'UserController@confirmUser');
-    Route::post('authenticate', array('before' => 'csrf','uses' => 'UserController@checkLogin'));
+    Route::post('authenticate', array('uses' => 'UserController@checkLogin'));
     Route::get('logout', array('uses' => 'UserController@doLogout'));
 
     /* Check UserName While Registration */
     Route::post('check-username', array('uses' => 'RegistrationController@checkUserName'));
     /* Save Service Provider Data */
-    Route::post('save-sp-data', array('before' => 'csrf','uses' => 'RegistrationController@saveSpData'));
-    Route::post('save-customer-data', array('before' => 'csrf','uses' => 'RegistrationController@saveCustomerData'));
+    Route::post('save-sp-data', array('uses' => 'RegistrationController@saveSpData'));
+    Route::post('save-customer-data', array('uses' => 'RegistrationController@saveCustomerData'));
 
     /* Search */
     Route::get('search/login=true', array('before' => 'auth|isCustomer','uses' => 'SearchController@index'));
@@ -148,14 +148,14 @@ Route::group(
 
         /*Confirm User When Click On Email */
         Route::get('user/confirm/{confirmation}', 'UserController@confirmUser');
-        Route::post('authenticate', array('before' => 'csrf','uses' => 'UserController@checkLogin'));
+        Route::post('authenticate', array('uses' => 'UserController@checkLogin'));
         Route::get('logout', array('uses' => 'UserController@doLogout'));
 
         /* Check UserName While Registration */
         Route::post('check-username', array('uses' => 'RegistrationController@checkUserName'));
         /* Save Service Provider Data */
-        Route::post('save-sp-data', array('before' => 'csrf','uses' => 'RegistrationController@saveSpData'));
-        Route::post('save-customer-data', array('before' => 'csrf','uses' => 'RegistrationController@saveCustomerData'));
+        Route::post('save-sp-data', array('uses' => 'RegistrationController@saveSpData'));
+        Route::post('save-customer-data', array('uses' => 'RegistrationController@saveCustomerData'));
 
         /* Search */
         Route::get('search/login=true', array('before' => 'auth|isCustomer','uses' => 'SearchController@index'));
