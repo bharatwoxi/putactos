@@ -23,12 +23,17 @@ class CommonController extends BaseController {
             if($user->user_role_id==2){ //Service Provider
                 $userData['averageHeartRating'] = 0;
                 Session::put('feedbackSkip', 4);
-                $userData['feedbackData'] = Feedback::where('service_provider_id','=',$user->id)->orderBy('created_at','DESC')->take(Session::get('feedbackSkip'))->get();
+                $userData['feedbackData'] = NULL;
                 $totelFeedback = 0;
-                foreach($userData['feedbackData'] as $feedback){
-                    if($feedback!=null || !empty($feedback)){
-                        $totelFeedback++;
-                        $userData['averageHeartRating'] = $userData['averageHeartRating'] + $feedback['rating'];
+                $feedbackCount = Feedback::where('service_provider_id','=',$user->id)->orderBy('created_at','DESC')->take(Session::get('feedbackSkip'))->count();
+
+                if($feedbackCount>0){
+                    $userData['feedbackData'] = Feedback::where('service_provider_id','=',$user->id)->orderBy('created_at','DESC')->take(Session::get('feedbackSkip'))->get();
+                    foreach($userData['feedbackData'] as $feedback){
+                        if($feedback!=null || !empty($feedback)){
+                            $totelFeedback++;
+                            $userData['averageHeartRating'] = $userData['averageHeartRating'] + $feedback['rating'];
+                        }
                     }
                 }
                 if($totelFeedback!=0){

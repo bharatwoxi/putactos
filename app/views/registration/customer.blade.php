@@ -110,7 +110,7 @@
                 <div class="form-group">
                     {{ Form::label('location', 'Location', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
-                        {{ Form::text('currentLocation',NULL,array('class'=>'form-control','id'=>'currentLocation')) }}
+                        {{ Form::text('currentLocation','',array('class'=>'form-control','id'=>'currentLocation')) }}
                     </div>
                     <!--<div id="map-canvas" style="height:500px;width:500px;display:none;float:left;"></div>-->
                 </div>
@@ -136,7 +136,7 @@
                         <!--<input type="text" name="ageRange" id="ageRange" class="slider" data-slider-min="18" data-slider-max="50" data-slider-step="5" data-slider-value="[18,50]">-->
                         <div class='slider-example'>
                             <div class="well" style="padding: 5px 10px 5px 10px;">
-                                <b>16&nbsp;&nbsp;</b><input name="ageRange" id="ex2" type="text" class="span2" value="" data-slider-min="15" data-slider-max="60" data-slider-step="5" data-slider-value="[15,60]"/><b>&nbsp;&nbsp;&nbsp;60</b>
+                                <b>18&nbsp;&nbsp;</b><input name="ageRange" id="ex2" type="text" class="span2" value="" data-slider-min="18" data-slider-max="99" data-slider-step="1" data-slider-value="[18,99]"/><b>&nbsp;&nbsp;99</b>
                             </div>
                         </div>
                     </div>

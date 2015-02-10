@@ -189,6 +189,7 @@
                 $('#feedback_loader').show();
                 $.ajax({
                     type: "GET",
+                    async:false,
                     url: "{{URL::to('/more/feedbacks')}}", //Where to make Ajax calls
                     dataType:"html", // Data type, HTML, json etc.
                     success: function (result) {

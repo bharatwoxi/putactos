@@ -102,10 +102,12 @@
 </script>
 <script>
     $(document).ready(function(){
+        $('#currentLocation').val('');
         $('#latitude').val('');
         $('#longitude').val('');
         $('#city').val('');
         $('#country').val('');
+
 
         /* Check Form Submit */
         $('#customerRegistration').submit(function(event){
@@ -147,18 +149,12 @@
                     else{
                         $("#validation-errors").hide();
                     }
-
-
-
                 },
                 error:function (xhr, ajaxOptions, thrownError){
                     //On error, we alert user
                     alert(thrownError);
                 }
             });
-
-
-
         });
     });
 </script>
