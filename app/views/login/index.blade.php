@@ -22,7 +22,7 @@ $error = null;
 @section('content')
 <div class="container-fluid"> <!--Header start-->
     <div class="container">
-        <div class="col-sm-3 col-md-5 col-lg-12" >
+        <div class="col-sm-3 col-md-5 col-lg-12 xyz" >
             <div>
                 <a href="{{ URL::to('/') }}" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('public/assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
                 <div class="pull-right">
