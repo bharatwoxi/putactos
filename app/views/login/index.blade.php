@@ -19,7 +19,7 @@ $errordfdsfdsf = null;
 
 ?>
 @extends('layouts.login')
-@section('content'sdfdsfdsfs)
+@section('content')
 <div class="container-fluid"> <!--Header start-->
     <div class="container">sdfdsfdsfdsf
         <div class="col-sm-3 col-md-5 col-lg-12" >
