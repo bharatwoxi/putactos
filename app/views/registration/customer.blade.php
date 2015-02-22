@@ -75,24 +75,28 @@
                     {{ Form::label('firstName', 'First Name', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
                         {{ Form::text('firstName',Input::old('firstName'),array('class'=>'form-control','id'=>'firstName')) }}
+                        <span style="color:red;font-size: 12px; padding: 8px 0">* Error</span>
                     </div>
                 </div>
                 <div class="form-group">
                     {{ Form::label('lastName', 'Last Name', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
                         {{ Form::text('lastName',Input::old('lastName'),array('class'=>'form-control','id'=>'lastName')) }}
+                        <span style="color:red;font-size: 12px; padding: 8px 0">* Error</span>
                     </div>
                 </div>
                 <div class="form-group">
                     {{ Form::label('username', 'Screename/Username', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
                         {{ Form::text('username',Input::old('username'),array('class'=>'form-control','id'=>'username')) }}
+                        <span style="color:red;font-size: 12px; padding: 8px 0">* Error</span>
                     </div>
                 </div>
                 <div class="form-group">
                     {{ Form::label('email', 'Email address', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
                         {{ Form::email('email',Input::old('email'),array('class'=>'form-control','id'=>'email')) }}
+                        <span style="color:red;font-size: 12px; padding: 8px 0">* Error</span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -105,12 +109,14 @@
                     {{ Form::label('confirmPassword', 'Confirm Password', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
                         {{ Form::password('confirmPassword',array('class'=>'form-control','id'=>'confirmPassword')) }}
+                        <span style="color:red;font-size: 12px; padding: 8px 0">* Error</span>
                     </div>
                 </div>
                 <div class="form-group">
                     {{ Form::label('location', 'Location', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
                         {{ Form::text('currentLocation','',array('class'=>'form-control','id'=>'currentLocation')) }}
+                        <span style="color:red;font-size: 12px; padding: 8px 0">* Error</span>
                     </div>
                     <!--<div id="map-canvas" style="height:500px;width:500px;display:none;float:left;"></div>-->
                 </div>

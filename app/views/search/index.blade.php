@@ -42,15 +42,15 @@
                 <p style="padding:20px 15px 0;font-size: 13px; font-family:Calibri Light;">{{ trans('peopleNearBy.Yourlocationissetautomaticallyto') }} <strong><span id="selectedLocation"> </span></strong><br>
                     {{ trans('peopleNearBy.Ifyouthinkwehavegotiswrongpleaseselect') }}
                 </p>
-                <div class="container">
+
                     {{ Form::open(array('class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'setNewLocation')) }}
                     <div class="form-group">
                         <div class="col-sm-3">
-                            {{ Form::text('currentLocation',NULL,array('class'=>'form-control','id'=>'currentLocation','placeholder'=>'set new location')) }}
+                            {{ Form::text('currentLocation',NULL,array('class'=>'form-control', 'style'=>'width:285px','id'=>'currentLocation','placeholder'=>'set new location')) }}
                         </div>
                     </div>
                     {{ Form::close() }}
-                </div>
+
             </div><!-- End of row-->
         </div>
     </div><!-- End of row-->
@@ -66,7 +66,7 @@
     <div class="">
         <div class="panel-heading" style="color: #333;padding: 5px 0px;outline: none;" role="tab" id="headingTwo">
             <h4 class="panel-title">
-                <a class="collapsed" data-toggle="collapse" style="color: #fff;" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <a class="collapsed" id="accordian" data-toggle="collapse" style="color: #fff;" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                     <h3 style="margin-top: -31px; color: white; font-family:Calibri;">{{ trans('peopleNearBy.ADVANCEDSEARCH') }}</h3>
                 </a>
             </h4>
@@ -213,7 +213,7 @@
                                 <p style="background:#FFF; padding:5px; font-family: Calibri; font-size: 20px;"> USE OUR ADVANCED SEARCH FILTERS TO GET THE PRECISE RESULTS YOU ARE LOOKING FOR. HAPPY HUNTING!!</p>
                                 <br>
                                 <input type="image" src="{{URL::asset('public/assets/registration/img/Cancel.png')}}" style="width: 110px;">
-                                <input type="image" src="{{URL::asset('public/assets/registration/img/Search.png')}}" style="width: 110px; margin-left: 20px;">
+                                <input id="search-button" type="image" src="{{URL::asset('public/assets/registration/img/Search.png')}}" style="width: 110px; margin-left: 20px;">
                                 {{ Form::close() }}
                                 <input type="hidden" name="isFilter" id="isFilter" value="0" />
                             </div>

@@ -80,7 +80,7 @@
     #detai_msg{float:left; width:100%; margin:0 0 0 8%; }
     #msg_name{font-size:30px; float:left; width:100%;border-bottom:1px solid #c6c6c6; line-height:60px}
     #msg_detail{float:left;width:100%;margin:2% 0 0}
-    #profile_name_inner{font-size:24px; float:left; margin:1% 0 0; line-height:18px; color:#f74d4d }
+    #profile_name_inner{font-size:24px; float:left; margin:1% 0 0; line-height:18px; color:#f74d4d;width:85% }
     #text_detail{float:left; width:100%; margin:2% 0 0}
     #msg_area{width: 100%;height: 100px;resize: none;outline:none}
     input[type="file"]{display:initial}

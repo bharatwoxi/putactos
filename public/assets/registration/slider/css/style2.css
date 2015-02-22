@@ -118,13 +118,13 @@
 	bottom: 20px;
 	z-index: 2000;
 	-moz-user-select: none;
-	-webkit-user-select: none;*/
-	width: 100%;
+	-webkit-user-select: none;
+	width: 100%;*/
 	position: absolute;
 	text-align: left;
 	left: 225px;
 	bottom: 130px;
-	z-index: 2000;
+	z-index: 1000;
 	-moz-user-select: none;
 	-webkit-user-select: none;
 }

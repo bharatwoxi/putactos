@@ -134,7 +134,7 @@ background-repeat: repeat;
                                                 </script>
                                             </div><br/> <div class="clearfix"></div>
                                             <div class="form-group">
-                                                <div class="col-sm-5" style="overflow: hidden; margin-left: 10px;">
+                                                <div class="col-sm-5" style="overflow: hidden; margin-left: 10px;z-index: 100;">
                                                     <input type="image" src="{{ URL::to('/public/assets/registration/img/LOgin.png')}}" class="img-responsive center-block" style="width:70px; margin-top: 20px;cursor:pointer;" id="login-image">
                                                 </div>
                                             </div>
