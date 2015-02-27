@@ -153,6 +153,12 @@ Route::group(
 
         /* Check UserName While Registration */
         Route::post('check-username', array('uses' => 'RegistrationController@checkUserName'));
+        Route::post('check-firstname', array('uses' => 'RegistrationController@checkFirstName'));
+        Route::post('check-lastname', array('uses' => 'RegistrationController@checkLastName'));
+        Route::post('check-email', array('uses' => 'RegistrationController@checkEmail'));
+        Route::post('check-password', array('uses' => 'RegistrationController@checkPassword'));
+        Route::post('check-cpassword', array('uses' => 'RegistrationController@checkConfirmPassword'));
+        Route::post('check-profile-picture', array('uses' => 'RegistrationController@checkProfilePicture'));
         /* Save Service Provider Data */
         Route::post('save-sp-data', array('uses' => 'RegistrationController@saveSpData'));
         Route::post('save-customer-data', array('uses' => 'RegistrationController@saveCustomerData'));

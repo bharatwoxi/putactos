@@ -72,56 +72,57 @@
         <div class="container">
                 {{ Form::open(array('url' => 'save-customer-data','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'customerRegistration')) }}
                 <div class="form-group">
-                    {{ Form::label('firstName', 'First Name', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
+                    {{ Form::label('firstName', 'First Name*', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
-                        {{ Form::text('firstName',Input::old('firstName'),array('class'=>'form-control','id'=>'firstName')) }}
-                        <span style="color:red;font-size: 12px; padding: 8px 0">* Error</span>
+                        {{ Form::text('firstName',Input::old('firstName'),array('class'=>'form-control','id'=>'firstName','required'=>'required')) }}
+                        <span id="fname-error"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ Form::label('lastName', 'Last Name', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
+                    {{ Form::label('lastName', 'Last Name*', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
-                        {{ Form::text('lastName',Input::old('lastName'),array('class'=>'form-control','id'=>'lastName')) }}
-                        <span style="color:red;font-size: 12px; padding: 8px 0">* Error</span>
+                        {{ Form::text('lastName',Input::old('lastName'),array('class'=>'form-control','id'=>'lastName','required'=>'required')) }}
+                        <span id="lname-error"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ Form::label('username', 'Screename/Username', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
+                    {{ Form::label('username', 'Screename/Username*', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
-                        {{ Form::text('username',Input::old('username'),array('class'=>'form-control','id'=>'username')) }}
-                        <span style="color:red;font-size: 12px; padding: 8px 0">* Error</span>
+                        {{ Form::text('username',Input::old('username'),array('class'=>'form-control','id'=>'username','required'=>'required')) }}
+                        <span id="username-error"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ Form::label('email', 'Email address', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
+                    {{ Form::label('email', 'Email address*', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
-                        {{ Form::email('email',Input::old('email'),array('class'=>'form-control','id'=>'email')) }}
-                        <span style="color:red;font-size: 12px; padding: 8px 0">* Error</span>
+                        {{ Form::email('email',Input::old('email'),array('class'=>'form-control','id'=>'email','required'=>'required')) }}
+                        <span id="email-error"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ Form::label('password', 'Password', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
+                    {{ Form::label('password', 'Password*', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
-                        {{ Form::password('password',array('class'=>'form-control','id'=>'password')) }}
+                        {{ Form::password('password',array('class'=>'form-control','id'=>'password','required'=>'required')) }}
+                        <span id="password-error"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ Form::label('confirmPassword', 'Confirm Password', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
+                    {{ Form::label('confirmPassword', 'Confirm Password*', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
-                        {{ Form::password('confirmPassword',array('class'=>'form-control','id'=>'confirmPassword')) }}
-                        <span style="color:red;font-size: 12px; padding: 8px 0">* Error</span>
+                        {{ Form::password('confirmPassword',array('class'=>'form-control','id'=>'confirmPassword','required'=>'required')) }}
+                        <span id="cpassword-error"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ Form::label('location', 'Location', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
+                    {{ Form::label('location', 'Location*', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
-                        {{ Form::text('currentLocation','',array('class'=>'form-control','id'=>'currentLocation')) }}
-                        <span style="color:red;font-size: 12px; padding: 8px 0">* Error</span>
+                        {{ Form::text('currentLocation','',array('class'=>'form-control','id'=>'currentLocation','required'=>'required')) }}
+                        <span id="location-error"></span>
                     </div>
                     <!--<div id="map-canvas" style="height:500px;width:500px;display:none;float:left;"></div>-->
                 </div>
                 <div class="form-group" style="margin-top:10px;">
-                    <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">I am looking for</label>
+                    <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">I am looking for*</label>
                     <div class="col-sm-3">
                         <!--<input type="text" class="form-control" id="name">-->
                         <select class="form-control" id="lookingFor" name="lookingFor">
@@ -136,7 +137,7 @@
                     {{ Form::hidden('country',NULL,array('class'=>'form-control','id'=>'country')) }}
                 </div>
                 <div class="form-group">
-                    <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Age Range</label>
+                    <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Age Range*</label>
                     <div class="col-md-3" style="padding-top: 20px;">
                         <!--<input class="slider" data-slider-max="50" data-slider-min="18" data-slider-orientation="horizontal" data-slider-value="18" type="text" style="width: 155px;">-->
                         <!--<input type="text" name="ageRange" id="ageRange" class="slider" data-slider-min="18" data-slider-max="50" data-slider-step="5" data-slider-value="[18,50]">-->
@@ -148,9 +149,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Upload Picture</label>
+                    <label for="inputPassword3" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Upload Picture*</label>
                     <div class="col-md-2">
-                        {{ Form::file('profilePicture',array('class'=>'btn btn-small btn-danger btn-inverse','id'=>'profilePicture')) }}
+                        {{ Form::file('profilePicture',array('class'=>'btn btn-small btn-danger btn-inverse','id'=>'profilePicture','required'=>'required')) }}
+                        <span id="profilePicture-error" class="error-class">file type:jpeg,jpg,png (2MB max)</span>
                     </div>
                 </div>
             <div style="margin-top: 30px; margin-bottom: 400px;">
