@@ -19,8 +19,8 @@
                 </div>
                 <div id="profile_name_inner">
                     {{$message['name']}}<br/>
-                    <span style="font-size:14px; color:#000">{{$message['message']}}</span>
-                </div>
+                    <p style="font-size:14px; color:#000; float:left; width:100% " >{{$message['message']}}</div>
+                </p>
             </div>
             <?php $i++;?>
         @endforeach
