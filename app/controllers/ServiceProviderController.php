@@ -148,7 +148,8 @@ class ServiceProviderController extends BaseController {
         $gender = Gender::all();
         $hairColor = HairColor::all();
         $eyeColor = EyeColor::all();
-        return View::make('profile.serviceProviderEdit')->with(array('ethnicitys'=> $ethnicity,'hairColors'=>$hairColor,'genders'=>$gender,'eyeColors'=>$eyeColor,'userData'=>$userData));
+        $cupSize = CupSize::all();
+        return View::make('profile.serviceProviderEdit')->with(array('ethnicitys'=> $ethnicity,'hairColors'=>$hairColor,'genders'=>$gender,'eyeColors'=>$eyeColor,'userData'=>$userData,'cupSizes'=>$cupSize));
     }
 
     /*
@@ -162,12 +163,13 @@ class ServiceProviderController extends BaseController {
         $input = Input::all();
         $input=array_map('trim',$input);
         $rules = array(
-            'height' => 'integer|min:50|max:250',
-            'weight' => 'integer|min:30|max:150',
-            'bust' => 'integer|min:30|max:100',
-            'waist' => 'integer|min:30|max:100',
-            'hips' => 'integer|min:30|max:100',
-            'cup_size' => 'integer|min:20|max:100',
+            'height' => 'integer',
+            'weight' => 'integer',
+            'bust' => 'integer',
+            'waist' => 'integer',
+            'hips' => 'integer',
+            'penis_size' => 'integer',
+            'cup_size' => 'integer|min:0|max:10',
             'ethnicity' => 'required|integer',
             'gender' => 'integer',
             'pubicHair' => 'integer',
@@ -184,23 +186,31 @@ class ServiceProviderController extends BaseController {
             $ageRange = explode(",",$input['ageRange']);
             $serviceProvider = ServiceProvider::find(Auth::user()->service_provider_id);
             $user = Auth::user();
+            if($user->gender==1){   //for male
+                if(!empty($input['penis_size'])){
+                    $serviceProvider->penis_size = trim($input['penis_size']);
+                }
+            }
+            if($user->gender==2){   //for female
+                if(!empty($input['bust'])){
+                    $serviceProvider->bust = trim($input['bust']);
+                }
+                if(!empty($input['cup_size'])){
+                    $serviceProvider->cup_size = trim($input['cup_size']);
+                }
+                if(!empty($input['waist'])){
+                    $serviceProvider->waist = trim($input['waist']);
+                }
+                if(!empty($input['hips'])){
+                    $serviceProvider->hips = trim($input['hips']);
+                }
+            }
+
             if(!empty($input['height'])){
                 $serviceProvider->height = trim($input['height']);
             }
             if(!empty($input['weight'])){
                 $serviceProvider->weight = trim($input['weight']);
-            }
-            if(!empty($input['bust'])){
-                $serviceProvider->bust = trim($input['bust']);
-            }
-            if(!empty($input['waist'])){
-                $serviceProvider->waist = trim($input['waist']);
-            }
-            if(!empty($input['hips'])){
-                $serviceProvider->hips = trim($input['hips']);
-            }
-            if(!empty($input['cup_size'])){
-                $serviceProvider->cup_size = trim($input['cup_size']);
             }
             if($input['ethnicity']!=0){
                 $serviceProvider->ethnicity = trim($input['ethnicity']);
