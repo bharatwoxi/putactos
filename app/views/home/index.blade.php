@@ -53,12 +53,12 @@ $error = null;
 background-repeat: repeat;background-repeat: repeat; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;">
                                 <div class="container-fluid">
                                     <div class="container">
-                                            {{ Form::open(array('url' => 'search/login=guest','class'=>'form-horizontal','role'=>'form'))}}
+                                            {{ Form::open(array('url' => 'search/login=guest','method' => 'get','class'=>'form-horizontal','role'=>'form'))}}
                                             <div class="form-group">
                                                 <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Age Range</label>
                                                 <div class="col-sm-3">
-                                                    <div class="nstSlider" data-range_min="18" data-range_max="50"
-                                                         data-cur_min="18"  data-cur_max="50" style="width: 240px;">
+                                                    <div class="nstSlider" data-range_min="18" data-range_max="99"
+                                                         data-cur_min="18"  data-cur_max="99" style="width: 240px;">
                                                         <div class="highlightPanel"></div>
                                                         <div class="bar"></div>
                                                         <div class="leftGrip"></div>

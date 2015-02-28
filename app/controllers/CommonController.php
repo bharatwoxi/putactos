@@ -117,10 +117,10 @@ class CommonController extends BaseController {
         $serviceProvider->updated_at = date('Y-m-d H:i:s');
         if($serviceProvider->save()){
             Session::flash('message', 'RiseMe Up successfully');
-            return Redirect::to("$username");
+            return Redirect::to("profile/".$username);
         }else{
             Session::flash('message', 'Something went wrong');
-            return Redirect::to("$username");
+            return Redirect::to("profile/".$username);
         }
     }
     /*

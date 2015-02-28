@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder {
         $this->command->info('week_day_master table seeded!');
         $this->call('GenderSeeder');
         $this->command->info('gender_master table seeded!');
+        $this->call('CupSizeSeeder');
+        $this->command->info('cup_size_master table seeded!');
 	}
 
 }

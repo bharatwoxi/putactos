@@ -128,20 +128,6 @@
             <div class="col-md-6">
                 {{ Form::open(array('url' => 'service-provider/saveProfileData','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
                 <div class="form-group">
-                    <label class="col-sm-5 ecolfour" control-label>Ethnicity</label>
-                    <div class="col-sm-4 selectContainer">
-                        <select class="fonza custom-select" name="ethnicity">
-                            if(@if($userData['serviceProvider']->ethnicity==NULL)
-                                <option value="0">Please Select</option>
-                            @endif
-                            @foreach($ethnicitys as $ethnicity)
-                            <option value="{{ $ethnicity->id }}" @if($userData['serviceProvider']->ethnicity==$ethnicity->id) selected="selected" @endif>{{ $ethnicity->ethnicity }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="form-group">
                     <label class="col-sm-5 ecolfour" control-label>Gender</label>
                     <div class="col-sm-7">
                         @foreach($genders as $gender)
@@ -161,6 +147,20 @@
                         <label class="col-sm-3" style="padding-left: 0;">
                             <input type="radio" name="pubicHair" id="pubicHair" value="0" @if($userData['serviceProvider']->pubic_hair==0) checked="true" @endif>No
                         </label>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <label class="col-sm-5 ecolfour" control-label>Ethnicity</label>
+                    <div class="col-sm-4 selectContainer">
+                        <select class="fonza custom-select" name="ethnicity">
+                            if(@if($userData['serviceProvider']->ethnicity==NULL)
+                            <option value="0">Please Select</option>
+                            @endif
+                            @foreach($ethnicitys as $ethnicity)
+                            <option value="{{ $ethnicity->id }}" @if($userData['serviceProvider']->ethnicity==$ethnicity->id) selected="selected" @endif>{{ $ethnicity->ethnicity }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -191,6 +191,52 @@
                         </select>
                     </div>
                 </div>
+                @if($userData['systemUser']->gender == 2)
+                <div class="form-group">
+                    <label class="col-sm-5 ecolfour" control-label>Cup Size</label>
+                    <div class="col-sm-4 selectContainer">
+                        <select class="custom-select fonza" name="cup_size" id="cup_size">
+                            @if($userData['serviceProvider']->cup_size==NULL)
+                            <option value="0">Please Select</option>
+                            @endif
+                            @foreach($cupSizes as $cupSize)
+                            <option value="{{ $cupSize->id  }}" @if($userData['serviceProvider']->cup_size==$cupSize->id) selected="selected" @endif>{{ $cupSize->cup_size }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <label class="col-sm-5 ecolfour" control-label>Bust</label>
+                    <div class="col-sm-4 selectContainer">
+                        <input type="text" class="form-control" name="bust" id="bust" value="{{ $userData['serviceProvider']->bust }}" placeholder="in cm"/>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <label class="col-sm-5 ecolfour" control-label>Waist</label>
+                    <div class="col-sm-4 selectContainer">
+                        <input type="text" class="form-control" name="waist" id="waist" value="{{ $userData['serviceProvider']->waist }}" placeholder="in cm"/>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <label class="col-sm-5 ecolfour" control-label>Hips</label>
+                    <div class="col-sm-4 selectContainer">
+                        <input type="text" class="form-control" name="hips" id="hips" value="{{ $userData['serviceProvider']->hips }}" placeholder="in cm"/>
+                    </div>
+                </div>
+                @endif
+                @if($userData['systemUser']->gender == 1)
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <label class="col-sm-5 ecolfour" control-label>Penis Size</label>
+                    <div class="col-sm-4 selectContainer">
+                        <input type="text" class="form-control" name="penis_size" id="penis_size" value="{{ $userData['serviceProvider']->penis_size }}" placeholder="in cm"/>
+                    </div>
+                </div>
+                @endif
                 <div class="clearfix"></div>
                 <div class="form-group">
                     <label class="col-sm-5 ecolfour" control-label>Height</label>
@@ -206,33 +252,6 @@
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <div class="form-group">
-                    <label class="col-sm-5 ecolfour" control-label>Bust</label>
-                    <div class="col-sm-4 selectContainer">
-                        <input type="text" class="form-control" name="bust" id="bust" value="{{ $userData['serviceProvider']->bust }}" placeholder="in cm"/>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="form-group">
-                    <label class="col-sm-5 ecolfour" control-label>Waist</label>
-                    <div class="col-sm-4 selectContainer">
-                        <input type="text" class="form-control" name="waist" id="waist" value="{{ $userData['serviceProvider']->waist }}" placeholder="in cm"/>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="form-group">
-                    <label class="col-sm-5 ecolfour" control-label>Hips</label>
-                    <div class="col-sm-4 selectContainer">
-                        <input type="text" class="form-control" name="hips" id="hips" value="{{ $userData['serviceProvider']->hips }}" placeholder="in cm"/>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="form-group">
-                    <label class="col-sm-5 ecolfour" control-label>Cup Size</label>
-                    <div class="col-sm-4 selectContainer">
-                        <input type="text" class="form-control" name="cup_size" id="cup_size" value="{{ $userData['serviceProvider']->cup_size }}" placeholder="in cm"/>
-                    </div>
-                </div>
                 <div class="form-group">
                     <label for="Name" class="col-sm-5 control-label" style="text-align: left;">Age Range</label>
                     <div class="col-md-7">
