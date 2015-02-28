@@ -66,6 +66,14 @@
                             </div>
 
                             <div id="profile_description">
+                                Prefered Location - {{ $userData['userData']->city }} {{ $userData['userData']->country }}<br/>
+                                Birthdate - {{ $userData['userData']->birth_date }}<br/>
+                                @if($userData['userData']->from_age!=null && $userData['userData']->to_age!=null)
+                                Age Range : {{ $userData['userData']->from_age }} - {{ $userData['userData']->to_age }}
+                                @else
+                                Age Range - N/A
+                                @endif
+                                <br/>
                                 @if($userData['userData']->gender!=null || !empty($userData['userData']->gender))
                                 Gender - {{ Gender::find($userData['userData']->gender)->gender }}
                                 @else
@@ -90,11 +98,11 @@
                                     Eye Color - N/A
                                 @endif
                                 <br/>
-                                Height - @if($userData['serviceProviderData']->height){{$userData['serviceProviderData']->height}}@else N/A @endif<br/>
-                                Weight - @if($userData['serviceProviderData']->weight){{$userData['serviceProviderData']->weight}}@else N/A @endif<br/>
-                                Bust - @if($userData['serviceProviderData']->bust){{$userData['serviceProviderData']->bust}}@else N/A @endif<br/>
-                                Waist - @if($userData['serviceProviderData']->weight){{$userData['serviceProviderData']->weight}}@else N/A @endif<br/>
-                                Hip - @if($userData['serviceProviderData']->hips){{$userData['serviceProviderData']->hips}}@else N/A @endif<br/>
+                                Height - @if($userData['serviceProviderData']->height){{$userData['serviceProviderData']->height}} CM @else N/A @endif<br/>
+                                Weight - @if($userData['serviceProviderData']->weight){{$userData['serviceProviderData']->weight}} KG @else N/A @endif<br/>
+                                Bust - @if($userData['serviceProviderData']->bust){{$userData['serviceProviderData']->bust}} CM @else N/A @endif<br/>
+                                Waist - @if($userData['serviceProviderData']->waist){{$userData['serviceProviderData']->waist}} CM @else N/A @endif<br/>
+                                Hip - @if($userData['serviceProviderData']->hips){{$userData['serviceProviderData']->hips}} CM @else N/A @endif<br/>
                             </div>
                         </div>
                     </div>

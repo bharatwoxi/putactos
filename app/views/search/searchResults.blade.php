@@ -20,16 +20,11 @@
         for($i=0;$i<$totalResultCount;$i++){
             $profileImage = URL::to('/').'/public/uploads/userdata/service_provider/'.sha1($serviceProviderDetails[$i]['system_user']['id'])."/"."profile_image/".$serviceProviderDetails[$i]['system_user']['profile_image'];
 ?>
-
-
-
                     <div class="col-md-3">
                         <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">
                             <a href="{{ URL::to('profile/'.$serviceProviderData[$i]['system_user']['username']) }}"><img src="{{$profileImage}}" class="img-responsive" width="250px" style="display: block;max-width: 204px;height:180px;"></a>
                             <span style="font-size:24px">{{ $serviceProviderDetails[$i]['system_user']['user_first_name'] }}  {{ $serviceProviderDetails[$i]['system_user']['user_last_name'] }}</span> <br> <span style="font-size:18px">Near your area</span></p>
                     </div>
-
-
 <?php
         }
 ?>

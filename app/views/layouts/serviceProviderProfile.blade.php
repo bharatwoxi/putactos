@@ -19,14 +19,51 @@
     <link href="{{URL::asset('public/assets/registration/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/styles.css')}}" media="all" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/edit_info.css')}}" media="all" rel="stylesheet">
+    <link href="{{URL::asset('public/assets/registration/css/bootstrap-slider.css')}}" media="all" rel="stylesheet">
+    <link href="{{URL::asset('public/assets/registration/datepicker/css/datepicker.css')}}" media="all" rel="stylesheet">
+    <style>
+        /* Disclaimer: remove 'powered by Google' */
+        .pac-container:after {
+            background-image: none !important;
+            height: 0px;
+        }
+        #buttonGroupForm .btn-group .form-control-feedback {
+            top: 0;
+            right: -30px;
+        }
 
+        select {
+            background-color: #fff!important;
+            color: #333!important;
+            padding-right: 16px;
+            width: auto;
+            height: 22px;
+
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+
+        }
+    </style>
 </head>
-<body>
+<body onload="initialize()">
 @yield('content')
+
+</body>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="{{URL::asset('public/assets/registration/js/bootstrap.min.js')}}"></script>
+<script type='text/javascript' src="{{URL::asset('public/assets/registration/js/bootstrap-slider.js')}}"></script>
+<script type='text/javascript'>
+    $(document).ready(function() {
+        /* Example 2 */
+        $("#ex2").slider({});
+        $('#birth_date').datepicker({
+            format: 'yyyy-mm-dd'
+        });
+    });
+</script>
 <script type="text/javascript">
     $(document).ready(function(){
         $(".custom-select").each(function(){
@@ -54,5 +91,7 @@
         readURL(this);
     });
 </script>
-</body>
+<script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
+<script src="{{URL::asset('public/assets/registration/js/custom/google-place.js')}}"></script>
+<script src="{{URL::asset('public/assets/registration/datepicker/js/bootstrap-datepicker.js')}}"></script>
 </html>

@@ -102,11 +102,8 @@
                                                 <label class="btn btn-default"  style="font-family:Calibri Light; font-weight:bold;">
                                                     <input type="radio" name="gender" value="1" /> {{ trans('peopleNearBy.Male') }}
                                                 </label>
-                                                <label class="btn btn-default" style="font-family:Calibri Light; font-weight:bold;">
-                                                    <input type="radio" name="gender" value="2" / > {{ trans('peopleNearBy.Female') }}
-                                                </label>
                                                 <label class="btn btn-default active" style="font-family:Calibri Light; font-weight:bold;">
-                                                    <input type="radio" name="gender" value="0" checked/ > {{ trans('peopleNearBy.Both') }}
+                                                    <input type="radio" name="gender" value="2" checked /> {{ trans('peopleNearBy.Female') }}
                                                 </label>
                                             </div>
                                         </div>

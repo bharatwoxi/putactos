@@ -174,9 +174,14 @@ class ServiceProviderController extends BaseController {
             'hairColor' => 'integer',
             'eyeColor' => 'integer',
             'turnsMeOn' => 'max:100',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'birthDate' => 'required',
+            'ageRange' => 'required',
         );
         $validation = Validator::make($input,$rules);
         if($validation->passes()){
+            $ageRange = explode(",",$input['ageRange']);
             $serviceProvider = ServiceProvider::find(Auth::user()->service_provider_id);
             $user = Auth::user();
             if(!empty($input['height'])){
@@ -213,6 +218,13 @@ class ServiceProviderController extends BaseController {
                 $user->gender = trim($input['gender']);
                 $user->updated_at = date('Y-m-d H:m:s');
             }
+            $user->latitude = $input['latitude'];
+            $user->longitude = $input['longitude'];
+            $user->city = $input['city'];
+            $user->country = $input['country'];
+            $user->birth_date = $input['birthDate'];
+            $user->from_age = $ageRange[0];
+            $user->to_age = $ageRange[1];
             $serviceProvider->turns_me_on = trim($input['turnsMeOn']);
             $serviceProvider->updated_at = date('Y-m-d H:m:s');
             if($user->save() && $serviceProvider->save()){
