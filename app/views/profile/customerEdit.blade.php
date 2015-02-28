@@ -121,6 +121,66 @@
         </div>
     </div>
 </div>
+<div class="container-fluid econte">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                {{ Form::open(array('url' => 'user/save-preference','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
+                <div class="form-group">
+                    <label for="Name" class="col-sm-5 control-label" style="text-align: left;">Age Range</label>
+                    <div class="col-md-7">
+                        <div class='slider-example'>
+                            <div class="well">
+                                <b>18&nbsp;&nbsp;</b><input name="ageRange" id="ex2" type="text" class="span2" value="" data-slider-min="18" data-slider-max="99" data-slider-step="1" data-slider-value="[{{ $userData['systemUser']->from_age }},{{ $userData['systemUser']->to_age }}]"/><b>&nbsp;&nbsp;99</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-5 control-label" style="text-align: left;">Looking For</label>
+                    <div class="col-sm-7">
+                        @if($userData['gender']->looking_for=='male')
+                        <input type="radio" name="looking_for" value="male" checked/>Male
+                        @else
+                        <input type="radio" name="looking_for" value="male" />Male
+                        @endif
+                        @if($userData['gender']->looking_for=='female')
+                        <input type="radio" name="looking_for" value="female" checked/>Female
+                        @else
+                        <input type="radio" name="looking_for" value="female" />Female
+                        @endif
+                        @if($userData['gender']->looking_for=='both')
+                        <input type="radio" name="looking_for" value="both" checked/>Both
+                        @else
+                        <input type="radio" name="looking_for" value="both" />Both
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ Form::label('location', 'Location', array('class' => 'col-sm-5 control-label','style'=>'text-align: left;')) }}
+                    <div class="col-sm-5">
+                        {{ Form::text('currentLocation','',array('class'=>'form-control','id'=>'currentLocation')) }}
+                        <span id="location-error">Current Location: {{ $userData['systemUser']->city }} {{ $userData['systemUser']->country }}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ Form::label('location', 'Birth Date', array('class' => 'col-sm-5 control-label','style'=>'text-align: left;')) }}
+                    <div class="col-sm-5">
+                        {{ Form::text('birthDate',$userData['systemUser']->birth_date,array('class'=>'form-control','readonly'=>'readonly','id'=>'birth_date')) }}
+                    </div>
+                </div>
+                {{ Form::hidden('latitude',$userData['systemUser']->latitude,array('class'=>'form-control','id'=>'latitude')) }}
+                {{ Form::hidden('longitude',$userData['systemUser']->longitude,array('class'=>'form-control','id'=>'longitude')) }}
+                {{ Form::hidden('city',$userData['systemUser']->city,array('class'=>'form-control','id'=>'city')) }}
+                {{ Form::hidden('country',$userData['systemUser']->country,array('class'=>'form-control','id'=>'country')) }}
+                <div class="pull-left" style="margin-top:30px;margin-bottom: 30px;">
+                    <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
+                </div>
+                {{ Form::close() }}
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="col-lg-12" style="background-image:url(../../public/assets/registration/img/background.png); background-repeat:repeat;"> <!--Footer start-->
     <div class="container">

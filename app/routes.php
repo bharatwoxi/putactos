@@ -200,6 +200,7 @@ Route::group(
         Route::get('user/editprofile',array('before' => 'auth|isCustomer','uses' => 'UserController@profileEditView'));
         Route::post('user/savePersonalData',array('before' => 'auth|isCustomer','uses' => 'UserController@savePersonalData'));
         Route::post('user/savePassword',array('before' => 'auth|isCustomer','uses' => 'UserController@savePassword'));
+        Route::post('user/save-preference',array('before' => 'auth|isCustomer','uses' => 'UserController@savePreferences'));
 
         /* Forgot Password */
         Route::get('forgot-passowrd',array('before'=>'isGuest','uses'=>'RemindersController@getRemind'));

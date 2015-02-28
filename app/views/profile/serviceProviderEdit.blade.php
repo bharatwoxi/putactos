@@ -195,44 +195,75 @@
                 <div class="form-group">
                     <label class="col-sm-5 ecolfour" control-label>Height</label>
                     <div class="col-sm-4 selectContainer">
-                        <input type="text" class="form-control" name="height" id="height" value="{{ $userData['serviceProvider']->height }}"/>
+                        <input type="text" class="form-control" name="height" id="height" value="{{ $userData['serviceProvider']->height }}" placeholder="in cm"/>
                     </div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="form-group">
                     <label class="col-sm-5 ecolfour" control-label>Weight</label>
                     <div class="col-sm-4 selectContainer">
-                        <input type="text" class="form-control" name="weight" id="weight" value="{{ $userData['serviceProvider']->weight }}" />
+                        <input type="text" class="form-control" name="weight" id="weight" value="{{ $userData['serviceProvider']->weight }}" placeholder="in kg"/>
                     </div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="form-group">
                     <label class="col-sm-5 ecolfour" control-label>Bust</label>
                     <div class="col-sm-4 selectContainer">
-                        <input type="text" class="form-control" name="bust" id="bust" value="{{ $userData['serviceProvider']->bust }}" />
+                        <input type="text" class="form-control" name="bust" id="bust" value="{{ $userData['serviceProvider']->bust }}" placeholder="in cm"/>
                     </div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="form-group">
                     <label class="col-sm-5 ecolfour" control-label>Waist</label>
                     <div class="col-sm-4 selectContainer">
-                        <input type="text" class="form-control" name="waist" id="waist" value="{{ $userData['serviceProvider']->waist }}" />
+                        <input type="text" class="form-control" name="waist" id="waist" value="{{ $userData['serviceProvider']->waist }}" placeholder="in cm"/>
                     </div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="form-group">
                     <label class="col-sm-5 ecolfour" control-label>Hips</label>
                     <div class="col-sm-4 selectContainer">
-                        <input type="text" class="form-control" name="hips" id="hips" value="{{ $userData['serviceProvider']->hips }}" />
+                        <input type="text" class="form-control" name="hips" id="hips" value="{{ $userData['serviceProvider']->hips }}" placeholder="in cm"/>
                     </div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="form-group">
                     <label class="col-sm-5 ecolfour" control-label>Cup Size</label>
                     <div class="col-sm-4 selectContainer">
-                        <input type="text" class="form-control" name="cup_size" id="cup_size" value="{{ $userData['serviceProvider']->cup_size }}" />
+                        <input type="text" class="form-control" name="cup_size" id="cup_size" value="{{ $userData['serviceProvider']->cup_size }}" placeholder="in cm"/>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="Name" class="col-sm-5 control-label" style="text-align: left;">Age Range</label>
+                    <div class="col-md-7">
+                        <div class='slider-example'>
+                            <div class="well">
+                                @if($userData['systemUser']->from_age!=null && $userData['systemUser']->to_age!=null)
+                                    <b>18&nbsp;&nbsp;</b><input name="ageRange" id="ex2" type="text" class="span2" value="" data-slider-min="18" data-slider-max="99" data-slider-step="1" data-slider-value="[{{ $userData['systemUser']->from_age }},{{ $userData['systemUser']->to_age }}]"/><b>&nbsp;&nbsp;99</b>
+                                @else
+                                    <b>18&nbsp;&nbsp;</b><input name="ageRange" id="ex2" type="text" class="span2" value="" data-slider-min="18" data-slider-max="99" data-slider-step="1" data-slider-value="[18,99]"/><b>&nbsp;&nbsp;99</b>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ Form::label('location', 'Location', array('class' => 'col-sm-5 control-label','style'=>'text-align: left;')) }}
+                    <div class="col-sm-4">
+                        {{ Form::text('currentLocation','',array('class'=>'form-control','id'=>'currentLocation')) }}
+                        <span id="location-error">Current Location: {{ $userData['systemUser']->city }} {{ $userData['systemUser']->country }}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ Form::label('location', 'Birth Date', array('class' => 'col-sm-5 control-label','style'=>'text-align: left;')) }}
+                    <div class="col-sm-4">
+                        {{ Form::text('birthDate',$userData['systemUser']->birth_date,array('class'=>'form-control','readonly'=>'readonly','id'=>'birth_date')) }}
+                    </div>
+                </div>
+                {{ Form::hidden('latitude',$userData['systemUser']->latitude,array('class'=>'form-control','id'=>'latitude')) }}
+                {{ Form::hidden('longitude',$userData['systemUser']->longitude,array('class'=>'form-control','id'=>'longitude')) }}
+                {{ Form::hidden('city',$userData['systemUser']->city,array('class'=>'form-control','id'=>'city')) }}
+                {{ Form::hidden('country',$userData['systemUser']->country,array('class'=>'form-control','id'=>'country')) }}
             </div>
 
             <div class="col-md-6">

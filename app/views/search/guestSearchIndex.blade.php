@@ -111,11 +111,8 @@
                                                 <label class="btn btn-default"  style="font-family:Calibri Light; font-weight:bold;">
                                                     <input type="radio" name="gender" value="1" /> Male
                                                 </label>
-                                                <label class="btn btn-default" style="font-family:Calibri Light; font-weight:bold;">
-                                                    <input type="radio" name="gender" value="2" / > Female
-                                                </label>
                                                 <label class="btn btn-default active" style="font-family:Calibri Light; font-weight:bold;">
-                                                    <input type="radio" name="gender" value="0" checked/ > Both
+                                                    <input type="radio" name="gender" value="2" checked /> Female
                                                 </label>
                                             </div>
                                         </div>
