@@ -42,6 +42,176 @@ class RegistrationController extends BaseController {
     }
 
     /*
+     *function Name: checkFirstName
+     *Desc: checkFirstName for service provider
+     *Created By: Sagar Acharya
+     *Created Date: 23 Feb 2014
+     *return: true/false based on result
+    */
+
+    public function checkFirstName(){
+        if(Request::ajax())
+        {
+            $rules = [
+                'firstName' => 'required|min:5|max:20',
+            ];
+
+            $input = Input::only(
+                'firstName'
+            );
+
+            $validator = Validator::make($input, $rules);
+            if($validator->fails())
+            {
+                return Response::json([
+                    'success'=>false,
+                    'errors'=>$validator->errors()->toArray()
+                ]);
+            }
+            return Response::json(['success'=>true]);
+        }
+    }
+    /*
+     *function Name: checkLastName
+     *Desc: checkFirstName for service provider
+     *Created By: Sagar Acharya
+     *Created Date: 23 Feb 2014
+     *return: true/false based on result
+    */
+
+    public function checkLastName(){
+        if(Request::ajax())
+        {
+            $rules = [
+                'lastName' => 'required|min:5|max:20',
+            ];
+
+            $input = Input::only('lastName');
+
+            $validator = Validator::make($input, $rules);
+            if($validator->fails())
+            {
+                return Response::json([
+                    'success'=>false,
+                    'errors'=>$validator->errors()->toArray()
+                ]);
+            }
+            return Response::json(['success'=>true]);
+        }
+    }
+    /*
+     *function Name: checkEmail
+     *Desc: checkFirstName for service provider
+     *Created By: Sagar Acharya
+     *Created Date: 23 Feb 2014
+     *return: true/false based on result
+    */
+
+    public function checkEmail(){
+        if(Request::ajax())
+        {
+            $rules = [
+                'email' => 'required|email|unique:system_users',
+            ];
+
+            $input = Input::only('email');
+
+            $validator = Validator::make($input, $rules);
+            if($validator->fails())
+            {
+                return Response::json([
+                    'success'=>false,
+                    'errors'=>$validator->errors()->toArray()
+                ]);
+            }
+            return Response::json(['success'=>true]);
+        }
+    }
+    /*
+     *function Name: checkPassword
+     *Desc: checkFirstName for service provider
+     *Created By: Sagar Acharya
+     *Created Date: 23 Feb 2014
+     *return: true/false based on result
+    */
+
+    public function checkPassword(){
+        if(Request::ajax())
+        {
+            $rules = [
+                'password' => 'required|min:6',
+            ];
+
+            $input = Input::only('password');
+
+            $validator = Validator::make($input, $rules);
+            if($validator->fails())
+            {
+                return Response::json([
+                    'success'=>false,
+                    'errors'=>$validator->errors()->toArray()
+                ]);
+            }
+            return Response::json(['success'=>true]);
+        }
+    }
+    /*
+     *function Name: checkPassword
+     *Desc: checkFirstName for service provider
+     *Created By: Sagar Acharya
+     *Created Date: 23 Feb 2014
+     *return: true/false based on result
+    */
+
+    public function checkConfirmPassword(){
+        if(Request::ajax())
+        {
+            $rules = [
+                'confirmPassword' => 'required|min:6|same:password',
+            ];
+
+            $input = Input::only('password','confirmPassword');
+
+            $validator = Validator::make($input, $rules);
+            if($validator->fails())
+            {
+                return Response::json([
+                    'success'=>false,
+                    'errors'=>$validator->errors()->toArray()
+                ]);
+            }
+            return Response::json(['success'=>true]);
+        }
+    }
+    /*
+     *function Name: checkProfilePicture
+     *Desc: checkProfilePicture
+     *Created By: Sagar Acharya
+     *Created Date: 24 Feb 2014
+     *return: true/false based on result
+    */
+
+    public function checkProfilePicture(){
+        if(Request::ajax())
+        {
+            $rules = [
+                'profilePicture' => 'required|mimes:jpeg,jpg,png|max:2000'
+            ];
+
+            $input = Input::only('profilePicture');
+
+            $validator = Validator::make($input, $rules);
+            if($validator->fails())
+            {
+                return Response::json([
+                    'success'=>false,
+                    'errors'=>$validator->errors()->toArray()
+                ]);
+            }
+            return Response::json(['success'=>true]);
+        }
+    }
+    /*
      *function Name: saveSpData
      *Desc: checkUserName for service provider & customer if it exists or not
      *Created By: Sagar Acharya
@@ -72,6 +242,10 @@ class RegistrationController extends BaseController {
                     'user_first_name'  =>Input::get('firstName'),
                     'user_last_name'  =>Input::get('lastName'),
                     'user_role_id'  =>2,
+                    'latitude'  =>Input::get('latitude'),
+                    'longitude'  =>Input::get('longitude'),
+                    'city'  =>Input::get('city'),
+                    'country'  =>Input::get('country'),
                     'remember_token'  =>Input::get('_token'),
                     'created_at'=>date('Y-m-d H:m:s'),
                     'updated_at'=> date('Y-m-d H:m:s')
@@ -116,11 +290,11 @@ class RegistrationController extends BaseController {
 
             /* Send Mail Functionality */
 
-            if(app()->environment()!="local"){
+            //if(app()->environment()!="local"){
                 Mail::send('email.activation', $input, function($message) use ($input){
                     $message->to($input['email'])->subject('Account Confirmation');
                 });
-            }
+            //}
             Session::flash('message', 'Your account has been successfully created. Please check your email for the instructions on how to confirm your account.');
             return Redirect::to('login');
         }
@@ -140,7 +314,13 @@ class RegistrationController extends BaseController {
 
     public function saveCustomerData(){
         $input = Input::all();
-        $age = explode(',',Input::get('ageRange'));
+
+        $ageValueIfEmpty = '16,60';
+        if(Input::get('ageRange')==''){
+            $age = explode(',',$ageValueIfEmpty);
+        }else{
+            $age = explode(',',Input::get('ageRange'));
+        }
         $rules = array(
 
             'firstName' => 'required|min:5|max:20',
@@ -207,11 +387,11 @@ class RegistrationController extends BaseController {
 
             /*Image Upload End */
 
-            if(app()->environment()!="local"){
+            //if(app()->environment()!="local"){
                 Mail::send('email.activation', $input, function($message) use ($input){
                     $message->to($input['email'])->subject('Account Confirmation');
                 });
-            }
+            //}
             Session::flash('message', 'Your account has been successfully created. Please check your email for the instructions on how to confirm your account.');
             return Redirect::to('login');
         }

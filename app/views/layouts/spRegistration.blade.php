@@ -13,6 +13,20 @@
     <script src="{{URL::asset('public/assets/registration/js/modernizr.min.js')}}"></script>
 </head>
 <style type="text/css">
+    .validation-success{
+        border:2px solid green;
+    }
+    .validation-fail{
+        border:2px solid red;
+    }
+    .error-class{
+        color:red;font-size: 12px; padding: 8px 0;
+    }
+    /* Disclaimer: remove 'powered by Google' */
+    .pac-container:after {
+        background-image: none !important;
+        height: 0px;
+    }
     #buttonGroupForm .btn-group .form-control-feedback {
         top: 0;
         right: -30px;
@@ -65,7 +79,7 @@
 
 
 </style>
-<body>
+<body  onload="initialize()">
 
 
 @yield('content')
@@ -80,50 +94,16 @@
 <script src="{{URL::asset('public/assets/registration/js/plugin.js')}}"></script>
 <script src="{{URL::asset('public/assets/registration/js/main.js')}}"></script>
 <script>
-    $(document).ready(function(){
-        $('#username').keyup(function(e) {
-            var username = $('#username').val();
-            var mydata = 'username='+username;
-            //##### Send Ajax request to response.php #########
-            $.ajax({
-                type: "POST", // HTTP method POST or GET
-                url: "{{URL::to('/')}}/check-username", //Where to make Ajax calls
-                dataType:"json", // Data type, HTML, json etc.
-                data:mydata, //Form variables
-                success:function(response){
-                    if(response.success == false)
-                    {
-                        var arr = response.errors;
-                        $("#display-errors").html('');
-                        $.each(arr, function(index, value)
-                        {
-                            if (value.length != 0)
-                            {
-                                //$('#submit').attr('disabled','disabled');
-                                $("#validation-errors").show();
-                                $("#submit").attr("disabled", true);
-                                $("#display-errors").append('<li class="error"><strong>'+ value +'</strong></li>');
-                            }
-                        });
-                    }
-                    else{
-                        $("#validation-errors").hide();
-                        $('#submit').removeAttr('disabled');
-                    }
-
-
-
-                },
-                error:function (xhr, ajaxOptions, thrownError){
-                    //On error, we alert user
-                    alert(thrownError);
-                }
-            });
-
-
-
-        });
-    });
+    var checkUsernameUrl = "{{URL::to('/check-username')}}";
+    var checkFnameUrl = "{{URL::to('/check-firstname')}}";
+    var checkLnameUrl = "{{URL::to('/check-lastname')}}";
+    var checkEmailUrl = "{{URL::to('/check-email')}}";
+    var checkPasswordUrl = "{{URL::to('/check-password')}}";
+    var checkCpasswordUrl = "{{URL::to('/check-cpassword')}}";
 </script>
+<script src="{{URL::asset('public/assets/registration/js/custom/registration-validation.js')}}"></script>
+<!-- Google Places -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
+<script src="{{URL::asset('public/assets/registration/js/custom/google-place.js')}}"></script>
 </body>
 </html>

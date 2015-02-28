@@ -22,7 +22,7 @@ $error = null;
 @section('content')
 <div class="container-fluid"> <!--Header start-->
     <div class="container">
-        <div class="col-sm-3 col-md-5 col-lg-12" >
+        <div class="col-sm-3 col-md-5 col-lg-12 xyz" >
             <div>
                 <a href="{{ URL::to('/') }}" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('public/assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
                 <div class="pull-right">
@@ -60,7 +60,10 @@ $error = null;
 </div>
 @endif
 @if (Session::has('message'))
-<div class="alert alert-danger">{{ Session::get('message') }}</div>
+<div class="alert alert-danger">
+    <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
+    {{ Session::get('message') }}
+</div>
 @endif
 
 <div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;">
@@ -77,7 +80,7 @@ $error = null;
                     {{ Form::label('password', 'Password', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3" style="overflow: hidden;">
                         {{ Form::password('password',array('class'=>'form-control','style'=>'padding-left:5px','id'=>'password','required'=>'required')) }}
-                        <p style="font-size:12px;"><a href="#" style="text-decoration:none; color:#000">Forgot Password</a></p>
+                        <p style="font-size:12px;"><a href="{{ URL::to('/forgot-passowrd') }}" style="text-decoration:none; color:#000">Forgot Password</a></p>
 
                         <!--<input type="image" src="img/Captcha.png" class="img-responsive">
                          <p style="font-size:16px; font-weight:bold">Type the words</p>

@@ -14,7 +14,7 @@ class AddBirthYearToSystemUsersTable extends Migration {
 	{
 		Schema::table('system_users', function(Blueprint $table)
 		{
-            $table->integer('current_age')->nullable()->after('birth_date');;
+            $table->integer('current_age')->nullable()->after('birth_date');
 		});
 	}
 

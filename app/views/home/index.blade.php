@@ -34,8 +34,15 @@ $error = null;
                     </a>
                     <button type="button" class="btn btn-primary" style="background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModal1"><strong>Login Now</strong></button>
                 </p>
+                @else
+                <p style="padding-top:15px;">
+                    @if(Auth::user()->user_role_id==1)
+                    <a href="{{ URL::to('/user/editprofile') }}" style="text-decoration:none;padding-right:20px;color:#AE2729">Hello, <span style="font-weight:900">{{ Auth::user()->username}}</span></a>
+                    @else
+                    <a href="{{ URL::to('/service-provider/editprofile') }}" style="text-decoration:none;padding-right:20px;color:#AE2729">Hello, <span style="font-weight:900">{{ Auth::user()->username}}</span></a>
+                    @endif
+                </p>
                 @endif
-
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content" style="border-radius: 15px;">
@@ -46,21 +53,21 @@ $error = null;
 background-repeat: repeat;background-repeat: repeat; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;">
                                 <div class="container-fluid">
                                     <div class="container">
-                                        <form class="form-horizontal" role="form">
+                                            {{ Form::open(array('url' => 'search/login=guest','class'=>'form-horizontal','role'=>'form'))}}
                                             <div class="form-group">
                                                 <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Age Range</label>
                                                 <div class="col-sm-3">
-                                                    <div class="nstSlider" data-range_min="14" data-range_max="50"
-                                                         data-cur_min="10"  data-cur_max="90" style="width: 240px;">
-
+                                                    <div class="nstSlider" data-range_min="18" data-range_max="50"
+                                                         data-cur_min="18"  data-cur_max="50" style="width: 240px;">
                                                         <div class="highlightPanel"></div>
                                                         <div class="bar"></div>
                                                         <div class="leftGrip"></div>
                                                         <div class="rightGrip"></div>
                                                     </div>
-
                                                     <div class="leftLabel" style=""></div>
                                                     <div class="rightLabel" style="margin-top: -25px; padding-left: 224px;"></div>
+                                                    <input type="hidden" name="minimumAge" id="minimumAge" />
+                                                    <input type="hidden" name="maximumAge" id="maximumAge" />
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -68,22 +75,19 @@ background-repeat: repeat;background-repeat: repeat; border-bottom-right-radius:
                                                 <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Looking for</label>
                                                 <div class="col-sm-3">
                                                     <label class="radio-inline">
-                                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Male
+                                                        <input type="radio" name="looking_for" id="inlineRadio1" value="male"> Male
                                                     </label>
                                                     <label class="radio-inline">
-                                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Female
+                                                        <input type="radio" name="looking_for" id="inlineRadio2" value="female"> Female
                                                     </label>
                                                     <label class="radio-inline">
-                                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Both
+                                                        <input type="radio" name="looking_for" id="inlineRadio2" value="both" checked="checked"> Both
                                                     </label>
-                                                    <a href="people_near_by_en.html" target="_blank" style="text-decoration:none"><input type="image" src="{{ URL::to('/public/assets/registration/img/Go.png')}}" class="img-responsive" style="width:60px; padding-top:20px">
+                                                    <a href="#" target="_blank" style="text-decoration:none"><input type="image" src="{{ URL::to('/public/assets/registration/img/Go.png')}}" class="img-responsive" style="width:60px; padding-top:20px">
                                                     </a>
-
                                                 </div>
-
                                             </div>
-
-                                        </form>
+                                            {{ Form::close() }}
                                     </div><!--End of container-->
                                 </div> <!--End of container-fluid-->
                             </div>
@@ -114,7 +118,7 @@ background-repeat: repeat;
                                             {{ Form::label('password', 'Password', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                                             <div class="col-sm-3" style="overflow: hidden;">
                                                 {{ Form::password('password',array('class'=>'form-control','style'=>'padding-left:5px','id'=>'password','required'=>'required')) }}
-                                                <p style="font-size:12px; padding-bottom: 30px;"><a href="#" style="text-decoration:none; color:#000">Forgot Password</a></p>
+                                                <p style="font-size:12px; padding-bottom: 30px;"><a href="{{ URL::to('/forgot-passowrd') }}" style="text-decoration:none; color:#000">Forgot Password</a></p>
 
                                                 <!-- <input type="image" src="img/Captcha.png" class="img-responsive">
                                                   <p style="font-size:16px; font-weight:bold">Type the words</p>
@@ -130,7 +134,7 @@ background-repeat: repeat;
                                                 </script>
                                             </div><br/> <div class="clearfix"></div>
                                             <div class="form-group">
-                                                <div class="col-sm-5" style="overflow: hidden; margin-left: 10px;">
+                                                <div class="col-sm-5" style="overflow: hidden; margin-left: 10px;z-index: 100;">
                                                     <input type="image" src="{{ URL::to('/public/assets/registration/img/LOgin.png')}}" class="img-responsive center-block" style="width:70px; margin-top: 20px;cursor:pointer;" id="login-image">
                                                 </div>
                                             </div>
@@ -175,8 +179,9 @@ background-repeat: repeat;
                     <span style="font-family:Roboto Th; font-size:54px; color:#fff;text-shadow: -2px 1px 3px #000000;text-transform:uppercase;">you</span><br>
                     <span style="font-family:Roboto Th; font-size:32px;color:#000;text-shadow: 0px 0px 1px #BABABA;text-transform:uppercase;"><strong>want when</strong></span><br>
                     <strong>you want it</strong></p><br>
-
+                @if(Auth::guest())
                 <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('/public/assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
+                @endif
             </div>
         </div>
 
@@ -285,7 +290,7 @@ background-repeat: repeat;
 
 
                 <p style="font-weight: 600;">
-                    Putactosis free, and there are<br> no additional charges when<br> you use it.
+                    Putactos is {{ trans('home.free') }}, and there are<br> no additional charges when<br> you use it.
                     It’s like swiping your<br> card - only faster, safer and<br> more convenient.
                 </p>
             </div>
@@ -420,7 +425,7 @@ background-repeat: repeat;
             <p class="pull-left" style="font-family:Roboto Th; padding-left:40px;font-size: 32px;line-height: 36px;padding-top: 10px;color: #fff;
     text-transform: uppercase;font-weight: 600;">
                 We won’t show your exact <br>
-                location, but you’ll be ABLE<br>
+                location, but you’ll be<br>
                 able to find people nearby who<br>
                 like the same things you do.
             </p>
@@ -463,7 +468,7 @@ background-repeat: repeat;
         </div>
     </div>
 </div>
- 
+@if(!Auth::check())
 <div class="container-fluid" style="background-image: url(../../public/assets/registration/img/blacl_strip.png);background-repeat: repeat;height: 286px;">
 
     <p style="text-align:center; font-family:Roboto Th; font-size:54px;color: #fff;padding-top: 70px;">
@@ -476,7 +481,7 @@ background-repeat: repeat;
     </p>
 
 </div>
-
+@endif
 
 <div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png);background-repeat: repeat; background-color:#dbdbdb;">
     <div class="container" style="padding:0; background:url(../../public/assets/registration/img/bg_pelple.png); width:100%; max-width:1327px; min-height:944px;margin-top: 80px;">
