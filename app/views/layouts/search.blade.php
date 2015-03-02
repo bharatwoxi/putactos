@@ -325,5 +325,6 @@
     initializeGetLocation();
     initializeAutoSuggest();
 </script>
+@include('toastr.index')
 </body>
 </html>

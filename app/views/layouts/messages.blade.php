@@ -10,8 +10,6 @@
     <link href="{{URL::asset('public/assets/registration/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/jquery.nstSlider.css')}}" rel="stylesheet">
-
-
 </head>
 <style type="text/css">
     #buttonGroupForm .btn-group .form-control-feedback {
@@ -292,4 +290,5 @@
     }
 
 </script>
+@include('toastr.index')
 </html>

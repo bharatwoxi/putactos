@@ -170,6 +170,7 @@
      highlightMax = highlightMin + Math.random() * 80;
      $('.nstSlider').nstSlider('highlight_range', highlightMin, highlightMax);*/
 </script>
+@include('toastr.index')
 </body>
 </html>
 

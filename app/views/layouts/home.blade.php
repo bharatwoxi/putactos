@@ -126,4 +126,7 @@
 
 
 </body>
+@if(Auth::check())
+@include('toastr.index')
+@endif
 </html>

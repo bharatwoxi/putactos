@@ -13,6 +13,9 @@
                 </div>
                 <div id="last_date">
                     {{$userList['day']}}
+                    @if($userList['totalNewMessages']!=0)
+                    <p>{{$userList['totalNewMessages']}}</p>
+                    @endif
                 </div>
             </div>
         </a>
