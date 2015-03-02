@@ -43,7 +43,10 @@ class MessageController extends BaseController {
                 $useData = User::find($user->to_user_id);
                 //$getMaxTimeStamp = Message::whereIn('from_user_id', array($loggedInUserId,$user->to_user_id))->orwhereIn('to_user_id', array($loggedInUserId,$user->to_user_id))->max('sent_time');
                 $getMaxTimeStamp = Message::where('from_user_id', $loggedInUserId)->where('to_user_id', $user->to_user_id)->orWhere('from_user_id', $user->to_user_id)->where('to_user_id', $loggedInUserId)->max('sent_time');
-
+                /* Get New Message Count */
+                $getNewMessageCountLeft = Message::where('from_user_id', $loggedInUserId)->where('to_user_id', $user->to_user_id)->where('is_new',1)->count();
+                $getNewMessageCountRight = Message::Where('from_user_id', $user->to_user_id)->where('to_user_id', $loggedInUserId)->where('is_new',1)->count();
+                $getNewMessageCount = $getNewMessageCountLeft + $getNewMessageCountRight;
                 $getLatestMessage = Message::where('sent_time','=',$getMaxTimeStamp)->select('message')->orderBy('sent_time','desc')->groupBy('to_user_id')->get();
                 foreach($getLatestMessage as $getMessage){
                     $message = $getMessage->message;
@@ -60,8 +63,10 @@ class MessageController extends BaseController {
                 }
                 $userListingForMessages[$i]['message'] = mb_strimwidth($message,0,15,"...");
                 $userListingForMessages[$i]['day'] = $getDayFromDate;
+                $userListingForMessages[$i]['totalNewMessages'] = $getNewMessageCount;
                 $i++;
             }
+
 //            echo "<pre>";print_r($userListingForMessages);echo "</pre>";
 //            exit;
         }
@@ -118,6 +123,12 @@ class MessageController extends BaseController {
         foreach($messageData as $message){
             $user = User::find($message['from_user_id']);
             $userMessage[$i]['messageId'] = $message['id'];
+            $getMessageRecord = Message::find($message['id']);
+            if($getMessageRecord->is_new==1){
+                $getMessageRecord->is_new = 0;
+                $getMessageRecord->updated_at = date('Y-m-d H:m:s');
+                $getMessageRecord->save();
+            }
 //            if($loggedInUserId == $message['from_user_id']){
 //                echo 1;echo "<br/>";
 //                $userMessage[$i]['name'] = 'You';
@@ -171,5 +182,36 @@ class MessageController extends BaseController {
         }
         $user['name'] = $userMessage['name'] = ucwords($fromUser->user_first_name.' '.$fromUser->user_last_name);;
         return View::make('messages.showAddedMessage')->with(array('message'=>$message,'user'=>$user));
+    }
+    /*
+    *function Name: showNotifications
+    *Desc: Show Toastr Notificationto user
+    *Created By: Sagar Acharya
+    *Created Date: 3 March 2015
+    *return: N/A
+   */
+    public function showNotifications()
+    {
+        $getNewMessages = Message::where('to_user_id', Auth::user()->id)->where('is_new',1)->where('toastr_notification',1)->get();
+        if($getNewMessages->isEmpty()){
+            return Response::json([
+                'success'=>false
+            ]);
+        }else{
+            $i = 0;
+            $newMessage = array();
+            foreach($getNewMessages as $message){
+                $user = User::find($message->from_user_id);
+                $newMessage[$i]['fromUserName'] = ucwords($user->user_first_name." ".$user->user_last_name);
+                $i++;
+                $getMessageFromId = Message::find($message->id);
+                $getMessageFromId->toastr_notification = 0;
+                $getMessageFromId->save();
+            }
+            return Response::json([
+                'success'=>true,
+                'message'=>$newMessage
+            ]);
+        }
     }
 }

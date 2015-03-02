@@ -94,4 +94,5 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
 <script src="{{URL::asset('public/assets/registration/js/custom/google-place.js')}}"></script>
 <script src="{{URL::asset('public/assets/registration/datepicker/js/bootstrap-datepicker.js')}}"></script>
+@include('toastr.index')
 </html>

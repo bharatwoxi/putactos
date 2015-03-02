@@ -17,6 +17,7 @@ return array(
     'AddIsNewFlagToUserMessage' => $baseDir . '/app/database/migrations/2015_01_09_120140_add_is_new_flag_to_user_message.php',
     'AddPenisSizeToServiceProviderTable' => $baseDir . '/app/database/migrations/2015_02_28_174128_add_penis_size_to_service_provider_table.php',
     'AddRememberTokenToSystemUsersTable' => $baseDir . '/app/database/migrations/2014_12_09_085547_add_remember_token_to_system_users_table.php',
+    'AddToastrNotificationToUserMessagesTable' => $baseDir . '/app/database/migrations/2015_03_02_230859_add_toastr_notification_to_user_messages_table.php',
     'AdminController' => $baseDir . '/app/controllers/AdminController.php',
     'Barryvdh\\Debugbar\\Console\\ClearCommand' => $vendorDir . '/barryvdh/laravel-debugbar/src/Console/ClearCommand.php',
     'Barryvdh\\Debugbar\\Console\\PublishCommand' => $vendorDir . '/barryvdh/laravel-debugbar/src/Console/PublishCommand.php',
