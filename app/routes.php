@@ -34,7 +34,7 @@ Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
             return View::make('registration.customer');
         });
 
-        /* User Login *& Authentication */
+        /* User Login * & Authentication */
         Route::get('login1',function(){
             return View::make('login.index2');
         });
@@ -217,9 +217,18 @@ Route::group(
 /* Admin Routes */
 Route::get('admin-master',array('before'=>'isGuestOrAdmin','uses'=>'AdminController@showLogin'));
 Route::post('admin/check-login',array('before'=>'isGuest','uses'=>'AdminController@checkLogin'));
+
 Route::get('admin/home',array('before'=>'auth|isAdmin','uses'=>'AdminController@homeView'));
+Route::get('admin/searchMessage',array('before'=>'auth|isAdmin','uses'=>'AdminController@searchExchangeMessage'));
+Route::get('admin/editMasterProfile',array('before'=>'auth|isAdmin','uses'=>'AdminController@editMasterProfile'));
+
 Route::get('admin/user-messages',array('before'=>'auth|isAdmin','uses'=>'AdminController@getUserMessages'));
+Route::get('admin/search-user-message',array('before'=>'auth|isAdmin','uses'=>'AdminController@getUsersExchangeMessages'));
+Route::get('admin/search-user-profile',array('before'=>'auth|isAdmin','uses'=>'AdminController@getUsersProfile'));
+Route::get('admin/block-unblock-user',array('before'=>'auth|isAdmin','uses'=>'AdminController@blockUnblockUser'));
+
 Route::get('admin/site-visitors/daily',array('before'=>'auth|isAdmin','uses'=>'AdminController@userLoginCountDaily'));
 Route::get('admin/site-visitors/hourly',array('before'=>'auth|isAdmin','uses'=>'AdminController@userLoginCountHourly'));
 Route::get('admin/user-stats-last10',array('before'=>'auth|isAdmin','uses'=>'AdminController@lastTenNewUsers'));
+Route::get('admin/user-stats-last10_loggedin',array('before'=>'auth|isAdmin','uses'=>'AdminController@lastTenLoggedinUsers'));
 Route::get('admin/user-count-detail',array('before'=>'auth|isAdmin','uses'=>'AdminController@userCount'));

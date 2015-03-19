@@ -1664,6 +1664,35 @@ Chats
   margin-left: 65px;
   background: #fafafa;
 }
+
+.chats li.customMessage .mainmessage {
+    text-align: left;
+    border-left: 2px solid #1BBC9B;
+    border-right: 2px solid #F3565D;
+    background: #fafafa;
+}
+
+.chats li.customMessage .arrowin {
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: -8px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #1BBC9B;
+}
+
+.chats li.customMessage .arrowout {
+    display: block;
+    position: absolute;
+    bottom: 5px;
+    right: -8px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #F3565D;
+}
 .chats li.in .message .arrow {
   display: block;
   position: absolute;
