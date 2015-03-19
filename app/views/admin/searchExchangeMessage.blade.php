@@ -478,19 +478,20 @@ License: You must have a valid license purchased only from themeforest(the above
 <!--					</form>-->
 <!--					<!-- END RESPONSIVE QUICK SEARCH FORM -->-->
 <!--				</li>-->
-                <li class="start active open">
-                    <a href="javascript:;">
-                        <i class="icon-home"></i>
-                        <span class="title">Dashboard</span>
-                        <span class="selected"></span>
-                    </a>
+				<li>
+					<a href="home">
+					<i class="icon-home"></i>
+					<span class="title">Dashboard</span>
+					<span class="selected"></span>
+					</a>
                 </li>
-                <li>
-                    <a href="searchMessage">
-                        <i class="icon-film"></i>
-                        <span class="title">Search Messages</span>
-                        <span class="selected"></span>
-                    </a>
+
+                <li class="start active open">
+                <a href="javascript:;">
+                    <i class="icon-film"></i>
+                    <span class="title">Search Messages</span>
+                    <span class="selected"></span>
+                </a>
                 </li>
                 <li>
                     <a href="editMasterProfile">
@@ -499,7 +500,6 @@ License: You must have a valid license purchased only from themeforest(the above
                         <span class="selected"></span>
                     </a>
                 </li>
-
 			</ul>
 			<!-- END SIDEBAR MENU -->
 		</div>
@@ -632,7 +632,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- END STYLE CUSTOMIZER -->
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
-			Dashboard <small>Reports & Statistics</small>
+                Search <small>Users Messages</small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -730,227 +730,38 @@ License: You must have a valid license purchased only from themeforest(the above
 				</div>
 			</div>
 			<!-- END DASHBOARD STATS -->
-			<div class="clearfix">
-			</div>
-			<div class="row">
-				<div class="col-md-12 col-sm-12">
-					<!-- BEGIN PORTLET-->
-					<div class="portlet solid bordered grey-cararra">
-						<div class="portlet-title">
-							<div class="caption">
-								<i class="fa fa-bar-chart-o"></i>Site Visits
-							</div>
-							<div class="actions">
-								<div class="btn-group" data-toggle="buttons">
-									<label class="btn grey-steel btn-sm active">
-									<input type="radio" name="options" class="toggle" id="option1">Daily</label>
-                                    <input type="hidden" value="{{ URL::to('admin/site-visitors/daily') }}" id="user_login_count_daily_url" />
-									<label class="btn grey-steel btn-sm">
-									<input type="radio" name="options" class="toggle" id="option2">Hourly</label>
-								    <input type="hidden" value="{{ URL::to('admin/site-visitors/hourly') }}" id="user_login_count_hourly_url" />
-                                </div>
-							</div>
-						</div>
-						<div class="portlet-body">
-							<div id="site_statistics_loading">
-								<img src="{{URL::asset('public/assets/admin/admin/layout/img/loading.gif')}}" alt="loading"/>
-							</div>
-							<div id="site_statistics_content" class="display-none">
-								<div id="site_statistics" class="chart">
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- END PORTLET-->
-				</div>
-			</div>
-			<div class="clearfix">
-			</div>
-			<div class="row ">
-                <div class="col-md-6 col-sm-6">
-                    <!-- BEGIN PORTLET -->
-                    <div class="portlet">
-                        <div class="portlet-title line">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- BEGIN Portlet PORTLET-->
+                    <div class="portlet light">
+                        <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-users"></i>Last 10 Registered Users
+                                <i class="fa fa-comments"></i>Search Messages
                             </div>
-                            <div class="tools">
-                                <a href="" class="collapse">
-                                </a>
-                                <!--<a href="#portlet-config" data-toggle="modal" class="config">
-                                </a>-->
-                                <!--<a href="" class="reload">
-                                </a>-->
-                                <a href="" class="fullscreen">
-                                </a>
-                                <a href="" class="remove">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="portlet-body">
-                            <!--<div class="row number-stats margin-bottom-30" id="user_count_detail">
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <div class="stat-left">
-                                        <div class="stat-chart">
-                                            <!-- do not line break "sparkline_bar" div. sparkline chart has an issue when the container div has line break -->
-                                            <!--<div id="sparkline_bar"></div>
-                                        </div>
-                                        <div class="stat-number">
-                                            <div class="title">
-                                                Total
-                                            </div>
-                                            <div class="number" id="total_users">
-                                                2460
-                                            </div>
-                                        </div>
+                            <div class="inputs">
+                                <div class="portlet-input input-inline input-medium">
+                                    <div class="input-group">
+                                        <input type="text" id="searchMessage" class="form-control input-circle-left" placeholder="search...">
+										<span class="input-group-btn">
+										<button id="searchMessagebtn" class="btn btn-circle-right btn-default" type="submit">Go!</button>
+										</span>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <div class="stat-right">
-                                        <div class="stat-chart">
-                                            <!-- do not line break "sparkline_bar" div. sparkline chart has an issue when the container div has line break -->
-                                            <!--<div id="sparkline_bar2"></div>
-                                        </div>
-                                        <div class="stat-number">
-                                            <div class="title">
-                                                New
-                                            </div>
-                                            <div class="number" id="new_users">
-                                                719
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>-->
-                            <div class="table-scrollable table-scrollable-borderless">
-                                <table class="table table-hover table-light">
-                                    <thead>
-                                    <tr class="uppercase">
-                                        <th colspan="2">
-                                            MEMBER
-                                        </th>
-                                        <th>
-                                            User Type
-                                        </th>
-                                        <th>
-                                            Gender
-                                        </th>
-                                        <th>
-                                            Registered Time
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="user_stats">
-                                        <div id="user_statistics_loading">
-                                            <img src="{{URL::asset('public/assets/admin/admin/layout/img/loading.gif')}}" alt="loading"/>
-                                        </div>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
-                    </div>
-                    <!-- END PORTLET -->
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <!-- BEGIN PORTLET-->
-                    <div class="portlet">
-                        <div class="portlet-title line">
-                            <div class="caption">
-                                <i class="fa fa-comments"></i>Last 10 Chats
-                            </div>
-                            <div class="tools">
-                                <a href="" class="collapse">
-                                </a>
-                                <!--<a href="#portlet-config" data-toggle="modal" class="config">
-                                </a>-->
-                                <!--<a href="" class="reload">
-                                </a>-->
-                                <a href="" class="fullscreen">
-                                </a>
-                                <a href="" class="remove">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="portlet-body" id="chats">
+                        <div class="portlet-body"  id="chats">
                             <div class="scroller" style="height: 352px;" data-always-visible="1" data-rail-visible1="1">
                                 <ul class="chats" id="user_messages">
-
                                 </ul>
                             </div>
-                            <!--<div class="chat-form">
-                                <div class="input-cont">
-                                    <input class="form-control" type="text" placeholder="Type a message here..."/>
-                                </div>
-                                <div class="btn-cont">
-									<span class="arrow">
-									</span>
-                                    <a href="" class="btn blue icn-only">
-                                        <i class="fa fa-check icon-white"></i>
-                                    </a>
-                                </div>
-                            </div>-->
                         </div>
                     </div>
-                    <!-- END PORTLET-->
-                </div>
-			</div>
-			<div class="clearfix">
-			</div>
-
-            <div class="row ">
-                <div class="col-md-12 col-sm-12">
-                    <!-- BEGIN PORTLET -->
-                    <div class="portlet">
-                        <div class="portlet-title line">
-                            <div class="caption">
-                                <i class="fa fa-users"></i>Last 10 Logged In Users
-                            </div>
-                            <div class="tools">
-                                <a href="" class="collapse">
-                                </a>
-                                <!--<a href="#portlet-config" data-toggle="modal" class="config">
-                                </a>-->
-                                <!--<a href="" class="reload">
-                                </a>-->
-                                <a href="" class="fullscreen">
-                                </a>
-                                <a href="" class="remove">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="portlet-body">
-
-                            <div class="table-scrollable table-scrollable-borderless">
-                                <table class="table table-hover table-light">
-                                    <thead>
-                                    <tr class="uppercase">
-                                        <th colspan="2">
-                                            MEMBER
-                                        </th>
-                                        <th>
-                                            User Type
-                                        </th>
-                                        <th>
-                                            Gender
-                                        </th>
-                                        <th>
-                                            Login Time
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="user_stats_last_loggedin">
-                                    <div id="user_statistics_loading_loggedin">
-                                        <img src="{{URL::asset('public/assets/admin/admin/layout/img/loading.gif')}}" alt="loading"/>
-                                    </div>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END PORTLET -->
+                    <!-- END Portlet PORTLET-->
                 </div>
             </div>
-			<!--<div class="row ">
+			<div class="clearfix">
+			</div>
+            <!--<div class="row ">
 				<div class="col-md-6 col-sm-6">
 					<div class="portlet box purple-wisteria">
 						<div class="portlet-title">
@@ -2774,16 +2585,15 @@ jQuery(document).ready(function() {
    Index.initDashboardDaterange();
    Index.initJQVMAP(); // init index page's custom scripts
    Index.initCalendar(); // init index page's custom scripts
-   Index.initCharts($('#user_login_count_daily_url').val()); // init index page's custom scripts
    Index.initChat();
    Index.initMiniCharts();
    Tasks.initDashboardWidget();
 
    /* Custome Code */
    /* Get USer Messages */
-    $.ajax({
+    /*$.ajax({
         type: "GET",
-        url: "{{URL::to('admin/user-messages')}}", //Where to make Ajax calls
+        url: "{{URL::to('admin/search-user-message')}}", //Where to make Ajax calls
         dataType:"html", // Data type, HTML, json etc.
         success: function (result) {
             //$("#loaderImage").css("display", "none");
@@ -2793,34 +2603,32 @@ jQuery(document).ready(function() {
             console.log(this.url);
             alert(error);
         }
-    });
-    $.ajax({
-        type: "GET",
-        url: "{{URL::to('admin/user-stats-last10')}}", //Where to make Ajax calls
-        dataType:"html", // Data type, HTML, json etc.
-        success: function (result) {
-            $("#user_statistics_loading").hide();
-            $('#user_stats').html(result);
-        },
-        error: function (error) {
-            console.log(this.url);
-            alert(error);
-        }
-    });
+    });*/
 
-    $.ajax({
-        type: "GET",
-        url: "{{URL::to('admin/user-stats-last10_loggedin')}}", //Where to make Ajax calls
-        dataType:"html", // Data type, HTML, json etc.
-        success: function (result) {
-            $("#user_statistics_loading_loggedin").hide();
-            $('#user_stats_last_loggedin').html(result);
-        },
-        error: function (error) {
-            console.log(this.url);
-            alert(error);
+    $('#searchMessagebtn').on('click', function(){
+        var message  = $('#searchMessage').val();
+        var msgData = 'searchKey='+message;
+        if (message == '') {
+            alert("Search field should not be empty");
+        } else {
+            $.ajax({
+                type: "GET",
+                url: "{{URL::to('admin/search-user-message')}}", //Where to make Ajax calls
+                dataType:"html", // Data type, HTML, json etc.
+                data : msgData,
+                success: function (result) {
+                    //$("#loaderImage").css("display", "none");
+                    console.log(result);
+                    $('#user_messages').html(result);
+                },
+                error: function (error) {
+                    console.log(this.url);
+                    alert(error);
+                }
+            });
         }
-    });
+    })
+
     /*$.ajax({
         type: "GET",
         url: "{{URL::to('admin/user-count-detail?default=0')}}", //Where to make Ajax calls
@@ -2836,20 +2644,6 @@ jQuery(document).ready(function() {
             alert(error);
         }
     });*/
-    $("#option1").change(function(){
-        $('#site_statistics_content').hide();
-        $('#site_statistics_loading').show();
-        Index.initCharts($('#user_login_count_daily_url').val()); // init index page's custom scripts
-    });
-    $("#option2").change(function(){
-        $('#site_statistics_content').hide();
-        $('#site_statistics_loading').show();
-        Index.initCharts($('#user_login_count_hourly_url').val()); // init index page's custom scripts
-    })
-    $('input[type=radio][name=customer_stats]').change(function(e) {
-        e.preventDefault();
-        alert(this.value);
-    });
 });
 </script>
 <!-- END JAVASCRIPTS -->

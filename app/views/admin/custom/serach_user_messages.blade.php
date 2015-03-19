@@ -1,3 +1,4 @@
+@if($users)
 @foreach($users as $user)
 <li class="customMessage">
     <div class="row">
@@ -33,3 +34,6 @@
     </div>
 </li>
 @endforeach
+@else
+<h1>data not found</h1>
+@endif

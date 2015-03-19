@@ -89,6 +89,31 @@ class AdminController extends BaseController {
     }
 
     /*
+    *function Name: searchExchangeMessage
+    *Desc: View Search Exchange Message
+    *Created By: Bharat Makwana
+    *Created Date: 17 Mar 2015
+    *return: N/A
+   */
+    public function searchExchangeMessage()
+    {
+        return View::make('admin.searchExchangeMessage');
+    }
+
+    /*
+    *function Name: editMasterProfile
+    *Desc: View Users Edit profile view
+    *Created By: Bharat Makwana
+    *Created Date: 17 Mar 2015
+    *return: N/A
+   */
+    public function editMasterProfile()
+    {
+        return View::make('admin.editMasterProfile');
+    }
+
+
+    /*
     *function Name: getUserMessages
     *Desc: get user messages: Last 10 messages exchanged by users
     *Created By: Sagar Acharya
@@ -101,12 +126,103 @@ class AdminController extends BaseController {
         $users = null;
         $i = 0;
         foreach($messages as $message){
-            $users[$i]['userdata'] = User::find($message->from_user_id);
+            $users[$i]['userdataFrom'] = User::find($message->from_user_id);
+            $users[$i]['userdataTo'] = User::find($message->to_user_id);
             $users[$i]['messages'] = $message;
             $i++;
         }
         return View::make('admin.custom.user_messages')->with(array('users'=>$users));
     }
+
+    /*
+    *function Name: getUsersExchangeMessages
+    *Desc: get user exchange messages by keyword
+    *Created By: Bharat Makwana
+    *Created Date: 17 Mar 2015
+    *return: N/A
+   */
+    public function getUsersExchangeMessages()
+    {
+        $input = Input::all();
+        $searchKey = $input['searchKey'];
+        $messages = Message::where('message','LIKE', '%'.$searchKey.'%')->orderBy('sent_time','DESC')->get();
+        $users = null;
+        $i = 0;
+        foreach($messages as $message){
+            $users[$i]['userdataFrom'] = User::find($message->from_user_id);
+            $users[$i]['userdataTo'] = User::find($message->to_user_id);
+            $users[$i]['messages'] = $message;
+            $i++;
+        }
+        return View::make('admin.custom.serach_user_messages')->with(array('users'=>$users));
+    }
+
+    /*
+    *function Name: getUsersProfile
+    *Desc: get user profile
+    *Created By: Bharat Makwana
+    *Created Date: 17 Mar 2015
+    *return: N/A
+   */
+    public function getUsersProfile()
+    {
+        $input = Input::all();
+        $searchKey = $input['searchKey'];
+        $userResults = User::whereRaw((DB::raw("`user_role_id` <> 3 AND (`username` LIKE '%$searchKey%' OR `email` LIKE '%$searchKey%')")))->get();
+        $users = array();
+        $stats = array();
+        $i = 0;
+        foreach($userResults as $userResult){
+            $users[$i]['profile_image'] = $userResult['profile_image'];
+            $users[$i]['user_id'] = $userResult['id'];
+            $users[$i]['username'] = $userResult['username'];
+            $users[$i]['email'] = $userResult['email'];
+            $users[$i]['user_first_name'] = $userResult['user_first_name'];
+            $users[$i]['user_last_name'] = $userResult['user_last_name'];
+            $users[$i]['is_active'] = $userResult['is_active'];
+            $users[$i]['user_role_id'] = $userResult['user_role_id'];
+            $userRoleName = UserRole::select('role')->where('id', '=', $userResult['user_role_id'])->get();
+            $users[$i]['user_role'] = $userRoleName[0]['role'];
+            $i++;
+        }
+        $stats['totalResult'] = $i;
+        return View::make('admin.custom.user_profile_list')->with(array('users'=>$users, 'stats'=>$stats));
+    }
+
+    /*
+    *function Name: blockUnblockUser
+    *Desc: Block Unblock User
+    *Created By: Bharat Makwana
+    *Created Date: 19 Mar 2015
+    *return: N/A
+    */
+    public function blockUnblockUser()
+    {
+        $input = Input::all();
+        $searchKey = $input['searchKey'];
+        $userInfo = explode('_',$input['userId']);
+        User::where('id', '=', $userInfo[0])->update(array('is_active' => $userInfo[1]));
+        $userResults = User::whereRaw((DB::raw("`user_role_id` <> 3 AND (`username` LIKE '%$searchKey%' OR `email` LIKE '%$searchKey%')")))->get();
+        $users = array();
+        $stats = array();
+        $i = 0;
+        foreach($userResults as $userResult){
+            $users[$i]['profile_image'] = $userResult['profile_image'];
+            $users[$i]['user_id'] = $userResult['id'];
+            $users[$i]['username'] = $userResult['username'];
+            $users[$i]['email'] = $userResult['email'];
+            $users[$i]['user_first_name'] = $userResult['user_first_name'];
+            $users[$i]['user_last_name'] = $userResult['user_last_name'];
+            $users[$i]['is_active'] = $userResult['is_active'];
+            $users[$i]['user_role_id'] = $userResult['user_role_id'];
+            $userRoleName = UserRole::select('role')->where('id', '=', $userResult['user_role_id'])->get();
+            $users[$i]['user_role'] = $userRoleName[0]['role'];
+            $i++;
+        }
+        $stats['totalResult'] = $i;
+        return View::make('admin.custom.user_profile_list')->with(array('users'=>$users, 'stats'=>$stats));
+    }
+
     /*
     *function Name: userLoginCountDaily
     *Desc: Daily Login Count
@@ -154,6 +270,9 @@ class AdminController extends BaseController {
    */
     public function userLoginCountHourly()
     {
+        $timeArray = array();
+        $hourlyUserLoginCount = array();
+        $array = array();
         $timeString = date('H:00:00');
         for($i=0,$currentTime=date('H:00:00');$currentTime>='01:00:00';$i++,$currentTime = date('H:00:00',strtotime("$newTime -1 hour"))){
             $newTime = date('H:00:00',strtotime("$currentTime"));
@@ -166,7 +285,7 @@ class AdminController extends BaseController {
                     ->where('login_time','>',date('Y-m-d '.$minusOneHour))->count('id');
             }
         }
-        $array = array();
+
         $hourlyUserLoginCount = array_reverse($hourlyUserLoginCount);
         foreach($hourlyUserLoginCount as $key=>$value){
             $hourkey = date('H',strtotime($key));
@@ -189,6 +308,37 @@ class AdminController extends BaseController {
         $users = User::where('user_role_id','!=','3')->orderBy('created_at','DESC')->take(10)->get();
         return View::make('admin.custom.last_ten_newusers')->with(array('users'=>$users));
     }
+
+    /*
+    *function Name: lastTenLoggedinUsers
+    *Desc: get user messages: Last 10 logged in users
+    *Created By: Bharat Makwana
+    *Created Date:  16 Mar 2015
+    *return: N/A
+    */
+    public function lastTenLoggedinUsers()
+    {
+        $lastLogUserDetail = SystemIpLog::select('system_user_id')->distinct()->orderBy('id','DESC')->take(10)->get();
+        $userLogArray = array();
+        foreach ($lastLogUserDetail as $logDetail){
+            //echo $logDetail['system_user_id'];
+            array_push($userLogArray, $logDetail['system_user_id']);
+        }
+        //exit;
+        //$users = Users::where('id','in',$lastLogUserDetail);
+        $login_time = array();
+        $max_login_time = array();
+        foreach ($userLogArray as $userLogId) {
+            $max_login_time = SystemIpLog::where('system_user_id','=', $userLogId)->get([DB::raw('MAX(login_time) as login_time')]);
+            foreach ($max_login_time as $maxloginTime) {
+                array_push($login_time, $maxloginTime->login_time);
+            }
+        }
+        $users = User::where('user_role_id','!=','3')->whereIn('id', $userLogArray)->get();
+        return View::make('admin.custom.last_ten_loggedinusers')->with(array('users'=>$users, 'login_time'=>$login_time));
+    }
+
+
     /*
     *function Name: newUserStatsDetail
     *Desc: get user messages: Last 10 new users
