@@ -21,7 +21,7 @@ class UserController extends BaseController {
     public function checkLogin(){
         $input = Input::all();
         /* Check reCaptcha */
-        /*$secret = $_ENV['reCaptchaSecretKey'];
+        $secret = $_ENV['reCaptchaSecretKey'];
         $reCaptcha = new ReCaptcha($secret);
 
         // The response from reCAPTCHA
@@ -33,8 +33,8 @@ class UserController extends BaseController {
                 $_SERVER["REMOTE_ADDR"],
                 $input["g-recaptcha-response"]
             );
-        }*/
-        //if ($resp != null && $resp->success) {
+        }
+        if ($resp != null && $resp->success) {
             $rules = array(
                 'email' => 'required|email',
                 'password' => 'required|min:6'
@@ -72,10 +72,10 @@ class UserController extends BaseController {
             }else{
                 return Redirect::to('login')->withInput()->withErrors($validation);
             }
-        /*}else{
+        }else{
             Session::flash('message', 'Please re-enter your reCAPTCHA.');
             return Redirect::to('login');
-        }*/
+        }
     }
 
     /*
