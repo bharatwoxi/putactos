@@ -417,7 +417,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!--							<i class="icon-lock"></i> Lock Screen </a>-->
 <!--						</li>-->
 						<li>
-							<a href="{{ URL::to('/logout') }}">
+							<a href="admin-logout">
 							<i class="icon-key"></i> Log Out </a>
 						</li>
 					</ul>
@@ -462,9 +462,9 @@ License: You must have a valid license purchased only from themeforest(the above
 				</li>
 				<!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
 <!--				<li class="sidebar-dropdown dropdown-extended dropdown-notification open-wrapper">-->
-<!--					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->-->
-<!--					<!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->-->
-<!--					<!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->-->
+<!--					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+<!--					<!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
+<!--					<!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
 <!--					<form class="sidebar-search " action="extra_search.html" method="POST">-->
 <!--						<a href="javascript:;" class="remove">-->
 <!--						<i class="icon-close"></i>-->
@@ -476,7 +476,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!--							</span>-->
 <!--						</div>-->
 <!--					</form>-->
-<!--					<!-- END RESPONSIVE QUICK SEARCH FORM -->-->
+<!--					<!-- END RESPONSIVE QUICK SEARCH FORM -->
 <!--				</li>-->
                 <li class="start active open">
                     <a href="javascript:;">
@@ -635,7 +635,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			Dashboard <small>Reports & Statistics</small>
 			</h3>
 			<div class="page-bar">
-				<ul class="page-breadcrumb">
+				<!--<ul class="page-breadcrumb">
 					<li>
 						<i class="fa fa-home"></i>
 						<a href="#">Home</a>
@@ -644,7 +644,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<li>
 						<a href="#">Dashboard</a>
 					</li>
-				</ul>
+				</ul>-->
 <!--				<div class="page-toolbar">-->
 <!--					<div id="dashboard-report-range" class="pull-right tooltips btn btn-fit-height grey-salt" data-placement="top" data-original-title="Change dashboard date range">-->
 <!--						<i class="icon-calendar"></i>&nbsp;-->
@@ -872,7 +872,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                         </div>
                         <div class="portlet-body" id="chats">
-                            <div class="scroller" style="height: 352px;" data-always-visible="1" data-rail-visible1="1">
+                            <div class="scroller" style="height: 500px;" data-always-visible="1" data-rail-visible1="1">
                                 <ul class="chats" id="user_messages">
 
                                 </ul>

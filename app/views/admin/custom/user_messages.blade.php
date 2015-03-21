@@ -33,3 +33,6 @@
     </div>
 </li>
 @endforeach
+@else
+No results to show
+@endif

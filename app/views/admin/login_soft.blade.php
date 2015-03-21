@@ -96,11 +96,12 @@ License: You must have a valid license purchased only from themeforest(the above
 			</div>
 		</div>
 		<div class="form-actions">
-			<label class="checkbox">
-			<input type="checkbox" name="remember" value="1"/> Remember me </label>
+			<!--<label class="checkbox">
+			<input type="checkbox" name="remember" value="1"/> Remember me </label>-->
 			<button type="submit" class="btn blue pull-right">
 			Login <i class="m-icon-swapright m-icon-white"></i>
 			</button>
+            <div class="clearfix"></div>
 		</div>
 		<!--<div class="login-options">
 			<h4>Or login with</h4>

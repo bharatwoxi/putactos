@@ -51,10 +51,10 @@ class AdminController extends BaseController {
             $user = User::find($id);
             if($id == NULL || $user == NULL){
                 Session::flash('message', 'It looks like you entered the wrong username or password');
-                return Redirect::to('admin')->withInput();;
+                return Redirect::to('admin-master')->withInput();;
             }elseif($user->is_active == 0){
                 Session::flash('message', 'Please confirm your username address');
-                return Redirect::to('admin');
+                return Redirect::to('admin-master');
             }elseif (Auth::attempt($data))
             {
                 //App::make('UserController')->saveIpBrowserInformation();
@@ -68,12 +68,12 @@ class AdminController extends BaseController {
                 /* Check Query Log With Time*/
                 /*$queries = DB::getQueryLog();
                 $last_query = end($queries);*/
-                return Redirect::to('admin')
+                return Redirect::to('admin-master')
                     ->with('message', 'It looks like you entered the wrong email or password')
                     ->withInput();
             }
         }else{
-            return Redirect::to('admin')->withInput()->withErrors($validation);
+            return Redirect::to('admin-master')->withInput()->withErrors($validation);
         }
     }
     /*
@@ -358,5 +358,18 @@ class AdminController extends BaseController {
             'newUsers' => $users['new']
         );
         echo json_encode($userCount);
+    }
+
+    /*
+    *function Name: doLogout
+    *Desc: logout from system
+    *Created By: Bharat Makwana
+    *Created Date: 21 Mar 2015
+    *return: N/A
+    */
+
+    public function doLogout(){
+        Auth::logout(); // log the user out of our application
+        return Redirect::to('admin-master'); // redirect the user to the login screen
     }
 }

@@ -217,6 +217,7 @@ Route::group(
 /* Admin Routes */
 Route::get('admin-master',array('before'=>'isGuestOrAdmin','uses'=>'AdminController@showLogin'));
 Route::post('admin/check-login',array('before'=>'isGuest','uses'=>'AdminController@checkLogin'));
+Route::get('admin/admin-logout', array('uses' => 'AdminController@doLogout'));
 
 Route::get('admin/home',array('before'=>'auth|isAdmin','uses'=>'AdminController@homeView'));
 Route::get('admin/searchMessage',array('before'=>'auth|isAdmin','uses'=>'AdminController@searchExchangeMessage'));
