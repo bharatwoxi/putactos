@@ -31,5 +31,5 @@
 {{$i++}}
 @endforeach
 @else
-Sorry No Data Found!!!
+No results to show
 @endif

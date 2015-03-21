@@ -18,7 +18,7 @@
      <a href="#" class="name">
             {{ ucwords($user['userdataTo']['user_first_name']) }} {{ ucwords($user['userdataTo']['user_last_name']) }} </a>
     <span class="datetime">
-    on {{ date("d M H:i:s",strtotime($user['messages']['sent_time'])) }} </span>
+    on {{ date("d M Y H:i:s",strtotime($user['messages']['sent_time'])) }} </span>
     <span class="body">
     {{ $user['messages']['message'] }}</span>
         <span class="arrowout">
@@ -35,5 +35,5 @@
 </li>
 @endforeach
 @else
-<h1>data not found</h1>
+No results to show
 @endif

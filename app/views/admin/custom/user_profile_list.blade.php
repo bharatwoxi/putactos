@@ -1,7 +1,7 @@
 
 <div class="well">
     <h5>
-    <span>Total Result Found : {{ $stats['totalResult'] }}</span>
+    <span>Total results to show : {{ $stats['totalResult'] }}</span>
     <h5/>
 </div>
 
@@ -74,7 +74,7 @@
         @endforeach
         @else
         <tr>
-           <td colspan="7" style="text-align: center">No Data Found</td>
+           <td colspan="7" style="text-align: center">No Results to show</td>
         </tr>
         @endif
         </tbody>
@@ -84,6 +84,7 @@
 <script>
     jQuery(document).ready(function() {
         $('.blockUnblock').on('click',function(){
+            $('#loader').show();
             var userId = $(this).val();
             var newMessage  = $('#searchMessage').val();
             var msgDataNew = 'searchKey='+newMessage+'&userId='+userId;
@@ -94,6 +95,7 @@
                 data : msgDataNew,
                 success: function (result) {
                     //$("#loaderImage").css("display", "none");
+                    $('#loader').hide();
                     $('#user_messages').html(result);
                 },
                 error: function (error) {

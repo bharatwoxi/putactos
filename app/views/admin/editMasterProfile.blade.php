@@ -417,7 +417,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--							<i class="icon-lock"></i> Lock Screen </a>-->
         <!--						</li>-->
         <li>
-            <a href="{{ URL::to('/logout') }}">
+            <a href="admin-logout">
                 <i class="icon-key"></i> Log Out </a>
         </li>
     </ul>
@@ -462,9 +462,9 @@ License: You must have a valid license purchased only from themeforest(the above
             </li>
             <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
             <!--				<li class="sidebar-dropdown dropdown-extended dropdown-notification open-wrapper">-->
-            <!--					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->-->
-            <!--					<!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->-->
-            <!--					<!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->-->
+            <!--					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+            <!--					<!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
+            <!--					<!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
             <!--					<form class="sidebar-search " action="extra_search.html" method="POST">-->
             <!--						<a href="javascript:;" class="remove">-->
             <!--						<i class="icon-close"></i>-->
@@ -476,7 +476,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <!--							</span>-->
             <!--						</div>-->
             <!--					</form>-->
-            <!--					<!-- END RESPONSIVE QUICK SEARCH FORM -->-->
+            <!--					<!-- END RESPONSIVE QUICK SEARCH FORM -->
             <!--				</li>-->
             <li>
                 <a href="home">
@@ -635,7 +635,7 @@ License: You must have a valid license purchased only from themeforest(the above
     Manage <small>User Profile</small>
 </h3>
 <div class="page-bar">
-    <ul class="page-breadcrumb">
+    <!--<ul class="page-breadcrumb">
         <li>
             <i class="fa fa-home"></i>
             <a href="#">Home</a>
@@ -644,7 +644,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <li>
             <a href="#">Dashboard</a>
         </li>
-    </ul>
+    </ul>-->
     <!--				<div class="page-toolbar">-->
     <!--					<div id="dashboard-report-range" class="pull-right tooltips btn btn-fit-height grey-salt" data-placement="top" data-original-title="Change dashboard date range">-->
     <!--						<i class="icon-calendar"></i>&nbsp;-->
@@ -738,19 +738,27 @@ License: You must have a valid license purchased only from themeforest(the above
         <form action="#">
             <div class="input-group">
                 <div class="input-cont">
-                    <input type="text" id="searchMessage" placeholder="Search..." class="form-control"/>
+                    <input type="text" id="searchMessage" placeholder="Search by username or email id" class="form-control"/>
                 </div>
 												<span class="input-group-btn">
-												<button type="button" id="searchMessagebtn" class="btn green-haze">
-                                                    Search &nbsp; <i class="m-icon-swapright m-icon-white"></i>
+												<button type="reset" id="searchMessagebtn" class="btn green-haze">
+                                                    Clear &nbsp; <i class="m-icon-swapright m-icon-white"></i>
                                                 </button>
 												</span>
             </div>
         </form>
     </div>
+    <div class="clearfix"></div>
+    <div class="col-md-12" style="padding-top: 10px">
+        <i>* Search must contain atleast three characters</i>
+     </div>
 </div>
 
 <div class="portlet-body"  id="chats">
+    <div id="loader" style="display: none">
+        <img src="{{URL::asset('public/assets/admin/admin/layout/img/loading.gif')}}" alt="loading"/>
+    </div>
+    <div class="clearfix>" style="height: 20px"></div>
     <div class="scroller" style="height: 352px;" data-always-visible="1" data-rail-visible1="1">
         <ul class="chats" id="user_messages">
         </ul>
@@ -2588,13 +2596,16 @@ License: You must have a valid license purchased only from themeforest(the above
         Index.initMiniCharts();
         Tasks.initDashboardWidget();
 
-
-        $('#searchMessagebtn').on('click', function(){
+        $('#searchMessage').on('keyup', function(){
+            $('#loader').show();
             var message  = $('#searchMessage').val();
             var msgData = 'searchKey='+message;
-            if (message == '') {
-                alert("Search field should not be empty");
+            if (message == '' || message.length <3) {
+                $('#loader').hide();
+                $(this).css("border", "1px solid red");
+                //alert("Search field should not be empty");
             } else {
+                $(this).css("border", "1px solid #f2f2f2");
                 $.ajax({
                     type: "GET",
                     url: "{{URL::to('admin/search-user-profile')}}", //Where to make Ajax calls
@@ -2602,6 +2613,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     data : msgData,
                     success: function (result) {
                         //$("#loaderImage").css("display", "none");
+                        $('#loader').hide();
                         $('#user_messages').html(result);
                     },
                     error: function (error) {
@@ -2610,8 +2622,11 @@ License: You must have a valid license purchased only from themeforest(the above
                     }
                 });
             }
-        })
+        });
 
+        $('#searchMessagebtn').on('click', function(){
+            $('#user_messages').html('');
+        });
     });
 </script>
 <!-- END JAVASCRIPTS -->
