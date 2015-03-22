@@ -2625,6 +2625,7 @@ License: You must have a valid license purchased only from themeforest(the above
         });
 
         $('#searchMessagebtn').on('click', function(){
+            $(this).css("border", "1px solid #f2f2f2");
             $('#user_messages').html('');
         });
     });
