@@ -2650,7 +2650,7 @@ jQuery(document).ready(function() {
     });
 
     $('#searchMessagebtn').on('click', function(){
-        $(this).css("border", "1px solid #f2f2f2");
+        $('#searchMessage').css("border", "1px solid #f2f2f2");
         $('#user_messages').html('');
     });
 });
