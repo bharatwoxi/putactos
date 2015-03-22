@@ -1,3 +1,4 @@
+@if ($users)
 @foreach($users as $user)
 <li class="customMessage">
     <div class="row">
