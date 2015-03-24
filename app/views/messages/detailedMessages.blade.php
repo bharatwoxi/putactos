@@ -24,8 +24,8 @@
             </div>
             <?php $i++;?>
         @endforeach
-        </div>
         <span id="messageLoaderDown" style="display:none;"><img style="display:block;margin: auto auto;" src="{{URL::asset('public/assets/registration/img/message_ajax_loader.gif')}}"></span>
+        </div>
         <div id="text_detail">
             <textarea id="msg_area" placeholder="Write a reply"></textarea>
             <div id="reply_msg">

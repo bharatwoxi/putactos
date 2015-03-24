@@ -31,9 +31,9 @@
 <div class="container-fluid" style="background-image: url(../../../public/assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;">
 <div class="col-sm-3 col-md-10 col-lg-12">
 <div class="container">
-<div id="msg_search"  class="col-sm-3 col-md-10 col-lg-12">
+<!--<div id="msg_search"  class="col-sm-3 col-md-10 col-lg-12">
     <input type="text" class="txt" /><a href="#"><img src="{{URL::asset('public/assets/registration/img/search.png')}}" class="search"/></a>
-</div>
+</div>-->
 
 <div id="tabs">
     <div id="users">
