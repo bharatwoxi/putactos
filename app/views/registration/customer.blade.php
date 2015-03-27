@@ -119,7 +119,7 @@
                         {{ Form::text('currentLocation','',array('class'=>'form-control','id'=>'currentLocation','required'=>'required')) }}
                         <span id="location-error"></span>
                     </div>
-                    <!--<div id="map-canvas" style="height:500px;width:500px;display:none;float:left;"></div>-->
+                    <div id="map-canvas" style="height:500px;width:500px;display:none;float:left;"></div>
                 </div>
                 <div class="form-group" style="margin-top:10px;">
                     <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">I am looking for*</label>

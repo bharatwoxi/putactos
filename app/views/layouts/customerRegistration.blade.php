@@ -90,7 +90,7 @@
 
 
 </style>
-<body onload="initialize()">
+<body onload="initialize();">
 
 
 @yield('content')
