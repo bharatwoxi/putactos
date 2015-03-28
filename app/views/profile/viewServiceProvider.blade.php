@@ -52,13 +52,38 @@
                         <div id="star_rating" class="pull-left col-xs-12" >
                             <input id="input-2b" value="{{ $userData['averageHeartRating'] }}" readonly="true" type="number" class="rating form-control hide original_star" min="0" max="5" step="0.5" data-size="xs" data-symbol="" data-default-caption="{rating} hearts" data-star-captions="{}">
                         </div>
-                        <!--<div id="msg" class="pull-left col-xs-5 col-md-8">
-                            <a href="#">
+                        <div id="msg" class="pull-left col-xs-5 col-md-8">
+                            <a href="#login-box" class="login-window">
                                 <p  style="border:2px solid #fa4d51; padding:2px 6px; text-align:center;font-weight: bold;color: #fa4d51;border-radius: 5px; float:left; margin:0 10px 10px 0; font-size:12px">SEND MESSAGE</p></a>
-                            <a href="#">
-                                <p style="border:2px solid #fa4d51; padding:2px 6px; text-align:center;font-weight: bold;color: #fa4d51;border-radius: 5px; float:left; font-size:12px;">SHOW INTEREST</p>
-                            </a>
-                        </div>-->
+
+                            <div id="login-box" class="login-popup">
+                                <a href="#" class="close"><img src="{{URL::asset('public/assets/registration/img/close_pop.png')}}" class="btn_close" title="Close Window" alt="Close" /></a>
+                                <form method="post" class="signin" action="#">
+                                    <div id="text_detail">
+                                        <p class="new_msg"><b>New Message</b></p>
+                                        &nbsp;&nbsp;To:<input type="text" placeholder="Name" class="to_name"/><br/>
+                                        <textarea id="msg_area" onfocus="this.value=''; setbg('#fff');" onblur="setbg('white')">Write a reply
+                                        </textarea>
+                                        <div id="reply_msg">
+                                            <div class="fileUpload btn btn-primary">
+                                                <span><img src="img/atach.png">&nbsp;&nbsp;Add Ffile</span>
+                                                <input type="file" class="upload">
+                                            </div>
+                                            <div class="fileUpload btn btn-primary">
+                                                <span><img src="img/cam.png">&nbsp;&nbsp;Add Photo</span>
+                                                <input type="file" class="upload">
+                                            </div>
+                                            <div id="reply">
+                                                <a href="#"><img src="img/send.png"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+<!--                            <a href="#">-->
+<!--                                <p style="border:2px solid #fa4d51; padding:2px 6px; text-align:center;font-weight: bold;color: #fa4d51;border-radius: 5px; float:left; font-size:12px;">SHOW INTEREST</p>-->
+<!--                            </a>-->
+                        </div>
 
                         <div id="profile_details" class="col-sm-10 col-xs-12">
                             <div id="profile_name">

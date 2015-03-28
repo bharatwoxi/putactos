@@ -138,6 +138,48 @@
     #customer_feedback{ height:390px;overflow: scroll;overflow-x: hidden;}
     .rating-cancel{display:none !important}
     #tab-Overview{float:left; padding:5px 0; width:120px}
+
+    #mask {
+        display: none;
+        position: fixed; left: 0; top: 0;
+        z-index: 10;
+        width: 100%; height: 100%;
+        z-index: 999;
+        background:#000; opacity:0.7;
+    }
+
+    .login-popup{
+        display:none;
+        padding: 0;
+        float: left;
+        font-size: 1.2em;
+        position: fixed;
+        top: 50%; left: 50%;
+        z-index: 99999;
+        background:#fff;
+        border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+
+    }
+    fieldset{border:none}
+    img.btn_close {
+        float: right;
+        margin: 0;
+    }
+
+    form.signin .textbox input {
+        color:#fff;
+        border-radius: 3px 3px 3px 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        font:13px;
+        padding:6px 6px 4px;
+        width:200px;
+    }
+    #reply_msg{ margin:-2% 0 0}
+    .new_msg{ background:#ddd; padding:3px 0 3px 5px}
+    .to_name{ border:none; outline:none; }
 </style>
 <script src="{{URL::asset('public/assets/registration/js/jquery.js')}}" type="text/javascript"></script>
 <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
@@ -206,6 +248,41 @@
                 });
             }
         });
+    });
+
+    $(document).ready(function() {
+        $('a.login-window').click(function() {
+
+            // Getting the variable's value from a link
+            var loginBox = $(this).attr('href');
+
+            //Fade in the Popup and add close button
+            $(loginBox).fadeIn(300);
+
+            //Set the center alignment padding + border
+            var popMargTop = ($(loginBox).height() + 24) / 2;
+            var popMargLeft = ($(loginBox).width() + 24) / 2;
+
+            $(loginBox).css({
+                'margin-top' : -popMargTop,
+                'margin-left' : -popMargLeft
+            });
+
+            // Add the mask to body
+            $('body').append('<div id="mask"></div>');
+            $('#mask').fadeIn(300);
+
+            return false;
+        });
+
+
+    });
+    // When clicking on the button close or the mask layer the popup closed
+    $('a.close, #mask').on('click', function() {
+        $('#mask , .login-popup').fadeOut(300 , function() {
+            $('#mask').remove();
+        });
+        return false;
     });
 </script>
 @include('toastr.index')
