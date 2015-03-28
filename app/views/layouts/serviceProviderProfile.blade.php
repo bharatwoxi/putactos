@@ -32,18 +32,54 @@
             right: -30px;
         }
 
-        select {
-            background-color: #fff!important;
-            color: #333!important;
-            padding-right: 16px;
-            width: auto;
-            height: 22px;
+        /*select {*/
+            /*background-color: #fff!important;*/
+            /*color: #333!important;*/
+            /*padding-right: 16px;*/
+            /*width: auto;*/
+            /*height: 22px;*/
 
-            -webkit-border-radius: 3px;
-            -moz-border-radius: 3px;
-            border-radius: 3px;
+            /*-webkit-border-radius: 3px;*/
+            /*-moz-border-radius: 3px;*/
+            /*border-radius: 3px;*/
 
-        }
+        /*}*/
+
+        /*.select-wrapper1{*/
+            /*float: left;*/
+            /*display: inline-block;*/
+            /*border: 1px solid #d8d8d8;*/
+            /*background: url("../img/arrow.png") no-repeat right center;*/
+            /*cursor: pointer;*/
+            /*box-shadow: inset 1px 1px 5px 0px #C7C1C1;*/
+            /*opacity: 0.9;*/
+            /*background-color: #fff;*/
+        /*}*/
+        /*.select-wrapper1, .select-wrapper1 select{*/
+            /*width: 100px;*/
+            /*height: 30px;*/
+            /*border-radius: 3px;*/
+        /*}*/
+        /*.select-wrapper1 .holder{*/
+            /*display: block;*/
+            /*margin: 0 35px 0 5px;*/
+            /*white-space: nowrap;*/
+            /*overflow: hidden;*/
+            /*cursor: pointer;*/
+            /*position: relative;*/
+            /*z-index: -1;*/
+        /*}*/
+        /*.select-wrapper1 select{*/
+            /*margin: 0;*/
+            /*position: absolute;*/
+            /*z-index: 2;*/
+            /*cursor: pointer;*/
+            /*outline: none;*/
+            /*opacity: 0;*/
+
+
+        /*}*/
+
     </style>
 </head>
 <body onload="initialize()">
@@ -74,6 +110,56 @@
             var selectedOption = $(this).find(":selected").text();
             $(this).next(".holder").text(selectedOption);
         }).trigger('change');
+
+
+        var counter = 2;
+
+        $("#addButton").click(function (e) {
+            e.preventDefault();
+            if(counter>7){
+                alert("Only 7 textboxes allow");
+                return false;
+            }
+
+            var newTextBoxDiv = $(document.createElement('div'))
+                .attr("id", 'TextBoxDiv' + counter);
+
+            newTextBoxDiv.after().html('<div class="input-group " style="padding-top: 5px;"> <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label><div class="col-sm-3 selectContainer ">' +
+                ' <span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" name="color' + counter + '" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span> </div><label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>                                           <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxfrom' + counter + '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div>                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>                                       <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxto' + counter +
+                '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div></div>	');
+
+
+
+
+
+
+            newTextBoxDiv.appendTo("#TextBoxesGroup");
+
+
+            counter++;
+        });
+
+        $("#removeButton").click(function (e) {
+            e.preventDefault();
+            if(counter==1){
+                alert("No more textbox to remove");
+                return false;
+            }
+
+            counter--;
+
+            $("#TextBoxDiv" + counter).remove();
+
+        });
+
+        $("#getButtonValue").click(function () {
+
+            var msg = '';
+            for(i=1; i<counter; i++){
+                msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
+            }
+            alert(msg);
+        });
     })
     function readURL(input) {
         if (input.files && input.files[0]) {
@@ -90,6 +176,10 @@
     $("#profilePicture").change(function(){
         readURL(this);
     });
+
+//    $(document).ready(function(){
+//
+//    });
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
 <script src="{{URL::asset('public/assets/registration/js/custom/google-place.js')}}"></script>

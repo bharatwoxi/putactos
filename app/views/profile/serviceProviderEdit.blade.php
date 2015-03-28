@@ -6,6 +6,7 @@
  * Time: 2:40 PM
  */
 ?>
+
 @extends('layouts.serviceProviderProfile')
 @section('content')
 <div class="container-fluid"> <!--Header start-->
@@ -278,6 +279,26 @@
                     <div class="col-sm-4">
                         {{ Form::text('birthDate',$userData['systemUser']->birth_date,array('class'=>'form-control','readonly'=>'readonly','id'=>'birth_date')) }}
                     </div>
+                </div>
+                <div class="col-md-5" style="padding-left:0">
+                        <label class="col-sm-3 ecolfour" style="padding-left:0" control-label>Availablity</label>
+                </div>
+                <div class="container">
+
+                    <div class="row col-md-8">
+                        <div class="col-md-9">
+                            <div id="TextBoxesGroup">
+
+
+                                <div id="TextBoxDiv1"><div class="input-group " style="padding-top: 5px;"> <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label><div class="col-sm-3 selectContainer "> <span class="select-wrapper1" name="textboxto1"><select class="fonza custom-select1" name="color1"><option name="textboxto1" id="textbox1" value=""></option><option name="textboxto1" id="textbox1" value="blue">Day</option>  <option name="textboxto1" id="textbox1" value="green">Time</option><option name="textboxto1" id="textbox1" value="red">To</option></select></span> </div><label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>                                           <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto1"><select class="fonza custom-select1" id="name" name="textboxfrom1" value=""><option name="textboxto1" id="textbox1" value=""></option><option name="textboxto1" id="textbox1" value="blue">Day</option>  <option name="textboxto1" id="textbox1" value="green">Time</option><option name="textboxto1" id="textbox1" value="red">To</option></select></span></div>                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>                                       <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto1"><select class="fonza custom-select1" id="name" name="textboxto1" value=""><option name="textboxto1" id="textbox1" value=""></option><option name="textboxto1" id="textbox1" value="blue">Day</option>  <option name="textboxto1" id="textbox1" value="green">Time</option><option name="textboxto1" id="textbox1" value="red">To</option></select></span></div></div>	</div><div id="TextBoxDiv2"><div class="input-group " style="padding-top: 5px;"> <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label><div class="col-sm-3 selectContainer "> <span class="select-wrapper1" name="textboxto2"><select class="fonza custom-select1" name="color2"><option name="textboxto2" id="textbox2" value=""></option><option name="textboxto2" id="textbox2" value="blue">Day</option>  <option name="textboxto2" id="textbox2" value="green">Time</option><option name="textboxto2" id="textbox2" value="red">To</option></select></span> </div><label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>                                           <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto2"><select class="fonza custom-select1" id="name" name="textboxfrom2" value=""><option name="textboxto2" id="textbox2" value=""></option><option name="textboxto2" id="textbox2" value="blue">Day</option>  <option name="textboxto2" id="textbox2" value="green">Time</option><option name="textboxto2" id="textbox2" value="red">To</option></select></span></div>                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>                                       <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto2"><select class="fonza custom-select1" id="name" name="textboxto2" value=""><option name="textboxto2" id="textbox2" value=""></option><option name="textboxto2" id="textbox2" value="blue">Day</option>  <option name="textboxto2" id="textbox2" value="green">Time</option><option name="textboxto2" id="textbox2" value="red">To</option></select></span></div></div>	</div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="image" src="{{URL::asset('public/assets/registration/img/plus.png')}}" id="addButton" style="width: 40px;">
+                            <input type="image" src="{{URL::asset('public/assets/registration/img/minus.png')}}" id="removeButton" style="width: 40px;">
+
+                        </div>
+                    </div>
+
                 </div>
                 {{ Form::hidden('latitude',$userData['systemUser']->latitude,array('class'=>'form-control','id'=>'latitude')) }}
                 {{ Form::hidden('longitude',$userData['systemUser']->longitude,array('class'=>'form-control','id'=>'longitude')) }}
