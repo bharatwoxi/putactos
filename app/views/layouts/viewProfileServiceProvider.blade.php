@@ -104,7 +104,7 @@
         filter: alpha(opacity=0);
     }
     .btn-primary{color: #6c6c6c;  background:none;  border:none; }
-    #reply_msg{float:left; width:100%; background:#c6c6c6; margin:-1% 0 0 }
+    #reply_msg{float:left; width:100%; background:#f74d4d; margin:-1% 0 0;color:#fff }
     .btn-primary:hover{color: #6c6c6c;  background:none;  border:none; }
     #reply{float:right; margin:1.5% 1% 0 0}
     #msg_desc{float:left; width:100%; height:510px; overflow-x:hidden}
@@ -178,7 +178,7 @@
         width:200px;
     }
     #reply_msg{ margin:-2% 0 0}
-    .new_msg{ background:#ddd; padding:3px 0 3px 5px}
+    .new_msg{ background:#f74d4d; padding:3px 0 3px 5px;color:#fff}
     .to_name{ border:none; outline:none; }
 </style>
 <script src="{{URL::asset('public/assets/registration/js/jquery.js')}}" type="text/javascript"></script>
