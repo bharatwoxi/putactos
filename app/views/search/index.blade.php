@@ -73,8 +73,8 @@
         <div class="panel-heading" style="color: #333;padding: 5px 0px;outline: none;z-index:9999" role="tab" id="headingTwo">
             <h4 class="panel-title">
                 <a class="collapsed" id="accordian" data-toggle="collapse" style="color: #fff;" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    <h3 style="margin-top: -5px; color: white; font-family:Calibri;border: 1px solid #fff;  float: left;
-  border-radius: 8px;  padding: 5px;background-color: #f74d4d;   ">{{ trans('peopleNearBy.ADVANCEDSEARCH') }}</h3>
+                    <h3 style="margin-top: -55px; color: white; font-family:Calibri;border: 1px solid #fff;  float: left;
+  border-radius: 8px;  padding: 5px;background-color: #f74d4d;position:absolute;  ">{{ trans('peopleNearBy.ADVANCEDSEARCH') }}</h3>
                 </a>
             </h4>
 
