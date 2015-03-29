@@ -60,21 +60,23 @@
                                 <a href="#" class="close"><img src="{{URL::asset('public/assets/registration/img/close_pop.png')}}" class="btn_close" title="Close Window" alt="Close" /></a>
                                 <form method="post" class="signin" action="#">
                                     <div id="text_detail">
-                                        <p class="new_msg"><b>New Message</b></p>
-                                        &nbsp;&nbsp;To:<input type="text" placeholder="Name" class="to_name"/><br/>
-                                        <textarea id="msg_area" onfocus="this.value=''; setbg('#fff');" onblur="setbg('white')">Write a reply
-                                        </textarea>
+                                        <p class="new_msg"><b>Send New Message</b></p>
+                                        <?php /*&nbsp;&nbsp;To:<input type="text" placeholder="Name" class="to_name"/><br/> */ ?>
+                                        <textarea id="msg_area" onfocus="this.value=''; setbg('#fff');" onblur="setbg('white')" required="required" maxlength="150"></textarea>
                                         <div id="reply_msg">
+                                            <?php /*
                                             <div class="fileUpload btn btn-primary">
                                                 <span><img src="img/atach.png">&nbsp;&nbsp;Add Ffile</span>
                                                 <input type="file" class="upload">
                                             </div>
+
                                             <div class="fileUpload btn btn-primary">
                                                 <span><img src="img/cam.png">&nbsp;&nbsp;Add Photo</span>
                                                 <input type="file" class="upload">
                                             </div>
+                                            */ ?>
                                             <div id="reply">
-                                                <a href="#"><img src="img/send.png"></a>
+                                                <a href="#"><img src="{{URL::asset('public/assets/registration/img/send.png')}}"></a>
                                             </div>
                                         </div>
                                     </div>
