@@ -58,6 +58,17 @@ class SearchController extends BaseController {
      *return: true/false based on result
     */
     public function showDataAfterLogin(){
+        //dd(Input::all());
+        $bustMaster = Input::get('bust');
+        $cupMaster = Input::get('cup');
+        $hipsMaster = Input::get('hips');
+        $penisMaster = Input::get('penis');
+        $waistMaster = Input::get('waist');
+        $bust = explode(",",$bustMaster);
+        $cup = explode(",",$cupMaster);
+        $hips = explode(",",$hipsMaster);
+        $penis = explode(",",$penisMaster);
+        $waist = explode(",",$waistMaster);
         /* If There is Normal Request */
         if(Input::get('isFilter')==0){
             $customerData  = Customer::find(Auth::user()->customer_id);
@@ -244,7 +255,7 @@ class SearchController extends BaseController {
             if($input['isScroll']==0){
                 /* Get Query Count For Total Records*/
                 if($input['availability']!=NULL && $input['pubicHair']!=NULL){
-                    if($input['gender']==0){
+                    if($input['gender']==1){
                         $queryCount = DB::table('service_providers')
                             ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
                             ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
@@ -253,10 +264,16 @@ class SearchController extends BaseController {
                             ->where('service_providers.eye_color','=',$input['eyeColor'])
                             ->where('service_providers.ethnicity','=',$input['ethnicity'])
                             ->where('service_providers.pubic_hair','=',$input['pubicHair'])
-                            ->where('service_providers.hips','>=',$input['hips'])
-                            ->where('service_providers.bust','>=',$input['bust'])
-                            ->where('service_providers.cup_size','>=',$input['cup'])
-                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->where('service_providers.hips','>=',$hips[0])
+                            ->where('service_providers.hips','<=',$hips[1])
+                            ->where('service_providers.bust','>=',$bust[0])
+                            ->where('service_providers.bust','<=',$bust[1])
+                            ->where('service_providers.cup_size','>=',$cup[0])
+                            ->where('service_providers.cup_size','<=',$cup[1])
+                            ->where('service_providers.waist','>=',$waist[0])
+                            ->where('service_providers.waist','<=',$waist[1])
+                            ->where('service_providers.penis_size','>=',$penis[0])
+                            ->where('service_providers.penis_size','<=',$penis[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
                             ->where('service_provider_availabilities.week_day','=',$day)
                             ->where('service_provider_availabilities.from_time','<=',$currentTime)
@@ -273,10 +290,14 @@ class SearchController extends BaseController {
                             ->where('service_providers.eye_color','=',$input['eyeColor'])
                             ->where('service_providers.ethnicity','=',$input['ethnicity'])
                             ->where('service_providers.pubic_hair','=',$input['pubicHair'])
-                            ->where('service_providers.hips','>=',$input['hips'])
-                            ->where('service_providers.bust','>=',$input['bust'])
-                            ->where('service_providers.cup_size','>=',$input['cup'])
-                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->where('service_providers.hips','>=',$hips[0])
+                            ->where('service_providers.hips','<=',$hips[1])
+                            ->where('service_providers.bust','>=',$bust[0])
+                            ->where('service_providers.bust','<=',$bust[1])
+                            ->where('service_providers.cup_size','>=',$cup[0])
+                            ->where('service_providers.cup_size','<=',$cup[1])
+                            ->where('service_providers.waist','>=',$waist[0])
+                            ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
                             ->where('service_provider_availabilities.week_day','=',$day)
                             ->where('service_provider_availabilities.from_time','<=',$currentTime)
@@ -285,7 +306,7 @@ class SearchController extends BaseController {
                             ->count();
                     }
                 }elseif($input['availability']!=NULL){
-                    if($input['gender']==0){
+                    if($input['gender']==1){
                         $queryCount = DB::table('service_providers')
                             ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
                             ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
@@ -293,10 +314,16 @@ class SearchController extends BaseController {
                             ->where('service_providers.hair_color','=',$input['hairColor'])
                             ->where('service_providers.eye_color','=',$input['eyeColor'])
                             ->where('service_providers.ethnicity','=',$input['ethnicity'])
-                            ->where('service_providers.hips','>=',$input['hips'])
-                            ->where('service_providers.bust','>=',$input['bust'])
-                            ->where('service_providers.cup_size','>=',$input['cup'])
-                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->where('service_providers.hips','>=',$hips[0])
+                            ->where('service_providers.hips','<=',$hips[1])
+                            ->where('service_providers.bust','>=',$bust[0])
+                            ->where('service_providers.bust','<=',$bust[1])
+                            ->where('service_providers.cup_size','>=',$cup[0])
+                            ->where('service_providers.cup_size','<=',$cup[1])
+                            ->where('service_providers.waist','>=',$waist[0])
+                            ->where('service_providers.waist','<=',$waist[1])
+                            ->where('service_providers.penis_size','>=',$penis[0])
+                            ->where('service_providers.penis_size','<=',$penis[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
                             ->where('service_provider_availabilities.week_day','=',$day)
                             ->where('service_provider_availabilities.from_time','<=',$currentTime)
@@ -312,10 +339,14 @@ class SearchController extends BaseController {
                             ->where('service_providers.hair_color','=',$input['hairColor'])
                             ->where('service_providers.eye_color','=',$input['eyeColor'])
                             ->where('service_providers.ethnicity','=',$input['ethnicity'])
-                            ->where('service_providers.hips','>=',$input['hips'])
-                            ->where('service_providers.bust','>=',$input['bust'])
-                            ->where('service_providers.cup_size','>=',$input['cup'])
-                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->where('service_providers.hips','>=',$hips[0])
+                            ->where('service_providers.hips','<=',$hips[1])
+                            ->where('service_providers.bust','>=',$bust[0])
+                            ->where('service_providers.bust','<=',$bust[1])
+                            ->where('service_providers.cup_size','>=',$cup[0])
+                            ->where('service_providers.cup_size','<=',$cup[1])
+                            ->where('service_providers.waist','>=',$waist[0])
+                            ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
                             ->where('service_provider_availabilities.week_day','=',$day)
                             ->where('service_provider_availabilities.from_time','<=',$currentTime)
@@ -324,7 +355,7 @@ class SearchController extends BaseController {
                             ->count();
                     }
                 }elseif($input['pubicHair']!=NULL){
-                    if($input['gender']==0){
+                    if($input['gender']==1){
                         $queryCount = DB::table('service_providers')
                             ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
                             ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
@@ -333,10 +364,16 @@ class SearchController extends BaseController {
                             ->where('service_providers.eye_color','=',$input['eyeColor'])
                             ->where('service_providers.ethnicity','=',$input['ethnicity'])
                             ->where('service_providers.pubic_hair','=',$input['pubicHair'])
-                            ->where('service_providers.hips','>=',$input['hips'])
-                            ->where('service_providers.bust','>=',$input['bust'])
-                            ->where('service_providers.cup_size','>=',$input['cup'])
-                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->where('service_providers.hips','>=',$hips[0])
+                            ->where('service_providers.hips','<=',$hips[1])
+                            ->where('service_providers.bust','>=',$bust[0])
+                            ->where('service_providers.bust','<=',$bust[1])
+                            ->where('service_providers.cup_size','>=',$cup[0])
+                            ->where('service_providers.cup_size','<=',$cup[1])
+                            ->where('service_providers.waist','>=',$waist[0])
+                            ->where('service_providers.waist','<=',$waist[1])
+                            ->where('service_providers.penis_size','>=',$penis[0])
+                            ->where('service_providers.penis_size','<=',$penis[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
                             ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
                             ->count();
@@ -350,10 +387,14 @@ class SearchController extends BaseController {
                             ->where('service_providers.eye_color','=',$input['eyeColor'])
                             ->where('service_providers.ethnicity','=',$input['ethnicity'])
                             ->where('service_providers.pubic_hair','=',$input['pubicHair'])
-                            ->where('service_providers.hips','>=',$input['hips'])
-                            ->where('service_providers.bust','>=',$input['bust'])
-                            ->where('service_providers.cup_size','>=',$input['cup'])
-                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->where('service_providers.hips','>=',$hips[0])
+                            ->where('service_providers.hips','<=',$hips[1])
+                            ->where('service_providers.bust','>=',$bust[0])
+                            ->where('service_providers.bust','<=',$bust[1])
+                            ->where('service_providers.cup_size','>=',$cup[0])
+                            ->where('service_providers.cup_size','<=',$cup[1])
+                            ->where('service_providers.waist','>=',$waist[0])
+                            ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
                             ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
                             ->count();
@@ -367,7 +408,7 @@ class SearchController extends BaseController {
                 $queryRecord++;
                 $take = $take + 1;
                 if($input['availability']!=NULL && $input['pubicHair']!=NULL){
-                    if($input['gender']==0){
+                    if($input['gender']==1){
                         $queryResult = DB::table('service_providers')
                             ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
                             ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
@@ -376,10 +417,16 @@ class SearchController extends BaseController {
                             ->where('service_providers.eye_color','=',$input['eyeColor'])
                             ->where('service_providers.ethnicity','=',$input['ethnicity'])
                             ->where('service_providers.pubic_hair','=',$input['pubicHair'])
-                            ->where('service_providers.hips','>=',$input['hips'])
-                            ->where('service_providers.bust','>=',$input['bust'])
-                            ->where('service_providers.cup_size','>=',$input['cup'])
-                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->where('service_providers.hips','>=',$hips[0])
+                            ->where('service_providers.hips','<=',$hips[1])
+                            ->where('service_providers.bust','>=',$bust[0])
+                            ->where('service_providers.bust','<=',$bust[1])
+                            ->where('service_providers.cup_size','>=',$cup[0])
+                            ->where('service_providers.cup_size','<=',$cup[1])
+                            ->where('service_providers.waist','>=',$waist[0])
+                            ->where('service_providers.waist','<=',$waist[1])
+                            ->where('service_providers.penis_size','>=',$penis[0])
+                            ->where('service_providers.penis_size','<=',$penis[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
                             ->where('service_provider_availabilities.week_day','=',$day)
                             ->where('service_provider_availabilities.from_time','<=',$currentTime)
@@ -396,10 +443,14 @@ class SearchController extends BaseController {
                             ->where('service_providers.eye_color','=',$input['eyeColor'])
                             ->where('service_providers.ethnicity','=',$input['ethnicity'])
                             ->where('service_providers.pubic_hair','=',$input['pubicHair'])
-                            ->where('service_providers.hips','>=',$input['hips'])
-                            ->where('service_providers.bust','>=',$input['bust'])
-                            ->where('service_providers.cup_size','>=',$input['cup'])
-                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->where('service_providers.hips','>=',$hips[0])
+                            ->where('service_providers.hips','<=',$hips[1])
+                            ->where('service_providers.bust','>=',$bust[0])
+                            ->where('service_providers.bust','<=',$bust[1])
+                            ->where('service_providers.cup_size','>=',$cup[0])
+                            ->where('service_providers.cup_size','<=',$cup[1])
+                            ->where('service_providers.waist','>=',$waist[0])
+                            ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
                             ->where('service_provider_availabilities.week_day','=',$day)
                             ->where('service_provider_availabilities.from_time','<=',$currentTime)
@@ -408,7 +459,7 @@ class SearchController extends BaseController {
                             ->skip($skip)->take($take)->get();
                     }
                 }elseif($input['availability']!=NULL){
-                    if($input['gender']==0){
+                    if($input['gender']==1){
                         $queryResult = DB::table('service_providers')
                             ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
                             ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
@@ -416,10 +467,16 @@ class SearchController extends BaseController {
                             ->where('service_providers.hair_color','=',$input['hairColor'])
                             ->where('service_providers.eye_color','=',$input['eyeColor'])
                             ->where('service_providers.ethnicity','=',$input['ethnicity'])
-                            ->where('service_providers.hips','>=',$input['hips'])
-                            ->where('service_providers.bust','>=',$input['bust'])
-                            ->where('service_providers.cup_size','>=',$input['cup'])
-                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->where('service_providers.hips','>=',$hips[0])
+                            ->where('service_providers.hips','<=',$hips[1])
+                            ->where('service_providers.bust','>=',$bust[0])
+                            ->where('service_providers.bust','<=',$bust[1])
+                            ->where('service_providers.cup_size','>=',$cup[0])
+                            ->where('service_providers.cup_size','<=',$cup[1])
+                            ->where('service_providers.waist','>=',$waist[0])
+                            ->where('service_providers.waist','<=',$waist[1])
+                            ->where('service_providers.penis_size','>=',$penis[0])
+                            ->where('service_providers.penis_size','<=',$penis[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
                             ->where('service_provider_availabilities.week_day','=',$day)
                             ->where('service_provider_availabilities.from_time','<=',$currentTime)
@@ -435,10 +492,14 @@ class SearchController extends BaseController {
                             ->where('service_providers.hair_color','=',$input['hairColor'])
                             ->where('service_providers.eye_color','=',$input['eyeColor'])
                             ->where('service_providers.ethnicity','=',$input['ethnicity'])
-                            ->where('service_providers.hips','>=',$input['hips'])
-                            ->where('service_providers.bust','>=',$input['bust'])
-                            ->where('service_providers.cup_size','>=',$input['cup'])
-                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->where('service_providers.hips','>=',$hips[0])
+                            ->where('service_providers.hips','<=',$hips[1])
+                            ->where('service_providers.bust','>=',$bust[0])
+                            ->where('service_providers.bust','<=',$bust[1])
+                            ->where('service_providers.cup_size','>=',$cup[0])
+                            ->where('service_providers.cup_size','<=',$cup[1])
+                            ->where('service_providers.waist','>=',$waist[0])
+                            ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
                             ->where('service_provider_availabilities.week_day','=',$day)
                             ->where('service_provider_availabilities.from_time','<=',$currentTime)
@@ -447,7 +508,7 @@ class SearchController extends BaseController {
                             ->skip($skip)->take($take)->get();
                     }
                 }elseif($input['pubicHair']!=NULL){
-                    if($input['gender']==0){
+                    if($input['gender']==1){
                         $queryResult = DB::table('service_providers')
                             ->join('system_users', 'service_providers.id', '=', 'system_users.service_provider_id')
                             ->join('service_provider_languages', 'service_providers.id', '=', 'service_provider_languages.service_provider_id')
@@ -456,10 +517,16 @@ class SearchController extends BaseController {
                             ->where('service_providers.eye_color','=',$input['eyeColor'])
                             ->where('service_providers.ethnicity','=',$input['ethnicity'])
                             ->where('service_providers.pubic_hair','=',$input['pubicHair'])
-                            ->where('service_providers.hips','>=',$input['hips'])
-                            ->where('service_providers.bust','>=',$input['bust'])
-                            ->where('service_providers.cup_size','>=',$input['cup'])
-                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->where('service_providers.hips','>=',$hips[0])
+                            ->where('service_providers.hips','<=',$hips[1])
+                            ->where('service_providers.bust','>=',$bust[0])
+                            ->where('service_providers.bust','<=',$bust[1])
+                            ->where('service_providers.cup_size','>=',$cup[0])
+                            ->where('service_providers.cup_size','<=',$cup[1])
+                            ->where('service_providers.waist','>=',$waist[0])
+                            ->where('service_providers.waist','<=',$waist[1])
+                            ->where('service_providers.penis_size','>=',$penis[0])
+                            ->where('service_providers.penis_size','<=',$penis[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
                             ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
                             ->skip($skip)->take($take)->get();
@@ -473,10 +540,14 @@ class SearchController extends BaseController {
                             ->where('service_providers.eye_color','=',$input['eyeColor'])
                             ->where('service_providers.ethnicity','=',$input['ethnicity'])
                             ->where('service_providers.pubic_hair','=',$input['pubicHair'])
-                            ->where('service_providers.hips','>=',$input['hips'])
-                            ->where('service_providers.bust','>=',$input['bust'])
-                            ->where('service_providers.cup_size','>=',$input['cup'])
-                            ->where('service_providers.waist','>=',$input['waist'])
+                            ->where('service_providers.hips','>=',$hips[0])
+                            ->where('service_providers.hips','<=',$hips[1])
+                            ->where('service_providers.bust','>=',$bust[0])
+                            ->where('service_providers.bust','<=',$bust[1])
+                            ->where('service_providers.cup_size','>=',$cup[0])
+                            ->where('service_providers.cup_size','<=',$cup[1])
+                            ->where('service_providers.waist','>=',$waist[0])
+                            ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
                             ->select([DB::RAW('DISTINCT(service_providers.id) AS spId'),'system_users.id AS systemUserId','service_providers.riseme_up','service_providers.profile_completeness','service_providers.visit_frequency','system_users.latitude','system_users.longitude'] )
                             ->skip($skip)->take($take)->get();
