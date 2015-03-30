@@ -53,16 +53,20 @@
                             <input id="input-2b" value="{{ $userData['averageHeartRating'] }}" readonly="true" type="number" class="rating form-control hide original_star" min="0" max="5" step="0.5" data-size="xs" data-symbol="" data-default-caption="{rating} hearts" data-star-captions="{}">
                         </div>
                         <div id="msg" class="pull-left col-xs-5 col-md-8">
+                            @if(Auth::user()->user_role_id==1)
                             <a href="#login-box" class="login-window">
-                                <p  style="border:2px solid #fa4d51; padding:2px 6px; text-align:center;font-weight: bold;color: #fa4d51;border-radius: 5px; float:left; margin:0 10px 10px 0; font-size:12px">SEND MESSAGE</p></a>
-
+                                <p style="border:2px solid #fa4d51; padding:2px 6px; text-align:center;font-weight: bold;color: #fa4d51;border-radius: 5px; float:left; margin:0 10px 10px 0; font-size:12px">SEND MESSAGE
+                                </p>
+                            </a>
+                            @endif
                             <div id="login-box" class="login-popup">
                                 <a href="#" class="close"><img src="{{URL::asset('public/assets/registration/img/close_pop.png')}}" class="btn_close" title="Close Window" alt="Close" /></a>
-                                <form method="post" class="signin" action="#">
+                                <form method="post" class="signin" action="{{URL::to('/messages/addnew')}}">
                                     <div id="text_detail">
                                         <p class="new_msg"><b>Send New Message</b></p>
                                         <?php /*&nbsp;&nbsp;To:<input type="text" placeholder="Name" class="to_name"/><br/> */ ?>
-                                        <textarea id="msg_area" onfocus="this.value=''; setbg('#fff');" onblur="setbg('white')" required="required" maxlength="150"></textarea>
+                                        <textarea id="msg_area" name="message" onfocus="this.value=''; setbg('#fff');" onblur="setbg('white')" required="required" maxlength="150"></textarea>
+                                        <input type="hidden" id="to_id" name="to_id" value="{{ $userData['userData']['id'] }}" />
                                         <div id="reply_msg">
                                             <?php /*
                                             <div class="fileUpload btn btn-primary">
@@ -76,7 +80,7 @@
                                             </div>
                                             */ ?>
                                             <div id="reply">
-                                                <a href="#"><img src="{{URL::asset('public/assets/registration/img/send.png')}}"></a>
+                                                <a id="send_new_msg" href="javascript:void(0)"><img src="{{URL::asset('public/assets/registration/img/send.png')}}"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -86,7 +90,6 @@
 <!--                                <p style="border:2px solid #fa4d51; padding:2px 6px; text-align:center;font-weight: bold;color: #fa4d51;border-radius: 5px; float:left; font-size:12px;">SHOW INTEREST</p>-->
 <!--                            </a>-->
                         </div>
-
                         <div id="profile_details" class="col-sm-10 col-xs-12">
                             <div id="profile_name">
                                 {{ ucwords($userData['userData']->user_first_name) }} {{ ucwords($userData['userData']->user_last_name) }}

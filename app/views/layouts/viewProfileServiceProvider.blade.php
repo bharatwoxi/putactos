@@ -274,7 +274,32 @@
 
             return false;
         });
-
+        $('#send_new_msg').click(function(e) {
+            e.preventDefault();
+            var message = $.trim($('#msg_area').val());
+            var toUserId = $('#to_id').val();
+            if(message==''){
+                $('#msg_area').val('');
+                alert('Please enter message');
+            }else{
+                var customerData = 'to_id='+toUserId+'&message='+message;
+                $('#msg_area').val('');
+                $.ajax({
+                    type: "POST",
+                    url: "{{URL::to('/').'/messages/addnew'}}", //Where to make Ajax calls
+                    data:customerData,
+                    //dataType:"html", // Data type, HTML, json etc.
+                    success: function (result) {
+                        $('#mask').remove();
+                        $('#login-box').hide();
+                        $('#myModal').modal('show');
+                    },
+                    error: function (error) {
+                        alert(error);
+                    }
+                });
+            }
+        });
 
     });
     // When clicking on the button close or the mask layer the popup closed

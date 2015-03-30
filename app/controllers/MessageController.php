@@ -184,6 +184,27 @@ class MessageController extends BaseController {
         return View::make('messages.showAddedMessage')->with(array('message'=>$message,'user'=>$user));
     }
     /*
+    *function Name: insertNewMessageViewProfile
+    *Desc: Add new message
+    *Created By: Sagar Acharya
+    *Created Date: 14 December 2014
+    *return: true/false based on message insertion
+   */
+    public function insertNewMessageViewProfile(){
+        $input = Input::all();
+        $insertedMessageId = DB::table('user_messages')->insertGetId(
+            array(
+                'from_user_id'=>Auth::user()->id,
+                'to_user_id'=>$input['to_id'],
+                'message'=>$input['message'],
+                'is_new'=>1,
+                'sent_time'=>date('Y-m-d H:m:s'),
+                'created_at'=>date('Y-m-d H:m:s'),
+                'updated_at'=> date('Y-m-d H:m:s')
+            )
+        );
+    }
+    /*
     *function Name: showNotifications
     *Desc: Show Toastr Notificationto user
     *Created By: Sagar Acharya
