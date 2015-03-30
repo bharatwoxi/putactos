@@ -6,6 +6,7 @@
  * Time: 2:40 PM
  */
 ?>
+
 @extends('layouts.serviceProviderProfile')
 @section('content')
 <div class="container-fluid"> <!--Header start-->
@@ -154,7 +155,7 @@
                     <label class="col-sm-5 ecolfour" control-label>Ethnicity</label>
                     <div class="col-sm-4 selectContainer">
                         <select class="fonza custom-select" name="ethnicity">
-                            if(@if($userData['serviceProvider']->ethnicity==NULL)
+                            @if($userData['serviceProvider']->ethnicity==NULL)
                             <option value="0">Please Select</option>
                             @endif
                             @foreach($ethnicitys as $ethnicity)
@@ -168,7 +169,7 @@
                     <label class="col-sm-5 ecolfour" control-label>Hair Color</label>
                     <div class="col-sm-4 selectContainer">
                         <select class="custom-select fonza" name="hairColor">
-                            if(@if($userData['serviceProvider']->hair_color==NULL)
+                            @if($userData['serviceProvider']->hair_color==NULL)
                                 <option value="0">Please Select</option>
                             @endif
                             @foreach($hairColors as $hairColor)
@@ -182,7 +183,7 @@
                     <label class="col-sm-5 ecolfour" control-label>Eye Color</label>
                     <div class="col-sm-4 selectContainer">
                         <select class="fonza custom-select" name="eyeColor">
-                            if(@if($userData['serviceProvider']->eye_color==NULL)
+                            @if($userData['serviceProvider']->eye_color==NULL)
                              <option value="0">Please Select</option>
                             @endif
                             @foreach($eyeColors as $eyeColor)
@@ -278,6 +279,145 @@
                     <div class="col-sm-4">
                         {{ Form::text('birthDate',$userData['systemUser']->birth_date,array('class'=>'form-control','readonly'=>'readonly','id'=>'birth_date')) }}
                     </div>
+                </div>
+                <div class="col-md-5" style="padding-left:0">
+                        <label class="col-sm-3 ecolfour" style="padding-left:0" control-label>Availablity</label>
+                </div>
+                <div class="container">
+
+                    <div class="row col-md-8">
+                        <div class="col-md-9">
+                            <div id="TextBoxesGroup">
+
+
+                                <div id="TextBoxDiv1">
+                                    <div class="input-group " style="padding-top: 5px;">
+                                        <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>
+                                        <div class="col-sm-3 selectContainer ">
+                                            <span class="select-wrapper1" name="textboxto1">
+                                                <select name="avail_day" class="fonza custom-select1">
+                                                    <option value="1" selected="selected">MON</option>
+                                                    <option value="2">TUE</option>
+                                                    <option value="3">WED</option>
+                                                    <option value="4">THU</option>
+                                                    <option value="5">FRI</option>
+                                                    <option value="6">SAT</option>
+                                                    <option value="7">SUN</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                        <label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">To</label>
+                                        <div class="col-sm-3 selectContainer ">
+                                            <span class="select-wrapper1" name="textboxto1">
+                                                <select name="avail_from" class="fonza custom-select1" id="name" name="textboxfrom1" value="">
+                                                    <option value="00">00</option>
+                                                    <option value="01">01</option>
+                                                    <option value="02">02</option>
+                                                    <option value="03">03</option>
+                                                    <option value="04">04</option>
+                                                    <option value="05">05</option>
+                                                    <option value="06">06</option>
+                                                    <option value="07">07</option>
+                                                    <option value="08">08</option>
+                                                    <option value="09">09</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">From</label>
+                                        <div class="col-sm-3 selectContainer ">
+                                            <span class="select-wrapper1" name="textboxto1">
+                                                <select name="avail_to" class="fonza custom-select1" id="name" name="textboxto1" value="">
+                                                    <option value="00">00</option>
+                                                    <option value="01">01</option>
+                                                    <option value="02">02</option>
+                                                    <option value="03">03</option>
+                                                    <option value="04">04</option>
+                                                    <option value="05">05</option>
+                                                    <option value="06">06</option>
+                                                    <option value="07">07</option>
+                                                    <option value="08">08</option>
+                                                    <option value="09">09</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+<!--                                <div id="TextBoxDiv2">-->
+<!--                                    <div class="input-group " style="padding-top: 5px;">-->
+<!--                                        <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>-->
+<!--                                        <div class="col-sm-3 selectContainer ">-->
+<!--                                            <span class="select-wrapper1" name="textboxto2">-->
+<!--                                                <select class="fonza custom-select1" name="color2">-->
+<!--                                                    <option name="textboxto2" id="textbox2" value=""></option>-->
+<!--                                                    <option name="textboxto2" id="textbox2" value="blue">Day</option>-->
+<!--                                                    <option name="textboxto2" id="textbox2" value="green">Time</option>-->
+<!--                                                    <option name="textboxto2" id="textbox2" value="red">To</option>-->
+<!--                                                </select>-->
+<!--                                            </span>-->
+<!--                                        </div>-->
+<!--                                        <label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>-->
+<!--                                        <div class="col-sm-3 selectContainer ">-->
+<!--                                            <span class="select-wrapper1" name="textboxto2">-->
+<!--                                                <select class="fonza custom-select1" id="name" name="textboxfrom2" value="">-->
+<!--                                                    <option name="textboxto2" id="textbox2" value=""></option>-->
+<!--                                                    <option name="textboxto2" id="textbox2" value="blue">Day</option>-->
+<!--                                                    <option name="textboxto2" id="textbox2" value="green">Time</option>-->
+<!--                                                    <option name="textboxto2" id="textbox2" value="red">To</option>-->
+<!--                                                </select>-->
+<!--                                            </span>-->
+<!--                                        </div>-->
+<!--                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>-->
+<!--                                        <div class="col-sm-3 selectContainer ">-->
+<!--                                            <span class="select-wrapper1" name="textboxto2">-->
+<!--                                                <select class="fonza custom-select1" id="name" name="textboxto2" value="">-->
+<!--                                                    <option name="textboxto2" id="textbox2" value=""></option>-->
+<!--                                                    <option name="textboxto2" id="textbox2" value="blue">Day</option>-->
+<!--                                                    <option name="textboxto2" id="textbox2" value="green">Time</option>-->
+<!--                                                    <option name="textboxto2" id="textbox2" value="red">To</option>-->
+<!--                                                </select>-->
+<!--                                            </span>-->
+<!--                                        </div>-->
+<!--                                    </div>	-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="image" src="{{URL::asset('public/assets/registration/img/plus.png')}}" id="addButton" style="width: 40px;">
+                            <input type="image" src="{{URL::asset('public/assets/registration/img/minus.png')}}" id="removeButton" style="width: 40px;">
+
+                        </div>
+                    </div>
+
                 </div>
                 {{ Form::hidden('latitude',$userData['systemUser']->latitude,array('class'=>'form-control','id'=>'latitude')) }}
                 {{ Form::hidden('longitude',$userData['systemUser']->longitude,array('class'=>'form-control','id'=>'longitude')) }}
