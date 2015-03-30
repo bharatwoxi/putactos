@@ -269,11 +269,12 @@
             $('#msg_area').val('');
             alert('Please enter message');
         }else{
-            $('#messageLoaderDown').show();                                                                                                                                                                           var customerData = 'to_id='+toUserId+'&message='+message;
+            $('#messageLoaderDown').show();
+            var customerData = 'to_id='+toUserId+'&message='+message;
             $('#msg_area').val('');
             $.ajax({
                 type: "POST",
-                url: "{{URL::to('/').'/messages/addnew'}}", //Where to make Ajax calls
+                url: "{{URL::to('/').'/messages/addnewFromProfile'}}", //Where to make Ajax calls
                 data:customerData,
                 dataType:"html", // Data type, HTML, json etc.
                 success: function (result) {

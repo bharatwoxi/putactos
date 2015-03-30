@@ -18,6 +18,8 @@
     <link href="{{URL::asset('public/assets/registration/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/styles.css')}}" media="all" rel="stylesheet">
+    <link href="{{URL::asset('public/assets/registration/css/people_near_en.css')}}" media="all" rel="stylesheet">
+    <link href="{{URL::asset('public/assets/registration/css/people_near_by_slyder.css')}}" media="all" rel="stylesheet">
     <script src="{{URL::asset('public/assets/registration/js/modernizr.min.js')}}"></script>
 
 </head>
@@ -89,9 +91,12 @@
 <script src="{{URL::asset('public/assets/registration/js/jquery.min.js')}}"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{URL::asset('public/assets/registration/js/bootstrap.min.js')}}"></script>
-<script src="{{URL::asset('public/assets/registration/js/jquery-1.10.2.min.js')}}"></script>
+<!--<script src="{{URL::asset('public/assets/registration/js/jquery-1.10.2.min.js')}}"></script>-->
+
 <script src="{{URL::asset('public/assets/registration/js/plugin.js')}}"></script>
 <script src="{{URL::asset('public/assets/registration/js/main.js')}}"></script>
+<script src="{{URL::asset('public/assets/registration/js/jquery.min.js')}}"></script>
+<script type='text/javascript' src="{{URL::asset('public/assets/registration/js/bootstrap-slider.js')}}"></script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
 <script type="text/javascript">
     var geocoder;
@@ -125,17 +130,13 @@
                 if(json_data=='Geocoder failed'){
                     alert(1);
                 }else{
-                    //results.forEach(function(entry) {
-                            <?php
-                            /*
-                            k:lat
-                            D:long
-                            */
-                            ?>
-                        getUserData(latlng.k,latlng.D);
-                    //});
-
-
+                    <?php
+                    /*
+                    k:lat
+                    D:long
+                    */
+                    ?>
+                    getUserData(latlng.k,latlng.D);
                 }
                 if (results[1]) {
                     //formatted address
@@ -257,7 +258,10 @@
             if($('#cup').val()!=''){
                 cup = $('#cup').val();
             }
-            searchFilters.push({name: 'hips', value:hips },{name: 'bust', value: bust},{name: 'waist', value: waist},{name: 'cup', value: cup},{name: 'isFilter', value:1},{name: 'isScroll', value:0},{name: 'skip', value:0},{name: 'take', value:3});
+            if($('#penis').val()!=''){
+                cup = $('#penis').val();
+            }
+            searchFilters.push({name: 'hips', value:hips },{name: 'bust', value: bust},{name: 'waist', value: waist},{name: 'cup', value: cup},{name: 'penis', value: penis},{name: 'isFilter', value:1},{name: 'isScroll', value:0},{name: 'skip', value:0},{name: 'take', value:3});
             $("#loaderImage").css("display", "block");
             $.ajax({
                 type: "GET",
@@ -276,13 +280,23 @@
                 }
             });
         });
+        $("#hips, #bust, #waist, #cup, #penis").slider({});
+        $(".gender_male").click(function() {
+            //var value = $("#gender_male").val();
+            $('#women_only').hide();
+            $('#men_only').show();
+        });
+        $(".gender_female").click(function() {
+            //var value = $("#gender_female").val();
+            $('#women_only').show();
+            $('#men_only').hide();
+        });
     });
 </script>
 
 <script>
     // This example displays an address form, using the autocomplete feature
     // of the Google Places API to help users fill in the information.
-
     var placeSearch, autocomplete;
     var componentForm = {
         street_number: 'short_name',
