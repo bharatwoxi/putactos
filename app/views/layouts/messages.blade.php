@@ -274,10 +274,11 @@
             $('#msg_area').val('');
             $.ajax({
                 type: "POST",
-                url: "{{URL::to('/').'/messages/addnewFromProfile'}}", //Where to make Ajax calls
+                url: "{{URL::to('/').'/messages/addnew'}}", //Where to make Ajax calls
                 data:customerData,
                 dataType:"html", // Data type, HTML, json etc.
                 success: function (result) {
+                    console.log("Insert Result : " + result);
                     var textarea = document.getElementById('msg_desc');
                     textarea.scrollTop = textarea.scrollHeight;
                     $('#messageLoaderDown').hide();
