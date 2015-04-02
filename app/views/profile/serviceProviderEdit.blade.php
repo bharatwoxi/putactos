@@ -295,7 +295,7 @@
                                         <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>
                                         <div class="col-sm-3 selectContainer ">
                                             <span class="select-wrapper1" name="textboxto1">
-                                                <select name="avail_day" class="fonza custom-select1">
+                                                <select name="avail_day[]" class="fonza custom-select1">
                                                     <option value="1" selected="selected">MON</option>
                                                     <option value="2">TUE</option>
                                                     <option value="3">WED</option>
@@ -309,7 +309,7 @@
                                         <label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">To</label>
                                         <div class="col-sm-3 selectContainer ">
                                             <span class="select-wrapper1" name="textboxto1">
-                                                <select name="avail_from" class="fonza custom-select1" id="name" name="textboxfrom1" value="">
+                                                <select name="avail_from[]" class="fonza custom-select1" id="name" name="textboxfrom1" value="">
                                                     <option value="00">00</option>
                                                     <option value="01">01</option>
                                                     <option value="02">02</option>
@@ -341,7 +341,7 @@
                                         <label for="Name" class="col-sm-1 control-label" style="text-align: left;">From</label>
                                         <div class="col-sm-3 selectContainer ">
                                             <span class="select-wrapper1" name="textboxto1">
-                                                <select name="avail_to" class="fonza custom-select1" id="name" name="textboxto1" value="">
+                                                <select name="avail_to[]" class="fonza custom-select1" id="name" name="textboxto1" value="">
                                                     <option value="00">00</option>
                                                     <option value="01">01</option>
                                                     <option value="02">02</option>

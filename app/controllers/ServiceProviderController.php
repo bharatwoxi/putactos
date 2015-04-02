@@ -161,6 +161,7 @@ class ServiceProviderController extends BaseController {
     */
     public function saveProfileData(){
         $input = Input::all();
+        dd($input);
         $input=array_map('trim',$input);
         $rules = array(
             'height' => 'integer',
