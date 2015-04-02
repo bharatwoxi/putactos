@@ -94,9 +94,9 @@ class CommonController extends BaseController {
                 )
             );
             Session::flash('message', 'Your feedback submitted successfully');
-            return Redirect::to("$username");
+            return Redirect::to("profile/".$username);
         }else{
-            return Redirect::to("$username")->withInput()->withErrors($validation);
+            return Redirect::to("profile/".$username)->withInput()->withErrors($validation);
         }
         //return View::make('profile.serviceProviderEdit')->with(array('ethnicitys'=> $ethnicity,'hairColors'=>$hairColor,'genders'=>$gender,'eyeColors'=>$eyeColor,'userData'=>$userData));
         return View::make('profile.viewServiceProvider');

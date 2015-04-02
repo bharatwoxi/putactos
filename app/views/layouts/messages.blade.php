@@ -269,7 +269,8 @@
             $('#msg_area').val('');
             alert('Please enter message');
         }else{
-            $('#messageLoaderDown').show();                                                                                                                                                                           var customerData = 'to_id='+toUserId+'&message='+message;
+            $('#messageLoaderDown').show();
+            var customerData = 'to_id='+toUserId+'&message='+message;
             $('#msg_area').val('');
             $.ajax({
                 type: "POST",
@@ -277,6 +278,7 @@
                 data:customerData,
                 dataType:"html", // Data type, HTML, json etc.
                 success: function (result) {
+                    console.log("Insert Result : " + result);
                     var textarea = document.getElementById('msg_desc');
                     textarea.scrollTop = textarea.scrollHeight;
                     $('#messageLoaderDown').hide();

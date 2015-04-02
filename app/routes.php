@@ -69,6 +69,7 @@ Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
     Route::get('messages/userlist',array('before' => 'auth','uses' => 'MessageController@showUserList'));
     Route::get('get/messages',array('before' => 'auth','uses' => 'MessageController@showMessages'));
     Route::post('messages/addnew',array('before' => 'auth','uses' => 'MessageController@insertNewMessage'));
+    Route::post('messages/addnewFromProfile',array('before' => 'auth','uses' => 'MessageController@insertNewMessageViewProfile'));
     Route::get('messages/notification',array('before' => 'auth','uses' => 'MessageController@showNotifications'));
     /* Detect Environment */
 //echo App::environment();
@@ -177,6 +178,7 @@ Route::group(
         Route::get('messages/userlist',array('before' => 'auth','uses' => 'MessageController@showUserList'));
         Route::get('get/messages',array('before' => 'auth','uses' => 'MessageController@showMessages'));
         Route::post('messages/addnew',array('before' => 'auth','uses' => 'MessageController@insertNewMessage'));
+        Route::post('messages/addnewFromProfile',array('before' => 'auth','uses' => 'MessageController@insertNewMessageViewProfile'));
 
         /* Detect Environment */
 //echo App::environment();

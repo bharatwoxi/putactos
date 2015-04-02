@@ -111,10 +111,19 @@
             $(this).next(".holder").text(selectedOption);
         }).trigger('change');
 
+        $(".custom-select1").each(function(){
+            $(this).wrap("<span class='select-wrapper1'></span>");
+            $(this).after("<span class='holder'></span>");
+        });
+        $(".custom-select1").change(function(){
+            var selectedOption = $(this).find(":selected").text();
+            $(this).next(".holder").text(selectedOption);
+        }).trigger('change');
+
 
         var counter = 2;
 
-        $("#addButton").click(function (e) {
+        $("#addButton1").click(function (e) {
             e.preventDefault();
             if(counter>7){
                 alert("Only 7 textboxes allow");
@@ -125,7 +134,7 @@
                 .attr("id", 'TextBoxDiv' + counter);
 
             newTextBoxDiv.after().html('<div class="input-group " style="padding-top: 5px;"> <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label><div class="col-sm-3 selectContainer ">' +
-                ' <span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" name="color' + counter + '" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span> </div><label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>                                           <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxfrom' + counter + '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div>                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>                                       <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxto' + counter +
+                ' <span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" name="avail_day" "' + counter + '" > <option value="1" selected="selected">MON</option> </select></span> </div><label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>                                           <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxfrom' + counter + '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div>                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>                                       <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxto' + counter +
                 '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div></div>	');
 
 
@@ -139,7 +148,7 @@
             counter++;
         });
 
-        $("#removeButton").click(function (e) {
+        $("#removeButton1").click(function (e) {
             e.preventDefault();
             if(counter==1){
                 alert("No more textbox to remove");
@@ -151,7 +160,9 @@
             $("#TextBoxDiv" + counter).remove();
 
         });
-
+        $("#addButton,#removeButton").click(function (e) {
+            e.preventDefault();
+        });
         $("#getButtonValue").click(function () {
 
             var msg = '';
@@ -160,7 +171,8 @@
             }
             alert(msg);
         });
-    })
+    });
+
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
