@@ -44,8 +44,15 @@ class ServiceProviderController extends BaseController {
         $serviceProviderProfileData['hair_color'] = $serviceProvider->hair_color;
 
         $serviceProviderProfileData['totalNonEmptyFields'] = 0;
+        //$serviceProviderProfileData['totalFields'] = count($serviceProviderProfileData)-4;
         $serviceProviderProfileData['totalFields'] = NULL;
-        $serviceProviderProfileData['totalFields'] = count($serviceProviderProfileData)-4;
+        if($user->gender==1){ //male
+            $serviceProviderProfileData['totalFields'] = 16;
+        }
+        if($user->gender==2){ //male
+            $serviceProviderProfileData['totalFields'] = 19;
+        }
+
 
         if($serviceProviderProfileData['contact_no']!=NULL || $serviceProviderProfileData['contact_no']!=''){
             $serviceProviderProfileData['totalNonEmptyFields'] = $serviceProviderProfileData['totalNonEmptyFields'] + 1;
@@ -86,22 +93,29 @@ class ServiceProviderController extends BaseController {
         if($serviceProviderProfileData['pubic_hair']!=NULL || $serviceProviderProfileData['pubic_hair']!=''){
             $serviceProviderProfileData['totalNonEmptyFields'] = $serviceProviderProfileData['totalNonEmptyFields'] + 1;
         }
+        if($user->gender==1){ //male
+            if($serviceProviderProfileData['penis_size']!=NULL || $serviceProviderProfileData['penis_size']!=''){
+                $serviceProviderProfileData['totalNonEmptyFields'] = $serviceProviderProfileData['totalNonEmptyFields'] + 1;
+            }
+        }
+        if($user->gender==2){ //female
+            if($serviceProviderProfileData['bust']!=NULL || $serviceProviderProfileData['bust']!=''){
+                $serviceProviderProfileData['totalNonEmptyFields'] = $serviceProviderProfileData['totalNonEmptyFields'] + 1;
+            }
 
-        if($serviceProviderProfileData['bust']!=NULL || $serviceProviderProfileData['bust']!=''){
-            $serviceProviderProfileData['totalNonEmptyFields'] = $serviceProviderProfileData['totalNonEmptyFields'] + 1;
+            if($serviceProviderProfileData['cup_size']!=NULL || $serviceProviderProfileData['cup_size']!=''){
+                $serviceProviderProfileData['totalNonEmptyFields'] = $serviceProviderProfileData['totalNonEmptyFields'] + 1;
+            }
+
+            if($serviceProviderProfileData['waist']!=NULL || $serviceProviderProfileData['waist']!=''){
+                $serviceProviderProfileData['totalNonEmptyFields'] = $serviceProviderProfileData['totalNonEmptyFields'] + 1;
+            }
+
+            if($serviceProviderProfileData['hips']!=NULL || $serviceProviderProfileData['hips']!=''){
+                $serviceProviderProfileData['totalNonEmptyFields'] = $serviceProviderProfileData['totalNonEmptyFields'] + 1;
+            }
         }
 
-        if($serviceProviderProfileData['cup_size']!=NULL || $serviceProviderProfileData['cup_size']!=''){
-            $serviceProviderProfileData['totalNonEmptyFields'] = $serviceProviderProfileData['totalNonEmptyFields'] + 1;
-        }
-
-        if($serviceProviderProfileData['waist']!=NULL || $serviceProviderProfileData['waist']!=''){
-            $serviceProviderProfileData['totalNonEmptyFields'] = $serviceProviderProfileData['totalNonEmptyFields'] + 1;
-        }
-
-        if($serviceProviderProfileData['hips']!=NULL || $serviceProviderProfileData['hips']!=''){
-            $serviceProviderProfileData['totalNonEmptyFields'] = $serviceProviderProfileData['totalNonEmptyFields'] + 1;
-        }
 
         if($serviceProviderProfileData['ethnicity']!=NULL || $serviceProviderProfileData['ethnicity']!=''){
             $serviceProviderProfileData['totalNonEmptyFields'] = $serviceProviderProfileData['totalNonEmptyFields'] + 1;
