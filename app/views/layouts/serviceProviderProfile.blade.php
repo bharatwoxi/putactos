@@ -102,14 +102,14 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
-        $(".custom-select").each(function(){
-            $(this).wrap("<span class='select-wrapper'></span>");
-            $(this).after("<span class='holder'></span>");
-        });
-        $(".custom-select").change(function(){
-            var selectedOption = $(this).find(":selected").text();
-            $(this).next(".holder").text(selectedOption);
-        }).trigger('change');
+//        $(".custom-select").each(function(){
+//            $(this).wrap("<span class='select-wrapper'></span>");
+//            $(this).after("<span class='holder'></span>");
+//        });
+//        $(".custom-select").change(function(){
+//            var selectedOption = $(this).find(":selected").text();
+//            $(this).next(".holder").text(selectedOption);
+//        }).trigger('change');
 
         $(".custom-select1").each(function(){
             $(this).wrap("<span class='select-wrapper1'></span>");
@@ -120,10 +120,123 @@
             $(this).next(".holder").text(selectedOption);
         }).trigger('change');
 
-
         var counter = 2;
 
-        $("#addButton1").click(function (e) {
+        $('#addButton').on('click', function(e) {
+            e.preventDefault();
+
+//            if(counter>7){
+//                alert("Only 7 textboxes allow");
+//                return false;
+//            }
+
+            var newTextBoxDiv = $(document.createElement('div'))
+                .attr("id", 'TextBoxDiv' + counter);
+
+            newTextBoxDiv.after().html('<div class="input-group " style="padding-top: 5px;"> ' +
+                '<label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>' +
+                '<div class="col-sm-3 selectContainer ">' +
+                '<span class="select-wrapper1" name="textboxto' + counter + '">' +
+                '<select class="fonza custom-select1" name="avail_day[static][]" > ' +
+                '<option value="1" selected="selected">MON</option> ' +
+                '<option value="2">TUE</option> ' +
+                '<option value="3">WED</option> ' +
+                '<option value="4">THU</option> ' +
+                '<option value="5">FRI</option> ' +
+                '<option value="6">SAT</option> ' +
+                '<option value="7">SUN</option> ' +
+                '</select>' +
+                '</span> ' +
+                '</div>' +
+                '<label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">From</label>' +
+                '<div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '">' +
+                '<select class="fonza custom-select1" name="avail_from[static][]" >' +
+                '<option value="00">00</option>' +
+                '<option value="01">01</option>' +
+                '<option value="02">02</option>' +
+                '<option value="03">03</option>' +
+                '<option value="04">04</option>' +
+                '<option value="05">05</option>' +
+                '<option value="06">06</option>' +
+                '<option value="07">07</option>' +
+                '<option value="08">08</option>' +
+                '<option value="09">09</option>' +
+                '<option value="10">10</option>' +
+                '<option value="11">11</option>' +
+                '<option value="12">12</option>' +
+                '<option value="13">13</option>' +
+                '<option value="14">14</option>' +
+                '<option value="15">15</option>' +
+                '<option value="16">16</option>' +
+                '<option value="17">17</option>' +
+                '<option value="18">18</option>' +
+                '<option value="19">19</option>' +
+                '<option value="20">20</option>' +
+                '<option value="21">21</option>' +
+                '<option value="22">22</option>' +
+                '<option value="23">23</option>' +
+                '<option value="24">24</option>' +
+                '</select>' +
+                '</span>' +
+                '</div>' +
+                '<label for="Name" class="col-sm-1 control-label" style="text-align: left;">To</label>' +
+                '<div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '">' +
+                '<select class="fonza custom-select1" name="avail_to[static][]" >' +
+                '<option value="00">00</option>' +
+                '<option value="01">01</option>' +
+                '<option value="02">02</option>' +
+                '<option value="03">03</option>' +
+                '<option value="04">04</option>' +
+                '<option value="05">05</option>' +
+                '<option value="06">06</option>' +
+                '<option value="07">07</option>' +
+                '<option value="08">08</option>' +
+                '<option value="09">09</option>' +
+                '<option value="10">10</option>' +
+                '<option value="11">11</option>' +
+                '<option value="12">12</option>' +
+                '<option value="13">13</option>' +
+                '<option value="14">14</option>' +
+                '<option value="15">15</option>' +
+                '<option value="16">16</option>' +
+                '<option value="17">17</option>' +
+                '<option value="18">18</option>' +
+                '<option value="19">19</option>' +
+                '<option value="20">20</option>' +
+                '<option value="21">21</option>' +
+                '<option value="22">22</option>' +
+                '<option value="23">23</option>' +
+                '<option value="24">24</option>' +
+                '</select>' +
+                '</span>' +
+                '</div>' +
+                '</div>');
+
+
+//            newTextBoxDiv.after().html('<div class="input-group " style="padding-top: 5px;"> <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label><div class="col-sm-3 selectContainer ">' +
+//                ' <span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" name="color' + counter + '" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span> </div><label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>                                           <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxfrom' + counter + '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div>                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>                                       <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxto' + counter +
+//                '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div></div>	');
+//
+
+
+
+            newTextBoxDiv.appendTo("#TextBoxesGroup");
+            $("#TextBoxDiv" + counter + " .custom-select1").each(function(){
+                $(this).wrap("<span class='select-wrapper1'></span>");
+                $(this).after("<span class='holder'></span>");
+            });
+            $("#TextBoxDiv" + counter + " .custom-select1").change(function(){
+                var selectedOption = $(this).find(":selected").text();
+                $(this).next(".holder").text(selectedOption);
+            }).trigger('change');
+
+            counter++;
+
+
+        });
+
+
+        /*$("#addButton").click(function (e) {
             e.preventDefault();
             if(counter>7){
                 alert("Only 7 textboxes allow");
@@ -133,12 +246,42 @@
             var newTextBoxDiv = $(document.createElement('div'))
                 .attr("id", 'TextBoxDiv' + counter);
 
-            newTextBoxDiv.after().html('<div class="input-group " style="padding-top: 5px;"> <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label><div class="col-sm-3 selectContainer ">' +
-                ' <span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" name="avail_day" "' + counter + '" > <option value="1" selected="selected">MON</option> </select></span> </div><label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>                                           <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxfrom' + counter + '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div>                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>                                       <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxto' + counter +
-                '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div></div>	');
+            newTextBoxDiv.after().html('<div class="input-group " style="padding-top: 5px;"> ' +
+                '<label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>' +
+                '<div class="col-sm-3 selectContainer ">' +
+                '<span class="select-wrapper1" name="textboxto' + counter + '">' +
+                '<select class="fonza custom-select1" name="avail_day" "' + counter + '" > ' +
+                '<option value="1" selected="selected">MON</option> ' +
+                '</select>' +
+                '</span> ' +
+                '</div>' +
+                '<label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>' +
+                '<div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '">' +
+                '<select class="fonza custom-select1" id="name" name="textboxfrom' + counter + '" id="textbox' + counter + '" value="" >' +
+                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option>' +
+                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>' +
+                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option>' +
+                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option>' +
+                '</select>' +
+                '</span>' +
+                '</div>' +
+                '<label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>' +
+                '<div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '">' +
+                '<select class="fonza custom-select1" id="name" name="textboxto' + counter + '" id="textbox' + counter + '" value="" >' +
+                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option>' +
+                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>' +
+                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option>' +
+                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option>' +
+                '</select>' +
+                '</span>' +
+                '</div>' +
+                '</div>');
 
 
-
+//            newTextBoxDiv.after().html('<div class="input-group " style="padding-top: 5px;"> <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label><div class="col-sm-3 selectContainer ">' +
+//                ' <span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" name="color' + counter + '" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span> </div><label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>                                           <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxfrom' + counter + '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div>                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>                                       <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxto' + counter +
+//                '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div></div>	');
+//
 
 
 
@@ -146,9 +289,9 @@
 
 
             counter++;
-        });
+       });*/
 
-        $("#removeButton1").click(function (e) {
+        $("#removeButton").click(function (e) {
             e.preventDefault();
             if(counter==1){
                 alert("No more textbox to remove");
@@ -172,6 +315,7 @@
             alert(msg);
         });
     });
+
 
     function readURL(input) {
         if (input.files && input.files[0]) {
