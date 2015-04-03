@@ -149,7 +149,8 @@ class ServiceProviderController extends BaseController {
         $hairColor = HairColor::all();
         $eyeColor = EyeColor::all();
         $cupSize = CupSize::all();
-        return View::make('profile.serviceProviderEdit')->with(array('ethnicitys'=> $ethnicity,'hairColors'=>$hairColor,'genders'=>$gender,'eyeColors'=>$eyeColor,'userData'=>$userData,'cupSizes'=>$cupSize));
+        $avaliability = DB::table('service_provider_availabilities')->where('service_provider_id', $userData['serviceProvider'] ->id)->get();
+        return View::make('profile.serviceProviderEdit')->with(array('ethnicitys'=> $ethnicity,'hairColors'=>$hairColor,'genders'=>$gender,'eyeColors'=>$eyeColor,'userData'=>$userData,'cupSizes'=>$cupSize,'avaliabilities'=>$avaliability));
     }
 
     /*
@@ -161,7 +162,11 @@ class ServiceProviderController extends BaseController {
     */
     public function saveProfileData(){
         $input = Input::all();
-        dd($input);
+        unset($input['avail_day']);
+        unset($input['avail_from']);
+        unset($input['avail_to']);
+        unset($input['avail']);
+
         $input=array_map('trim',$input);
         $rules = array(
             'height' => 'integer',
@@ -238,6 +243,52 @@ class ServiceProviderController extends BaseController {
             $user->to_age = $ageRange[1];
             $serviceProvider->turns_me_on = trim($input['turnsMeOn']);
             $serviceProvider->updated_at = date('Y-m-d H:m:s');
+            /* Service Provider Availabilities Start*/
+            $day = Input::get('avail_day');
+            $from = Input::get('avail_from');
+            $to = Input::get('avail_to');
+            $availabilityArrayStatic = null;
+            if(isset($day) || $day!=null){
+
+                if(isset($day['static']) && isset($from['static']) && isset($to['static'])){
+                    $count = count($day['static']);
+                    for($i=0;$i<$count;$i++){
+                        $availabilityArrayStatic[$i]['day'] = $day['static'][$i];
+                        $availabilityArrayStatic[$i]['from'] = $from['static'][$i];
+                        $availabilityArrayStatic[$i]['to'] = $to['static'][$i];
+                    }
+                }
+            }
+            $availabilityArrayDb = null;
+            $avail = Input::get('avail');
+
+            if(isset($avail) || $avail!=null){
+                $count = count($avail['db']['day']);
+                for($i=0;$i<$count;$i++){
+                    $availabilityArrayDb[$i]['day'] = $avail['db']['day'][$i];
+                    $availabilityArrayDb[$i]['from'] = $avail['db']['from'][$i];
+                    $availabilityArrayDb[$i]['to'] = $avail['db']['to'][$i];
+                    $availabilityArrayDb[$i]['id'] = $avail['db']['id'][$i];
+                }
+            }
+            /* -----------END--------------- */
+
+            if($availabilityArrayStatic!=null){
+                $i = 0;
+                foreach($availabilityArrayStatic as $availabilityArray){
+                    $data[$i] =  array('service_provider_id'=>Auth::user()->service_provider_id,'week_day'=>$availabilityArray['day'],'from_time'=>$availabilityArray['from'].':00:00','to_time'=>$availabilityArray['to'].':00:00','created_at'=>date('Y-m-d H:i:s'),'updated_at'=>date('Y-m-d H:i:s'));
+                    $i++;
+                }
+                Availability::insert($data);
+            }
+            if($availabilityArrayDb!=null){
+                foreach($availabilityArrayDb as $availabilityArray){
+                    DB::table('service_provider_availabilities')
+                        ->where('id', $availabilityArray['id'])
+                        ->update(array('week_day'=>$availabilityArray['day'],'from_time'=>$availabilityArray['from'].':00:00','to_time'=>$availabilityArray['to'].':00:00','updated_at'=>date('Y-m-d H:i:s')));
+                }
+
+            }
             if($user->save() && $serviceProvider->save()){
                 $this->updateProfileCompleteness();
                 return Redirect::to('service-provider/editprofile')->with('message','Updated Successfully');

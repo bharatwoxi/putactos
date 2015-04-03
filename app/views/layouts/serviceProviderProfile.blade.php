@@ -125,10 +125,10 @@
         $('#addButton').on('click', function(e) {
             e.preventDefault();
 
-            if(counter>7){
-                alert("Only 7 textboxes allow");
-                return false;
-            }
+//            if(counter>7){
+//                alert("Only 7 textboxes allow");
+//                return false;
+//            }
 
             var newTextBoxDiv = $(document.createElement('div'))
                 .attr("id", 'TextBoxDiv' + counter);
@@ -137,7 +137,7 @@
                 '<label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>' +
                 '<div class="col-sm-3 selectContainer ">' +
                 '<span class="select-wrapper1" name="textboxto' + counter + '">' +
-                '<select class="fonza custom-select1" name="avail_day[]" > ' +
+                '<select class="fonza custom-select1" name="avail_day[static][]" > ' +
                 '<option value="1" selected="selected">MON</option> ' +
                 '<option value="2">TUE</option> ' +
                 '<option value="3">WED</option> ' +
@@ -148,9 +148,9 @@
                 '</select>' +
                 '</span> ' +
                 '</div>' +
-                '<label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>' +
+                '<label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">From</label>' +
                 '<div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '">' +
-                '<select class="fonza custom-select1" name="avail_from[]" >' +
+                '<select class="fonza custom-select1" name="avail_from[static][]" >' +
                 '<option value="00">00</option>' +
                 '<option value="01">01</option>' +
                 '<option value="02">02</option>' +
@@ -179,9 +179,9 @@
                 '</select>' +
                 '</span>' +
                 '</div>' +
-                '<label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>' +
+                '<label for="Name" class="col-sm-1 control-label" style="text-align: left;">To</label>' +
                 '<div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '">' +
-                '<select class="fonza custom-select1" name="avail_to[]" >' +
+                '<select class="fonza custom-select1" name="avail_to[static][]" >' +
                 '<option value="00">00</option>' +
                 '<option value="01">01</option>' +
                 '<option value="02">02</option>' +

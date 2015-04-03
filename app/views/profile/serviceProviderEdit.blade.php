@@ -288,14 +288,106 @@
                     <div class="row col-md-8">
                         <div class="col-md-9">
                             <div id="TextBoxesGroup">
-
-
+                                @if(!empty($avaliabilities))
+                                @foreach($avaliabilities as $avaliability)
+                                <?php
+                                    $fromTime = explode(":",$avaliability->from_time);
+                                    $toTime = explode(":",$avaliability->to_time);
+                                ?>
                                 <div id="TextBoxDiv1">
                                     <div class="input-group " style="padding-top: 5px;">
                                         <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>
                                         <div class="col-sm-3 selectContainer ">
                                             <span class="select-wrapper1" name="textboxto1">
-                                                <select name="avail_day[]" class="fonza custom-select1">
+                                                <select name="avail[db][day][]" class="fonza custom-select1">
+                                                    <option value="1" @if($avaliability->week_day==1) selected="selected" @endif>MON</option>
+                                                    <option value="2" @if($avaliability->week_day==2) selected="selected" @endif>TUE</option>
+                                                    <option value="3" @if($avaliability->week_day==3) selected="selected" @endif>WED</option>
+                                                    <option value="4" @if($avaliability->week_day==4) selected="selected" @endif>THU</option>
+                                                    <option value="5" @if($avaliability->week_day==5) selected="selected" @endif>FRI</option>
+                                                    <option value="6" @if($avaliability->week_day==6) selected="selected" @endif>SAT</option>
+                                                    <option value="7" @if($avaliability->week_day==7) selected="selected" @endif>SUN</option>
+                                                </select>
+                                                <input type="hidden" name="avail[db][id][]" value="{{ $avaliability->id }}" />
+                                            </span>
+                                        </div>
+                                        <label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">From</label>
+                                        <div class="col-sm-3 selectContainer ">
+                                            <span class="select-wrapper1" name="textboxto1">
+                                                <select name="avail[db][from][]" class="fonza custom-select1" id="name" name="textboxfrom1" value="">
+                                                    <option value="00" @if($fromTime[0]=='00') selected="selected" @endif>00</option>
+                                                    <option value="01" @if($fromTime[0]=='01') selected="selected" @endif>01</option>
+                                                    <option value="02" @if($fromTime[0]=='02') selected="selected" @endif>02</option>
+                                                    <option value="03" @if($fromTime[0]=='03') selected="selected" @endif>03</option>
+                                                    <option value="04" @if($fromTime[0]=='04') selected="selected" @endif>04</option>
+                                                    <option value="05" @if($fromTime[0]=='05') selected="selected" @endif>05</option>
+                                                    <option value="06" @if($fromTime[0]=='06') selected="selected" @endif>06</option>
+                                                    <option value="07" @if($fromTime[0]=='07') selected="selected" @endif>07</option>
+                                                    <option value="08" @if($fromTime[0]=='08') selected="selected" @endif>08</option>
+                                                    <option value="09" @if($fromTime[0]=='09') selected="selected" @endif>09</option>
+                                                    <option value="10" @if($fromTime[0]=='10') selected="selected" @endif>10</option>
+                                                    <option value="11" @if($fromTime[0]=='11') selected="selected" @endif>11</option>
+                                                    <option value="12" @if($fromTime[0]=='12') selected="selected" @endif>12</option>
+                                                    <option value="13" @if($fromTime[0]=='13') selected="selected" @endif>13</option>
+                                                    <option value="14" @if($fromTime[0]=='14') selected="selected" @endif>14</option>
+                                                    <option value="15" @if($fromTime[0]=='15') selected="selected" @endif>15</option>
+                                                    <option value="16" @if($fromTime[0]=='16') selected="selected" @endif>16</option>
+                                                    <option value="17" @if($fromTime[0]=='17') selected="selected" @endif>17</option>
+                                                    <option value="18" @if($fromTime[0]=='18') selected="selected" @endif>18</option>
+                                                    <option value="19" @if($fromTime[0]=='19') selected="selected" @endif>19</option>
+                                                    <option value="20" @if($fromTime[0]=='20') selected="selected" @endif>20</option>
+                                                    <option value="21" @if($fromTime[0]=='21') selected="selected" @endif>21</option>
+                                                    <option value="22" @if($fromTime[0]=='22') selected="selected" @endif>22</option>
+                                                    <option value="23" @if($fromTime[0]=='23') selected="selected" @endif>23</option>
+                                                    <option value="24" @if($fromTime[0]=='24') selected="selected" @endif>24</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">To</label>
+                                        <div class="col-sm-3 selectContainer ">
+                                            <span class="select-wrapper1" name="textboxto1">
+                                                <select name="avail[db][to][]" class="fonza custom-select1" id="name" name="textboxto1" value="">
+                                                    <option value="00" @if($toTime[0]=='00') selected="selected" @endif>00</option>
+                                                    <option value="01" @if($toTime[0]=='01') selected="selected" @endif>01</option>
+                                                    <option value="02" @if($toTime[0]=='02') selected="selected" @endif>02</option>
+                                                    <option value="03" @if($toTime[0]=='03') selected="selected" @endif>03</option>
+                                                    <option value="04" @if($toTime[0]=='04') selected="selected" @endif>04</option>
+                                                    <option value="05" @if($toTime[0]=='05') selected="selected" @endif>05</option>
+                                                    <option value="06" @if($toTime[0]=='06') selected="selected" @endif>06</option>
+                                                    <option value="07" @if($toTime[0]=='07') selected="selected" @endif>07</option>
+                                                    <option value="08" @if($toTime[0]=='08') selected="selected" @endif>08</option>
+                                                    <option value="09" @if($toTime[0]=='09') selected="selected" @endif>09</option>
+                                                    <option value="10" @if($toTime[0]==10) selected="selected" @endif>10</option>
+                                                    <option value="11" @if($toTime[0]==11) selected="selected" @endif>11</option>
+                                                    <option value="12" @if($toTime[0]==12) selected="selected" @endif>12</option>
+                                                    <option value="13" @if($toTime[0]==13) selected="selected" @endif>13</option>
+                                                    <option value="14" @if($toTime[0]==14) selected="selected" @endif>14</option>
+                                                    <option value="15" @if($toTime[0]==15) selected="selected" @endif>15</option>
+                                                    <option value="16" @if($toTime[0]==16) selected="selected" @endif>16</option>
+                                                    <option value="17" @if($toTime[0]==17) selected="selected" @endif>17</option>
+                                                    <option value="18" @if($toTime[0]==18) selected="selected" @endif>18</option>
+                                                    <option value="19" @if($toTime[0]==19) selected="selected" @endif>19</option>
+                                                    <option value="20" @if($toTime[0]==20) selected="selected" @endif>20</option>
+                                                    <option value="21" @if($toTime[0]==21) selected="selected" @endif>21</option>
+                                                    <option value="22" @if($toTime[0]==22) selected="selected" @endif>22</option>
+                                                    <option value="23" @if($toTime[0]==23) selected="selected" @endif>23</option>
+                                                    <option value="24" @if($toTime[0]==24) selected="selected" @endif>24</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+<!--                                    <div class="col-md-9">-->
+<!--                                        <input type="image" src="{{URL::asset('public/assets/registration/img/minus.png')}}" id="removeButton" style="width: 40px;">-->
+<!--                                    </div>-->
+                                </div>
+                                @endforeach
+                                @else
+                                <div id="TextBoxDiv1">
+                                    <div class="input-group " style="padding-top: 5px;">
+                                        <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>
+                                        <div class="col-sm-3 selectContainer ">
+                                            <span class="select-wrapper1" name="textboxto1">
+                                                <select name="avail_day[static][]" class="fonza custom-select1">
                                                     <option value="1" selected="selected">MON</option>
                                                     <option value="2">TUE</option>
                                                     <option value="3">WED</option>
@@ -306,10 +398,10 @@
                                                 </select>
                                             </span>
                                         </div>
-                                        <label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">To</label>
+                                        <label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">From</label>
                                         <div class="col-sm-3 selectContainer ">
                                             <span class="select-wrapper1" name="textboxto1">
-                                                <select name="avail_from[]" class="fonza custom-select1" id="name" name="textboxfrom1" value="">
+                                                <select name="avail_from[static][]" class="fonza custom-select1" id="name" name="textboxfrom1" value="">
                                                     <option value="00">00</option>
                                                     <option value="01">01</option>
                                                     <option value="02">02</option>
@@ -338,10 +430,10 @@
                                                 </select>
                                             </span>
                                         </div>
-                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">From</label>
+                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">To</label>
                                         <div class="col-sm-3 selectContainer ">
                                             <span class="select-wrapper1" name="textboxto1">
-                                                <select name="avail_to[]" class="fonza custom-select1" id="name" name="textboxto1" value="">
+                                                <select name="avail_to[static][]" class="fonza custom-select1" id="name" name="textboxto1" value="">
                                                     <option value="00">00</option>
                                                     <option value="01">01</option>
                                                     <option value="02">02</option>
@@ -372,43 +464,7 @@
                                         </div>
                                     </div>
                                 </div>
-<!--                                <div id="TextBoxDiv2">-->
-<!--                                    <div class="input-group " style="padding-top: 5px;">-->
-<!--                                        <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>-->
-<!--                                        <div class="col-sm-3 selectContainer ">-->
-<!--                                            <span class="select-wrapper1" name="textboxto2">-->
-<!--                                                <select class="fonza custom-select1" name="color2">-->
-<!--                                                    <option name="textboxto2" id="textbox2" value=""></option>-->
-<!--                                                    <option name="textboxto2" id="textbox2" value="blue">Day</option>-->
-<!--                                                    <option name="textboxto2" id="textbox2" value="green">Time</option>-->
-<!--                                                    <option name="textboxto2" id="textbox2" value="red">To</option>-->
-<!--                                                </select>-->
-<!--                                            </span>-->
-<!--                                        </div>-->
-<!--                                        <label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>-->
-<!--                                        <div class="col-sm-3 selectContainer ">-->
-<!--                                            <span class="select-wrapper1" name="textboxto2">-->
-<!--                                                <select class="fonza custom-select1" id="name" name="textboxfrom2" value="">-->
-<!--                                                    <option name="textboxto2" id="textbox2" value=""></option>-->
-<!--                                                    <option name="textboxto2" id="textbox2" value="blue">Day</option>-->
-<!--                                                    <option name="textboxto2" id="textbox2" value="green">Time</option>-->
-<!--                                                    <option name="textboxto2" id="textbox2" value="red">To</option>-->
-<!--                                                </select>-->
-<!--                                            </span>-->
-<!--                                        </div>-->
-<!--                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>-->
-<!--                                        <div class="col-sm-3 selectContainer ">-->
-<!--                                            <span class="select-wrapper1" name="textboxto2">-->
-<!--                                                <select class="fonza custom-select1" id="name" name="textboxto2" value="">-->
-<!--                                                    <option name="textboxto2" id="textbox2" value=""></option>-->
-<!--                                                    <option name="textboxto2" id="textbox2" value="blue">Day</option>-->
-<!--                                                    <option name="textboxto2" id="textbox2" value="green">Time</option>-->
-<!--                                                    <option name="textboxto2" id="textbox2" value="red">To</option>-->
-<!--                                                </select>-->
-<!--                                            </span>-->
-<!--                                        </div>-->
-<!--                                    </div>	-->
-<!--                                </div>-->
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-2">
