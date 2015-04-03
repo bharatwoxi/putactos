@@ -92,7 +92,6 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{URL::asset('public/assets/registration/js/bootstrap.min.js')}}"></script>
 <!--<script src="{{URL::asset('public/assets/registration/js/jquery-1.10.2.min.js')}}"></script>-->
-
 <script src="{{URL::asset('public/assets/registration/js/plugin.js')}}"></script>
 <script src="{{URL::asset('public/assets/registration/js/main.js')}}"></script>
 <script src="{{URL::asset('public/assets/registration/js/jquery.min.js')}}"></script>
@@ -199,7 +198,7 @@
                 //$(".LoaderImage").css("display", "block");
                 var skip = $('#skip').val();
                 var take = $('#take').val();
-                var isFilter = $('#isFilter').val();
+                var isFilter = $('#isFilter1').val();
                 $('#skip').remove();
                 $('#take').remove();
                 $('#isDataAvailable').remove();
@@ -240,7 +239,6 @@
     $(document).ready(function(){
         $('#advanceSearch').submit(function(event){
             event.preventDefault();
-            $('#isFilter').val(1);
             var searchFilters = $('#advanceSearch').serializeArray();
             var hips = 0;
             var bust = 0;
