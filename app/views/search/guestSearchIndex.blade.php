@@ -108,10 +108,10 @@
                                         <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">{{ trans('peopleNearBy.Gender') }}</label>
                                         <div class="col-sm-6">
                                             <div class="btn-group" data-toggle="buttons">
-                                                <label class="btn btn-default"  style="font-family:Calibri Light; font-weight:bold;">
+                                                <label class="btn btn-default gender_male"  style="font-family:Calibri Light; font-weight:bold;">
                                                     <input type="radio" name="gender" value="1" /> Male
                                                 </label>
-                                                <label class="btn btn-default active" style="font-family:Calibri Light; font-weight:bold;">
+                                                <label class="btn btn-default active gender_female" style="font-family:Calibri Light; font-weight:bold;">
                                                     <input type="radio" name="gender" value="2" checked /> Female
                                                 </label>
                                             </div>
@@ -203,15 +203,109 @@
                                     </label>
                                 </div>
 
-                                <div class=" col-xs-offset-1">
+<!--                                <div class=" col-xs-offset-1">-->
+<!--                                    <h6 style="color:#FFF">{{ trans('peopleNearBy.HIPS') }}</h6>-->
+<!--                                    <input class="slider" name="hips" id="hips" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">-->
+<!--                                    <h6 style="color:#FFF">{{ trans('peopleNearBy.BUST') }}</h6>-->
+<!--                                    <input class="slider" name="bust" id="bust" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">-->
+<!--                                    <h6 style="color:#FFF">{{ trans('peopleNearBy.WAIST') }}</h6>-->
+<!--                                    <input class="slider" name="waist" id="waist" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">-->
+<!--                                    <h6 style="color:#FFF">{{ trans('peopleNearBy.CUPSIZE') }}</h6>-->
+<!--                                    <input class="slider" name="cup" id="cup" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">-->
+<!--                                </div>-->
+                                <div class=" col-xs-offset-1" id="women_only">
                                     <h6 style="color:#FFF">{{ trans('peopleNearBy.HIPS') }}</h6>
-                                    <input class="slider" name="hips" id="hips" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">
+                                    <div class="slider-example">
+                                        <div class="well" style="padding: 5px 0px 5px 0px;">
+                                            <b style="color:#FFF">40&nbsp;&nbsp;</b>
+                                            <div class="slider1 slider-horizontal1" id="">
+                                                <div class="tooltip tooltip-main top" style="left: 40%; margin-left: -24px;">
+                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">40 : 90</div>
+                                                </div>
+                                                <div class="tooltip tooltip-min top" style="left: 30%; margin-left: -14px;">
+                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">40</div>
+                                                </div>
+                                                <div class="tooltip tooltip-max top" style="top: -30px; left: 50%; margin-left: -14px;">
+                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">90</div>
+                                                </div>
+                                            </div>
+                                            <input id="hips" type="text" name="hips" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"> <b style="color:#FFF">&nbsp;&nbsp;&nbsp;90</b>
+                                        </div>
+                                    </div>
                                     <h6 style="color:#FFF">{{ trans('peopleNearBy.BUST') }}</h6>
-                                    <input class="slider" name="bust" id="bust" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">
+                                    <div class="slider-example">
+                                        <div class="well" style="padding: 5px 0px 5px 0px;">
+                                            <b style="color:#FFF">40&nbsp;&nbsp;</b>
+                                            <div class="slider1 slider-horizontal1" id="">
+                                                <div class="tooltip tooltip-main top" style="left: 40%; margin-left: -24px;">
+                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">40 : 90</div>
+                                                </div>
+                                                <div class="tooltip tooltip-min top" style="left: 30%; margin-left: -14px;">
+                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">40</div>
+                                                </div>
+                                                <div class="tooltip tooltip-max top" style="top: -30px; left: 50%; margin-left: -14px;">
+                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">90</div>
+                                                </div>
+                                            </div>
+                                            <input id="bust" type="text" name="bust" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"> <b style="color:#FFF">&nbsp;&nbsp;&nbsp;90</b>
+                                        </div>
+                                    </div>
                                     <h6 style="color:#FFF">{{ trans('peopleNearBy.WAIST') }}</h6>
-                                    <input class="slider" name="waist" id="waist" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">
+                                    <div class="slider-example">
+                                        <div class="well" style="padding: 5px 0px 5px 0px;">
+                                            <b style="color:#FFF">40&nbsp;&nbsp;</b>
+                                            <div class="slider1 slider-horizontal1" id="">
+                                                <div class="tooltip tooltip-main top" style="left: 40%; margin-left: -24px;">
+                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">40 : 90</div>
+                                                </div>
+                                                <div class="tooltip tooltip-min top" style="left: 30%; margin-left: -14px;">
+                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">40</div>
+                                                </div>
+                                                <div class="tooltip tooltip-max top" style="top: -30px; left: 50%; margin-left: -14px;">
+                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">90</div>
+                                                </div>
+                                            </div>
+                                            <input id="waist" type="text" name="waist" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"> <b style="color:#FFF">&nbsp;&nbsp;&nbsp;90</b>
+                                        </div>
+                                    </div>
                                     <h6 style="color:#FFF">{{ trans('peopleNearBy.CUPSIZE') }}</h6>
-                                    <input class="slider" name="cup" id="cup" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">
+                                    <div class="slider-example">
+                                        <div class="well" style="padding: 5px 0px 5px 0px;">
+                                            <b style="color:#FFF">40&nbsp;&nbsp;</b>
+                                            <div class="slider1 slider-horizontal1" id="">
+                                                <div class="tooltip tooltip-main top" style="left: 40%; margin-left: -24px;">
+                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">40 : 90</div>
+                                                </div>
+                                                <div class="tooltip tooltip-min top" style="left: 30%; margin-left: -14px;">
+                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">40</div>
+                                                </div>
+                                                <div class="tooltip tooltip-max top" style="top: -30px; left: 50%; margin-left: -14px;">
+                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">90</div>
+                                                </div>
+                                            </div>
+                                            <input id="cup" type="text" name="cup" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"> <b style="color:#FFF">&nbsp;&nbsp;&nbsp;90</b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" col-xs-offset-1" id="men_only" style="display:none;">
+                                    <h6 style="color:#FFF">Penis Size</h6>
+                                    <div class="slider-example">
+                                        <div class="well" style="padding: 5px 0px 5px 0px;">
+                                            <b style="color:#FFF">40&nbsp;&nbsp;</b>
+                                            <div class="slider1 slider-horizontal1" id="">
+                                                <div class="tooltip tooltip-main top" style="left: 40%; margin-left: -24px;">
+                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">40 : 90</div>
+                                                </div>
+                                                <div class="tooltip tooltip-min top" style="left: 30%; margin-left: -14px;">
+                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">40</div>
+                                                </div>
+                                                <div class="tooltip tooltip-max top" style="top: -30px; left: 50%; margin-left: -14px;">
+                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">90</div>
+                                                </div>
+                                            </div>
+                                            <input id="penis" type="text" name="penis" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"> <b style="color:#FFF">&nbsp;&nbsp;&nbsp;90</b>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 

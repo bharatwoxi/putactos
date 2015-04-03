@@ -315,7 +315,7 @@
                                 <input type="image" src="{{URL::asset('public/assets/registration/img/Cancel.png')}}" style="width: 110px;">
                                 <input id="search-button" type="image" src="{{URL::asset('public/assets/registration/img/Search.png')}}" style="width: 110px; margin-left: 20px;">
                                 {{ Form::close() }}
-                                <input type="hidden" name="isFilter" id="isFilter" value="0" />
+                                <input type="hidden" name="isFilter1" id="isFilter1" value="0" />
                             </div>
                         </div>
                     </div> <!--End of row-->

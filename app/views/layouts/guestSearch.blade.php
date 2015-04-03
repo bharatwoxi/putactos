@@ -18,6 +18,8 @@
     <link href="{{URL::asset('public/assets/registration/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/styles.css')}}" media="all" rel="stylesheet">
+    <link href="{{URL::asset('public/assets/registration/css/people_near_en.css')}}" media="all" rel="stylesheet">
+    <link href="{{URL::asset('public/assets/registration/css/people_near_by_slyder.css')}}" media="all" rel="stylesheet">
     <script src="{{URL::asset('public/assets/registration/js/modernizr.min.js')}}"></script>
 
 </head>
@@ -89,9 +91,11 @@
 <script src="{{URL::asset('public/assets/registration/js/jquery.min.js')}}"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{URL::asset('public/assets/registration/js/bootstrap.min.js')}}"></script>
-<script src="{{URL::asset('public/assets/registration/js/jquery-1.10.2.min.js')}}"></script>
+<!--<script src="{{URL::asset('public/assets/registration/js/jquery-1.10.2.min.js')}}"></script>-->
 <script src="{{URL::asset('public/assets/registration/js/plugin.js')}}"></script>
 <script src="{{URL::asset('public/assets/registration/js/main.js')}}"></script>
+<script src="{{URL::asset('public/assets/registration/js/jquery.min.js')}}"></script>
+<script type='text/javascript' src="{{URL::asset('public/assets/registration/js/bootstrap-slider.js')}}"></script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
 <script type="text/javascript">
     var geocoder;
@@ -275,6 +279,17 @@
                     alert(error);
                 }
             });
+        });
+        $("#hips, #bust, #waist, #cup, #penis").slider({});
+        $(".gender_male").click(function() {
+            //var value = $("#gender_male").val();
+            $('#women_only').hide();
+            $('#men_only').show();
+        });
+        $(".gender_female").click(function() {
+            //var value = $("#gender_female").val();
+            $('#women_only').show();
+            $('#men_only').hide();
         });
     });
 </script>
