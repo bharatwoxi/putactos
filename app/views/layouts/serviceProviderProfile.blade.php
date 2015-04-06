@@ -132,7 +132,7 @@
 
             var newTextBoxDiv = $(document.createElement('div'))
                 .attr("id", 'TextBoxDiv' + counter).attr("class", 'col-md-11');
-
+            var dynamicId = 'TextBoxDiv'+counter;
             newTextBoxDiv.after().html('<div class="input-group col-md-12" style="padding-top: 5px;"> ' +
                 '<label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>' +
                 '<div class="col-sm-3 selectContainer ">' +
@@ -210,7 +210,7 @@
                 '</select>' +
                 '</span>' +
                 '<div class="col-md-1  pull-right" style="padding:0">' +
-                '<input type="image" src="{{URL::asset("public/assets/registration/img/minus.png")}}" id="removeButton" style="width: 40px; float:right">' +
+                '<input type="image" src="{{URL::asset("public/assets/registration/img/minus.png")}}" id="removeButton" style="width: 40px; float:right" onclick="deleteAvailability(event,'+"'"+dynamicId+"'"+',null)">' +
                 '</div>' +
                 '</div>' +
                 '</div>');
@@ -294,19 +294,19 @@
             counter++;
        });*/
 
-        $("#removeButton").click(function (e) {
-            e.preventDefault();
-            if(counter==1){
-                alert("No more textbox to remove");
-                return false;
-            }
-
-            counter--;
-
-            $("#TextBoxDiv" + counter).remove();
-
-        });
-        $("#addButton,#removeButton").click(function (e) {
+//        $("#removeButton").click(function (e) {
+//            e.preventDefault();
+//            if(counter==1){
+//                alert("No more textbox to remove");
+//                return false;
+//            }
+//
+//            counter--;
+//
+//            $("#TextBoxDiv" + counter).remove();
+//
+//        });
+        $("#addButton").click(function (e) {
             e.preventDefault();
         });
         $("#getButtonValue").click(function () {
@@ -319,6 +319,13 @@
         });
     });
 
+    function deleteAvailability(e,id,value){
+        e.preventDefault();
+        if(value==null){
+            alert(1);
+        }
+        alert(id);
+    }
 
     function readURL(input) {
         if (input.files && input.files[0]) {
