@@ -131,9 +131,9 @@
 //            }
 
             var newTextBoxDiv = $(document.createElement('div'))
-                .attr("id", 'TextBoxDiv' + counter);
+                .attr("id", 'TextBoxDiv' + counter).attr("class", 'col-md-11');
 
-            newTextBoxDiv.after().html('<div class="input-group " style="padding-top: 5px;"> ' +
+            newTextBoxDiv.after().html('<div class="input-group col-md-12" style="padding-top: 5px;"> ' +
                 '<label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>' +
                 '<div class="col-sm-3 selectContainer ">' +
                 '<span class="select-wrapper1" name="textboxto' + counter + '">' +
@@ -180,7 +180,7 @@
                 '</span>' +
                 '</div>' +
                 '<label for="Name" class="col-sm-1 control-label" style="text-align: left;">To</label>' +
-                '<div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '">' +
+                '<div class="col-sm-3 selectContainer" style="padding:0;"><span class="select-wrapper1" name="textboxto' + counter + '">' +
                 '<select class="fonza custom-select1" name="avail_to[static][]" >' +
                 '<option value="00">00</option>' +
                 '<option value="01">01</option>' +
@@ -209,6 +209,9 @@
                 '<option value="24">24</option>' +
                 '</select>' +
                 '</span>' +
+                '<div class="col-md-1  pull-right" style="padding:0">' +
+                '<input type="image" src="{{URL::asset("public/assets/registration/img/minus.png")}}" id="removeButton" style="width: 40px; float:right">' +
+                '</div>' +
                 '</div>' +
                 '</div>');
 
