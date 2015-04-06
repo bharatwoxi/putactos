@@ -154,7 +154,8 @@
 <div class="form-group">
     <label class="col-sm-5 ecolfour" control-label>Ethnicity</label>
     <div class="col-sm-4 selectContainer">
-        <select class="fonza custom-select" name="ethnicity">
+    	<span class="select-wrapper1">
+        <select class="fonza custom-select1" name="ethnicity">
             @if($userData['serviceProvider']->ethnicity==NULL)
             <option value="0">Please Select</option>
             @endif
@@ -162,13 +163,15 @@
             <option value="{{ $ethnicity->id }}" @if($userData['serviceProvider']->ethnicity==$ethnicity->id) selected="selected" @endif>{{ $ethnicity->ethnicity }}</option>
             @endforeach
         </select>
+        </span>
     </div>
 </div>
 <div class="clearfix"></div>
 <div class="form-group">
     <label class="col-sm-5 ecolfour" control-label>Hair Color</label>
     <div class="col-sm-4 selectContainer">
-        <select class="custom-select fonza" name="hairColor">
+    	<span class="select-wrapper1">
+        <select class="custom-select1 fonza" name="hairColor">
             @if($userData['serviceProvider']->hair_color==NULL)
             <option value="0">Please Select</option>
             @endif
@@ -176,13 +179,15 @@
             <option value="{{ $hairColor->id  }}" @if($userData['serviceProvider']->hair_color==$hairColor->id) selected="selected" @endif>{{ $hairColor->hair_color }}</option>
             @endforeach
         </select>
+        </span>
     </div>
 </div>
 <div class="clearfix"></div>
 <div class="form-group">
     <label class="col-sm-5 ecolfour" control-label>Eye Color</label>
     <div class="col-sm-4 selectContainer">
-        <select class="fonza custom-select" name="eyeColor">
+    	<span class="select-wrapper1">
+        <select class="fonza custom-select1" name="eyeColor">
             @if($userData['serviceProvider']->eye_color==NULL)
             <option value="0">Please Select</option>
             @endif
@@ -190,6 +195,7 @@
             <option value="{{ $eyeColor->id  }}" @if($userData['serviceProvider']->eye_color==$eyeColor->id) selected="selected" @endif>{{ $eyeColor->eye_color }}</option>
             @endforeach
         </select>
+        </span>
     </div>
 </div>
 @if($userData['systemUser']->gender == 2)
@@ -297,7 +303,7 @@
                 $fromTime = explode(":",$avaliability->from_time);
                 $toTime = explode(":",$avaliability->to_time);
                 ?>
-                <div id="TextBoxDiv1" class="col-md-11">
+                <div id="TextBoxDivDB{{$avaliability->id}}" class="col-md-11">
                     <div class="input-group col-md-12" style="padding-top: 5px;">
                         <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>
                         <div class="col-sm-3 selectContainer ">
@@ -379,13 +385,13 @@
                                             </span>
                         </div>
                         <div class="col-md-1  pull-right" style="padding:0">
-                            <input type="image" src="{{URL::asset('public/assets/registration/img/minus.png')}}" id="removeButton" style="width: 40px; float:right">
+                            <input type="image" src="{{URL::asset('public/assets/registration/img/minus.png')}}" id="removeButton" style="width: 40px; float:right" onclick="deleteAvailability(event,'#TextBoxDivDB{{$avaliability->id}}',{{$avaliability->id}})">
                         </div>
                     </div>
                 </div>
                 @endforeach
                 @else
-                <div id="TextBoxDiv1" class="col-md-11">
+                <div id="TextBoxDiv0" class="col-md-11">
                     <div class="input-group col-md-12" style="padding-top: 5px;">
                         <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>
                         <div class="col-sm-3 selectContainer ">
@@ -465,8 +471,8 @@
                                                 </select>
                                             </span>
                         </div>
-                        <div class="col-md-1 pull-right">
-                            <input type="image" src="{{URL::asset('public/assets/registration/img/minus.png')}}" id="removeButton" style="width: 40px; float:right">
+                        <div class="col-md-1 pull-right" style="padding:0">
+                            <input type="image" src="{{URL::asset('public/assets/registration/img/minus.png')}}" id="removeButton" style="width: 40px; float:right" onclick="deleteAvailability(event,'#TextBoxDiv0',null)">
                         </div>
                     </div>
                 </div>

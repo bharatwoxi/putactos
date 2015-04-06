@@ -132,7 +132,7 @@
 
             var newTextBoxDiv = $(document.createElement('div'))
                 .attr("id", 'TextBoxDiv' + counter).attr("class", 'col-md-11');
-            var dynamicId = 'TextBoxDiv'+counter;
+            var dynamicId = '#TextBoxDiv'+counter;
             newTextBoxDiv.after().html('<div class="input-group col-md-12" style="padding-top: 5px;"> ' +
                 '<label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>' +
                 '<div class="col-sm-3 selectContainer ">' +
@@ -315,16 +315,34 @@
             for(i=1; i<counter; i++){
                 msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
             }
+            $("#TextBoxDiv" + counter).remove();
             alert(msg);
         });
     });
 
     function deleteAvailability(e,id,value){
         e.preventDefault();
-        if(value==null){
-            alert(1);
+        var result = confirm("Are you sure, you want to delete this");
+        if(result==true){
+            if(value==null){    //Not In DB, for dynamic Div
+                $(id).remove();
+            }else{
+                var idData = 'id='+value;
+                $.ajax({
+                    type: "GET",
+                    url: "{{URL::to('/service-provider/delete-availability')}}", //Where to make Ajax calls
+                    data:idData, //Form variables
+                    success: function (result) {
+
+                    },
+                    error: function (error) {
+                        console.log(this.url);
+                        alert(error);
+                    }
+                });
+                $(id).remove();
+            }
         }
-        alert(id);
     }
 
     function readURL(input) {

@@ -88,6 +88,7 @@ Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
     Route::post('service-provider/saveProfileData',array('before' => 'auth|isServiceProvider','uses' => 'ServiceProviderController@saveProfileData'));
     Route::post('service-provider/savePersonalData',array('before' => 'auth|isServiceProvider','uses' => 'ServiceProviderController@savePersonalData'));
     Route::post('service-provider/savePassword',array('before' => 'auth|isServiceProvider','uses' => 'ServiceProviderController@savePassword'));
+    Route::get('service-provider/delete-availability',array('before' => 'auth|isServiceProvider','uses' => 'ServiceProviderController@deleteAvailability'));
 
     /* Customer */
     Route::get('user/editprofile',array('before' => 'auth|isCustomer','uses' => 'UserController@profileEditView'));
@@ -197,6 +198,7 @@ Route::group(
         Route::post('service-provider/saveProfileData',array('before' => 'auth|isServiceProvider','uses' => 'ServiceProviderController@saveProfileData'));
         Route::post('service-provider/savePersonalData',array('before' => 'auth|isServiceProvider','uses' => 'ServiceProviderController@savePersonalData'));
         Route::post('service-provider/savePassword',array('before' => 'auth|isServiceProvider','uses' => 'ServiceProviderController@savePassword'));
+        Route::get('service-provider/delete-availability',array('before' => 'auth|isServiceProvider','uses' => 'ServiceProviderController@deleteAvailability'));
 
         /* Customer */
         Route::get('user/editprofile',array('before' => 'auth|isCustomer','uses' => 'UserController@profileEditView'));
