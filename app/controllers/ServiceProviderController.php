@@ -42,6 +42,7 @@ class ServiceProviderController extends BaseController {
         $serviceProviderProfileData['height'] = $serviceProvider->height;
         $serviceProviderProfileData['eye_color'] = $serviceProvider->eye_color;
         $serviceProviderProfileData['hair_color'] = $serviceProvider->hair_color;
+        $serviceProviderProfileData['penis_size'] = $serviceProvider->penis_size;
 
         $serviceProviderProfileData['totalNonEmptyFields'] = 0;
         //$serviceProviderProfileData['totalFields'] = count($serviceProviderProfileData)-4;
@@ -395,7 +396,19 @@ class ServiceProviderController extends BaseController {
         }
     }
 
-
+    /*
+     *function Name: deleteAvailability
+     *Desc: Edit Profile View
+     *Created By: Sagar Acharya
+     *Created Date: 6 April 2015
+     *return: N/A
+    */
+    public function deleteAvailability(){
+        $availability = Availability::find(Input::get('id'));
+        if(!(empty($availability))){
+            $availability->delete();
+        }
+    }
 
 
 }

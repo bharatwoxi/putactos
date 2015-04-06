@@ -124,180 +124,189 @@
 </div>
 
 <div class="container-fluid econte">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                {{ Form::open(array('url' => 'service-provider/saveProfileData','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
-                <div class="form-group">
-                    <label class="col-sm-5 ecolfour" control-label>Gender</label>
-                    <div class="col-sm-7">
-                        @foreach($genders as $gender)
-                        <label class="col-sm-3" style="padding-left: 0;">
-                            <input type="radio" name="gender" id="inlineRadio1" value="{{ $gender->id }}" @if($userData['systemUser']->gender==$gender->id) checked="true" @endif>{{ strtolower($gender->gender) }}
-                        </label>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="form-group">
-                    <label class="col-sm-5 ecolfour" control-label>Pubic Hair</label>
-                    <div class="col-sm-7">
-                        <label class="col-sm-3" style="padding-left: 0;">
-                            <input type="radio" name="pubicHair" id="pubicHair" value="1" @if($userData['serviceProvider']->pubic_hair==1) checked="true" @endif>Yes
-                        </label>
-                        <label class="col-sm-3" style="padding-left: 0;">
-                            <input type="radio" name="pubicHair" id="pubicHair" value="0" @if($userData['serviceProvider']->pubic_hair==0) checked="true" @endif>No
-                        </label>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="form-group">
-                    <label class="col-sm-5 ecolfour" control-label>Ethnicity</label>
-                    <div class="col-sm-4 selectContainer">
-                        <select class="fonza custom-select" name="ethnicity">
-                            @if($userData['serviceProvider']->ethnicity==NULL)
-                            <option value="0">Please Select</option>
-                            @endif
-                            @foreach($ethnicitys as $ethnicity)
-                            <option value="{{ $ethnicity->id }}" @if($userData['serviceProvider']->ethnicity==$ethnicity->id) selected="selected" @endif>{{ $ethnicity->ethnicity }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="form-group">
-                    <label class="col-sm-5 ecolfour" control-label>Hair Color</label>
-                    <div class="col-sm-4 selectContainer">
-                        <select class="custom-select fonza" name="hairColor">
-                            @if($userData['serviceProvider']->hair_color==NULL)
-                                <option value="0">Please Select</option>
-                            @endif
-                            @foreach($hairColors as $hairColor)
-                            <option value="{{ $hairColor->id  }}" @if($userData['serviceProvider']->hair_color==$hairColor->id) selected="selected" @endif>{{ $hairColor->hair_color }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="form-group">
-                    <label class="col-sm-5 ecolfour" control-label>Eye Color</label>
-                    <div class="col-sm-4 selectContainer">
-                        <select class="fonza custom-select" name="eyeColor">
-                            @if($userData['serviceProvider']->eye_color==NULL)
-                             <option value="0">Please Select</option>
-                            @endif
-                            @foreach($eyeColors as $eyeColor)
-                            <option value="{{ $eyeColor->id  }}" @if($userData['serviceProvider']->eye_color==$eyeColor->id) selected="selected" @endif>{{ $eyeColor->eye_color }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                @if($userData['systemUser']->gender == 2)
-                <div class="form-group">
-                    <label class="col-sm-5 ecolfour" control-label>Cup Size</label>
-                    <div class="col-sm-4 selectContainer">
-                        <select class="custom-select fonza" name="cup_size" id="cup_size">
-                            @if($userData['serviceProvider']->cup_size==NULL)
-                            <option value="0">Please Select</option>
-                            @endif
-                            @foreach($cupSizes as $cupSize)
-                            <option value="{{ $cupSize->id  }}" @if($userData['serviceProvider']->cup_size==$cupSize->id) selected="selected" @endif>{{ $cupSize->cup_size }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="form-group">
-                    <label class="col-sm-5 ecolfour" control-label>Bust</label>
-                    <div class="col-sm-4 selectContainer">
-                        <input type="text" class="form-control" name="bust" id="bust" value="{{ $userData['serviceProvider']->bust }}" placeholder="in cm"/>
-                    </div>
-                </div>
+<div class="container">
+<div class="row">
+<div class="col-md-6">
+{{ Form::open(array('url' => 'service-provider/saveProfileData','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
+<div class="form-group">
+    <label class="col-sm-5 ecolfour" control-label>Gender</label>
+    <div class="col-sm-7">
+        @foreach($genders as $gender)
+        <label class="col-sm-3" style="padding-left: 0;">
+            <input type="radio" name="gender" id="inlineRadio1" value="{{ $gender->id }}" @if($userData['systemUser']->gender==$gender->id) checked="true" @endif>{{ strtolower($gender->gender) }}
+        </label>
+        @endforeach
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="form-group">
+    <label class="col-sm-5 ecolfour" control-label>Pubic Hair</label>
+    <div class="col-sm-7">
+        <label class="col-sm-3" style="padding-left: 0;">
+            <input type="radio" name="pubicHair" id="pubicHair" value="1" @if($userData['serviceProvider']->pubic_hair==1) checked="true" @endif>Yes
+        </label>
+        <label class="col-sm-3" style="padding-left: 0;">
+            <input type="radio" name="pubicHair" id="pubicHair" value="0" @if($userData['serviceProvider']->pubic_hair==0) checked="true" @endif>No
+        </label>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="form-group">
+    <label class="col-sm-5 ecolfour" control-label>Ethnicity</label>
+    <div class="col-sm-4 selectContainer">
+    	<span class="select-wrapper1">
+        <select class="fonza custom-select1" name="ethnicity">
+            @if($userData['serviceProvider']->ethnicity==NULL)
+            <option value="0">Please Select</option>
+            @endif
+            @foreach($ethnicitys as $ethnicity)
+            <option value="{{ $ethnicity->id }}" @if($userData['serviceProvider']->ethnicity==$ethnicity->id) selected="selected" @endif>{{ $ethnicity->ethnicity }}</option>
+            @endforeach
+        </select>
+        </span>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="form-group">
+    <label class="col-sm-5 ecolfour" control-label>Hair Color</label>
+    <div class="col-sm-4 selectContainer">
+    	<span class="select-wrapper1">
+        <select class="custom-select1 fonza" name="hairColor">
+            @if($userData['serviceProvider']->hair_color==NULL)
+            <option value="0">Please Select</option>
+            @endif
+            @foreach($hairColors as $hairColor)
+            <option value="{{ $hairColor->id  }}" @if($userData['serviceProvider']->hair_color==$hairColor->id) selected="selected" @endif>{{ $hairColor->hair_color }}</option>
+            @endforeach
+        </select>
+        </span>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="form-group">
+    <label class="col-sm-5 ecolfour" control-label>Eye Color</label>
+    <div class="col-sm-4 selectContainer">
+    	<span class="select-wrapper1">
+        <select class="fonza custom-select1" name="eyeColor">
+            @if($userData['serviceProvider']->eye_color==NULL)
+            <option value="0">Please Select</option>
+            @endif
+            @foreach($eyeColors as $eyeColor)
+            <option value="{{ $eyeColor->id  }}" @if($userData['serviceProvider']->eye_color==$eyeColor->id) selected="selected" @endif>{{ $eyeColor->eye_color }}</option>
+            @endforeach
+        </select>
+        </span>
+    </div>
+</div>
+@if($userData['systemUser']->gender == 2)
+<div class="form-group">
+    <label class="col-sm-5 ecolfour" control-label>Cup Size</label>
+    <div class="col-sm-4 selectContainer">
+        <select class="custom-select fonza" name="cup_size" id="cup_size">
+            @if($userData['serviceProvider']->cup_size==NULL)
+            <option value="0">Please Select</option>
+            @endif
+            @foreach($cupSizes as $cupSize)
+            <option value="{{ $cupSize->id  }}" @if($userData['serviceProvider']->cup_size==$cupSize->id) selected="selected" @endif>{{ $cupSize->cup_size }}</option>
+            @endforeach
+        </select>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="form-group">
+    <label class="col-sm-5 ecolfour" control-label>Bust</label>
+    <div class="col-sm-4 selectContainer">
+        <input type="text" class="form-control" name="bust" id="bust" value="{{ $userData['serviceProvider']->bust }}" placeholder="in cm"/>
+    </div>
+</div>
 
-                <div class="clearfix"></div>
-                <div class="form-group">
-                    <label class="col-sm-5 ecolfour" control-label>Waist</label>
-                    <div class="col-sm-4 selectContainer">
-                        <input type="text" class="form-control" name="waist" id="waist" value="{{ $userData['serviceProvider']->waist }}" placeholder="in cm"/>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="form-group">
-                    <label class="col-sm-5 ecolfour" control-label>Hips</label>
-                    <div class="col-sm-4 selectContainer">
-                        <input type="text" class="form-control" name="hips" id="hips" value="{{ $userData['serviceProvider']->hips }}" placeholder="in cm"/>
-                    </div>
-                </div>
+<div class="clearfix"></div>
+<div class="form-group">
+    <label class="col-sm-5 ecolfour" control-label>Waist</label>
+    <div class="col-sm-4 selectContainer">
+        <input type="text" class="form-control" name="waist" id="waist" value="{{ $userData['serviceProvider']->waist }}" placeholder="in cm"/>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="form-group">
+    <label class="col-sm-5 ecolfour" control-label>Hips</label>
+    <div class="col-sm-4 selectContainer">
+        <input type="text" class="form-control" name="hips" id="hips" value="{{ $userData['serviceProvider']->hips }}" placeholder="in cm"/>
+    </div>
+</div>
+@endif
+@if($userData['systemUser']->gender == 1)
+<div class="clearfix"></div>
+<div class="form-group">
+    <label class="col-sm-5 ecolfour" control-label>Penis Size</label>
+    <div class="col-sm-4 selectContainer">
+        <input type="text" class="form-control" name="penis_size" id="penis_size" value="{{ $userData['serviceProvider']->penis_size }}" placeholder="in cm"/>
+    </div>
+</div>
+@endif
+<div class="clearfix"></div>
+<div class="form-group">
+    <label class="col-sm-5 ecolfour" control-label>Height</label>
+    <div class="col-sm-4 selectContainer">
+        <input type="text" class="form-control" name="height" id="height" value="{{ $userData['serviceProvider']->height }}" placeholder="in cm"/>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="form-group">
+    <label class="col-sm-5 ecolfour" control-label>Weight</label>
+    <div class="col-sm-4 selectContainer">
+        <input type="text" class="form-control" name="weight" id="weight" value="{{ $userData['serviceProvider']->weight }}" placeholder="in kg"/>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="form-group">
+    <label for="Name" class="col-sm-5 control-label" style="text-align: left;">Age Range</label>
+    <div class="col-md-7">
+        <div class='slider-example'>
+            <div class="well">
+                @if($userData['systemUser']->from_age!=null && $userData['systemUser']->to_age!=null)
+                <b>18&nbsp;&nbsp;</b><input name="ageRange" id="ex2" type="text" class="span2" value="" data-slider-min="18" data-slider-max="99" data-slider-step="1" data-slider-value="[{{ $userData['systemUser']->from_age }},{{ $userData['systemUser']->to_age }}]"/><b>&nbsp;&nbsp;99</b>
+                @else
+                <b>18&nbsp;&nbsp;</b><input name="ageRange" id="ex2" type="text" class="span2" value="" data-slider-min="18" data-slider-max="99" data-slider-step="1" data-slider-value="[18,99]"/><b>&nbsp;&nbsp;99</b>
                 @endif
-                @if($userData['systemUser']->gender == 1)
-                <div class="clearfix"></div>
-                <div class="form-group">
-                    <label class="col-sm-5 ecolfour" control-label>Penis Size</label>
-                    <div class="col-sm-4 selectContainer">
-                        <input type="text" class="form-control" name="penis_size" id="penis_size" value="{{ $userData['serviceProvider']->penis_size }}" placeholder="in cm"/>
-                    </div>
-                </div>
-                @endif
-                <div class="clearfix"></div>
-                <div class="form-group">
-                    <label class="col-sm-5 ecolfour" control-label>Height</label>
-                    <div class="col-sm-4 selectContainer">
-                        <input type="text" class="form-control" name="height" id="height" value="{{ $userData['serviceProvider']->height }}" placeholder="in cm"/>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="form-group">
-                    <label class="col-sm-5 ecolfour" control-label>Weight</label>
-                    <div class="col-sm-4 selectContainer">
-                        <input type="text" class="form-control" name="weight" id="weight" value="{{ $userData['serviceProvider']->weight }}" placeholder="in kg"/>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="form-group">
-                    <label for="Name" class="col-sm-5 control-label" style="text-align: left;">Age Range</label>
-                    <div class="col-md-7">
-                        <div class='slider-example'>
-                            <div class="well">
-                                @if($userData['systemUser']->from_age!=null && $userData['systemUser']->to_age!=null)
-                                    <b>18&nbsp;&nbsp;</b><input name="ageRange" id="ex2" type="text" class="span2" value="" data-slider-min="18" data-slider-max="99" data-slider-step="1" data-slider-value="[{{ $userData['systemUser']->from_age }},{{ $userData['systemUser']->to_age }}]"/><b>&nbsp;&nbsp;99</b>
-                                @else
-                                    <b>18&nbsp;&nbsp;</b><input name="ageRange" id="ex2" type="text" class="span2" value="" data-slider-min="18" data-slider-max="99" data-slider-step="1" data-slider-value="[18,99]"/><b>&nbsp;&nbsp;99</b>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    {{ Form::label('location', 'Location', array('class' => 'col-sm-5 control-label','style'=>'text-align: left;')) }}
-                    <div class="col-sm-4">
-                        {{ Form::text('currentLocation','',array('class'=>'form-control','id'=>'currentLocation')) }}
-                        <span id="location-error">Current Location: {{ $userData['systemUser']->city }} {{ $userData['systemUser']->country }}</span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    {{ Form::label('location', 'Birth Date', array('class' => 'col-sm-5 control-label','style'=>'text-align: left;')) }}
-                    <div class="col-sm-4">
-                        {{ Form::text('birthDate',$userData['systemUser']->birth_date,array('class'=>'form-control','readonly'=>'readonly','id'=>'birth_date')) }}
-                    </div>
-                </div>
-                <div class="col-md-5" style="padding-left:0">
-                        <label class="col-sm-3 ecolfour" style="padding-left:0" control-label>Availablity</label>
-                </div>
-                <div class="container">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    {{ Form::label('location', 'Location', array('class' => 'col-sm-5 control-label','style'=>'text-align: left;')) }}
+    <div class="col-sm-4">
+        {{ Form::text('currentLocation','',array('class'=>'form-control','id'=>'currentLocation')) }}
+        <span id="location-error">Current Location: {{ $userData['systemUser']->city }} {{ $userData['systemUser']->country }}</span>
+    </div>
+</div>
+<div class="form-group">
+    {{ Form::label('location', 'Birth Date', array('class' => 'col-sm-5 control-label','style'=>'text-align: left;')) }}
+    <div class="col-sm-4">
+        {{ Form::text('birthDate',$userData['systemUser']->birth_date,array('class'=>'form-control','readonly'=>'readonly','id'=>'birth_date')) }}
+    </div>
+</div>
+<div class="col-md-5" style="padding-left:0">
+    <label class="col-sm-3 ecolfour" style="padding-left:0" control-label>Availablity</label>
+</div>
+<div class="container">
 
-                    <div class="row col-md-8">
-                        <div class="col-md-9">
-                            <div id="TextBoxesGroup">
-                                @if(!empty($avaliabilities))
-                                @foreach($avaliabilities as $avaliability)
-                                <?php
-                                    $fromTime = explode(":",$avaliability->from_time);
-                                    $toTime = explode(":",$avaliability->to_time);
-                                ?>
-                                <div id="TextBoxDiv1">
-                                    <div class="input-group " style="padding-top: 5px;">
-                                        <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>
-                                        <div class="col-sm-3 selectContainer ">
+    <div class="row col-md-8">
+        <div class="col-md-12">
+            <div class="col-md-1" style="float:right; padding-top:5px;">
+                <input type="image" src="{{URL::asset('public/assets/registration/img/plus.png')}}" id="addButton" style="width: 40px;">
+            </div>
+            <div id="TextBoxesGroup">
+                @if(!empty($avaliabilities))
+                @foreach($avaliabilities as $avaliability)
+                <?php
+                $fromTime = explode(":",$avaliability->from_time);
+                $toTime = explode(":",$avaliability->to_time);
+                ?>
+                <div id="TextBoxDivDB{{$avaliability->id}}" class="col-md-11">
+                    <div class="input-group col-md-12" style="padding-top: 5px;">
+                        <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>
+                        <div class="col-sm-3 selectContainer ">
                                             <span class="select-wrapper1" name="textboxto1">
                                                 <select name="avail[db][day][]" class="fonza custom-select1">
                                                     <option value="1" @if($avaliability->week_day==1) selected="selected" @endif>MON</option>
@@ -310,9 +319,9 @@
                                                 </select>
                                                 <input type="hidden" name="avail[db][id][]" value="{{ $avaliability->id }}" />
                                             </span>
-                                        </div>
-                                        <label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">From</label>
-                                        <div class="col-sm-3 selectContainer ">
+                        </div>
+                        <label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">From</label>
+                        <div class="col-sm-3 selectContainer ">
                                             <span class="select-wrapper1" name="textboxto1">
                                                 <select name="avail[db][from][]" class="fonza custom-select1" id="name" name="textboxfrom1" value="">
                                                     <option value="00" @if($fromTime[0]=='00') selected="selected" @endif>00</option>
@@ -342,9 +351,9 @@
                                                     <option value="24" @if($fromTime[0]=='24') selected="selected" @endif>24</option>
                                                 </select>
                                             </span>
-                                        </div>
-                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">To</label>
-                                        <div class="col-sm-3 selectContainer ">
+                        </div>
+                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">To</label>
+                        <div class="col-sm-2 selectContainer " style="padding:0;">
                                             <span class="select-wrapper1" name="textboxto1">
                                                 <select name="avail[db][to][]" class="fonza custom-select1" id="name" name="textboxto1" value="">
                                                     <option value="00" @if($toTime[0]=='00') selected="selected" @endif>00</option>
@@ -374,18 +383,18 @@
                                                     <option value="24" @if($toTime[0]==24) selected="selected" @endif>24</option>
                                                 </select>
                                             </span>
-                                        </div>
-                                    </div>
-<!--                                    <div class="col-md-9">-->
-<!--                                        <input type="image" src="{{URL::asset('public/assets/registration/img/minus.png')}}" id="removeButton" style="width: 40px;">-->
-<!--                                    </div>-->
-                                </div>
-                                @endforeach
-                                @else
-                                <div id="TextBoxDiv1">
-                                    <div class="input-group " style="padding-top: 5px;">
-                                        <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>
-                                        <div class="col-sm-3 selectContainer ">
+                        </div>
+                        <div class="col-md-1  pull-right" style="padding:0">
+                            <input type="image" src="{{URL::asset('public/assets/registration/img/minus.png')}}" id="removeButton" style="width: 40px; float:right" onclick="deleteAvailability(event,'#TextBoxDivDB{{$avaliability->id}}',{{$avaliability->id}})">
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                @else
+                <div id="TextBoxDiv0" class="col-md-11">
+                    <div class="input-group col-md-12" style="padding-top: 5px;">
+                        <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>
+                        <div class="col-sm-3 selectContainer ">
                                             <span class="select-wrapper1" name="textboxto1">
                                                 <select name="avail_day[static][]" class="fonza custom-select1">
                                                     <option value="1" selected="selected">MON</option>
@@ -397,9 +406,9 @@
                                                     <option value="7">SUN</option>
                                                 </select>
                                             </span>
-                                        </div>
-                                        <label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">From</label>
-                                        <div class="col-sm-3 selectContainer ">
+                        </div>
+                        <label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">From</label>
+                        <div class="col-sm-3 selectContainer ">
                                             <span class="select-wrapper1" name="textboxto1">
                                                 <select name="avail_from[static][]" class="fonza custom-select1" id="name" name="textboxfrom1" value="">
                                                     <option value="00">00</option>
@@ -429,9 +438,9 @@
                                                     <option value="24">24</option>
                                                 </select>
                                             </span>
-                                        </div>
-                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">To</label>
-                                        <div class="col-sm-3 selectContainer ">
+                        </div>
+                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">To</label>
+                        <div class="col-sm-2 selectContainer " style="padding:0;">
                                             <span class="select-wrapper1" name="textboxto1">
                                                 <select name="avail_to[static][]" class="fonza custom-select1" id="name" name="textboxto1" value="">
                                                     <option value="00">00</option>
@@ -461,32 +470,32 @@
                                                     <option value="24">24</option>
                                                 </select>
                                             </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-                            </div>
                         </div>
-                        <div class="col-md-2">
-                            <input type="image" src="{{URL::asset('public/assets/registration/img/plus.png')}}" id="addButton" style="width: 40px;">
-                            <input type="image" src="{{URL::asset('public/assets/registration/img/minus.png')}}" id="removeButton" style="width: 40px;">
-
+                        <div class="col-md-1 pull-right" style="padding:0">
+                            <input type="image" src="{{URL::asset('public/assets/registration/img/minus.png')}}" id="removeButton" style="width: 40px; float:right" onclick="deleteAvailability(event,'#TextBoxDiv0',null)">
                         </div>
                     </div>
-
                 </div>
-                {{ Form::hidden('latitude',$userData['systemUser']->latitude,array('class'=>'form-control','id'=>'latitude')) }}
-                {{ Form::hidden('longitude',$userData['systemUser']->longitude,array('class'=>'form-control','id'=>'longitude')) }}
-                {{ Form::hidden('city',$userData['systemUser']->city,array('class'=>'form-control','id'=>'city')) }}
-                {{ Form::hidden('country',$userData['systemUser']->country,array('class'=>'form-control','id'=>'country')) }}
+                @endif
             </div>
 
-            <div class="col-md-6">
-                <h4 class="ehfour">Turns Me On</h4>
-                <textarea class="form-control" rows="3"  placeholder="100 words" name="turnsMeOn" maxlength="100">{{$userData['serviceProvider']->turns_me_on}}</textarea>
-            </div>
-        </div> <!--close of row-->
-    </div> <!--Close of Container-->
+        </div>
+
+    </div>
+
+</div>
+{{ Form::hidden('latitude',$userData['systemUser']->latitude,array('class'=>'form-control','id'=>'latitude')) }}
+{{ Form::hidden('longitude',$userData['systemUser']->longitude,array('class'=>'form-control','id'=>'longitude')) }}
+{{ Form::hidden('city',$userData['systemUser']->city,array('class'=>'form-control','id'=>'city')) }}
+{{ Form::hidden('country',$userData['systemUser']->country,array('class'=>'form-control','id'=>'country')) }}
+</div>
+
+<div class="col-md-6">
+    <h4 class="ehfour">Turns Me On</h4>
+    <textarea class="form-control" rows="3"  placeholder="100 words" name="turnsMeOn" maxlength="100">{{$userData['serviceProvider']->turns_me_on}}</textarea>
+</div>
+</div> <!--close of row-->
+</div> <!--Close of Container-->
 </div> <!--Close of container-->
 <div class="clearfix"></div>
 <div class="container-fluid econter">
@@ -591,7 +600,7 @@
                 </div>-->
                 <div class="pull-left" style="margin-top: 30px; margin-bottom: 50px;">
                     <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
-<!--                    <input type="image" src="{{URL::asset('public/assets/registration/img/save-2.png')}}" style="width: 100px; margin-left: 20px;">-->
+                    <!--                    <input type="image" src="{{URL::asset('public/assets/registration/img/save-2.png')}}" style="width: 100px; margin-left: 20px;">-->
                 </div>
                 {{ Form::close() }}
             </div>
