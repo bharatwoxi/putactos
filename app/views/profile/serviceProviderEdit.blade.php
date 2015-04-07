@@ -202,7 +202,7 @@
 <div class="form-group">
     <label class="col-sm-5 ecolfour" control-label>Cup Size</label>
     <div class="col-sm-4 selectContainer">
-        <select class="custom-select fonza" name="cup_size" id="cup_size">
+        <select class="fonza custom-select1" name="cup_size" id="cup_size">
             @if($userData['serviceProvider']->cup_size==NULL)
             <option value="0">Please Select</option>
             @endif

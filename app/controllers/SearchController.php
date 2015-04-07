@@ -60,12 +60,12 @@ class SearchController extends BaseController {
     public function showDataAfterLogin(){
         //dd(Input::all());
         $bustMaster = Input::get('bust');
-        $cupMaster = Input::get('cup');
+        //$cupMaster = Input::get('cup');
         $hipsMaster = Input::get('hips');
         $penisMaster = Input::get('penis');
         $waistMaster = Input::get('waist');
         $bust = explode(",",$bustMaster);
-        $cup = explode(",",$cupMaster);
+        //$cup = explode(",",$cupMaster);
         $hips = explode(",",$hipsMaster);
         $penis = explode(",",$penisMaster);
         $waist = explode(",",$waistMaster);
@@ -210,19 +210,19 @@ class SearchController extends BaseController {
             if(Input::get('isScroll')==1){
                 $input = Session::get('input');
                 $bustMaster = Session::get('bustMaster');
-                $cupMaster = Session::get('cupMaster');
+                //$cupMaster = Session::get('cupMaster');
                 $hipsMaster = Session::get('hipsMaster');
                 $penisMaster = Session::get('penisMaster');
                 $waistMaster = Session::get('waistMaster');
             }else{
                 $input = Input::all();
                 $bustMaster = Input::get('bust');
-                $cupMaster = Input::get('cup');
+                //$cupMaster = Input::get('cup');
                 $hipsMaster = Input::get('hips');
                 $penisMaster = Input::get('penis');
                 $waistMaster = Input::get('waist');
                 Session::put('bustMaster', $bustMaster);
-                Session::put('cupMaster', $cupMaster);
+                //Session::put('cupMaster', $cupMaster);
                 Session::put('hipsMaster', $hipsMaster);
                 Session::put('penisMaster', $penisMaster);
                 Session::put('waistMaster', $waistMaster);
@@ -235,7 +235,7 @@ class SearchController extends BaseController {
 
             }
             $bust = explode(",",$bustMaster);
-            $cup = explode(",",$cupMaster);
+            //$cup = explode(",",$cupMaster);
             $hips = explode(",",$hipsMaster);
             $penis = explode(",",$penisMaster);
             $waist = explode(",",$waistMaster);
@@ -287,8 +287,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->where('service_providers.penis_size','>=',$penis[0])
@@ -313,8 +313,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
@@ -337,8 +337,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->where('service_providers.penis_size','>=',$penis[0])
@@ -362,8 +362,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
@@ -387,8 +387,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->where('service_providers.penis_size','>=',$penis[0])
@@ -410,8 +410,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
@@ -440,8 +440,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->where('service_providers.penis_size','>=',$penis[0])
@@ -466,8 +466,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
@@ -490,8 +490,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->where('service_providers.penis_size','>=',$penis[0])
@@ -515,8 +515,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
@@ -540,8 +540,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->where('service_providers.penis_size','>=',$penis[0])
@@ -563,8 +563,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
@@ -829,19 +829,19 @@ class SearchController extends BaseController {
         }else{ /* If there is ajax request filter */
             if(Input::get('isScroll')==1){
                 $bustMaster = Session::get('bustMaster');
-                $cupMaster = Session::get('cupMaster');
+                //$cupMaster = Session::get('cupMaster');
                 $hipsMaster = Session::get('hipsMaster');
                 $penisMaster = Session::get('penisMaster');
                 $waistMaster = Session::get('waistMaster');
                 $input = Session::get('input');
             }else{
                 $bustMaster = Input::get('bust');
-                $cupMaster = Input::get('cup');
+                //$cupMaster = Input::get('cup');
                 $hipsMaster = Input::get('hips');
                 $penisMaster = Input::get('penis');
                 $waistMaster = Input::get('waist');
                 Session::put('bustMaster', $bustMaster);
-                Session::put('cupMaster', $cupMaster);
+                //Session::put('cupMaster', $cupMaster);
                 Session::put('hipsMaster', $hipsMaster);
                 Session::put('penisMaster', $penisMaster);
                 Session::put('waistMaster', $waistMaster);
@@ -855,7 +855,7 @@ class SearchController extends BaseController {
 
             }
             $bust = explode(",",$bustMaster);
-            $cup = explode(",",$cupMaster);
+            //$cup = explode(",",$cupMaster);
             $hips = explode(",",$hipsMaster);
             $penis = explode(",",$penisMaster);
             $waist = explode(",",$waistMaster);
@@ -907,8 +907,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->where('service_providers.penis_size','>=',$penis[0])
@@ -933,8 +933,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
@@ -957,8 +957,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->where('service_providers.penis_size','>=',$penis[0])
@@ -982,8 +982,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
@@ -1007,8 +1007,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->where('service_providers.penis_size','>=',$penis[0])
@@ -1030,8 +1030,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
@@ -1060,8 +1060,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->where('service_providers.penis_size','>=',$penis[0])
@@ -1086,8 +1086,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
@@ -1110,8 +1110,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->where('service_providers.penis_size','>=',$penis[0])
@@ -1135,8 +1135,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)
@@ -1160,8 +1160,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->where('service_providers.penis_size','>=',$penis[0])
@@ -1183,8 +1183,8 @@ class SearchController extends BaseController {
                             ->where('service_providers.hips','<=',$hips[1])
                             ->where('service_providers.bust','>=',$bust[0])
                             ->where('service_providers.bust','<=',$bust[1])
-                            ->where('service_providers.cup_size','>=',$cup[0])
-                            ->where('service_providers.cup_size','<=',$cup[1])
+//                            ->where('service_providers.cup_size','>=',$cup[0])
+//                            ->where('service_providers.cup_size','<=',$cup[1])
                             ->where('service_providers.waist','>=',$waist[0])
                             ->where('service_providers.waist','<=',$waist[1])
                             ->whereIn('service_provider_languages.known_languages_id',$languageId)

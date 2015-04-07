@@ -268,24 +268,24 @@
                                             <input id="waist" type="text" name="waist" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"> <b style="color:#FFF">&nbsp;&nbsp;&nbsp;90</b>
                                         </div>
                                     </div>
-                                    <h6 style="color:#FFF">{{ trans('peopleNearBy.CUPSIZE') }}</h6>
-                                    <div class="slider-example">
-                                        <div class="well" style="padding: 5px 0px 5px 0px;">
-                                            <b style="color:#FFF">40&nbsp;&nbsp;</b>
-                                            <div class="slider1 slider-horizontal1" id="">
-                                                <div class="tooltip tooltip-main top" style="left: 40%; margin-left: -24px;">
-                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">40 : 90</div>
-                                                </div>
-                                                <div class="tooltip tooltip-min top" style="left: 30%; margin-left: -14px;">
-                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">40</div>
-                                                </div>
-                                                <div class="tooltip tooltip-max top" style="top: -30px; left: 50%; margin-left: -14px;">
-                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">90</div>
-                                                </div>
-                                            </div>
-                                            <input id="cup" type="text" name="cup" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"> <b style="color:#FFF">&nbsp;&nbsp;&nbsp;90</b>
-                                        </div>
-                                    </div>
+<!--                                    <h6 style="color:#FFF">{{ trans('peopleNearBy.CUPSIZE') }}</h6>-->
+<!--                                    <div class="slider-example">-->
+<!--                                        <div class="well" style="padding: 5px 0px 5px 0px;">-->
+<!--                                            <b style="color:#FFF">40&nbsp;&nbsp;</b>-->
+<!--                                            <div class="slider1 slider-horizontal1" id="">-->
+<!--                                                <div class="tooltip tooltip-main top" style="left: 40%; margin-left: -24px;">-->
+<!--                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">40 : 90</div>-->
+<!--                                                </div>-->
+<!--                                                <div class="tooltip tooltip-min top" style="left: 30%; margin-left: -14px;">-->
+<!--                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">40</div>-->
+<!--                                                </div>-->
+<!--                                                <div class="tooltip tooltip-max top" style="top: -30px; left: 50%; margin-left: -14px;">-->
+<!--                                                    <div class="tooltip-arrow"></div><div class="tooltip-inner">90</div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <input id="cup" type="text" name="cup" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"> <b style="color:#FFF">&nbsp;&nbsp;&nbsp;90</b>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                 </div>
                                 <div class=" col-xs-offset-1" id="men_only" style="display:none;">
                                     <h6 style="color:#FFF">Penis Size</h6>
