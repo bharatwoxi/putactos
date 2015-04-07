@@ -248,7 +248,7 @@
             var hips = 0;
             var bust = 0;
             var waist = 0;
-            var cup = 0;
+            //var cup = 0;
             if($('#hips').val()!=''){
                 hips = $('#hips').val();
             }
@@ -258,10 +258,10 @@
             if($('#waist').val()!=''){
                 waist = $('#waist').val();
             }
-            if($('#cup').val()!=''){
-                cup = $('#cup').val();
-            }
-            searchFilters.push({name: 'hips', value:hips },{name: 'bust', value: bust},{name: 'waist', value: waist},{name: 'cup', value: cup},{name: 'isFilter', value:1},{name: 'isScroll', value:0},{name: 'skip', value:0},{name: 'take', value:3});
+//            if($('#cup').val()!=''){
+//                cup = $('#cup').val();
+//            }
+            searchFilters.push({name: 'hips', value:hips },{name: 'bust', value: bust},{name: 'waist', value: waist},{name: 'isFilter', value:1},{name: 'isScroll', value:0},{name: 'skip', value:0},{name: 'take', value:3});
             $("#loaderImage").css("display", "block");
             $.ajax({
                 type: "GET",
@@ -280,7 +280,7 @@
                 }
             });
         });
-        $("#hips, #bust, #waist, #cup, #penis").slider({});
+        $("#hips, #bust, #waist, #penis").slider({});
         $(".gender_male").click(function() {
             //var value = $("#gender_male").val();
             $('#women_only').hide();
