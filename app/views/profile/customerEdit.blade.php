@@ -139,17 +139,17 @@
                 <div class="form-group">
                     <label class="col-sm-5 control-label" style="text-align: left;">Looking For</label>
                     <div class="col-sm-7">
-                        @if($userData['gender']->looking_for=='male')
+                        @if($userData['gender']!=null && $userData['gender']->looking_for=='male')
                         <input type="radio" name="looking_for" value="male" checked/>Male
                         @else
                         <input type="radio" name="looking_for" value="male" />Male
                         @endif
-                        @if($userData['gender']->looking_for=='female')
+                        @if($userData['gender']!=null && $userData['gender']->looking_for=='female')
                         <input type="radio" name="looking_for" value="female" checked/>Female
                         @else
                         <input type="radio" name="looking_for" value="female" />Female
                         @endif
-                        @if($userData['gender']->looking_for=='both')
+                        @if($userData['gender']!=null && $userData['gender']->looking_for=='both')
                         <input type="radio" name="looking_for" value="both" checked/>Both
                         @else
                         <input type="radio" name="looking_for" value="both" />Both

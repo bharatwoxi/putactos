@@ -41,8 +41,16 @@
                             </div>
 
                             <div id="profile_description">
-                                Gender - {{ Gender::find($userData['systemUser']->gender)->gender }}<br/>
+                                @if($userData['systemUser']->gender!=null || !empty($userData['systemUser']->gender))
+                                    Gender - {{ Gender::find($userData['systemUser']->gender)->gender }}<br/>
+                                @else
+                                    Gender - N/A<br/>
+                                @endif
+                                @if($userData['systemUser']->birth_date!=null || !empty($userData['systemUser']->birth_date))
                                 Birthdate - {{$userData['systemUser']->birth_date}}<br/>
+                                @else
+                                Birthdate - N/A<br/>
+                                @endif
                                 @if($userData['systemUser']->city!=null || !empty($userData['systemUser']->city))
                                 Current Location - {{ $userData['systemUser']->city }}
                                 @else
