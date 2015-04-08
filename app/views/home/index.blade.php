@@ -317,7 +317,7 @@ background-repeat: repeat;
 
 <div style="text-align:center;padding:10px 0px;background:#f74d4d; font-size:36px;color:#fff;font-weight: 600;">
 
-    PUTACTOS IS THE FASTEST GROWING ADULT SOCIAL NETWORK IN EUROPE
+    PUTACTOS IS THE FASTEST GROWING SOCIAL NETWORK IN EUROPE
 
 </div>
 
@@ -477,7 +477,7 @@ background-repeat: repeat;
         <button type="button" class="btn btn-default center-block" onclick="redirect()" style="background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModa">
             <strong>Join Putactos</strong></button>
     <p style="text-align:center; font-family:Roboto Th; font-size:18px;color: #fff;">
-        Join the fastest growing adult network in Europe
+        Join the fastest growing network in Europe
     </p>
 
 </div>

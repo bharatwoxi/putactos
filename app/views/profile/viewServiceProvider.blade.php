@@ -132,15 +132,15 @@
                                 Weight - @if($userData['serviceProviderData']->weight!=null){{$userData['serviceProviderData']->weight}} KG @else N/A @endif<br/>
 
                                 @if($userData['userData']->gender==1)
-                                    Penis Size - @if($userData['serviceProviderData']->penis_size!=null){{$userData['serviceProviderData']->penis_size}} CM @else N/A @endif<br/>
+                                    PS - @if($userData['serviceProviderData']->penis_size!=null){{$userData['serviceProviderData']->penis_size}} CM @else N/A @endif<br/>
                                 @else
-                                    Bust - @if($userData['serviceProviderData']->bust!=null){{$userData['serviceProviderData']->bust}} CM @else N/A @endif<br/>
-                                    Waist - @if($userData['serviceProviderData']->waist!=null){{$userData['serviceProviderData']->waist}} CM @else N/A @endif<br/>
-                                    Hip - @if($userData['serviceProviderData']->hips!=null){{$userData['serviceProviderData']->hips}} CM @else N/A @endif<br/>
+                                    B - @if($userData['serviceProviderData']->bust!=null){{$userData['serviceProviderData']->bust}} CM @else N/A @endif<br/>
+                                    W - @if($userData['serviceProviderData']->waist!=null){{$userData['serviceProviderData']->waist}} CM @else N/A @endif<br/>
+                                    H - @if($userData['serviceProviderData']->hips!=null){{$userData['serviceProviderData']->hips}} CM @else N/A @endif<br/>
                                     @if($userData['serviceProviderData']->cup_size!=null || !empty($userData['serviceProviderData']->cup_size))
-                                        Cup Size - {{ CupSize::find($userData['serviceProviderData']->cup_size)->cup_size }}
+                                        CS - {{ CupSize::find($userData['serviceProviderData']->cup_size)->cup_size }}
                                     @else
-                                        Cup Size - N/A
+                                        CS - N/A
                                     @endif
                                 @endif
                             </div>
@@ -150,7 +150,7 @@
 
                     <div id="profile_decp" class="col-sm-6">
                         <div class="pull-left col-sm-6 col-md-12">
-                            <span style="color:#fa4d51">Turns Me On</span><br/>
+                            <span style="color:#fa4d51">About Me</span><br/>
                             <p>
                                 @if($userData['serviceProviderData']->turns_me_on!=null || !empty($userData['serviceProviderData']->turns_me_on))
                                     {{ $userData['serviceProviderData']->turns_me_on }}

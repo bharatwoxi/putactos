@@ -192,7 +192,7 @@
                             </div><!-- /.col-lg-6 -->
 
                             <div class="col-xs-12 col-md-3 center-block" style="background-color:#f74d4d">
-                                <h4 style="color:#FFF; font-family:Calibri">{{ trans('peopleNearBy.PUBICHAIR') }}</h4>
+                                <h4 style="color:#FFF; font-family:Calibri">PH</h4>
 
                                 <div class="btn-group" data-toggle="buttons" style="padding-left: 60px;">
                                     <label class="btn btn-default btn-lg fonza">
@@ -214,7 +214,7 @@
 <!--                                    <input class="slider" name="cup" id="cup" data-slider-max="80" data-slider-min="20" data-slider-orientation="horizontal" data-slider-value="20" type="text">-->
 <!--                                </div>-->
                                 <div class=" col-xs-offset-1" id="women_only">
-                                    <h6 style="color:#FFF">{{ trans('peopleNearBy.HIPS') }}</h6>
+                                    <h6 style="color:#FFF">H</h6>
                                     <div class="slider-example">
                                         <div class="well" style="padding: 5px 0px 5px 0px;">
                                             <b style="color:#FFF">40&nbsp;&nbsp;</b>
@@ -232,7 +232,7 @@
                                             <input id="hips" type="text" name="hips" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"> <b style="color:#FFF">&nbsp;&nbsp;&nbsp;90</b>
                                         </div>
                                     </div>
-                                    <h6 style="color:#FFF">{{ trans('peopleNearBy.BUST') }}</h6>
+                                    <h6 style="color:#FFF">B</h6>
                                     <div class="slider-example">
                                         <div class="well" style="padding: 5px 0px 5px 0px;">
                                             <b style="color:#FFF">40&nbsp;&nbsp;</b>
@@ -250,7 +250,7 @@
                                             <input id="bust" type="text" name="bust" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"> <b style="color:#FFF">&nbsp;&nbsp;&nbsp;90</b>
                                         </div>
                                     </div>
-                                    <h6 style="color:#FFF">{{ trans('peopleNearBy.WAIST') }}</h6>
+                                    <h6 style="color:#FFF">W</h6>
                                     <div class="slider-example">
                                         <div class="well" style="padding: 5px 0px 5px 0px;">
                                             <b style="color:#FFF">40&nbsp;&nbsp;</b>
@@ -288,7 +288,7 @@
 <!--                                    </div>-->
                                 </div>
                                 <div class=" col-xs-offset-1" id="men_only" style="display:none;">
-                                    <h6 style="color:#FFF">Penis Size</h6>
+                                    <h6 style="color:#FFF">PS</h6>
                                     <div class="slider-example">
                                         <div class="well" style="padding: 5px 0px 5px 0px;">
                                             <b style="color:#FFF">40&nbsp;&nbsp;</b>

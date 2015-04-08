@@ -140,7 +140,7 @@
 </div>
 <div class="clearfix"></div>
 <div class="form-group">
-    <label class="col-sm-5 ecolfour" control-label>Pubic Hair</label>
+    <label class="col-sm-5 ecolfour" control-label>PH</label>
     <div class="col-sm-7">
         <label class="col-sm-3" style="padding-left: 0;">
             <input type="radio" name="pubicHair" id="pubicHair" value="1" @if($userData['serviceProvider']->pubic_hair==1) checked="true" @endif>Yes
@@ -200,7 +200,7 @@
 </div>
 @if($userData['systemUser']->gender == 2)
 <div class="form-group">
-    <label class="col-sm-5 ecolfour" control-label>Cup Size</label>
+    <label class="col-sm-5 ecolfour" control-label>CS</label>
     <div class="col-sm-4 selectContainer">
         <select class="fonza custom-select1" name="cup_size" id="cup_size">
             @if($userData['serviceProvider']->cup_size==NULL)
@@ -214,7 +214,7 @@
 </div>
 <div class="clearfix"></div>
 <div class="form-group">
-    <label class="col-sm-5 ecolfour" control-label>Bust</label>
+    <label class="col-sm-5 ecolfour" control-label>B</label>
     <div class="col-sm-4 selectContainer">
         <input type="text" class="form-control" name="bust" id="bust" value="{{ $userData['serviceProvider']->bust }}" placeholder="in cm"/>
     </div>
@@ -222,14 +222,14 @@
 
 <div class="clearfix"></div>
 <div class="form-group">
-    <label class="col-sm-5 ecolfour" control-label>Waist</label>
+    <label class="col-sm-5 ecolfour" control-label>W</label>
     <div class="col-sm-4 selectContainer">
         <input type="text" class="form-control" name="waist" id="waist" value="{{ $userData['serviceProvider']->waist }}" placeholder="in cm"/>
     </div>
 </div>
 <div class="clearfix"></div>
 <div class="form-group">
-    <label class="col-sm-5 ecolfour" control-label>Hips</label>
+    <label class="col-sm-5 ecolfour" control-label>H</label>
     <div class="col-sm-4 selectContainer">
         <input type="text" class="form-control" name="hips" id="hips" value="{{ $userData['serviceProvider']->hips }}" placeholder="in cm"/>
     </div>
@@ -238,7 +238,7 @@
 @if($userData['systemUser']->gender == 1)
 <div class="clearfix"></div>
 <div class="form-group">
-    <label class="col-sm-5 ecolfour" control-label>Penis Size</label>
+    <label class="col-sm-5 ecolfour" control-label>PS</label>
     <div class="col-sm-4 selectContainer">
         <input type="text" class="form-control" name="penis_size" id="penis_size" value="{{ $userData['serviceProvider']->penis_size }}" placeholder="in cm"/>
     </div>
@@ -491,7 +491,7 @@
 </div>
 
 <div class="col-md-6">
-    <h4 class="ehfour">Turns Me On</h4>
+    <h4 class="ehfour">About Me</h4>
     <textarea class="form-control" rows="3"  placeholder="100 words" name="turnsMeOn" maxlength="100">{{$userData['serviceProvider']->turns_me_on}}</textarea>
 </div>
 </div> <!--close of row-->
