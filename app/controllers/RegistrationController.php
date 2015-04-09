@@ -231,8 +231,33 @@ class RegistrationController extends BaseController {
             'confirmPassword' => 'required|min:6|same:password',
             'profilePicture' => 'required|mimes:jpeg,jpg,png|max:2000'
         );
+        /* Custom Validation Rule For Image Size */
+        Validator::extend('image_size', function($attribute, $value, $parameters)
+        {
+            $param1 = $parameters[0];//array_get($this->data, $parameters[0]);
+            $param2 = $parameters[1];//array_get($this->data, $parameters[1]);
+            $file = Input::file($attribute);
+            $fileWidth = $width = Image::make($file)->width();
+            $fileHeight = Image::make($file)->height();
+            if($fileWidth>=$param1 && $fileHeight>=$param2){
+                return true;
+            }else{
+                return false;
+            }
+        });
+        $messages = array(
+            'image_size' => 'Minimum image dimension required:330x220',
+        );
+        /* Rule End here */
         $validation = Validator::make($input,$rules);
         if($validation->passes()){
+            $imageRule = array(
+                'profilePicture' => 'image_size:330,220',
+            );
+            $imageValidation = Validator::make($input,$imageRule,$messages);
+            if(!$imageValidation->passes()){
+                return Redirect::to('signup/service-provider')->withInput()->withErrors($imageValidation);
+            }
             $systemUserInsertedId = DB::table('system_users')->insertGetId(
                 array(
                     'username'  =>Input::get('username'),
@@ -259,16 +284,29 @@ class RegistrationController extends BaseController {
             if(!file_exists($spProfileUploadpath)){
                 File::makeDirectory($spProfileUploadpath, $mode = 0777,true,true);
                 chmod($_ENV['SP_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId), 0777);
-                chmod($_ENV['SP_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."profile_image", 0777);
+                chmod($_ENV['SP_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."profile_image/", 0777);
             }
             $extension = Input::file('profilePicture')->getClientOriginalExtension();
             $filename = sha1($systemUserInsertedId.time()).".{$extension}";
             Input::file('profilePicture')->move($spProfileUploadpath, $filename);
 
+            chmod($_ENV['SP_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."profile_image/", 0777);
+            /* Cropped Image Code */
+            $image330by220 = $systemUserInsertedId.time()."_330x220".".{$extension}";
+            $image250by180 = $systemUserInsertedId.time()."_250x180".".{$extension}";
+            $image62by54 = $systemUserInsertedId.time()."_62x54".".{$extension}";
+            $img = Image::make($spProfileUploadpath.'/'.$filename)->resize(330, 220);
+            $img->save($spProfileUploadpath.'/'.$image330by220);
+            $img = Image::make($spProfileUploadpath.'/'.$filename)->resize(250, 180);
+            $img->save($spProfileUploadpath.'/'.$image250by180);
+            $img = Image::make($spProfileUploadpath.'/'.$filename)->resize(62, 54);
+            $img->save($spProfileUploadpath.'/'.$image62by54);
+            chmod($_ENV['SP_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."profile_image/", 0777);
 
             DB::table('system_users')
                 ->where('id', $systemUserInsertedId)
-                ->update(array('profile_image' => $filename));
+                ->update(array('profile_image' => $filename,'image_330by220'=>$image330by220,'image_250by180'=>$image250by180,'image_62by54'=>$image62by54));
+
 
             /* Insert Data In service provider table & update id in system_users table */
 
@@ -336,7 +374,7 @@ class RegistrationController extends BaseController {
             }
         });
         $messages = array(
-            'image_size' => 'Minimum image dimension required:400x200',
+            'image_size' => 'Minimum image dimension required:330x220',
         );
         /* Rule End here */
         $rules = array(
@@ -352,7 +390,7 @@ class RegistrationController extends BaseController {
         $validation = Validator::make($input,$rules);
         if($validation->passes()){
             $imageRule = array(
-                'profilePicture' => 'image_size:400,200',
+                'profilePicture' => 'image_size:330,220',
             );
             $imageValidation = Validator::make($input,$imageRule,$messages);
             if(!$imageValidation->passes()){
@@ -386,20 +424,26 @@ class RegistrationController extends BaseController {
             if(!file_exists($customerProfileUploadpath)){
                 File::makeDirectory($customerProfileUploadpath, $mode = 0777,true,true);
                 chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId), 0777);
-                chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."profile_image", 0777);
+                chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."profile_image/", 0777);
             }
             $extension = Input::file('profilePicture')->getClientOriginalExtension();
             $filename = sha1($systemUserInsertedId.time()).".{$extension}";
             Input::file('profilePicture')->move($customerProfileUploadpath, $filename);
-
+            chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."profile_image/", 0777);
             /* Cropped Image Code */
-            $img = Image::make($customerProfileUploadpath.'/'.$filename)->resize(300, 200);
-            $img->save($customerProfileUploadpath.'/'.'watermark.png');
-
-
+            $image330by220 = $systemUserInsertedId.time()."_330x220".".{$extension}";
+            $image250by180 = $systemUserInsertedId.time()."_250x180".".{$extension}";
+            $img = Image::make($customerProfileUploadpath.'/'.$filename)->resize(330, 220);
+            $img->save($customerProfileUploadpath.'/'.$image330by220);
+            $img = Image::make($customerProfileUploadpath.'/'.$filename)->resize(250, 180);
+            $img->save($customerProfileUploadpath.'/'.$image250by180);
+            $image62by54 = $systemUserInsertedId.time()."_62x54".".{$extension}";
+            $img = Image::make($customerProfileUploadpath.'/'.$filename)->resize(62, 54);
+            $img->save($customerProfileUploadpath.'/'.$image62by54);
+            chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."profile_image/", 0777);
             DB::table('system_users')
                 ->where('id', $systemUserInsertedId)
-                ->update(array('profile_image' => $filename));
+                ->update(array('profile_image' => $filename,'image_330by220'=>$image330by220,'image_250by180'=>$image250by180,'image_62by54'=>$image62by54));
 
             /* Insert Data In service provider table & update id in system_users table */
 

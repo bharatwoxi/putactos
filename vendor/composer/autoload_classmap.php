@@ -14,6 +14,8 @@ return array(
     'AddFkSystemUserIpLogsTable' => $baseDir . '/app/database/migrations/2014_11_29_111456_add_fk_system_user_ip_logs_table.php',
     'AddFkSystemUsersTable' => $baseDir . '/app/database/migrations/2014_11_29_113200_add_fk_system_users_table.php',
     'AddFkUserMessagesTable' => $baseDir . '/app/database/migrations/2014_11_29_123013_add_fk_user_messages_table.php',
+    'AddImageByRatio62By54ToSystemUsersTable' => $baseDir . '/app/database/migrations/2015_04_09_232241_add_image_by_ratio_62_by_54_to_system_users_table.php',
+    'AddImageByRatioToSystemUsersTable' => $baseDir . '/app/database/migrations/2015_04_09_200229_add_image_by_ratio_to_system_users_table.php',
     'AddIsNewFlagToUserMessage' => $baseDir . '/app/database/migrations/2015_01_09_120140_add_is_new_flag_to_user_message.php',
     'AddPenisSizeToServiceProviderTable' => $baseDir . '/app/database/migrations/2015_02_28_174128_add_penis_size_to_service_provider_table.php',
     'AddRememberTokenToSystemUsersTable' => $baseDir . '/app/database/migrations/2014_12_09_085547_add_remember_token_to_system_users_table.php',
