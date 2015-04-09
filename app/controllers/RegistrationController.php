@@ -321,6 +321,24 @@ class RegistrationController extends BaseController {
         }else{
             $age = explode(',',Input::get('ageRange'));
         }
+        /* Custom Validation Rule For Image Size */
+        Validator::extend('image_size', function($attribute, $value, $parameters)
+        {
+            $param1 = $parameters[0];//array_get($this->data, $parameters[0]);
+            $param2 = $parameters[1];//array_get($this->data, $parameters[1]);
+            $file = Input::file($attribute);
+            $fileWidth = $width = Image::make($file)->width();
+            $fileHeight = Image::make($file)->height();
+            if($fileWidth>=$param1 && $fileHeight>=$param2){
+                return true;
+            }else{
+                return false;
+            }
+        });
+        $messages = array(
+            'image_size' => 'Minimum image dimension required:400x200',
+        );
+        /* Rule End here */
         $rules = array(
 
             'firstName' => 'required|min:5|max:20',
@@ -329,10 +347,17 @@ class RegistrationController extends BaseController {
             'email' => 'required|email|unique:system_users',
             'password' => 'required|min:6',
             'confirmPassword' => 'required|min:6|same:password',
-            'profilePicture' => 'required|mimes:jpeg,jpg,png|max:2000'
+            'profilePicture' => 'required|mimes:jpeg,jpg,png|max:2000',
         );
         $validation = Validator::make($input,$rules);
         if($validation->passes()){
+            $imageRule = array(
+                'profilePicture' => 'image_size:400,200',
+            );
+            $imageValidation = Validator::make($input,$imageRule,$messages);
+            if(!$imageValidation->passes()){
+                return Redirect::to('signup/customer')->withInput()->withErrors($imageValidation);
+            }
             $systemUserInsertedId = DB::table('system_users')->insertGetId(
                 array(
                     'username'  =>Input::get('username'),
@@ -366,6 +391,10 @@ class RegistrationController extends BaseController {
             $extension = Input::file('profilePicture')->getClientOriginalExtension();
             $filename = sha1($systemUserInsertedId.time()).".{$extension}";
             Input::file('profilePicture')->move($customerProfileUploadpath, $filename);
+
+            /* Cropped Image Code */
+            $img = Image::make($customerProfileUploadpath.'/'.$filename)->resize(300, 200);
+            $img->save($customerProfileUploadpath.'/'.'watermark.png');
 
 
             DB::table('system_users')
