@@ -43,7 +43,7 @@
                 <div id="personal_detail" class="col-sm-12">
                     <div id="user_profile" class="col-sm-4 ">
                         <div class="col-md-12 col-xs-7 " id="profile_thumb">
-                            <img src="{{URL::to('public/uploads/userdata/service_provider')}}/{{ sha1($userData['userData']->id) }}/profile_image/{{ $userData['userData']->profile_image }}" class="img-responsive pull-left" style="margin:0 0 2%;height:220px;width:330px;">
+                            <img src="{{URL::to('public/uploads/userdata/service_provider')}}/{{ sha1($userData['userData']->id) }}/profile_image/{{ $userData['userData']->image_330by220 }}" class="img-responsive pull-left" style="margin:0 0 2%;height:220px;width:330px;">
                             <!--<img src="{{URL::asset('public/assets/registration/img/user_profile.jpg')}}" class="img-responsive pull-left" style=" margin:0 1.5% 1% 0">
                             <img src="{{URL::asset('public/assets/registration/img/user_profile.jpg')}}" class="img-responsive pull-left"  style=" margin:0 1.5% 1% 0">
                             <img src="{{URL::asset('public/assets/registration/img/user_profile.jpg')}}" class="img-responsive pull-left" style=" margin:0 1.5% 0 0">
@@ -196,7 +196,7 @@
                                 <div id="feedback_detail">
                                     <div id="feed_img">
                                         <?php $customer = User::find($feedback['customer_id']) ?>
-                                        <img height="54" width="62" src="{{URL::to('public/uploads/userdata/customer')}}/{{ sha1($customer->id) }}/profile_image/{{ $customer->profile_image }}">
+                                        <img height="54" width="62" src="{{URL::to('public/uploads/userdata/customer')}}/{{ sha1($customer->id) }}/profile_image/{{ $customer->image_62by54 }}">
                                     </div>
                                     <div id="feed_detail">
                                         <p><b>{{ ucwords($customer->user_first_name) }} {{ ucwords($customer->user_last_name) }}</b></p>

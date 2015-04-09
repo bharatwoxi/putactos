@@ -5,7 +5,7 @@
     <div id="feedback_detail">
         <div id="feed_img">
             <?php $customer = User::find($feedback['customer_id']) ?>
-            <img height="54" width="62" src="{{URL::to('public/uploads/userdata/customer')}}/{{ sha1($customer->id) }}/profile_image/{{ $customer->profile_image }}">
+            <img height="54" width="62" src="{{URL::to('public/uploads/userdata/customer')}}/{{ sha1($customer->id) }}/profile_image/{{ $customer->image_62by54 }}">
         </div>
         <div id="feed_detail">
             <p><b>{{ ucwords($customer->user_first_name) }} {{ ucwords($customer->user_last_name) }}</b></p>

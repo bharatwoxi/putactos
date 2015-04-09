@@ -29,7 +29,7 @@
                 <div id="personal_detail" class="col-sm-12">
                     <div id="user_profile" class="col-sm-4 ">
                         <div class="col-md-12 col-xs-7 " id="profile_thumb">
-                            <img src="{{URL::to('public/uploads/userdata/customer')}}/{{ sha1($userData['systemUser']->id) }}/profile_image/{{ $userData['systemUser']->profile_image }}" class="img-responsive pull-left" style="margin:0 0 2%;height:220px;width:330px;">
+                            <img src="{{URL::to('public/uploads/userdata/customer')}}/{{ sha1($userData['systemUser']->id) }}/profile_image/{{ $userData['systemUser']->image_330by220 }}" class="img-responsive pull-left" style="margin:0 0 2%;height:220px;width:330px;">
                             <!--<img src="{{URL::asset('public/assets/registration/img/user_profile.jpg')}}" class="img-responsive pull-left" style=" margin:0 1.5% 1% 0">
                             <img src="{{URL::asset('public/assets/registration/img/user_profile.jpg')}}" class="img-responsive pull-left"  style=" margin:0 1.5% 1% 0">
                             <img src="{{URL::asset('public/assets/registration/img/user_profile.jpg')}}" class="img-responsive pull-left" style=" margin:0 1.5% 0 0">

@@ -328,8 +328,33 @@ class ServiceProviderController extends BaseController {
             'lastName' => 'required|min:5|max:20',
             'profilePicture' => 'mimes:jpeg,jpg,png|max:2000'
         );
+        /* Custom Validation Rule For Image Size */
+        Validator::extend('image_size', function($attribute, $value, $parameters)
+        {
+            $param1 = $parameters[0];//array_get($this->data, $parameters[0]);
+            $param2 = $parameters[1];//array_get($this->data, $parameters[1]);
+            $file = Input::file($attribute);
+            $fileWidth = $width = Image::make($file)->width();
+            $fileHeight = Image::make($file)->height();
+            if($fileWidth>=$param1 && $fileHeight>=$param2){
+                return true;
+            }else{
+                return false;
+            }
+        });
+        $messages = array(
+            'image_size' => 'Minimum image dimension required:330x220',
+        );
+        /* Rule End here */
         $validation = Validator::make($input,$rules);
         if($validation->passes()){
+            $imageRule = array(
+                'profilePicture' => 'image_size:330,220',
+            );
+            $imageValidation = Validator::make($input,$imageRule,$messages);
+            if(!$imageValidation->passes()){
+                return Redirect::to('service-provider/editprofile')->withInput()->withErrors($imageValidation);
+            }
             $user = Auth::user();
             $user->user_first_name = trim(strtolower($input['firstName']));
             $user->user_last_name = trim(strtolower($input['lastName']));
@@ -349,10 +374,19 @@ class ServiceProviderController extends BaseController {
                     $filename = sha1($user->id.time()).".{$extension}";
                     Input::file('profilePicture')->move($spProfileUploadpath, $filename);
 
-
+                    /* Cropped Image Code */
+                    $image330by220 = $user->id.time()."_330x220".".{$extension}";
+                    $image250by180 = $user->id.time()."_250x180".".{$extension}";
+                    $img = Image::make($spProfileUploadpath.'/'.$filename)->resize(330, 220);
+                    $img->save($spProfileUploadpath.'/'.$image330by220);
+                    $img = Image::make($spProfileUploadpath.'/'.$filename)->resize(250, 180);
+                    $img->save($spProfileUploadpath.'/'.$image250by180);
+                    $image62by54 = $user->id.time()."_62x54".".{$extension}";
+                    $img = Image::make($spProfileUploadpath.'/'.$filename)->resize(62, 54);
+                    $img->save($spProfileUploadpath.'/'.$image62by54);
                     DB::table('system_users')
                         ->where('id', $user->id)
-                        ->update(array('profile_image' => $filename));
+                        ->update(array('profile_image' => $filename,'image_330by220'=>$image330by220,'image_250by180'=>$image250by180,'image_62by54'=>$image62by54));
                 }
                 return Redirect::to('service-provider/editprofile')->with('message','Updated Successfully');
             }else{
