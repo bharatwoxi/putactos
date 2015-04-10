@@ -119,6 +119,11 @@
             </div>
             {{ Form::close() }}
         </div>
+        <div class="col-md-6 ecolsix">
+            {{ Form::open(array('url'=>'multiple-image/upload','action'=>'CommonController@mutipleImageUpload','class'=>'dropzone','id'=>'my-awesome-dropzone')) }}
+
+            {{ Form::close() }}
+        </div>
     </div>
 </div>
 <div class="container-fluid econte">

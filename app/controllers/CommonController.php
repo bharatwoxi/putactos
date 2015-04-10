@@ -140,4 +140,53 @@ class CommonController extends BaseController {
         Session::put('feedbackSkip',$skip);
         return View::make('profile.moreFeedbacks')->with(array('feedbacks'=>$feedbacks));
     }
+
+    /*
+    *function Name: mutipleImageUpload
+    *Desc: Multiple Image Upload
+    *Created By: Sagar Acharya
+    *Created Date: 10 April 2015
+    *return: N/A
+   */
+    public function mutipleImageUpload()
+    {
+        $user = Auth::user();
+        if($user->user_role_id==1){ //Customer
+            $uploadpath = $_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($user->id)."/"."extra_images";
+
+            /* Create Upload Directory If Not Exists */
+            if(!file_exists($uploadpath)){
+                File::makeDirectory($uploadpath, $mode = 0777,true,true);
+                chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($user->id), 0777);
+                chmod($uploadpath, 0777);
+            }
+            $file = Input::file('file');
+            $fileName = $file->getClientOriginalName();
+            return $file->move($uploadpath, $fileName);
+        }
+    }
+
+    public function getImages(){
+        $user = Auth::user();
+        if($user->user_role_id==1){ //Customer
+            $result  = array();
+            $storeFolder = $_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($user->id)."/"."extra_images";
+            $imageUrl = '/public/uploads/userdata/customer/'.sha1($user->id).'/'.'extra_images';
+            $files = scandir($storeFolder);                 //1
+            if ( false!==$files ) {
+                foreach ( $files as $file ) {
+                    if ( '.'!=$file && '..'!=$file) {       //2
+                        $obj['name'] = $file;
+                        $obj['size'] = filesize($storeFolder.'/'.$file);
+                        $obj['uploadsfolder'] = $imageUrl;
+                        $result[] = $obj;
+                    }
+                }
+            }
+
+            header('Content-type: text/json');              //3
+            header('Content-type: application/json');
+            echo json_encode($result);
+        }
+    }
 }

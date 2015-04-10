@@ -15,6 +15,7 @@
     <title>Edit Your Information</title>
 
     <!-- Bootstrap -->
+    <link href="{{URL::asset('public/assets/registration/dropzone/dropzone.css')}}" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/styles.css')}}" media="all" rel="stylesheet">
@@ -88,7 +89,9 @@
 </body>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="{{URL::asset('public/assets/registration/dropzone/dropzone-amd-module.js')}}"></script>
+<!--<script src="{{URL::asset('public/assets/registration/dropzone/dropzone.js')}}"></script>-->
 <script src="{{URL::asset('public/assets/registration/js/bootstrap.min.js')}}"></script>
 <script type='text/javascript' src="{{URL::asset('public/assets/registration/js/bootstrap-slider.js')}}"></script>
 <script type='text/javascript'>
@@ -102,15 +105,6 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
-//        $(".custom-select").each(function(){
-//            $(this).wrap("<span class='select-wrapper'></span>");
-//            $(this).after("<span class='holder'></span>");
-//        });
-//        $(".custom-select").change(function(){
-//            var selectedOption = $(this).find(":selected").text();
-//            $(this).next(".holder").text(selectedOption);
-//        }).trigger('change');
-
         $(".custom-select1").each(function(){
             $(this).wrap("<span class='select-wrapper1'></span>");
             $(this).after("<span class='holder'></span>");
@@ -215,14 +209,6 @@
                 '</div>' +
                 '</div>');
 
-
-//            newTextBoxDiv.after().html('<div class="input-group " style="padding-top: 5px;"> <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label><div class="col-sm-3 selectContainer ">' +
-//                ' <span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" name="color' + counter + '" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span> </div><label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>                                           <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxfrom' + counter + '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div>                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>                                       <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxto' + counter +
-//                '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div></div>	');
-//
-
-
-
             newTextBoxDiv.appendTo("#TextBoxesGroup");
             $("#TextBoxDiv" + counter + " .custom-select1").each(function(){
                 $(this).wrap("<span class='select-wrapper1'></span>");
@@ -237,75 +223,6 @@
 
 
         });
-
-
-        /*$("#addButton").click(function (e) {
-            e.preventDefault();
-            if(counter>7){
-                alert("Only 7 textboxes allow");
-                return false;
-            }
-
-            var newTextBoxDiv = $(document.createElement('div'))
-                .attr("id", 'TextBoxDiv' + counter);
-
-            newTextBoxDiv.after().html('<div class="input-group " style="padding-top: 5px;"> ' +
-                '<label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>' +
-                '<div class="col-sm-3 selectContainer ">' +
-                '<span class="select-wrapper1" name="textboxto' + counter + '">' +
-                '<select class="fonza custom-select1" name="avail_day" "' + counter + '" > ' +
-                '<option value="1" selected="selected">MON</option> ' +
-                '</select>' +
-                '</span> ' +
-                '</div>' +
-                '<label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>' +
-                '<div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '">' +
-                '<select class="fonza custom-select1" id="name" name="textboxfrom' + counter + '" id="textbox' + counter + '" value="" >' +
-                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option>' +
-                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>' +
-                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option>' +
-                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option>' +
-                '</select>' +
-                '</span>' +
-                '</div>' +
-                '<label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>' +
-                '<div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '">' +
-                '<select class="fonza custom-select1" id="name" name="textboxto' + counter + '" id="textbox' + counter + '" value="" >' +
-                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option>' +
-                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>' +
-                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option>' +
-                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option>' +
-                '</select>' +
-                '</span>' +
-                '</div>' +
-                '</div>');
-
-
-//            newTextBoxDiv.after().html('<div class="input-group " style="padding-top: 5px;"> <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label><div class="col-sm-3 selectContainer ">' +
-//                ' <span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" name="color' + counter + '" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span> </div><label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>                                           <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxfrom' + counter + '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div>                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>                                       <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxto' + counter +
-//                '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div></div>	');
-//
-
-
-
-            newTextBoxDiv.appendTo("#TextBoxesGroup");
-
-
-            counter++;
-       });*/
-
-//        $("#removeButton").click(function (e) {
-//            e.preventDefault();
-//            if(counter==1){
-//                alert("No more textbox to remove");
-//                return false;
-//            }
-//
-//            counter--;
-//
-//            $("#TextBoxDiv" + counter).remove();
-//
-//        });
         $("#addButton").click(function (e) {
             e.preventDefault();
         });
@@ -364,6 +281,7 @@
 //    $(document).ready(function(){
 //
 //    });
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
 <script src="{{URL::asset('public/assets/registration/js/custom/google-place.js')}}"></script>

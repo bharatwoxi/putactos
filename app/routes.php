@@ -105,6 +105,8 @@ Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
     Route::post('save/feedback', array('before' => 'auth|isCustomer','uses' => 'CommonController@saveFeedback'));
     Route::post('sp/risemeup', array('before' => 'auth|isServiceProvider','uses' => 'CommonController@riseMeUp'));
     Route::get('more/feedbacks', array('before' => 'auth','uses' => 'CommonController@getMoreFeedbacks'));
+    Route::post('multiple-image/upload', array('before' => 'auth','uses' => 'CommonController@mutipleImageUpload'));
+    Route::get('multiple-image/get', array('before' => 'auth','uses' => 'CommonController@getImages'));
 });
 
 /* Localization Translated Routes*/
@@ -216,6 +218,8 @@ Route::group(
         Route::post('save/feedback', array('before' => 'auth|isCustomer','uses' => 'CommonController@saveFeedback'));
         Route::post('sp/risemeup', array('before' => 'auth|isServiceProvider','uses' => 'CommonController@riseMeUp'));
         Route::get('more/feedbacks', array('before' => 'auth','uses' => 'CommonController@getMoreFeedbacks'));
+        Route::post('multiple-image/upload', array('before' => 'auth','uses' => 'CommonController@mutipleImageUpload'));
+        Route::get('multiple-image/get', array('before' => 'auth','uses' => 'CommonController@getImages'));
     });
 
 /* Admin Routes */
