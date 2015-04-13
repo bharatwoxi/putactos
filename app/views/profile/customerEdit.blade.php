@@ -53,6 +53,7 @@
     <div class="container">
         <div class="col-lg-6 ecolsix">
             {{ Form::open(array('url' => 'user/savePersonalData','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
+            <fieldset style="box-shadow: 1px 1px 2px 2px #FA4B48;padding: 1.4em 1.4em 0em 1.4em !important;border-radius: 5px;">
             <div class="form-group">
                 <label for="Name" class="col-sm-5 control-label" style="text-align: left;">First Name</label>
                 <div class="col-sm-6">
@@ -91,11 +92,13 @@
             <div class="pull-left" style="margin-top:30px;margin-bottom: 30px;">
                 <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
             </div>
+            </fieldset>
             {{ Form::close() }}
         </div>
 
         <div class="col-md-6 ecolsix">
             {{ Form::open(array('url' => 'user/savePassword','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
+            <fieldset style="box-shadow: 1px 1px 2px 2px #FA4B48;padding: 1.4em 1.4em 0em 1.4em !important;border-radius: 5px;">
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-5 control-label" style="text-align: left;">Current password</label>
                 <div class="col-sm-6">
@@ -117,12 +120,14 @@
             <div class="pull-left" style="margin-top:30px;margin-bottom: 30px;">
                 <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
             </div>
+                </fieldset>
             {{ Form::close() }}
         </div>
     </div>
 </div>
 <div class="container-fluid econte">
     <div class="container">
+        <fieldset style="box-shadow: 1px 1px 2px 2px #FA4B48;margin-bottom: 20px;padding: 1.4em 1.4em 0em 1.4em !important;border-radius: 5px;">
         <div class="row">
             <div class="col-md-6">
                 {{ Form::open(array('url' => 'user/save-preference','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
@@ -179,6 +184,7 @@
                 {{ Form::close() }}
             </div>
         </div>
+        </fieldset>
     </div>
 </div>
 

@@ -35,6 +35,10 @@
                             <img src="{{URL::asset('public/assets/registration/img/user_profile.jpg')}}" class="img-responsive pull-left" style=" margin:0 1.5% 0 0">
                             <img src="{{URL::asset('public/assets/registration/img/user_profile.jpg')}}" class="img-responsive pull-left">-->
                         </div>
+                        <div id="star_rating" class="pull-left col-xs-12" >
+                            <a href="{{ URL::to('/user/editprofile') }}" style="padding-right:20px;">{{ trans('peopleNearBy.EDITPROFILE') }}</a>
+                        </div>
+
                         <div id="profile_details" class="col-sm-10 col-xs-12">
                             <div id="profile_name">
                                 {{ ucwords($userData['systemUser']->user_first_name) }} {{ ucwords($userData['systemUser']->user_last_name) }}

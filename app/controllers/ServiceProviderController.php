@@ -192,14 +192,12 @@ class ServiceProviderController extends BaseController {
             'penis_size' => 'integer',
             'cup_size' => 'integer|min:0|max:10',
             'ethnicity' => 'required|integer',
-            'gender' => 'integer',
             'pubicHair' => 'integer',
             'hairColor' => 'integer',
             'eyeColor' => 'integer',
             'turnsMeOn' => 'max:100',
             'latitude' => 'required',
             'longitude' => 'required',
-            'birthDate' => 'required',
             'ageRange' => 'required',
         );
         $validation = Validator::make($input,$rules);
@@ -226,7 +224,6 @@ class ServiceProviderController extends BaseController {
                     $serviceProvider->hips = trim($input['hips']);
                 }
             }
-
             if(!empty($input['height'])){
                 $serviceProvider->height = trim($input['height']);
             }
@@ -245,19 +242,21 @@ class ServiceProviderController extends BaseController {
             if($input['eyeColor']!=0){
                 $serviceProvider->eye_color = trim($input['eyeColor']);
             }
+            /*
             if(!empty($input['gender'])){
                 $user->gender = trim($input['gender']);
                 $user->updated_at = date('Y-m-d H:m:s');
-            }
+            }*/
             $user->latitude = $input['latitude'];
             $user->longitude = $input['longitude'];
             $user->city = $input['city'];
             $user->country = $input['country'];
-            $user->birth_date = $input['birthDate'];
+           // $user->birth_date = $input['birthDate'];
             $user->from_age = $ageRange[0];
             $user->to_age = $ageRange[1];
             $serviceProvider->turns_me_on = trim($input['turnsMeOn']);
             $serviceProvider->updated_at = date('Y-m-d H:m:s');
+            $serviceProvider->pubic_hair = $input['pubicHair'];
             /* Service Provider Availabilities Start*/
             $day = Input::get('avail_day');
             $from = Input::get('avail_from');

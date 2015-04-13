@@ -50,9 +50,9 @@
 </div>
 @endif
 <div class="container-fluid econta">
-
     <div class="container">
         <div class="col-lg-6 ecolsix">
+            <fieldset style="box-shadow: 1px 1px 2px 2px #FA4B48;padding: 1.4em 1.4em 0.2em 1.4em !important;border-radius: 5px;">
             {{ Form::open(array('url' => 'service-provider/savePersonalData','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
             <div class="form-group">
                 <label for="Name" class="col-sm-5 control-label" style="text-align: left;">First Name</label>
@@ -93,9 +93,11 @@
                 <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
             </div>
             {{ Form::close() }}
+            </fieldset>
         </div>
 
         <div class="col-md-6 ecolsix">
+            <fieldset style="box-shadow: 1px 1px 2px 2px #FA4B48;padding: 1.4em 1.4em 0.2em 1.4em !important;border-radius: 5px;">
             {{ Form::open(array('url' => 'service-provider/savePassword','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-5 control-label" style="text-align: left;">Current password</label>
@@ -119,25 +121,17 @@
                 <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
             </div>
             {{ Form::close() }}
+            </fieldset>
         </div>
     </div>
 </div>
 
 <div class="container-fluid econte">
 <div class="container">
+<fieldset style="box-shadow: 1px 1px 2px 2px #FA4B48;margin-bottom: 20px;padding: 1.4em 1.4em 0em 1.4em !important;border-radius: 5px;">
 <div class="row">
 <div class="col-md-6">
 {{ Form::open(array('url' => 'service-provider/saveProfileData','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
-<div class="form-group">
-    <label class="col-sm-5 ecolfour" control-label>Gender</label>
-    <div class="col-sm-7">
-        @foreach($genders as $gender)
-        <label class="col-sm-3" style="padding-left: 0;">
-            <input type="radio" name="gender" id="inlineRadio1" value="{{ $gender->id }}" @if($userData['systemUser']->gender==$gender->id) checked="true" @endif>{{ strtolower($gender->gender) }}
-        </label>
-        @endforeach
-    </div>
-</div>
 <div class="clearfix"></div>
 <div class="form-group">
     <label class="col-sm-5 ecolfour" control-label>Pubic Hair</label>
@@ -280,12 +274,7 @@
         <span id="location-error">Current Location: {{ $userData['systemUser']->city }} {{ $userData['systemUser']->country }}</span>
     </div>
 </div>
-<div class="form-group">
-    {{ Form::label('location', 'Birth Date', array('class' => 'col-sm-5 control-label','style'=>'text-align: left;')) }}
-    <div class="col-sm-4">
-        {{ Form::text('birthDate',$userData['systemUser']->birth_date,array('class'=>'form-control','readonly'=>'readonly','id'=>'birth_date')) }}
-    </div>
-</div>
+
 <div class="col-md-5" style="padding-left:0">
     <label class="col-sm-3 ecolfour" style="padding-left:0" control-label>Availablity</label>
 </div>
@@ -495,109 +484,8 @@
     <textarea class="form-control" rows="3"  placeholder="100 words" name="turnsMeOn" maxlength="100">{{$userData['serviceProvider']->turns_me_on}}</textarea>
 </div>
 </div> <!--close of row-->
-</div> <!--Close of Container-->
-</div> <!--Close of container-->
-<div class="clearfix"></div>
-<div class="container-fluid econter">
-    <div class="container">
-        <div class="row">
+<div class="row">
             <div class="col-md-7">
-                <!--<div class="form-group">
-                    <label class="col-sm-4 ecolfour" control-label>Interested In</label>
-
-                    <div class="col-sm-7">
-                        <label class="col-sm-3" style="padding-left: 0;">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Men
-                        </label>
-                        <label class="col-sm-5">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Woman
-                        </label>
-                        <label class="col-sm-4">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Both
-                        </label>
-                    </div>
-                </div>
-            <div class="clearfix"></div>-->
-                <!--<form>
-                    <div class="form-group">
-                        <label class="col-sm-4 ecolfour" control-label>Availablity</label>				       								</div>
-                </form>
-                <div class="col-md-7">
-                    <p class="epara"> Days</p>
-                    <p>
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default btn-sm colda">
-                            <input type="checkbox" name="hello1" value="" style="padding:15px"> Mon
-                        </label>
-                    </div>
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default btn-sm colda">
-                            <input type="checkbox" name="hello2" value="" style="padding:15px"> Tue
-                        </label>
-                    </div>
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default btn-sm colda">
-                            <input type="checkbox" name="hello3" value="" style="padding:15px"> Wed
-                        </label>
-                    </div>
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default btn-sm colda">
-                            <input type="checkbox" name="hello4" value="" style="padding:15px"> Thu
-                        </label>
-                    </div>
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default btn-sm colda">
-                            <input type="checkbox" name="hello5" value="" style="padding:15px"> Fri
-                        </label>
-                    </div>
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default btn-sm colda">
-                            <input type="checkbox" name="hello6" value="" style="padding:15px"> Sat
-                        </label>
-                    </div>
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default btn-sm colda">
-                            <input type="checkbox" name="hello7" value="" style="padding:15px"> Sun
-                        </label>
-                    </div>
-
-                    </p>
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <label for="Name" class="col-sm-2 control-label">Time</label>
-                                <div class="col-sm-3" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="name">
-                                </div>
-                                <label for="Name" class="col-sm-1 control-label" style="padding-left: 0;text-align: left;">to</label>
-                                <div class="col-sm-3 pull-left" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="name">
-                                </div>
-                            </div>
-                        </div>
-
-                    </form>
-                    <div class="clearfix"></div>
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <label for="Name" class="col-sm-2 control-label" style="padding-left: 0;">Time</label>
-                                <div class="col-sm-3" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="name">
-                                </div>
-                                <label for="Name" class="col-sm-1 control-label" style="padding-left: 0;text-align: left;">to</label>
-                                <div class="col-sm-3 pull-left" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="name">
-                                </div>
-                                <input type="image" src="{{URL::asset('public/assets/registration/img/plus.png')}}" style="width:40px">
-
-                            </div>
-                            <label class="col-sm-4">
-                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Set for all
-                            </label>
-                        </div>
-                    </form>
-                </div>-->
                 <div class="pull-left" style="margin-top: 30px; margin-bottom: 50px;">
                     <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
                     <!--                    <input type="image" src="{{URL::asset('public/assets/registration/img/save-2.png')}}" style="width: 100px; margin-left: 20px;">-->
@@ -605,8 +493,10 @@
                 {{ Form::close() }}
             </div>
         </div>
-    </div>
+</fieldset>
 </div>
+</div>
+
 
 <div class="col-lg-12" style="background-image:url(../../public/assets/registration/img/background.png); background-repeat:repeat;"> <!--Footer start-->
     <div class="container">
