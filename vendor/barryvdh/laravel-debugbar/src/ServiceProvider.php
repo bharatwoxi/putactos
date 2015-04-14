@@ -17,7 +17,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function boot()
     {
         $app = $this->app;
-
         $app['config']->package('barryvdh/laravel-debugbar', __DIR__ . '/config');
 
         if ($app->runningInConsole()) {
@@ -73,6 +72,13 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         }
     }
 
+    protected function shouldUseMiddleware()
+    {
+        $app = $this->app;
+        $version = $app::VERSION;
+        return !$app->runningInConsole() && version_compare($version, '4.1-dev', '>=') && version_compare($version, '5.0-dev', '<');
+    }
+
     /**
      * Register the service provider.
      *
@@ -99,7 +105,9 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
         $this->app['command.debugbar.publish'] = $this->app->share(
             function ($app) {
-                return new Console\PublishCommand();
+                //Make sure the asset publisher is registered.
+                $app->register('Illuminate\Foundation\Providers\PublisherServiceProvider');
+                return new Console\PublishCommand($app['asset.publisher']);
             }
         );
 
@@ -114,18 +122,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         if ($this->shouldUseMiddleware()) {
             $this->app->middleware('Barryvdh\Debugbar\Middleware\Stack', array($this->app));
         }
-    }
-
-    /**
-     * Detect if the Middelware should be used.
-     * 
-     * @return bool
-     */
-    protected function shouldUseMiddleware()
-    {
-        $app = $this->app;
-        $version = $app::VERSION;
-        return !$app->runningInConsole() && version_compare($version, '4.1-dev', '>=') && version_compare($version, '5.0-dev', '<');
     }
 
     /**

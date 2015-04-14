@@ -53,29 +53,22 @@ class ViewCollector extends TwigCollector
     public function addView(View $view)
     {
         $name = $view->getName();
-        $path = $view->getPath();
-        if ($path) {
-            $path = ltrim(str_replace(base_path(), '', realpath($path)), '/');
-        }
-
-        if (substr($path, -10) == '.blade.php') {
-            $type = 'blade';
-        } else {
-            $type = pathinfo($path, PATHINFO_EXTENSION);
-        }
+        $type = pathinfo($view->getPath(), PATHINFO_EXTENSION);
 
         if (!$this->collect_data) {
             $params = array_keys($view->getData());
         } else {
             $data = array();
             foreach ($view->getData() as $key => $value) {
+                if (is_object($value) && method_exists($value, 'toArray')) {
+                    $value = $value->toArray();
+                }
                 $data[$key] = $this->exporter->exportValue($value);
             }
             $params = $data;
         }
-
         $this->templates[] = array(
-            'name' => $path ? sprintf('%s (%s)', $name, $path) : $name,
+            'name' => $name,
             'param_count' => count($params),
             'params' => $params,
             'type' => $type,

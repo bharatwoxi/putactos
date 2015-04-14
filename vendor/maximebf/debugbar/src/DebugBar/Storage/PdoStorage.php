@@ -24,13 +24,12 @@ class PdoStorage implements StorageInterface
     protected $sqlQueries = array(
         'save' => "INSERT INTO %tablename% (id, data, meta_utime, meta_datetime, meta_uri, meta_ip, meta_method) VALUES (?, ?, ?, ?, ?, ?, ?)",
         'get' => "SELECT data FROM %tablename% WHERE id = ?",
-        'find' => "SELECT data FROM %tablename% %where% ORDER BY meta_datetime DESC LIMIT %limit% OFFSET %offset%",
+        'find' => "SELECT data FROM %tablename% %where% LIMIT %limit% OFFSET %offset%",
         'clear' => "DELETE FROM %tablename%"
     );
 
     /**
-     * @param \PDO $pdo The PDO instance
-     * @param string $tableName
+     * @param string $dirname Directories where to store files
      * @param array $sqlQueries
      */
     public function __construct(PDO $pdo, $tableName = 'phpdebugbar', array $sqlQueries = array())
@@ -50,9 +49,6 @@ class PdoStorage implements StorageInterface
         $this->sqlQueries = array_merge($this->sqlQueries, $queries);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function save($id, $data)
     {
         $sql = $this->getSqlQuery('save');
@@ -61,9 +57,6 @@ class PdoStorage implements StorageInterface
         $stmt->execute(array($id, serialize($data), $meta['utime'], $meta['datetime'], $meta['uri'], $meta['ip'], $meta['method']));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function get($id)
     {
         $sql = $this->getSqlQuery('get');
@@ -75,9 +68,6 @@ class PdoStorage implements StorageInterface
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function find(array $filters = array(), $max = 20, $offset = 0)
     {
         $where = array();
@@ -110,21 +100,11 @@ class PdoStorage implements StorageInterface
         return $results;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function clear()
     {
         $this->pdo->exec($this->getSqlQuery('clear'));
     }
 
-    /**
-     * Get a SQL Query for a task, with the variables replaced
-     *
-     * @param  string $name
-     * @param  array  $vars
-     * @return string
-     */
     protected function getSqlQuery($name, array $vars = array())
     {
         $sql = $this->sqlQueries[$name];

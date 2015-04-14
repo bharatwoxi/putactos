@@ -21,6 +21,7 @@ class EventCollector extends TimeDataCollector
         $name = $this->getCurrentEvent($args);
         $time = microtime(true);
         $this->addMeasure($name, $time, $time, $this->prepareParams($args) );
+
     }
 
     public function subscribe(Dispatcher $events)
@@ -43,6 +44,9 @@ class EventCollector extends TimeDataCollector
     {
         $data = array();
         foreach ($params as $key => $value) {
+            if (is_object($value) && method_exists($value, 'toArray')) {
+                $value = $value->toArray();
+            }
             $data[$key] = $this->exporter->exportValue($value);
         }
         return $data;
