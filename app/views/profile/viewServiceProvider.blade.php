@@ -231,50 +231,18 @@
                             <div>
                                 <input type="hidden" value="0" id="star_rating_original" name="heart_rating" />
                                 <input id="input-2b" class="original_star" type="number" class="rating form-control hide original_star" min="0" max="5" step="0.5" data-size="xs" data-symbol="" data-default-caption="{rating} hearts" data-star-captions="{}">
+                                <input type="hidden" id="feedback_flag" value="{{$feedbackFlag}}"/>
                             </div>
                             <div id="feed_rating" class="col-md-12 col-xs-8">
-                                @if($feedbackFlag)
                                 <a href="#">
                                     <div id="submit_feedback" style="width:175px;height:32px;font-size:18px;">SUBMIT FEEDBACK</div>
                                 </a>
-                                @else
-                                <!-- Modal -->
-                                <div class="modal fade">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                <h4 class="modal-title">Modal title</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>One fine body…</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                        </div><!-- /.modal-content -->
-                                    </div><!-- /.modal-dialog -->
-                                </div><!-- /.modal -->
-
-                                <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        <h3 id="myModalLabel">Modal header</h3>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>One fine body…</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                                        <button class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </div>
-                                <a href="#myModal" role="button" class="btn" data-toggle="modal">X
-<!--                                    <div id="no_feedback" class="no_feedback" style="width:175px;height:32px;font-size:18px;">No FEEDBACK</div>-->
-                                </a>
-                                @endif
                             </div>
+                            @if($feedbackMessage!=null)
+                            <div class="col-md-12 col-xs-8" style="display:none;" id="feedback_msg">
+                                <span style="color:#f94d4d">{{$feedbackMessage}}</span>
+                            </div>
+                            @endif
                             {{ Form::close() }}
                         </div>
                         @endif

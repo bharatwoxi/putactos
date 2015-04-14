@@ -220,7 +220,13 @@
         });
         $('#submit_feedback').click(function(e){
             e.preventDefault();
-            $('#saveFeedback').submit();
+            var feedbackFlag = $('feedback_flag').val();
+            if(feedbackFlag){
+                $('#saveFeedback').submit();
+            }else{
+                $('#feedback_msg').show();
+            }
+
         });
         $('#star_rating').find('.clear-rating').remove();
         $('.feed_rate').find('.clear-rating').remove();
