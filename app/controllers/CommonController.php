@@ -49,7 +49,39 @@ class CommonController extends BaseController {
                 }else{
                     $spIsSameAsLoggedInUser = 0;
                 }
-                return View::make('profile.viewServiceProvider')->with(array('userData'=>$userData,'spIsSameAsLoggedInUser'=>$spIsSameAsLoggedInUser));
+
+                /* Feddback Logic Start */
+                $authenticatedUser = Auth::user();
+                $feedbackFlag = 0;
+                $feedbackMessage = null;
+                if($authenticatedUser->user_role_id==1){ //Only for customer
+                    $feedbackFlag = 1;
+                    $feedback = Feedback::where('service_provider_id','=',$user->id)->where('customer_id','=',$authenticatedUser->id)->get();
+                    if($feedback->count()>0){
+                        $feedbackFlag = 0; //If already Feedback then change flag to 0
+                        $feedbackMessage = 'You have already submitted feedback';
+                    }else{
+                        /* Check feedback for same day for logged in user */
+                        $feedbackForSameDay = Feedback::where('customer_id','=',$authenticatedUser->id)->where('created_at','>=',date('Y-m-d 00:00:00'))->where('created_at','<=',date('Y-m-d 23:59:59'))->get();
+                        if($feedbackForSameDay->count()>0){
+                            $feedbackFlag = 0; //If already Feedback to another SP on same day
+                            $feedbackMessage = 'You can not submit more than one feedback in one day';
+                        }else{
+                            /* Check for more than 3 msgs */
+                            $checkMessagesFromSP = Message::where('from_user_id','=',$user->id)->where('to_user_id','=',$authenticatedUser->id)->get();
+                            $checkMessagesFromCustomer = Message::where('from_user_id','=',$authenticatedUser->id)->where('to_user_id','=',$user->id)->get();
+                            if($checkMessagesFromSP->count()>3 && $checkMessagesFromCustomer->count()>0){
+                                $feedbackFlag = 1;
+                            }else{
+                                $feedbackFlag = 0;  // From SP there should be more than 3 MSG & From Cust at least 1
+                                $feedbackMessage = 'To submit feedback there should be atleast three message send by current service provider to you';
+                            }
+                        }
+                    }
+
+                }
+                /* Feddback Logic End */
+                return View::make('profile.viewServiceProvider')->with(array('userData'=>$userData,'spIsSameAsLoggedInUser'=>$spIsSameAsLoggedInUser,'feedbackFlag'=>$feedbackFlag,'feedbackMessage'=>$feedbackMessage));
             }elseif($user->user_role_id==1){ //Customer
                 $userData['systemUser'] = $user;
                 $userData['customer'] = Customer::find($user->customer_id);

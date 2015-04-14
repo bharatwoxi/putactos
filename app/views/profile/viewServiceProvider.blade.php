@@ -232,12 +232,18 @@
                             <div>
                                 <input type="hidden" value="0" id="star_rating_original" name="heart_rating" />
                                 <input id="input-2b" class="original_star" type="number" class="rating form-control hide original_star" min="0" max="5" step="0.5" data-size="xs" data-symbol="" data-default-caption="{rating} hearts" data-star-captions="{}">
+                                <input type="hidden" id="feedback_flag" value="{{$feedbackFlag}}"/>
                             </div>
                             <div id="feed_rating" class="col-md-12 col-xs-8">
                                 <a href="#">
                                     <div id="submit_feedback" style="width:175px;height:32px;font-size:18px;background-color: #fa4d51;color:#fff">SUBMIT FEEDBACK</div>
                                 </a>
                             </div>
+                            @if($feedbackMessage!=null)
+                            <div class="col-md-12 col-xs-8" style="display:none;" id="feedback_msg">
+                                <span style="color:#f94d4d">{{$feedbackMessage}}</span>
+                            </div>
+                            @endif
                             {{ Form::close() }}
                         </div>
                         @endif

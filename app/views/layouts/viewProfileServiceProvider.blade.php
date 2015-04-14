@@ -186,10 +186,10 @@
 <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
 
 <script>
-    $(function() {
-        $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
-        $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
-    });
+//    $(function() {
+//        $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+//        $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+//    });
 </script>
 <body>
 @yield('content')
@@ -220,7 +220,13 @@
         });
         $('#submit_feedback').click(function(e){
             e.preventDefault();
-            $('#saveFeedback').submit();
+            var feedbackFlag = $('feedback_flag').val();
+            if(feedbackFlag){
+                $('#saveFeedback').submit();
+            }else{
+                $('#feedback_msg').show();
+            }
+
         });
         $('#star_rating').find('.clear-rating').remove();
         $('.feed_rate').find('.clear-rating').remove();
@@ -308,6 +314,16 @@
             $('#mask').remove();
         });
         return false;
+    });
+    $('#no_feedback').on('click', function(ev) {
+        ev.preventDefault();
+        alert(1);
+        $('#myModal').modal('show');
+
+
+        // $("#results").text(data);
+
+
     });
 </script>
 @include('toastr.index')
