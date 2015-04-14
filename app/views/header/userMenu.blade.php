@@ -9,8 +9,8 @@
     @if(Auth::user()->user_role_id==1)
     <a href="{{ URL::to('/search/login=true') }}" style="padding-right:20px;">{{ trans('peopleNearBy.SEARCH') }}</a>
     @endif
-    <a href="{{ URL::to('/messages') }}" style="padding-right:20px;"><strong>{{ trans('peopleNearBy.INBOX') }}</strong></a>
-    <a href="{{ URL::to('/logout') }}" style=""><strong>{{ trans('peopleNearBy.SIGNOUT') }}</strong></a>
+    <a href="{{ URL::to('/messages') }}" style="padding-right:20px;">{{ trans('peopleNearBy.INBOX') }}</a>
+    <a href="{{ URL::to('/logout') }}" style="">{{ trans('peopleNearBy.SIGNOUT') }}</a>
     <br>
     <br>
     <span style="padding-right:20px; color:#fff">{{ trans('peopleNearBy.SelectLanguage') }}</span>
