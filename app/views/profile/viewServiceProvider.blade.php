@@ -55,7 +55,8 @@
                         <div id="msg" class="pull-left col-xs-5 col-md-8">
                             @if(Auth::user()->user_role_id==1)
                             <a href="#login-box" class="login-window">
-                                <p style="border:2px solid #fa4d51; padding:2px 6px; text-align:center;font-weight: bold;color: #fa4d51;border-radius: 5px; float:left; margin:0 10px 10px 0; font-size:12px">SEND MESSAGE
+                                <p style="border: 2px solid #fa4d51;  padding: 2px 6px;  text-align: center;  font-weight: bold;  color: #fff;  border-radius: 5px; float: left;background-color: #fa4d51;
+  height: 25px;">SEND MESSAGE
                                 </p>
                             </a>
                             @endif
@@ -161,9 +162,9 @@
                             @if(Auth::user()->user_role_id==2 && $spIsSameAsLoggedInUser==1)
                             {{ Form::open(array('url' => 'sp/risemeup','class'=>'form-horizontal','role'=>'form','id'=>'risemeUp')) }}
                                 @if($userData['serviceProviderData']->riseme_up==1)
-                                    <input name="submit" id="submit" disabled="disabled" class="btn btn-small btn-danger btn-inverse" style="width: 100px" type="submit" value="Rise Up">
+                                    <input name="submit" id="submit" disabled="disabled" class="btn btn-small btn-danger btn-inverse" style="width: 100px;border: 2px solid #fa4d51;padding: 2px 6px;box-shadow: none;text-transform: uppercase;font-size: 16px;text-align: center;font-weight: bold;color: #fff;border-radius: 5px;float: left;background-color: #fa4d51;height: 25px;margin: 0 0 0 20px;outline:none" type="submit" value="Rise Up">
                                 @else
-                                    <input name="submit" id="submit" class="btn btn-small btn-danger btn-inverse" style="width: 100px" type="submit" value="Rise Up">
+                                    <input name="submit" id="submit" class="btn btn-small btn-danger btn-inverse" style="width: 100px;border: 2px solid #fa4d51;padding: 2px 6px;box-shadow: none;text-transform: uppercase;font-size: 16px;text-align: center;font-weight: bold;color: #fff;border-radius: 5px;float: left;background-color: #fa4d51;height: 25px;margin: 0 0 0 20px;outline:none" type="submit" value="Rise Up">
                                 @endif
                             {{ Form::close() }}
                             @endif
@@ -234,7 +235,7 @@
                             </div>
                             <div id="feed_rating" class="col-md-12 col-xs-8">
                                 <a href="#">
-                                    <div id="submit_feedback" style="width:175px;height:32px;font-size:18px;">SUBMIT FEEDBACK</div>
+                                    <div id="submit_feedback" style="width:175px;height:32px;font-size:18px;background-color: #fa4d51;color:#fff">SUBMIT FEEDBACK</div>
                                 </a>
                             </div>
                             {{ Form::close() }}
