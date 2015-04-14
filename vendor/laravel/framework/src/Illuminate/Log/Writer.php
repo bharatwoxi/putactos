@@ -113,7 +113,7 @@ class Writer {
 	 * Register an error_log handler.
 	 *
 	 * @param  string  $level
-	 * @param  int     $messageType
+	 * @param  integer $messageType
 	 * @return void
 	 */
 	public function useErrorLog($level = 'debug', $messageType = ErrorLogHandler::OPERATING_SYSTEM)
@@ -126,7 +126,7 @@ class Writer {
 	}
 
 	/**
-	 * Get a default Monolog formatter instance.
+	 * Get a defaut Monolog formatter instance.
 	 *
 	 * @return \Monolog\Formatter\LineFormatter
 	 */

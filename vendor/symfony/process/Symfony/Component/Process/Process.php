@@ -151,7 +151,7 @@ class Process
         // on Gnu/Linux, PHP builds with --enable-maintainer-zts are also affected
         // @see : https://bugs.php.net/bug.php?id=51800
         // @see : https://bugs.php.net/bug.php?id=50524
-        if (null === $this->cwd && (defined('ZEND_THREAD_SAFE') || '\\' === DIRECTORY_SEPARATOR)) {
+        if (null === $this->cwd && (defined('ZEND_THREAD_SAFE') || defined('PHP_WINDOWS_VERSION_BUILD'))) {
             $this->cwd = getcwd();
         }
         if (null !== $env) {
@@ -160,10 +160,10 @@ class Process
 
         $this->input = $input;
         $this->setTimeout($timeout);
-        $this->useFileHandles = '\\' === DIRECTORY_SEPARATOR;
+        $this->useFileHandles = defined('PHP_WINDOWS_VERSION_BUILD');
         $this->pty = false;
         $this->enhanceWindowsCompatibility = true;
-        $this->enhanceSigchildCompatibility = '\\' !== DIRECTORY_SEPARATOR && $this->isSigchildEnabled();
+        $this->enhanceSigchildCompatibility = !defined('PHP_WINDOWS_VERSION_BUILD') && $this->isSigchildEnabled();
         $this->options = array_replace(array('suppress_errors' => true, 'binary_pipes' => true), $options);
     }
 
@@ -272,7 +272,7 @@ class Process
 
         $commandline = $this->commandline;
 
-        if ('\\' === DIRECTORY_SEPARATOR && $this->enhanceWindowsCompatibility) {
+        if (defined('PHP_WINDOWS_VERSION_BUILD') && $this->enhanceWindowsCompatibility) {
             $commandline = 'cmd /V:ON /E:ON /C "('.$commandline.')';
             foreach ($this->processPipes->getFiles() as $offset => $filename) {
                 $commandline .= ' '.$offset.'>'.ProcessUtils::escapeArgument($filename);
@@ -355,8 +355,8 @@ class Process
 
         do {
             $this->checkTimeout();
-            $running = '\\' === DIRECTORY_SEPARATOR ? $this->isRunning() : $this->processPipes->hasOpenHandles();
-            $close = '\\' !== DIRECTORY_SEPARATOR || !$running;
+            $running = defined('PHP_WINDOWS_VERSION_BUILD') ? $this->isRunning() : $this->processPipes->hasOpenHandles();
+            $close = !defined('PHP_WINDOWS_VERSION_BUILD') || !$running;
             $this->readPipes(true, $close);
         } while ($running);
 
@@ -475,7 +475,7 @@ class Process
 
         $this->requireProcessIsStarted(__FUNCTION__);
 
-        $this->readPipes(false, '\\' === DIRECTORY_SEPARATOR ? !$this->processInformation['running'] : true);
+        $this->readPipes(false, defined('PHP_WINDOWS_VERSION_BUILD') ? !$this->processInformation['running'] : true);
 
         return $this->stdout;
     }
@@ -498,11 +498,6 @@ class Process
         $data = $this->getOutput();
 
         $latest = substr($data, $this->incrementalOutputOffset);
-
-        if (false === $latest) {
-            return '';
-        }
-
         $this->incrementalOutputOffset = strlen($data);
 
         return $latest;
@@ -539,7 +534,7 @@ class Process
 
         $this->requireProcessIsStarted(__FUNCTION__);
 
-        $this->readPipes(false, '\\' === DIRECTORY_SEPARATOR ? !$this->processInformation['running'] : true);
+        $this->readPipes(false, defined('PHP_WINDOWS_VERSION_BUILD') ? !$this->processInformation['running'] : true);
 
         return $this->stderr;
     }
@@ -563,11 +558,6 @@ class Process
         $data = $this->getErrorOutput();
 
         $latest = substr($data, $this->incrementalErrorOutputOffset);
-
-        if (false === $latest) {
-            return '';
-        }
-
         $this->incrementalErrorOutputOffset = strlen($data);
 
         return $latest;
@@ -796,7 +786,7 @@ class Process
     {
         $timeoutMicro = microtime(true) + $timeout;
         if ($this->isRunning()) {
-            if ('\\' === DIRECTORY_SEPARATOR && !$this->isSigchildEnabled()) {
+            if (defined('PHP_WINDOWS_VERSION_BUILD') && !$this->isSigchildEnabled()) {
                 exec(sprintf("taskkill /F /T /PID %d 2>&1", $this->getPid()), $output, $exitCode);
                 if ($exitCode > 0) {
                     throw new RuntimeException('Unable to kill the process');
@@ -916,7 +906,7 @@ class Process
      *
      * To disable the timeout, set this value to null.
      *
-     * @param int|float|null $timeout The timeout in seconds
+     * @param int|float|null     $timeout The timeout in seconds
      *
      * @return self The current Process instance.
      *
@@ -945,7 +935,7 @@ class Process
      */
     public function setTty($tty)
     {
-        if ('\\' === DIRECTORY_SEPARATOR && $tty) {
+        if (defined('PHP_WINDOWS_VERSION_BUILD') && $tty) {
             throw new RuntimeException('TTY mode is not supported on Windows platform.');
         }
 
@@ -967,7 +957,7 @@ class Process
     /**
      * Sets PTY mode.
      *
-     * @param bool $bool
+     * @param bool    $bool
      *
      * @return self
      */
@@ -1239,7 +1229,7 @@ class Process
             return $result;
         }
 
-        if ('\\' === DIRECTORY_SEPARATOR) {
+        if (defined('PHP_WINDOWS_VERSION_BUILD')) {
             return $result = false;
         }
 
@@ -1287,7 +1277,8 @@ class Process
     {
         $that = $this;
         $out = self::OUT;
-        $callback = function ($type, $data) use ($that, $callback, $out) {
+        $err = self::ERR;
+        $callback = function ($type, $data) use ($that, $callback, $out, $err) {
             if ($out == $type) {
                 $that->addOutput($data);
             } else {
@@ -1316,7 +1307,7 @@ class Process
         $this->processInformation = proc_get_status($this->process);
         $this->captureExitCode();
 
-        $this->readPipes($blocking, '\\' === DIRECTORY_SEPARATOR ? !$this->processInformation['running'] : true);
+        $this->readPipes($blocking, defined('PHP_WINDOWS_VERSION_BUILD') ? !$this->processInformation['running'] : true);
 
         if (!$this->processInformation['running']) {
             $this->close();
@@ -1347,7 +1338,7 @@ class Process
     /**
      * Validates and returns the filtered timeout.
      *
-     * @param int|float|null $timeout
+     * @param int|float|null     $timeout
      *
      * @return float|null
      *
@@ -1380,12 +1371,11 @@ class Process
             $result = $this->processPipes->read($blocking);
         }
 
-        $callback = $this->callback;
         foreach ($result as $type => $data) {
             if (3 == $type) {
                 $this->fallbackExitcode = (int) $data;
             } else {
-                $callback($type === self::STDOUT ? self::OUT : self::ERR, $data);
+                call_user_func($this->callback, $type === self::STDOUT ? self::OUT : self::ERR, $data);
             }
         }
     }

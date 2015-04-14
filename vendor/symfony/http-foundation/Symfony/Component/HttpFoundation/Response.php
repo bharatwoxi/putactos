@@ -208,7 +208,7 @@ class Response
     }
 
     /**
-     * Factory method for chainability.
+     * Factory method for chainability
      *
      * Example:
      *
@@ -268,7 +268,7 @@ class Response
     {
         $headers = $this->headers;
 
-        if ($this->isInformational() || $this->isEmpty()) {
+        if ($this->isInformational() || in_array($this->statusCode, array(204, 304))) {
             $this->setContent(null);
             $headers->remove('Content-Type');
             $headers->remove('Content-Length');
@@ -1260,7 +1260,7 @@ class Response
     }
 
     /**
-     * Checks if we need to remove Cache-Control for SSL encrypted downloads when using IE < 9.
+     * Checks if we need to remove Cache-Control for SSL encrypted downloads when using IE < 9
      *
      * @link http://support.microsoft.com/kb/323308
      */

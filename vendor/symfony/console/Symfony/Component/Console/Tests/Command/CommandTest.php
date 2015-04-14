@@ -318,10 +318,8 @@ class CommandTest extends \PHPUnit_Framework_TestCase
         $output->writeln('from the code...');
     }
 
-    public function testLegacyAsText()
+    public function testAsText()
     {
-        $this->iniSet('error_reporting', -1 & ~E_USER_DEPRECATED);
-
         $command = new \TestCommand();
         $command->setApplication(new Application());
         $tester = new CommandTester($command);
@@ -329,10 +327,8 @@ class CommandTest extends \PHPUnit_Framework_TestCase
         $this->assertStringEqualsFile(self::$fixturesPath.'/command_astext.txt', $command->asText(), '->asText() returns a text representation of the command');
     }
 
-    public function testLegacyAsXml()
+    public function testAsXml()
     {
-        $this->iniSet('error_reporting', -1 & ~E_USER_DEPRECATED);
-
         $command = new \TestCommand();
         $command->setApplication(new Application());
         $tester = new CommandTester($command);

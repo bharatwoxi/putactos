@@ -69,6 +69,10 @@ class KernelForTest extends Kernel
     {
     }
 
+    public function init()
+    {
+    }
+
     public function getBundles()
     {
         return array();

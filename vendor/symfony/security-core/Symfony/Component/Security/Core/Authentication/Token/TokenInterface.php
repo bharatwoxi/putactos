@@ -47,10 +47,8 @@ interface TokenInterface extends \Serializable
     /**
      * Returns a user representation.
      *
-     * @return mixed Can be a UserInterface instance, an object implementing a __toString method,
-     *               or the username as a regular string
-     *
-     * @see AbstractToken::setUser()
+     * @return mixed either returns an object which implements __toString(), or
+     *               a primitive string is returned.
      */
     public function getUser();
 

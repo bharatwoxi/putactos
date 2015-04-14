@@ -45,8 +45,6 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         require_once self::$fixturesPath.'/Foo5Command.php';
         require_once self::$fixturesPath.'/FoobarCommand.php';
         require_once self::$fixturesPath.'/BarBucCommand.php';
-        require_once self::$fixturesPath.'/FooSubnamespaced1Command.php';
-        require_once self::$fixturesPath.'/FooSubnamespaced2Command.php';
     }
 
     protected function normalizeLineBreaks($text)
@@ -201,14 +199,6 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('foo', $application->findNamespace('f'), '->findNamespace() finds a namespace given an abbreviation');
         $application->add(new \Foo2Command());
         $this->assertEquals('foo', $application->findNamespace('foo'), '->findNamespace() returns the given namespace if it exists');
-    }
-
-    public function testFindNamespaceWithSubnamespaces()
-    {
-        $application = new Application();
-        $application->add(new \FooSubnamespaced1Command());
-        $application->add(new \FooSubnamespaced2Command());
-        $this->assertEquals('foo', $application->findNamespace('foo'), '->findNamespace() returns commands even if the commands are only contained in subnamespaces');
     }
 
     /**
@@ -490,10 +480,8 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function testLegacyAsText()
+    public function testAsText()
     {
-        $this->iniSet('error_reporting', -1 & ~E_USER_DEPRECATED);
-
         $application = new Application();
         $application->add(new \FooCommand());
         $this->ensureStaticCommandHelp($application);
@@ -501,10 +489,8 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $this->assertStringEqualsFile(self::$fixturesPath.'/application_astext2.txt', $this->normalizeLineBreaks($application->asText('foo')), '->asText() returns a text representation of the application');
     }
 
-    public function testLegacyAsXml()
+    public function testAsXml()
     {
-        $this->iniSet('error_reporting', -1 & ~E_USER_DEPRECATED);
-
         $application = new Application();
         $application->add(new \FooCommand());
         $this->ensureStaticCommandHelp($application);
@@ -986,6 +972,7 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $tester = new ApplicationTester($application);
         $tester->run(array('command' => 'help'));
 
+        $this->assertTrue($tester->getInput()->isInteractive());
         $this->assertFalse($tester->getInput()->hasParameterOption(array('--no-interaction', '-n')));
 
         $inputStream = $application->getHelperSet()->get('question')->getInputStream();

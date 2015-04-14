@@ -174,9 +174,8 @@ class Table
 
         $this->rows[] = array_values($row);
 
-        end($this->rows);
-        $rowKey = key($this->rows);
-        reset($this->rows);
+        $keys = array_keys($this->rows);
+        $rowKey = array_pop($keys);
 
         foreach ($row as $key => $cellValue) {
             if (!strstr($cellValue, "\n")) {
@@ -297,9 +296,9 @@ class Table
     /**
      * Renders table cell with padding.
      *
-     * @param array  $row
-     * @param int    $column
-     * @param string $cellFormat
+     * @param array   $row
+     * @param int     $column
+     * @param string  $cellFormat
      */
     private function renderCell(array $row, $column, $cellFormat)
     {
@@ -340,7 +339,7 @@ class Table
     /**
      * Gets column width.
      *
-     * @param int $column
+     * @param int     $column
      *
      * @return int
      */
@@ -365,8 +364,8 @@ class Table
     /**
      * Gets cell width.
      *
-     * @param array $row
-     * @param int   $column
+     * @param array   $row
+     * @param int     $column
      *
      * @return int
      */
