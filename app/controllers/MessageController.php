@@ -28,24 +28,43 @@ class MessageController extends BaseController {
             $take = 8;
         }
         $loggedInUserId = Auth::user()->id;
-        $getMessageData = Message::where('from_user_id','=',$loggedInUserId)->select('to_user_id')->orderBy('sent_time','desc')->groupBy('to_user_id')->skip($skip)->take($take)->get();
+        $userRoleId = Auth::user()->user_role_id;
+        if($userRoleId==1){ //Customer
+            $getMessageData = Message::where('from_user_id','=',$loggedInUserId)->select('to_user_id')->orderBy('sent_time','desc')->groupBy('to_user_id')->skip($skip)->take($take)->get();
+        }
+        if($userRoleId==2){ //Service Provider
+            $getMessageData = Message::where('to_user_id','=',$loggedInUserId)->select('from_user_id')->orderBy('sent_time','desc')->groupBy('from_user_id')->skip($skip)->take($take)->get();
+        }
+
         $skip = $skip + $take;
         Session::put('userListingSkip', $skip);
-
+//
 //        foreach($getMessageData as $user){
-//            echo $user->to_user_id;echo "<br/>";
+//            var_dump($user->to_user_id);echo "<br/>";
 //        }
-//           exit;
+           //exit;
         $userListingForMessages = NULL;
-        if(!empty($getMessageData)){
+        if(!$getMessageData->isEmpty()){
             $i = 0;
             foreach($getMessageData as $user){
-                $useData = User::find($user->to_user_id);
-                //$getMaxTimeStamp = Message::whereIn('from_user_id', array($loggedInUserId,$user->to_user_id))->orwhereIn('to_user_id', array($loggedInUserId,$user->to_user_id))->max('sent_time');
-                $getMaxTimeStamp = Message::where('from_user_id', $loggedInUserId)->where('to_user_id', $user->to_user_id)->orWhere('from_user_id', $user->to_user_id)->where('to_user_id', $loggedInUserId)->max('sent_time');
-                /* Get New Message Count */
-                $getNewMessageCountLeft = Message::where('from_user_id', $loggedInUserId)->where('to_user_id', $user->to_user_id)->where('is_new',1)->count();
-                $getNewMessageCountRight = Message::Where('from_user_id', $user->to_user_id)->where('to_user_id', $loggedInUserId)->where('is_new',1)->count();
+                if($userRoleId==1){ //Customer
+                    $useData = User::find($user->to_user_id);
+                    //$getMaxTimeStamp = Message::whereIn('from_user_id', array($loggedInUserId,$user->to_user_id))->orwhereIn('to_user_id', array($loggedInUserId,$user->to_user_id))->max('sent_time');
+                    $getMaxTimeStamp = Message::where('from_user_id', $loggedInUserId)->where('to_user_id', $user->to_user_id)->orWhere('from_user_id', $user->to_user_id)->where('to_user_id', $loggedInUserId)->max('sent_time');
+
+                    /* Get New Message Count */
+                    $getNewMessageCountLeft = Message::where('from_user_id', $loggedInUserId)->where('to_user_id', $user->to_user_id)->where('is_new',1)->count();
+                    $getNewMessageCountRight = Message::Where('from_user_id', $user->to_user_id)->where('to_user_id', $loggedInUserId)->where('is_new',1)->count();
+                }
+                if($userRoleId==2){ //Service Provider
+                    $useData = User::find($user->from_user_id);
+                    //$getMaxTimeStamp = Message::whereIn('from_user_id', array($loggedInUserId,$user->to_user_id))->orwhereIn('to_user_id', array($loggedInUserId,$user->to_user_id))->max('sent_time');
+                    $getMaxTimeStamp = Message::where('from_user_id', $loggedInUserId)->where('to_user_id', $user->from_user_id)->orWhere('from_user_id', $user->from_user_id)->where('to_user_id', $loggedInUserId)->max('sent_time');
+
+                    /* Get New Message Count */
+                    $getNewMessageCountLeft = Message::where('from_user_id', $loggedInUserId)->where('to_user_id', $user->from_user_id)->where('is_new',1)->count();
+                    $getNewMessageCountRight = Message::Where('from_user_id', $user->from_user_id)->where('to_user_id', $loggedInUserId)->where('is_new',1)->count();
+                }
                 $getNewMessageCount = $getNewMessageCountLeft + $getNewMessageCountRight;
                 $getLatestMessage = Message::where('sent_time','=',$getMaxTimeStamp)->select('message')->orderBy('sent_time','desc')->groupBy('to_user_id')->get();
                 foreach($getLatestMessage as $getMessage){
