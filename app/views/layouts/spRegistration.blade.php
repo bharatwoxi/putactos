@@ -10,6 +10,7 @@
     <link href="{{URL::asset('public/assets/registration/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/styles.css')}}" media="all" rel="stylesheet">
+    <link href="{{URL::asset('public/assets/registration/datepicker/css/datepicker.css')}}" media="all" rel="stylesheet">
     <script src="{{URL::asset('public/assets/registration/js/modernizr.min.js')}}"></script>
 </head>
 <style type="text/css">
@@ -100,10 +101,16 @@
     var checkEmailUrl = "{{URL::to('/check-email')}}";
     var checkPasswordUrl = "{{URL::to('/check-password')}}";
     var checkCpasswordUrl = "{{URL::to('/check-cpassword')}}";
+    $(document).ready(function() {
+        $('#birth_date').datepicker({
+            format: 'yyyy-mm-dd'
+        });
+    });
 </script>
 <script src="{{URL::asset('public/assets/registration/js/custom/registration-validation.js')}}"></script>
 <!-- Google Places -->
 <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
 <script src="{{URL::asset('public/assets/registration/js/custom/google-place.js')}}"></script>
+<script src="{{URL::asset('public/assets/registration/datepicker/js/bootstrap-datepicker.js')}}"></script>
 </body>
 </html>

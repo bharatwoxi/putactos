@@ -20,7 +20,6 @@
     <link href="{{URL::asset('public/assets/registration/css/styles.css')}}" media="all" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/edit_info.css')}}" media="all" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/bootstrap-slider.css')}}" media="all" rel="stylesheet">
-    <link href="{{URL::asset('public/assets/registration/datepicker/css/datepicker.css')}}" media="all" rel="stylesheet">
     <style>
         /* Disclaimer: remove 'powered by Google' */
         .pac-container:after {
@@ -95,21 +94,10 @@
     $(document).ready(function() {
         /* Example 2 */
         $("#ex2").slider({});
-        $('#birth_date').datepicker({
-            format: 'yyyy-mm-dd'
-        });
     });
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
-//        $(".custom-select").each(function(){
-//            $(this).wrap("<span class='select-wrapper'></span>");
-//            $(this).after("<span class='holder'></span>");
-//        });
-//        $(".custom-select").change(function(){
-//            var selectedOption = $(this).find(":selected").text();
-//            $(this).next(".holder").text(selectedOption);
-//        }).trigger('change');
 
         $(".custom-select1").each(function(){
             $(this).wrap("<span class='select-wrapper1'></span>");
@@ -124,11 +112,6 @@
 
         $('#addButton').on('click', function(e) {
             e.preventDefault();
-
-//            if(counter>7){
-//                alert("Only 7 textboxes allow");
-//                return false;
-//            }
 
             var newTextBoxDiv = $(document.createElement('div'))
                 .attr("id", 'TextBoxDiv' + counter).attr("class", 'col-md-11');
@@ -215,14 +198,6 @@
                 '</div>' +
                 '</div>');
 
-
-//            newTextBoxDiv.after().html('<div class="input-group " style="padding-top: 5px;"> <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label><div class="col-sm-3 selectContainer ">' +
-//                ' <span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" name="color' + counter + '" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span> </div><label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>                                           <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxfrom' + counter + '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div>                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>                                       <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxto' + counter +
-//                '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div></div>	');
-//
-
-
-
             newTextBoxDiv.appendTo("#TextBoxesGroup");
             $("#TextBoxDiv" + counter + " .custom-select1").each(function(){
                 $(this).wrap("<span class='select-wrapper1'></span>");
@@ -236,78 +211,6 @@
             counter++;
 
 
-        });
-
-
-        /*$("#addButton").click(function (e) {
-            e.preventDefault();
-            if(counter>7){
-                alert("Only 7 textboxes allow");
-                return false;
-            }
-
-            var newTextBoxDiv = $(document.createElement('div'))
-                .attr("id", 'TextBoxDiv' + counter);
-
-            newTextBoxDiv.after().html('<div class="input-group " style="padding-top: 5px;"> ' +
-                '<label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>' +
-                '<div class="col-sm-3 selectContainer ">' +
-                '<span class="select-wrapper1" name="textboxto' + counter + '">' +
-                '<select class="fonza custom-select1" name="avail_day" "' + counter + '" > ' +
-                '<option value="1" selected="selected">MON</option> ' +
-                '</select>' +
-                '</span> ' +
-                '</div>' +
-                '<label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>' +
-                '<div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '">' +
-                '<select class="fonza custom-select1" id="name" name="textboxfrom' + counter + '" id="textbox' + counter + '" value="" >' +
-                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option>' +
-                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>' +
-                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option>' +
-                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option>' +
-                '</select>' +
-                '</span>' +
-                '</div>' +
-                '<label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>' +
-                '<div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '">' +
-                '<select class="fonza custom-select1" id="name" name="textboxto' + counter + '" id="textbox' + counter + '" value="" >' +
-                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option>' +
-                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>' +
-                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option>' +
-                '<option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option>' +
-                '</select>' +
-                '</span>' +
-                '</div>' +
-                '</div>');
-
-
-//            newTextBoxDiv.after().html('<div class="input-group " style="padding-top: 5px;"> <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label><div class="col-sm-3 selectContainer ">' +
-//                ' <span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" name="color' + counter + '" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span> </div><label for="Name" class="col-sm-1 control-label" style="padding-left: 0;">Time</label>                                           <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxfrom' + counter + '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div>                                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">to</label>                                       <div class="col-sm-3 selectContainer "><span class="select-wrapper1" name="textboxto' + counter + '"><select class="fonza custom-select1" id="name" name="textboxto' + counter +
-//                '" id="textbox' + counter + '" value="" ><option name="textboxto' + counter + '" id="textbox' + counter + '" value=""></option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="blue">Day</option>  <option name="textboxto' + counter + '" id="textbox' + counter + '" value="green">Time</option><option name="textboxto' + counter + '" id="textbox' + counter + '" value="red">To</option></select></span></div></div>	');
-//
-
-
-
-            newTextBoxDiv.appendTo("#TextBoxesGroup");
-
-
-            counter++;
-       });*/
-
-//        $("#removeButton").click(function (e) {
-//            e.preventDefault();
-//            if(counter==1){
-//                alert("No more textbox to remove");
-//                return false;
-//            }
-//
-//            counter--;
-//
-//            $("#TextBoxDiv" + counter).remove();
-//
-//        });
-        $("#addButton").click(function (e) {
-            e.preventDefault();
         });
         $("#getButtonValue").click(function () {
 
@@ -367,6 +270,5 @@
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
 <script src="{{URL::asset('public/assets/registration/js/custom/google-place.js')}}"></script>
-<script src="{{URL::asset('public/assets/registration/datepicker/js/bootstrap-datepicker.js')}}"></script>
 @include('toastr.index')
 </html>

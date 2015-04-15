@@ -19,6 +19,7 @@
     <link href="{{URL::asset('public/assets/registration/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/styles.css')}}" media="all" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/bootstrap-slider.css')}}" media="all" rel="stylesheet">
+    <link href="{{URL::asset('public/assets/registration/datepicker/css/datepicker.css')}}" media="all" rel="stylesheet">
     <script src="{{URL::asset('public/assets/registration/js/modernizr.min.js')}}"></script>
 
 </head>
@@ -108,6 +109,9 @@
     $(document).ready(function() {
         /* Example 2 */
         $("#ex2").slider({});
+        $('#birth_date').datepicker({
+            format: 'yyyy-mm-dd'
+        });
     });
 </script>
 <script>
@@ -122,6 +126,7 @@
 <!-- Google Places -->
 <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
 <script src="{{URL::asset('public/assets/registration/js/custom/google-place.js')}}"></script>
+<script src="{{URL::asset('public/assets/registration/datepicker/js/bootstrap-datepicker.js')}}"></script>
 
 </body>
 </html>

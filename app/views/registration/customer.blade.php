@@ -136,6 +136,21 @@
                     {{ Form::hidden('city',NULL,array('class'=>'form-control','id'=>'city')) }}
                     {{ Form::hidden('country',NULL,array('class'=>'form-control','id'=>'country')) }}
                 </div>
+                <div class="form-group" style="margin-top:10px;">
+                    <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Gender*</label>
+                    <div class="col-sm-3">
+                        <select class="form-control" id="gender" name="gender">
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ Form::label('location', 'Birth Date', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
+                    <div class="col-sm-3">
+                        {{ Form::text('birthDate',null,array('class'=>'form-control','readonly'=>'readonly','id'=>'birth_date')) }}
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Age Range*</label>
                     <div class="col-md-3" style="padding-top: 20px;">

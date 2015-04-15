@@ -107,6 +107,21 @@
                     </div>
                     <!--<div id="map-canvas" style="height:500px;width:500px;display:none;float:left;"></div>-->
                 </div>
+                <div class="form-group" style="margin-top:10px;">
+                    <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Gender*</label>
+                    <div class="col-sm-3">
+                        <select class="form-control" id="gender" name="gender">
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ Form::label('location', 'Birth Date', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
+                    <div class="col-sm-3">
+                        {{ Form::text('birthDate',null,array('class'=>'form-control','readonly'=>'readonly','id'=>'birth_date')) }}
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Upload Picture*</label>
                     <div class="col-md-2">

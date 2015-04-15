@@ -284,7 +284,6 @@ class UserController extends BaseController {
             'latitude' => 'required',
             'longitude' => 'required',
             'ageRange' => 'required',
-            'birthDate' => 'required',
         );
         $validation = Validator::make($input,$rules);
         if($validation->passes()){
@@ -295,7 +294,6 @@ class UserController extends BaseController {
             $user->longitude = $input['longitude'];
             $user->city = $input['city'];
             $user->country = $input['country'];
-            $user->birth_date = $input['birthDate'];
             $user->from_age = $ageRange[0];
             $user->to_age = $ageRange[1];
             $user->updated_at = date('Y-m-d H:m:s');
