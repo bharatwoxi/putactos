@@ -52,6 +52,9 @@
                         <div id="star_rating" class="pull-left col-xs-12" >
                             <input id="input-2b" value="{{ $userData['averageHeartRating'] }}" readonly="true" type="number" class="rating form-control hide original_star" min="0" max="5" step="0.5" data-size="xs" data-symbol="" data-default-caption="{rating} hearts" data-star-captions="{}">
                         </div>
+                        <div id="star_rating" class="pull-left col-xs-12" >
+                            <a href="{{URL::to('service-provider/editprofile')}}" style="padding-right:20px;">EDIT PROFILE</a>
+                        </div>
                         <div id="msg" class="pull-left col-xs-5 col-md-8">
                             @if(Auth::user()->user_role_id==1)
                             <a href="#login-box" class="login-window">
