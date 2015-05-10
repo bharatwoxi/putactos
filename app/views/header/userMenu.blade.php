@@ -2,12 +2,7 @@
     <?php $username = Auth::user()->username; ?>
     <a href="{{ URL::to('profile/'.$username) }}" style="padding-right:20px;">{{ trans('peopleNearBy.MYPROFILE') }}</a>
     @if(Auth::user()->user_role_id==1)
-    <a href="{{ URL::to('/user/editprofile') }}" style="padding-right:20px;">{{ trans('peopleNearBy.EDITPROFILE') }}</a>
-    @else
-    <a href="{{ URL::to('/service-provider/editprofile') }}" style="padding-right:20px;">{{ trans('peopleNearBy.EDITPROFILE') }}</a>
-    @endif
-    @if(Auth::user()->user_role_id==1)
-    <a href="{{ URL::to('/search/login=true') }}" style="padding-right:20px;">{{ trans('peopleNearBy.SEARCH') }}</a>
+        <a href="{{ URL::to('/search/login=true') }}" style="padding-right:20px;">{{ trans('peopleNearBy.SEARCH') }}</a>
     @endif
     <a href="{{ URL::to('/messages') }}" style="padding-right:20px;">{{ trans('peopleNearBy.INBOX') }}</a>
     <a href="{{ URL::to('/logout') }}" style="">{{ trans('peopleNearBy.SIGNOUT') }}</a>

@@ -52,6 +52,7 @@
 
     <div class="container">
         <div class="col-lg-6 ecolsix">
+            <fieldset style="box-shadow: 1px 1px 2px 2px #FA4B48;padding: 1.4em 1.4em 0em 1.4em !important;border-radius: 5px;">
             {{ Form::open(array('url' => 'user/savePersonalData','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
             <div class="form-group">
                 <label for="Name" class="col-sm-5 control-label" style="text-align: left;">First Name</label>
@@ -92,9 +93,11 @@
                 <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
             </div>
             {{ Form::close() }}
+            </fieldset>
         </div>
 
         <div class="col-md-6 ecolsix">
+            <fieldset style="box-shadow: 1px 1px 2px 2px #FA4B48;margin-bottom: 20px;padding: 1.4em 1.4em 0em 1.4em !important;border-radius: 5px;">
             {{ Form::open(array('url' => 'user/savePassword','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-5 control-label" style="text-align: left;">Current password</label>
@@ -118,6 +121,7 @@
                 <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
             </div>
             {{ Form::close() }}
+                </fieldset>
         </div>
     </div>
 </div>
@@ -125,6 +129,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
+                <fieldset style="box-shadow: 1px 1px 2px 2px #FA4B48;margin-bottom: 20px;padding: 1.4em 1.4em 0em 1.4em !important;border-radius: 5px;">
                 {{ Form::open(array('url' => 'user/save-preference','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
                 <div class="form-group">
                     <label for="Name" class="col-sm-5 control-label" style="text-align: left;">Age Range</label>
@@ -177,6 +182,7 @@
                     <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
                 </div>
                 {{ Form::close() }}
+                    </fieldset>
             </div>
         </div>
     </div>
