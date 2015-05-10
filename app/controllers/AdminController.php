@@ -181,8 +181,9 @@ class AdminController extends BaseController {
             $users[$i]['user_last_name'] = $userResult['user_last_name'];
             $users[$i]['is_active'] = $userResult['is_active'];
             $users[$i]['user_role_id'] = $userResult['user_role_id'];
-            $userRoleName = UserRole::select('role')->where('id', '=', $userResult['user_role_id'])->get();
+            $userRoleName = UserRole::select('role', 'id')->where('id', '=', $userResult['user_role_id'])->get();
             $users[$i]['user_role'] = $userRoleName[0]['role'];
+            $users[$i]['user_role_id'] = $userRoleName[0]['id'];
             $i++;
         }
         $stats['totalResult'] = $i;
@@ -371,5 +372,462 @@ class AdminController extends BaseController {
     public function doLogout(){
         Auth::logout(); // log the user out of our application
         return Redirect::to('admin-master'); // redirect the user to the login screen
+    }
+
+    /*
+     *function Name: profileEditView
+     *Desc: Edit Profile View
+     *Created By: Bharat Makwana
+     *Created Date: 20 April 2015
+     *return: N/A
+    */
+    public function spEditProfile($id){
+        $userData['systemUser'] = User::find($id);
+        $userData['serviceProvider'] = ServiceProvider::find($userData['systemUser']->service_provider_id);
+        $ethnicity = Ethnicity::all();
+        $gender = Gender::all();
+        $hairColor = HairColor::all();
+        $eyeColor = EyeColor::all();
+        $cupSize = CupSize::all();
+        $avaliability = DB::table('service_provider_availabilities')->where('service_provider_id', $userData['serviceProvider'] ->id)->get();
+        return View::make('profile.adminServiceProviderEdit')->with(array('ethnicitys'=> $ethnicity,'hairColors'=>$hairColor,'genders'=>$gender,'eyeColors'=>$eyeColor,'userData'=>$userData,'cupSizes'=>$cupSize,'avaliabilities'=>$avaliability));
+    }
+
+    /*
+    *function Name: saveSPPersonalData
+    *Desc: Edit Profile View by admin
+    *Created By: Bharat Makwana
+    *Created Date: 22 April 2015
+    *return: N/A
+   */
+    public function saveSPPersonalData(){
+        $input = Input::all();
+        $rules = array(
+            'firstName' => 'required|min:5|max:20',
+            'lastName' => 'required|min:5|max:20',
+            'profilePicture' => 'mimes:jpeg,jpg,png|max:2000'
+        );
+        /* Custom Validation Rule For Image Size */
+        Validator::extend('image_size', function($attribute, $value, $parameters)
+        {
+            $param1 = $parameters[0];//array_get($this->data, $parameters[0]);
+            $param2 = $parameters[1];//array_get($this->data, $parameters[1]);
+            $file = Input::file($attribute);
+            $fileWidth = $width = Image::make($file)->width();
+            $fileHeight = Image::make($file)->height();
+            if($fileWidth>=$param1 && $fileHeight>=$param2){
+                return true;
+            }else{
+                return false;
+            }
+        });
+        $messages = array(
+            'image_size' => 'Minimum image dimension required:330x220',
+        );
+        /* Rule End here */
+        $validation = Validator::make($input,$rules);
+        if($validation->passes()){
+            $imageRule = array(
+                'profilePicture' => 'image_size:330,220',
+            );
+            $imageValidation = Validator::make($input,$imageRule,$messages);
+            if(!$imageValidation->passes()){
+                return Redirect::to('service-provider/editprofile')->withInput()->withErrors($imageValidation);
+            }
+            $user = Auth::user();
+            $user->user_first_name = trim(strtolower($input['firstName']));
+            $user->user_last_name = trim(strtolower($input['lastName']));
+            $user->updated_at = date('Y-m-d H:m:s');
+            if($user->save()){
+                if($input['profilePicture']!=null || !empty($input['profilePicture'])){
+                    /* File Upload Code */
+                    $spProfileUploadpath = $_ENV['SP_FILE_UPLOAD_PATH']."/".sha1($user->id)."/"."profile_image";
+
+                    /* Create Upload Directory If Not Exists */
+                    if(!file_exists($spProfileUploadpath)){
+                        File::makeDirectory($spProfileUploadpath, $mode = 0777,true,true);
+                        chmod($_ENV['SP_FILE_UPLOAD_PATH']."/".sha1($user->id), 0777);
+                        chmod($_ENV['SP_FILE_UPLOAD_PATH']."/".sha1($user->id)."/"."profile_image", 0777);
+                    }
+                    $extension = Input::file('profilePicture')->getClientOriginalExtension();
+                    $filename = sha1($user->id.time()).".{$extension}";
+                    Input::file('profilePicture')->move($spProfileUploadpath, $filename);
+
+                    /* Cropped Image Code */
+                    $image330by220 = $user->id.time()."_330x220".".{$extension}";
+                    $image250by180 = $user->id.time()."_250x180".".{$extension}";
+                    $img = Image::make($spProfileUploadpath.'/'.$filename)->resize(330, 220);
+                    $img->save($spProfileUploadpath.'/'.$image330by220);
+                    $img = Image::make($spProfileUploadpath.'/'.$filename)->resize(250, 180);
+                    $img->save($spProfileUploadpath.'/'.$image250by180);
+                    $image62by54 = $user->id.time()."_62x54".".{$extension}";
+                    $img = Image::make($spProfileUploadpath.'/'.$filename)->resize(62, 54);
+                    $img->save($spProfileUploadpath.'/'.$image62by54);
+                    DB::table('system_users')
+                        ->where('id', $user->id)
+                        ->update(array('profile_image' => $filename,'image_330by220'=>$image330by220,'image_250by180'=>$image250by180,'image_62by54'=>$image62by54));
+                }
+                return Redirect::to('service-provider/editprofile')->with('message','Updated Successfully');
+            }else{
+                return Redirect::to('service-provider/editprofile')->withErrors('Something went wrong');
+            }
+        }else{
+            return Redirect::to('service-provider/editprofile')->withInput()->withErrors($validation);
+        }
+    }
+
+
+    /*
+     *function Name: saveSPPassword
+     *Desc: Edit Profile View
+     *Created By: Bharat Makwana
+     *Created Date: 22 April 2015
+     *return: N/A
+    */
+    public function saveSPPassword(){
+        $input = Input::all();
+        $user = User::find(Auth::user()->id);
+        $rules = array(
+            'currentPassword' => 'required|min:6',
+            'newPassword' => 'required|min:6',
+            'confirmPassword' => 'required|min:6|same:newPassword',
+        );
+        $validation = Validator::make($input,$rules);
+        if($validation->passes()){
+            if(!Hash::check($input['currentPassword'] , $user->getAuthPassword())){
+                return Redirect::to('service-provider/editprofile')->with('message','Current password not matched, please try again');
+            }else{
+                $user->password = $input['newPassword'];
+                $user->updated_at = date('Y-m-d H:m:s');
+                if($user->save()){
+                    return Redirect::to('service-provider/editprofile')->with('message','Password Updated Successfully');
+                }else{
+                    return Redirect::to('service-provider/editprofile')->with('message','Password Not Updated Something Went Wrong');
+                }
+            }
+        }else{
+            return Redirect::to('service-provider/editprofile')->withInput()->withErrors($validation);
+        }
+    }
+    /*
+    *function Name: saveSPProfileData
+    *Desc: Edit Profile View
+    *Created By: Bharat Makwana
+    *Created Date: 22 April 2015
+    *return: N/A
+   */
+    public function saveSPProfileData(){
+        $input = Input::all();
+        unset($input['avail_day']);
+        unset($input['avail_from']);
+        unset($input['avail_to']);
+        unset($input['avail']);
+
+        $input=array_map('trim',$input);
+        $rules = array(
+            'height' => 'integer',
+            'weight' => 'integer',
+            'bust' => 'integer',
+            'waist' => 'integer',
+            'hips' => 'integer',
+            'penis_size' => 'integer',
+            'cup_size' => 'integer|min:0|max:10',
+            'ethnicity' => 'required|integer',
+            'gender' => 'integer',
+            'pubicHair' => 'integer',
+            'hairColor' => 'integer',
+            'eyeColor' => 'integer',
+            'turnsMeOn' => 'max:100',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'birthDate' => 'required',
+            'ageRange' => 'required',
+        );
+        $validation = Validator::make($input,$rules);
+        if($validation->passes()){
+            $ageRange = explode(",",$input['ageRange']);
+            $serviceProvider = ServiceProvider::find(Auth::user()->service_provider_id);
+            $user = Auth::user();
+            if($user->gender==1){   //for male
+                if(!empty($input['penis_size'])){
+                    $serviceProvider->penis_size = trim($input['penis_size']);
+                }
+            }
+            if($user->gender==2){   //for female
+                if(!empty($input['bust'])){
+                    $serviceProvider->bust = trim($input['bust']);
+                }
+                if(!empty($input['cup_size'])){
+                    $serviceProvider->cup_size = trim($input['cup_size']);
+                }
+                if(!empty($input['waist'])){
+                    $serviceProvider->waist = trim($input['waist']);
+                }
+                if(!empty($input['hips'])){
+                    $serviceProvider->hips = trim($input['hips']);
+                }
+            }
+
+            if(!empty($input['height'])){
+                $serviceProvider->height = trim($input['height']);
+            }
+            if(!empty($input['weight'])){
+                $serviceProvider->weight = trim($input['weight']);
+            }
+            if($input['ethnicity']!=0){
+                $serviceProvider->ethnicity = trim($input['ethnicity']);
+            }
+            if(!empty($input['pubicHair'])){
+                $serviceProvider->pubic_hair = trim($input['pubicHair']);
+            }
+            if($input['hairColor']!=0){
+                $serviceProvider->hair_color = trim($input['hairColor']);
+            }
+            if($input['eyeColor']!=0){
+                $serviceProvider->eye_color = trim($input['eyeColor']);
+            }
+            if(!empty($input['gender'])){
+                $user->gender = trim($input['gender']);
+                $user->updated_at = date('Y-m-d H:m:s');
+            }
+            $user->latitude = $input['latitude'];
+            $user->longitude = $input['longitude'];
+            $user->city = $input['city'];
+            $user->country = $input['country'];
+            $user->birth_date = $input['birthDate'];
+            $user->from_age = $ageRange[0];
+            $user->to_age = $ageRange[1];
+            $serviceProvider->turns_me_on = trim($input['turnsMeOn']);
+            $serviceProvider->updated_at = date('Y-m-d H:m:s');
+            /* Service Provider Availabilities Start*/
+            $day = Input::get('avail_day');
+            $from = Input::get('avail_from');
+            $to = Input::get('avail_to');
+            $availabilityArrayStatic = null;
+            if(isset($day) || $day!=null){
+
+                if(isset($day['static']) && isset($from['static']) && isset($to['static'])){
+                    $count = count($day['static']);
+                    for($i=0;$i<$count;$i++){
+                        $availabilityArrayStatic[$i]['day'] = $day['static'][$i];
+                        $availabilityArrayStatic[$i]['from'] = $from['static'][$i];
+                        $availabilityArrayStatic[$i]['to'] = $to['static'][$i];
+                    }
+                }
+            }
+            $availabilityArrayDb = null;
+            $avail = Input::get('avail');
+
+            if(isset($avail) || $avail!=null){
+                $count = count($avail['db']['day']);
+                for($i=0;$i<$count;$i++){
+                    $availabilityArrayDb[$i]['day'] = $avail['db']['day'][$i];
+                    $availabilityArrayDb[$i]['from'] = $avail['db']['from'][$i];
+                    $availabilityArrayDb[$i]['to'] = $avail['db']['to'][$i];
+                    $availabilityArrayDb[$i]['id'] = $avail['db']['id'][$i];
+                }
+            }
+            /* -----------END--------------- */
+
+            if($availabilityArrayStatic!=null){
+                $i = 0;
+                foreach($availabilityArrayStatic as $availabilityArray){
+                    $data[$i] =  array('service_provider_id'=>Auth::user()->service_provider_id,'week_day'=>$availabilityArray['day'],'from_time'=>$availabilityArray['from'].':00:00','to_time'=>$availabilityArray['to'].':00:00','created_at'=>date('Y-m-d H:i:s'),'updated_at'=>date('Y-m-d H:i:s'));
+                    $i++;
+                }
+                Availability::insert($data);
+            }
+            if($availabilityArrayDb!=null){
+                foreach($availabilityArrayDb as $availabilityArray){
+                    DB::table('service_provider_availabilities')
+                        ->where('id', $availabilityArray['id'])
+                        ->update(array('week_day'=>$availabilityArray['day'],'from_time'=>$availabilityArray['from'].':00:00','to_time'=>$availabilityArray['to'].':00:00','updated_at'=>date('Y-m-d H:i:s')));
+                }
+
+            }
+            if($user->save() && $serviceProvider->save()){
+                $this->updateProfileCompleteness();
+                return Redirect::to('service-provider/editprofile')->with('message','Updated Successfully');
+            }else{
+                return Redirect::to('service-provider/editprofile')->withErrors('Something went wrong');
+            }
+        }else{
+            return Redirect::to('service-provider/editprofile')->withInput()->withErrors($validation);
+        }
+    }
+
+    /*
+     *function Name: custProfileEditView
+     *Desc: Edit Profile View
+     *Created By: Bharat Makwana
+     *Created Date: 22 April 2015
+     *return: N/A
+    */
+    public function custEditProfile($id){
+        $userData['systemUser'] = User::find($id);
+        $userData['gender'] = Customer::find($userData['systemUser']->customer_id);
+        return View::make('profile.adminCustomerEdit')->with(array('userData'=>$userData));
+    }
+
+    /*
+     *function Name: saveCustPersonalData
+     *Desc: Edit Profile View
+     *Created By: Sagar Acharya
+     *Created Date: 29 January 2014
+     *return: N/A
+    */
+    public function saveCustPersonalData(){
+        $input = Input::all();
+        $rules = array(
+            'firstName' => 'required|min:5|max:20',
+            'lastName' => 'required|min:5|max:20',
+            'profilePicture' => 'mimes:jpeg,jpg,png|max:2000'
+        );
+        /* Custom Validation Rule For Image Size */
+        Validator::extend('image_size', function($attribute, $value, $parameters)
+        {
+            $param1 = $parameters[0];//array_get($this->data, $parameters[0]);
+            $param2 = $parameters[1];//array_get($this->data, $parameters[1]);
+            $file = Input::file($attribute);
+            $fileWidth = $width = Image::make($file)->width();
+            $fileHeight = Image::make($file)->height();
+            if($fileWidth>=$param1 && $fileHeight>=$param2){
+                return true;
+            }else{
+                return false;
+            }
+        });
+        $messages = array(
+            'image_size' => 'Minimum image dimension required:330x220',
+        );
+        /* Rule End here */
+        $validation = Validator::make($input,$rules);
+        if($validation->passes()){
+            $imageRule = array(
+                'profilePicture' => 'image_size:330,220',
+            );
+            $imageValidation = Validator::make($input,$imageRule,$messages);
+            if(!$imageValidation->passes()){
+                return Redirect::to('user/editprofile')->withInput()->withErrors($imageValidation);
+            }
+            $user = Auth::user();
+            $user->user_first_name = trim(strtolower($input['firstName']));
+            $user->user_last_name = trim(strtolower($input['lastName']));
+            $user->updated_at = date('Y-m-d H:m:s');
+            if($user->save()){
+                if($input['profilePicture']!=null || !empty($input['profilePicture'])){
+                    /* File Upload Code */
+                    $spProfileUploadpath = $_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($user->id)."/"."profile_image";
+
+                    /* Create Upload Directory If Not Exists */
+                    if(!file_exists($spProfileUploadpath)){
+                        File::makeDirectory($spProfileUploadpath, $mode = 0777,true,true);
+                        chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($user->id), 0777);
+                        chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($user->id)."/"."profile_image", 0777);
+                    }
+                    $extension = Input::file('profilePicture')->getClientOriginalExtension();
+                    $filename = sha1($user->id.time()).".{$extension}";
+                    Input::file('profilePicture')->move($spProfileUploadpath, $filename);
+
+                    //chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($user->id)."/"."profile_image/", 0777);
+                    /* Cropped Image Code */
+                    $image330by220 = $user->id.time()."_330x220".".{$extension}";
+                    $image250by180 = $user->id.time()."_250x180".".{$extension}";
+                    $img = Image::make($spProfileUploadpath.'/'.$filename)->resize(330, 220);
+                    $img->save($spProfileUploadpath.'/'.$image330by220);
+                    $img = Image::make($spProfileUploadpath.'/'.$filename)->resize(250, 180);
+                    $img->save($spProfileUploadpath.'/'.$image250by180);
+                    $image62by54 = $user->id.time()."_62x54".".{$extension}";
+                    $img = Image::make($spProfileUploadpath.'/'.$filename)->resize(62, 54);
+                    $img->save($spProfileUploadpath.'/'.$image62by54);
+                    DB::table('system_users')
+                        ->where('id', $user->id)
+                        ->update(array('profile_image' => $filename,'image_330by220'=>$image330by220,'image_250by180'=>$image250by180,'image_62by54'=>$image62by54));
+                }
+                return Redirect::to('user/editprofile')->with('message','Updated Successfully');
+            }else{
+                return Redirect::to('user/editprofile')->withErrors('Something went wrong');
+            }
+        }else{
+            return Redirect::to('user/editprofile')->withInput()->withErrors($validation);
+        }
+    }
+
+    /*
+     *function Name: savePassword
+     *Desc: Edit Profile View
+     *Created By: Sagar Acharya
+     *Created Date: 29 January 2014
+     *return: N/A
+    */
+    public function saveCustPassword($id){
+        $input = Input::all();
+        $user = User::where('customer_id', '=', $id)->get();
+        $rules = array(
+            //'currentPassword' => 'required|min:6',
+            'newPassword' => 'required|min:6',
+            'confirmPassword' => 'required|min:6|same:newPassword',
+        );
+        $validation = Validator::make($input,$rules);
+        $redirectUrl = 'admin/custEditProfile/'.$user[0]['id'];
+
+        if($validation->passes()){
+//            if(!Hash::check($input['currentPassword'] , $user->getAuthPassword())){
+//                echo 1; exit;
+//                return Redirect::to($redirectUrl)->with('message','Current password not matched, please try again');
+//            }else{
+                $user->password = $input['newPassword'];
+                $user->updated_at = date('Y-m-d H:m:s');
+                //echo "<pre>"; print_r($user); exit;
+                if($user->save()){
+                    return Redirect::to($redirectUrl)->with('message','Password Updated Successfully');
+                }else{
+                    return Redirect::to($redirectUrl)->with('message','Password Not Updated Something Went Wrong');
+                }
+           // }
+        }else{
+            return Redirect::to($redirectUrl)->withInput()->withErrors($validation);
+        }
+    }
+
+    /*
+    *function Name: savePreferences
+    *Desc: Save User Preferences
+    *Created By: Sagar Acharya
+    *Created Date: 27 Feb 2015
+    *return: N/A
+   */
+    public function saveCustPreferences(){
+        $input = Input::all();
+        $rules = array(
+            'looking_for' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'ageRange' => 'required',
+            'birthDate' => 'required',
+        );
+        $validation = Validator::make($input,$rules);
+        if($validation->passes()){
+            $user = User::find(Auth::user()->id);
+            $usePersonalData = Customer::find($user->customer_id);
+            $ageRange = explode(",",$input['ageRange']);
+            $user->latitude = $input['latitude'];
+            $user->longitude = $input['longitude'];
+            $user->city = $input['city'];
+            $user->country = $input['country'];
+            $user->birth_date = $input['birthDate'];
+            $user->from_age = $ageRange[0];
+            $user->to_age = $ageRange[1];
+            $user->updated_at = date('Y-m-d H:m:s');
+            $usePersonalData->looking_for = $input['looking_for'];
+            $usePersonalData->updated_at = date('Y-m-d H:m:s');
+            if($user->save() && $usePersonalData->save()){
+                return Redirect::to('user/editprofile')->with('message','Updated Successfully');
+            }else{
+                return Redirect::to('user/editprofile')->with('message','Data Not Updated Something Went Wrong');
+            }
+        }else{
+            return Redirect::to('user/editprofile')->withErrors($validation);
+        }
     }
 }

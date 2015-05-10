@@ -67,8 +67,13 @@
                 @endif
             </td>
             <td>
-                <a class="btn default btn-xs yellow-stripe" href="#">
-                    Edit </a>
+                @if($user['user_role_id'] == 1)
+                <a class="btn default btn-xs yellow-stripe" href="{{URL::to('admin/custEditProfile')}}/{{$user['user_id']}}">
+                    Edit Customer </a>
+                @else
+                <a class="btn default btn-xs yellow-stripe" href="{{URL::to('admin/spEditProfile')}}/{{$user['user_id']}}">
+                    Edit SP </a>
+                @endif
             </td>
         </tr>
         @endforeach
