@@ -18,7 +18,7 @@
         "hideMethod": "fadeOut"
     }
     toastr.options.onclick = function () {
-        window.location.href = "{{URL::to('/messages')}}";
+        window.location.href = "{{URL::to('/messages-user-lists')}}";
     };
     setInterval(function(){
         $.ajax({
