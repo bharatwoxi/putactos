@@ -254,4 +254,149 @@ class MessageController extends BaseController {
             ]);
         }
     }
+
+    public function newMessageUserListing(){
+
+        $loggedInUserId = Auth::user()->id;
+        $userRoleId = Auth::user()->user_role_id;
+        if($userRoleId==1){ //Customer
+            $getMessageData = Message::where('from_user_id','=',$loggedInUserId)->select('to_user_id')->orderBy('sent_time','desc')->groupBy('to_user_id')->get();
+        }
+        if($userRoleId==2){ //Service Provider
+            $getMessageData = Message::where('to_user_id','=',$loggedInUserId)->select('from_user_id')->orderBy('sent_time','desc')->groupBy('from_user_id')->get();
+        }
+        $userListingForMessages = NULL;
+        if(!$getMessageData->isEmpty()){
+            $i = 0;
+            foreach($getMessageData as $user){
+                if($userRoleId==1){ //Customer
+                    $useData = User::find($user->to_user_id);
+                    //$getMaxTimeStamp = Message::whereIn('from_user_id', array($loggedInUserId,$user->to_user_id))->orwhereIn('to_user_id', array($loggedInUserId,$user->to_user_id))->max('sent_time');
+                    $getMaxTimeStamp = Message::where('from_user_id', $loggedInUserId)->where('to_user_id', $user->to_user_id)->orWhere('from_user_id', $user->to_user_id)->where('to_user_id', $loggedInUserId)->max('sent_time');
+
+                    /* Get New Message Count */
+                    $getNewMessageCountLeft = Message::where('from_user_id', $loggedInUserId)->where('to_user_id', $user->to_user_id)->where('is_new',1)->count();
+                    $getNewMessageCountRight = Message::Where('from_user_id', $user->to_user_id)->where('to_user_id', $loggedInUserId)->where('is_new',1)->count();
+                }
+                if($userRoleId==2){ //Service Provider
+                    $useData = User::find($user->from_user_id);
+                    //$getMaxTimeStamp = Message::whereIn('from_user_id', array($loggedInUserId,$user->to_user_id))->orwhereIn('to_user_id', array($loggedInUserId,$user->to_user_id))->max('sent_time');
+                    $getMaxTimeStamp = Message::where('from_user_id', $loggedInUserId)->where('to_user_id', $user->from_user_id)->orWhere('from_user_id', $user->from_user_id)->where('to_user_id', $loggedInUserId)->max('sent_time');
+
+                    /* Get New Message Count */
+                    $getNewMessageCountLeft = Message::where('from_user_id', $loggedInUserId)->where('to_user_id', $user->from_user_id)->where('is_new',1)->count();
+                    $getNewMessageCountRight = Message::Where('from_user_id', $user->from_user_id)->where('to_user_id', $loggedInUserId)->where('is_new',1)->count();
+                }
+                $getNewMessageCount = $getNewMessageCountLeft + $getNewMessageCountRight;
+                $getLatestMessage = Message::where('sent_time','=',$getMaxTimeStamp)->select('message')->orderBy('sent_time','desc')->groupBy('to_user_id')->get();
+                foreach($getLatestMessage as $getMessage){
+                    $message = $getMessage->message;
+                }
+                $getDayFromDate = date('D', strtotime($getMaxTimeStamp));
+                $userListingForMessages[$i]['serviceProviderId'] = $useData->id;
+                $userListingForMessages[$i]['name'] = ucfirst($useData->user_first_name).' '.ucfirst($useData->user_last_name);
+
+                if($useData->user_role_id==1){
+                    $userListingForMessages[$i]['profilePicture'] = 'public/uploads/userdata/customer'."/".sha1($useData->id)."/"."profile_image/".$useData->profile_image;
+                }
+                if($useData->user_role_id==2){
+                    $userListingForMessages[$i]['profilePicture'] = 'public/uploads/userdata/service_provider'."/".sha1($useData->id)."/"."profile_image/".$useData->profile_image;
+                }
+                $userListingForMessages[$i]['message'] = mb_strimwidth($message,0,15,"...");
+                $userListingForMessages[$i]['day'] = $getDayFromDate;
+                $userListingForMessages[$i]['totalNewMessages'] = $getNewMessageCount;
+                $userListingForMessages[$i]['username'] = $useData->username;
+                $i++;
+            }
+
+            $userCount =  count($userListingForMessages);
+            $chunkValue = round($userCount/2);
+            $userListingForMessages = array_chunk($userListingForMessages,$chunkValue);
+//            echo "<pre>";print_r($userListingForMessages);echo "</pre>";
+//            exit;
+        }
+        return View::make('messages.new_index')->with('userListingForMessages',$userListingForMessages);
+    }
+
+    public function newMessageDetailed($username = null){
+        $loggedInUserId = Auth::user()->id;
+        if(Input::get('isScroll')!=null && Input::get('isScroll')==1){
+            $skip = Session::get('messegeSkip');
+            $take = 8;
+            $nonLoggedInUser = Session::get('nonLoggedInUser');
+        }else{
+            $nonLoggedInUser = User::where('username','like',$username)->first();
+            Session::put('nonLoggedInUser', $nonLoggedInUser);
+            $toUserId = $nonLoggedInUser->id;
+            $skip = 0;
+            $take = 8;
+        }
+        $showMessageForUser = $nonLoggedInUser;
+        $messageData = Message::whereIn('from_user_id', array($loggedInUserId,$nonLoggedInUser->id))->whereIn('to_user_id', array($loggedInUserId,$nonLoggedInUser->id))->orderBy('sent_time','dsc')->skip($skip)->take($take)->get();
+        $skip = $skip + $take;
+        Session::put('messegeSkip', $skip);
+        $userMessage = NULL;
+        $i = 0;
+        $userFullName = $nonLoggedInUser->user_first_name.' '.$nonLoggedInUser->user_last_name;
+        foreach($messageData as $message){
+            $user = User::find($message['from_user_id']);
+            $userMessage[$i]['messageId'] = $message['id'];
+            $getMessageRecord = Message::find($message['id']);
+            if($getMessageRecord->to_user_id == $loggedInUserId && $getMessageRecord->is_new==1){
+                $getMessageRecord->is_new = 0;
+                $getMessageRecord->updated_at = date('Y-m-d H:m:s');
+                $getMessageRecord->save();
+            }
+            $userMessage[$i]['name'] = ucwords($user->user_first_name.' '.$user->user_last_name);
+            if($user->user_role_id==1){
+                $userMessage[$i]['image'] = 'public/uploads/userdata/customer'."/".sha1($user->id)."/"."profile_image/".$user->profile_image;
+                $userMessage[$i]['role'] = 'customer';
+            }
+            if($user->user_role_id==2){
+                $userMessage[$i]['image'] = 'public/uploads/userdata/service_provider'."/".sha1($user->id)."/"."profile_image/".$user->profile_image;
+                $userMessage[$i]['role'] = 'service_provider';
+            }
+            $userMessage[$i]['message'] = $message['message'];
+            $userMessage[$i]['sent_time'] = $message['sent_time'];
+
+
+            $i++;
+        }
+//        echo "<pre>";print_r($userMessage);
+//        exit;
+        if(Input::get('isScroll')!=null && Input::get('isScroll')==1){
+            return View::make('messages.newDetailedMessageScroll')->with(array('userMessage'=>$userMessage,'userFullName'=>$userFullName,'showMessageForUser'=>$showMessageForUser));
+        }else{
+            return View::make('messages.newDetailedMessage')->with(array('userMessage'=>$userMessage,'userFullName'=>$userFullName,'showMessageForUser'=>$showMessageForUser,'toUserId'=>$toUserId));
+        }
+    }
+
+    public function addNewMessage(){
+        $input = Input::all();
+        $user = null;
+        $insertedMessageId = DB::table('user_messages')->insertGetId(
+            array(
+                'from_user_id'=>Auth::user()->id,
+                'to_user_id'=>$input['to_id'],
+                'message'=>$input['message'],
+                'is_new'=>1,
+                'sent_time'=>date('Y-m-d H:m:s'),
+                'created_at'=>date('Y-m-d H:m:s'),
+                'updated_at'=> date('Y-m-d H:m:s')
+            )
+        );
+        $message = Message::find($insertedMessageId);
+        $fromUser = User::find(Auth::user()->id);
+        if($fromUser->user_role_id==1){
+            $user['image'] = 'public/uploads/userdata/customer'."/".sha1($fromUser->id)."/"."profile_image/".$fromUser->profile_image;
+            $user['role'] = 'customer';
+        }
+        if($fromUser->user_role_id==2){
+            $user['image'] = 'public/uploads/userdata/service_provider'."/".sha1($fromUser->id)."/"."profile_image/".$fromUser->profile_image;
+            $user['role'] = 'service_provider';
+        }
+        $user['name'] = ucwords($fromUser->user_first_name.' '.$fromUser->user_last_name);
+        $user['message'] = $message->message;
+        return View::make('messages.newDetailedMessageScroll')->with(array('user'=>$user));
+    }
 }
