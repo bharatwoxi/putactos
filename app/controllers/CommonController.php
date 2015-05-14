@@ -172,4 +172,66 @@ class CommonController extends BaseController {
         Session::put('feedbackSkip',$skip);
         return View::make('profile.moreFeedbacks')->with(array('feedbacks'=>$feedbacks));
     }
+    /*
+    *function Name: insertMultipleImages
+    *Desc: Add multiple Images for Users
+    *Created By: Sagar Acharya
+    *Created Date: 14 March 2015
+    *return: N/A
+   */
+    public function insertMultipleImages(){
+        $systemUserInsertedId = Auth::User()->id;
+        //echo "<script>alert(".Input::file('file').")</script>";
+        //return;
+        $ImageUploadpath = $_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."extra_images";
+
+        /* Create Upload Directory If Not Exists */
+        if(!file_exists($ImageUploadpath)){
+            File::makeDirectory($ImageUploadpath, $mode = 0777,true,true);
+            chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId), 0777);
+            chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."extra_images/", 0777);
+        }
+        $extension = Input::file('file')->getClientOriginalExtension();
+        $filename = Input::file('file')->getClientOriginalName();//sha1($systemUserInsertedId.time()).".{$extension}";
+        Input::file('file')->move($ImageUploadpath, $filename);
+        chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."extra_images/", 0777);
+        DB::table('customer_additional_photos')->insert(
+            array(
+                'system_user_id'  =>$systemUserInsertedId,
+                'image_name' => $filename,
+                'original_name'  =>Input::file('file')->getClientOriginalName(),
+                'file_size'  =>123,//Input::file('file')->getSize(),
+                'created_at'=>date('Y-m-d H:i:s'),
+                'updated_at'=> date('Y-m-d H:i:s')
+            )
+        );
+        echo Input::file('file')->getClientOriginalName();
+    }
+    public function deleteMultipleImages(){
+        $userId = Auth::User()->id;
+        $ImageUploadpath = $_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($userId)."/"."extra_images/";
+        $photoData = AdditionalPhotos::where('original_name','LIKE',Input::get('file_name'))->where('system_user_id','=',$userId)->first();
+        $photo = AdditionalPhotos::find($photoData->id);
+        $photo->delete();
+        unlink($ImageUploadpath.Input::get('file_name'));
+        print_r(Input::get('file_name'));
+    }
+    public function showMultipleImages(){
+        $userId = Auth::User()->id;
+        $photoData = AdditionalPhotos::where('system_user_id','=',$userId)->get();
+        if($photoData->count()>0){
+            $file['status'] = 'success';
+            $i = 0;
+            $ImageUploadpath = URL::to('/')."/".$_ENV['CUSTOMER_FILE_VIEW_PATH']."/".sha1($userId)."/"."extra_images";
+            foreach($photoData as $photo){
+                $file['files'][$i]['name'] = $photo->original_name;
+                $file['files'][$i]['size'] = $photo->file_size;
+                $file['files'][$i]['path'] = $ImageUploadpath;
+                $i++;
+            }
+        }else{
+            $file['status'] = 'fail';
+        }
+        echo json_encode($file);
+    }
 }

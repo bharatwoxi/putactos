@@ -20,6 +20,7 @@
     <link href="{{URL::asset('public/assets/registration/css/styles.css')}}" media="all" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/edit_info.css')}}" media="all" rel="stylesheet">
     <link href="{{URL::asset('public/assets/registration/css/bootstrap-slider.css')}}" media="all" rel="stylesheet">
+    <link href="{{URL::asset('public/assets/registration/dropzone/css/dropzone.css')}}" type="text/css" rel="stylesheet" />
     <style>
         /* Disclaimer: remove 'powered by Google' */
         .pac-container:after {
@@ -90,6 +91,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="{{URL::asset('public/assets/registration/js/bootstrap.min.js')}}"></script>
 <script type='text/javascript' src="{{URL::asset('public/assets/registration/js/bootstrap-slider.js')}}"></script>
+<script type='text/javascript' src="{{URL::asset('public/assets/registration/dropzone/dropzone.js')}}"></script>
 <script type='text/javascript'>
     $(document).ready(function() {
         /* Example 2 */
