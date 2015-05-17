@@ -330,7 +330,7 @@
                 var idData = 'id='+value;
                 $.ajax({
                     type: "GET",
-                    url: "{{URL::to('/service-provider/delete-availability')}}", //Where to make Ajax calls
+                    url: "{{URL::to('/admin/sp/delete-availability')}}", //Where to make Ajax calls
                     data:idData, //Form variables
                     success: function (result) {
 

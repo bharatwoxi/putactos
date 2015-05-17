@@ -52,7 +52,7 @@
 
     <div class="container">
         <div class="col-lg-6 ecolsix">
-            {{ Form::open(array('url' => 'admin/cust/savePersonalData','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
+            {{ Form::open(array('url' => array('admin/cust/savePersonalData', $userData['systemUser']->customer_id),'class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
             <div class="form-group">
                 <label for="Name" class="col-sm-5 control-label" style="text-align: left;">First Name</label>
                 <div class="col-sm-6">
@@ -125,7 +125,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                {{ Form::open(array('url' => 'admin/cust/savePreferences','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
+                {{ Form::open(array('url' => array('admin/cust/savePreferences', $userData['systemUser']->customer_id),'class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
                 <div class="form-group">
                     <label for="Name" class="col-sm-5 control-label" style="text-align: left;">Age Range</label>
                     <div class="col-md-7">

@@ -53,7 +53,7 @@
 
     <div class="container">
         <div class="col-lg-6 ecolsix">
-            {{ Form::open(array('url' => 'admin/sp/savePersonalData','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
+            {{ Form::open(array('url' => array('admin/sp/savePersonalData', $userData['systemUser']->service_provider_id),'class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
             <div class="form-group">
                 <label for="Name" class="col-sm-5 control-label" style="text-align: left;">First Name</label>
                 <div class="col-sm-6">
@@ -96,13 +96,13 @@
         </div>
 
         <div class="col-md-6 ecolsix">
-            {{ Form::open(array('url' => 'admin/sp/savePassword','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
-            <div class="form-group">
+            {{ Form::open(array('url' => array('admin/sp/savePassword',$userData['systemUser']->service_provider_id),'class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
+            <!--<div class="form-group">
                 <label for="inputPassword3" class="col-sm-5 control-label" style="text-align: left;">Current password</label>
                 <div class="col-sm-6">
                     <input type="password" class="form-control" id="currentPassword" name="currentPassword">
                 </div>
-            </div>
+            </div>-->
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-5 control-label" style="text-align: left;">New password</label>
                 <div class="col-sm-6">
@@ -127,7 +127,7 @@
 <div class="container">
 <div class="row">
 <div class="col-md-6">
-{{ Form::open(array('url' => 'admin/sp/saveProfileData','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
+{{ Form::open(array('url' => array('admin/sp/saveProfileData', $userData['systemUser']->service_provider_id),'class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
 <div class="form-group">
     <label class="col-sm-5 ecolfour" control-label>Gender</label>
     <div class="col-sm-7">
