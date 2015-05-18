@@ -260,6 +260,12 @@ class RegistrationController extends BaseController {
             if(!$imageValidation->passes()){
                 return Redirect::to('signup/service-provider')->withInput()->withErrors($imageValidation);
             }
+            $date1 = Input::get('birthDate');
+            $date2 = date('Y-m-d');
+
+            $diff = abs(strtotime($date2) - strtotime($date1));
+
+            $years = floor($diff / (365*60*60*24));
             $systemUserInsertedId = DB::table('system_users')->insertGetId(
                 array(
                     'username'  =>Input::get('username'),
@@ -269,6 +275,7 @@ class RegistrationController extends BaseController {
                     'user_first_name'  =>Input::get('firstName'),
                     'user_last_name'  =>Input::get('lastName'),
                     'birth_date'  =>Input::get('birthDate'),
+                    'current_age'=>$years,
                     'gender'  =>Input::get('gender'),
                     'user_role_id'  =>2,
                     'latitude'  =>Input::get('latitude'),
@@ -402,6 +409,15 @@ class RegistrationController extends BaseController {
             if(!$imageValidation->passes()){
                 return Redirect::to('signup/customer')->withInput()->withErrors($imageValidation);
             }
+            $date1 = Input::get('birthDate');
+            $date2 = date('Y-m-d');
+
+            $diff = abs(strtotime($date2) - strtotime($date1));
+
+            $years = floor($diff / (365*60*60*24));
+            //$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+            //$days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+
             $systemUserInsertedId = DB::table('system_users')->insertGetId(
                 array(
                     'username'  =>Input::get('username'),
@@ -411,6 +427,7 @@ class RegistrationController extends BaseController {
                     'user_first_name'  =>Input::get('firstName'),
                     'user_last_name'  =>Input::get('lastName'),
                     'birth_date'  =>Input::get('birthDate'),
+                    'current_age'=>$years,
                     'gender'  =>Input::get('gender'),
                     'user_role_id'  =>1,
                     'from_age' =>$age[0],
