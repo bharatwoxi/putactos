@@ -474,7 +474,7 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
           <!-- 5 -->
           $.each(json.files, function(key,value){
               thisDropzone.options.maxFiles = thisDropzone.options.maxFiles -1;
-              alert(thisDropzone.options.maxFiles);
+              //alert(thisDropzone.options.maxFiles);
               var mockFile = { name: value.name, size: value.size, fid:value.name };
 
               thisDropzone.options.addedfile.call(thisDropzone, mockFile);
@@ -1446,7 +1446,7 @@ return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.p
     };
 
     Dropzone.prototype.uploadFiles = function(files) {
-        alert('jsupload');
+        //alert('jsupload');
       var file, formData, handleError, headerName, headerValue, headers, input, inputName, inputType, key, option, progressObj, response, updateProgress, value, xhr, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _m, _ref, _ref1, _ref2, _ref3, _ref4,
         _this = this;
       xhr = new XMLHttpRequest();
@@ -1515,7 +1515,7 @@ return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.p
         response = xhr.responseText;
         if (xhr.getResponseHeader("content-type") && ~xhr.getResponseHeader("content-type").indexOf("application/json")) {
           try {
-		  alert(response);
+		  //alert(response);
             response = JSON.parse(response);
           } catch (_error) {
             e = _error;
