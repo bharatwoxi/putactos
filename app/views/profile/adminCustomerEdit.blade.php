@@ -6,7 +6,7 @@
  * Time: 2:40 PM
  */
 ?>
-@extends('layouts.serviceProviderProfile')
+@extends('layouts.adminServiceProviderProfile')
 @section('content')
 <div class="container-fluid"> <!--Header start-->
     <div class="container">
@@ -23,8 +23,8 @@
     <div class="container">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="row erawa">
-                <span style="color:#fff;  font-size:43px">EDIT YOUR INFORMATION</span>
-                @include('header.userMenu');
+                <span style="color:#fff;  font-size:43px">Customer</span>
+                @include('header.adminUserMenu')
             </div>
         </div>
     </div>
@@ -52,8 +52,7 @@
 
     <div class="container">
         <div class="col-lg-6 ecolsix">
-            <fieldset style="box-shadow: 1px 1px 2px 2px #FA4B48;padding: 1.4em 1.4em 0em 1.4em !important;border-radius: 5px;">
-            {{ Form::open(array('url' => 'user/savePersonalData','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
+            {{ Form::open(array('url' => array('admin/cust/savePersonalData', $userData['systemUser']->customer_id),'class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
             <div class="form-group">
                 <label for="Name" class="col-sm-5 control-label" style="text-align: left;">First Name</label>
                 <div class="col-sm-6">
@@ -93,18 +92,16 @@
                 <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
             </div>
             {{ Form::close() }}
-            </fieldset>
         </div>
 
         <div class="col-md-6 ecolsix">
-            <fieldset style="box-shadow: 1px 1px 2px 2px #FA4B48;margin-bottom: 20px;padding: 1.4em 1.4em 0em 1.4em !important;border-radius: 5px;">
-            {{ Form::open(array('url' => 'user/savePassword','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
-            <div class="form-group">
+            {{ Form::open(array('url' => array('admin/cust/savePassword',$userData['systemUser']->customer_id),'class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
+            <!--<div class="form-group">
                 <label for="inputPassword3" class="col-sm-5 control-label" style="text-align: left;">Current password</label>
                 <div class="col-sm-6">
                     <input type="password" class="form-control" id="currentPassword" name="currentPassword">
                 </div>
-            </div>
+            </div>-->
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-5 control-label" style="text-align: left;">New password</label>
                 <div class="col-sm-6">
@@ -121,7 +118,6 @@
                 <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
             </div>
             {{ Form::close() }}
-                </fieldset>
         </div>
     </div>
 </div>
@@ -129,8 +125,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <fieldset style="box-shadow: 1px 1px 2px 2px #FA4B48;margin-bottom: 20px;padding: 1.4em 1.4em 0em 1.4em !important;border-radius: 5px;">
-                {{ Form::open(array('url' => 'user/save-preference','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
+                {{ Form::open(array('url' => array('admin/cust/savePreferences', $userData['systemUser']->customer_id),'class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
                 <div class="form-group">
                     <label for="Name" class="col-sm-5 control-label" style="text-align: left;">Age Range</label>
                     <div class="col-md-7">
@@ -182,12 +177,6 @@
                     <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
                 </div>
                 {{ Form::close() }}
-                    </fieldset>
-            </div>
-
-            <div class="col-md-6 ecolsix">
-                {{ Form::open(array('url' => 'add-multiple-images','class'=>'dropzone uploadform no-margin dz-clickable form-horizontal','role'=>'form','files'=>true,'id'=>'myDropzone')) }} {{Form::close()}}
-<!--                <form action="#" enctype="multipart/form-data" method="POST" class="dropzone uploadform no-margin dz-clickable" id="myDropzone"></form>-->
             </div>
         </div>
     </div>

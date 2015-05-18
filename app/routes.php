@@ -252,3 +252,14 @@ Route::get('admin/site-visitors/hourly',array('before'=>'auth|isAdmin','uses'=>'
 Route::get('admin/user-stats-last10',array('before'=>'auth|isAdmin','uses'=>'AdminController@lastTenNewUsers'));
 Route::get('admin/user-stats-last10_loggedin',array('before'=>'auth|isAdmin','uses'=>'AdminController@lastTenLoggedinUsers'));
 Route::get('admin/user-count-detail',array('before'=>'auth|isAdmin','uses'=>'AdminController@userCount'));
+
+Route::get('admin/spEditProfile/{id}',array('before' => 'auth|isAdmin','uses' => 'AdminController@spEditProfile'));
+Route::post('admin/sp/savePersonalData/{id}',array('before' => 'auth|isAdmin','uses' => 'AdminController@saveSPPersonalData'));
+Route::post('admin/sp/savePassword/{id}',array('before' => 'auth|isAdmin','uses' => 'AdminController@saveSPPassword'));
+Route::post('admin/sp/saveProfileData/{id}',array('before' => 'auth|isAdmin','uses' => 'AdminController@saveSPProfileData'));
+Route::get('admin/sp/delete-availability',array('before' => 'auth|isAdmin','uses' => 'AdminController@deleteAvailability'));
+
+Route::get('admin/custEditProfile/{id}',array('before' => 'auth|isAdmin','uses' => 'AdminController@custEditProfile'));
+Route::post('admin/cust/savePersonalData/{id}',array('before' => 'auth|isAdmin','uses' => 'AdminController@saveCustPersonalData'));
+Route::post('admin/cust/savePassword/{id}',array('before' => 'auth|isAdmin','uses' => 'AdminController@saveCustPassword'));
+Route::post('admin/cust/savePreferences/{id}',array('before' => 'auth|isAdmin','uses' => 'AdminController@saveCustPreferences'));
