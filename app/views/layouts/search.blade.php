@@ -135,7 +135,12 @@
                     D:long
                     */
                     ?>
-                    getUserData(latlng.k,latlng.D);
+                    var latlogAfterParse = [ ];
+                    for (var prop in latlng) {
+                        latlogAfterParse.push(latlng[prop]);
+                    }
+
+                    getUserData(latlogAfterParse[0],latlogAfterParse[1]);
                 }
                 if (results[1]) {
                     //formatted address
@@ -332,7 +337,12 @@
         /* Get Geolocation */
         var addressGeoCode = place.geometry.location;
         $('#selectedLocation').html(obj);
-        getUserData(addressGeoCode.k,addressGeoCode.D);
+        var latlogAfterParse = [ ];
+        for (var prop in addressGeoCode) {
+            latlogAfterParse.push(addressGeoCode[prop]);
+        }
+
+        getUserData(latlogAfterParse[0],latlogAfterParse[1]);
         $('#currentLocation').val('');
     }
     initializeGetLocation();
