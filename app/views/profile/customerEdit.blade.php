@@ -184,6 +184,11 @@
                 {{ Form::close() }}
                     </fieldset>
             </div>
+
+            <div class="col-md-6 ecolsix">
+                {{ Form::open(array('url' => 'add-multiple-images','class'=>'dropzone uploadform no-margin dz-clickable form-horizontal','role'=>'form','files'=>true,'id'=>'myDropzone')) }} {{Form::close()}}
+<!--                <form action="#" enctype="multipart/form-data" method="POST" class="dropzone uploadform no-margin dz-clickable" id="myDropzone"></form>-->
+            </div>
         </div>
     </div>
 </div>

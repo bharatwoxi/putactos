@@ -71,6 +71,12 @@ Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
     Route::post('messages/addnew',array('before' => 'auth','uses' => 'MessageController@insertNewMessage'));
     Route::post('messages/addnewFromProfile',array('before' => 'auth','uses' => 'MessageController@insertNewMessageViewProfile'));
     Route::get('messages/notification',array('before' => 'auth','uses' => 'MessageController@showNotifications'));
+
+    /* As per New Message UI New Routes Don't use above 6 routes*/
+    Route::get('messages-user-lists',array('before' => 'auth','uses' => 'MessageController@newMessageUserListing'));
+    Route::get('messages/{username}',array('before' => 'auth','uses' => 'MessageController@newMessageDetailed'));
+    Route::post('message-add-new',array('before' => 'auth','uses' => 'MessageController@addNewMessage'));
+
     /* Detect Environment */
 //echo App::environment();
     Route::post('testing-data/insert', array('uses' => 'DBTestingController@getFormData'));
@@ -105,6 +111,9 @@ Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
     Route::post('save/feedback', array('before' => 'auth|isCustomer','uses' => 'CommonController@saveFeedback'));
     Route::post('sp/risemeup', array('before' => 'auth|isServiceProvider','uses' => 'CommonController@riseMeUp'));
     Route::get('more/feedbacks', array('before' => 'auth','uses' => 'CommonController@getMoreFeedbacks'));
+    Route::post('add-multiple-images', array('before' => 'auth','uses' => 'CommonController@insertMultipleImages'));
+    Route::get('delete-multiple-images', array('before' => 'auth','uses' => 'CommonController@deleteMultipleImages'));
+    Route::get('show-multiple-images', array('before' => 'auth','uses' => 'CommonController@showMultipleImages'));
 });
 
 /* Localization Translated Routes*/
@@ -180,7 +189,10 @@ Route::group(
         Route::get('get/messages',array('before' => 'auth','uses' => 'MessageController@showMessages'));
         Route::post('messages/addnew',array('before' => 'auth','uses' => 'MessageController@insertNewMessage'));
         Route::post('messages/addnewFromProfile',array('before' => 'auth','uses' => 'MessageController@insertNewMessageViewProfile'));
-
+        /* As per New Message UI New Routes Don't use above 6 routes*/
+        Route::get('messages-user-lists',array('before' => 'auth','uses' => 'MessageController@newMessageUserListing'));
+        Route::get('messages/{username}',array('before' => 'auth','uses' => 'MessageController@newMessageDetailed'));
+        Route::post('message-add-new',array('before' => 'auth','uses' => 'MessageController@addNewMessage'));
         /* Detect Environment */
 //echo App::environment();
         Route::post('testing-data/insert', array('uses' => 'DBTestingController@getFormData'));
@@ -216,6 +228,9 @@ Route::group(
         Route::post('save/feedback', array('before' => 'auth|isCustomer','uses' => 'CommonController@saveFeedback'));
         Route::post('sp/risemeup', array('before' => 'auth|isServiceProvider','uses' => 'CommonController@riseMeUp'));
         Route::get('more/feedbacks', array('before' => 'auth','uses' => 'CommonController@getMoreFeedbacks'));
+        Route::post('add-multiple-images', array('before' => 'auth','uses' => 'CommonController@insertMultipleImages'));
+        Route::get('delete-multiple-images', array('before' => 'auth','uses' => 'CommonController@deleteMultipleImages'));
+        Route::get('show-multiple-images', array('before' => 'auth','uses' => 'CommonController@showMultipleImages'));
     });
 
 /* Admin Routes */

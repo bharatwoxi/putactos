@@ -6,6 +6,8 @@ return array(
     'DB_NAME' => 'woxiprog_putactos',
     'SP_FILE_UPLOAD_PATH' => public_path().'/uploads/userdata/service_provider',
     'CUSTOMER_FILE_UPLOAD_PATH' => public_path().'/uploads/userdata/customer',
+    'SP_FILE_VIEW_PATH' => 'public/uploads/userdata/service_provider',
+    'CUSTOMER_FILE_VIEW_PATH' => 'public/uploads/userdata/customer',
     'reCaptchSiteKey' => '6LdGsf8SAAAAALW2n4ZZEjMLK24t5DniyUOFRSwP',
     'reCaptchaSecretKey' => '6LdGsf8SAAAAAF9upsJF1_UySn3JTUfphKXiVGmE',
 );

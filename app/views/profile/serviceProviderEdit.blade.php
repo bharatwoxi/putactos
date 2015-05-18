@@ -124,6 +124,10 @@
                 {{ Form::close() }}
             </fieldset>
         </div>
+        <div class="col-md-6 ecolsix">
+            {{ Form::open(array('url' => 'add-multiple-images','class'=>'dropzone uploadform no-margin dz-clickable form-horizontal','role'=>'form','files'=>true,'id'=>'myDropzone')) }} {{Form::close()}}
+            <!--                <form action="#" enctype="multipart/form-data" method="POST" class="dropzone uploadform no-margin dz-clickable" id="myDropzone"></form>-->
+        </div>
     </div>
 </div>
 
@@ -489,7 +493,7 @@
         <div class="pull-left" style="margin-top: 30px; margin-bottom: 50px;">
             <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
             <!--                    <input type="image" src="{{URL::asset('public/assets/registration/img/save-2.png')}}" style="width: 100px; margin-left: 20px;">-->
-        </div>
+        </div> <!--Close of container-->
         {{ Form::close() }}
     </div>
 </div>
