@@ -120,6 +120,10 @@
             </div>
             {{ Form::close() }}
         </div>
+        <div class="col-md-6 ecolsix">
+            {{ Form::open(array('url' => 'add-multiple-images','class'=>'dropzone uploadform no-margin dz-clickable form-horizontal','role'=>'form','files'=>true,'id'=>'myDropzone')) }} {{Form::close()}}
+            <!--                <form action="#" enctype="multipart/form-data" method="POST" class="dropzone uploadform no-margin dz-clickable" id="myDropzone"></form>-->
+        </div>
     </div>
 </div>
 
@@ -502,102 +506,6 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <!--<div class="form-group">
-                    <label class="col-sm-4 ecolfour" control-label>Interested In</label>
-
-                    <div class="col-sm-7">
-                        <label class="col-sm-3" style="padding-left: 0;">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Men
-                        </label>
-                        <label class="col-sm-5">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Woman
-                        </label>
-                        <label class="col-sm-4">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Both
-                        </label>
-                    </div>
-                </div>
-            <div class="clearfix"></div>-->
-                <!--<form>
-                    <div class="form-group">
-                        <label class="col-sm-4 ecolfour" control-label>Availablity</label>				       								</div>
-                </form>
-                <div class="col-md-7">
-                    <p class="epara"> Days</p>
-                    <p>
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default btn-sm colda">
-                            <input type="checkbox" name="hello1" value="" style="padding:15px"> Mon
-                        </label>
-                    </div>
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default btn-sm colda">
-                            <input type="checkbox" name="hello2" value="" style="padding:15px"> Tue
-                        </label>
-                    </div>
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default btn-sm colda">
-                            <input type="checkbox" name="hello3" value="" style="padding:15px"> Wed
-                        </label>
-                    </div>
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default btn-sm colda">
-                            <input type="checkbox" name="hello4" value="" style="padding:15px"> Thu
-                        </label>
-                    </div>
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default btn-sm colda">
-                            <input type="checkbox" name="hello5" value="" style="padding:15px"> Fri
-                        </label>
-                    </div>
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default btn-sm colda">
-                            <input type="checkbox" name="hello6" value="" style="padding:15px"> Sat
-                        </label>
-                    </div>
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default btn-sm colda">
-                            <input type="checkbox" name="hello7" value="" style="padding:15px"> Sun
-                        </label>
-                    </div>
-
-                    </p>
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <label for="Name" class="col-sm-2 control-label">Time</label>
-                                <div class="col-sm-3" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="name">
-                                </div>
-                                <label for="Name" class="col-sm-1 control-label" style="padding-left: 0;text-align: left;">to</label>
-                                <div class="col-sm-3 pull-left" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="name">
-                                </div>
-                            </div>
-                        </div>
-
-                    </form>
-                    <div class="clearfix"></div>
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <label for="Name" class="col-sm-2 control-label" style="padding-left: 0;">Time</label>
-                                <div class="col-sm-3" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="name">
-                                </div>
-                                <label for="Name" class="col-sm-1 control-label" style="padding-left: 0;text-align: left;">to</label>
-                                <div class="col-sm-3 pull-left" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="name">
-                                </div>
-                                <input type="image" src="{{URL::asset('public/assets/registration/img/plus.png')}}" style="width:40px">
-
-                            </div>
-                            <label class="col-sm-4">
-                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Set for all
-                            </label>
-                        </div>
-                    </form>
-                </div>-->
                 <div class="pull-left" style="margin-top: 30px; margin-bottom: 50px;">
                     <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
                     <!--                    <input type="image" src="{{URL::asset('public/assets/registration/img/save-2.png')}}" style="width: 100px; margin-left: 20px;">-->

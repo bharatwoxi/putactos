@@ -111,6 +111,9 @@ Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
     Route::post('save/feedback', array('before' => 'auth|isCustomer','uses' => 'CommonController@saveFeedback'));
     Route::post('sp/risemeup', array('before' => 'auth|isServiceProvider','uses' => 'CommonController@riseMeUp'));
     Route::get('more/feedbacks', array('before' => 'auth','uses' => 'CommonController@getMoreFeedbacks'));
+    Route::post('add-multiple-images', array('before' => 'auth','uses' => 'CommonController@insertMultipleImages'));
+    Route::get('delete-multiple-images', array('before' => 'auth','uses' => 'CommonController@deleteMultipleImages'));
+    Route::get('show-multiple-images', array('before' => 'auth','uses' => 'CommonController@showMultipleImages'));
 });
 
 /* Localization Translated Routes*/
@@ -225,6 +228,9 @@ Route::group(
         Route::post('save/feedback', array('before' => 'auth|isCustomer','uses' => 'CommonController@saveFeedback'));
         Route::post('sp/risemeup', array('before' => 'auth|isServiceProvider','uses' => 'CommonController@riseMeUp'));
         Route::get('more/feedbacks', array('before' => 'auth','uses' => 'CommonController@getMoreFeedbacks'));
+        Route::post('add-multiple-images', array('before' => 'auth','uses' => 'CommonController@insertMultipleImages'));
+        Route::get('delete-multiple-images', array('before' => 'auth','uses' => 'CommonController@deleteMultipleImages'));
+        Route::get('show-multiple-images', array('before' => 'auth','uses' => 'CommonController@showMultipleImages'));
     });
 
 /* Admin Routes */
