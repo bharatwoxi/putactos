@@ -20,6 +20,24 @@ class CommonController extends BaseController {
         if($userCount==1){
             Session::put('feedbackForUsername', $username);
             $user = User::where('username','like',$username)->first();
+            $photoData = AdditionalPhotos::where('system_user_id','=',$user->id)->get();
+            if($photoData->count()>0){
+                $file['status'] = 'success';
+                $i = 0;
+                if($user->user_role_id==1){ //Customer
+                    $ImageUploadpath = URL::to('/')."/".$_ENV['CUSTOMER_FILE_VIEW_PATH']."/".sha1($user->id)."/"."extra_images";
+                }
+                if($user->user_role_id==2){ //Service Provider
+                    $ImageUploadpath = URL::to('/')."/".$_ENV['SP_FILE_VIEW_PATH']."/".sha1($user->id)."/"."extra_images";
+                }
+                $file['path'] = $ImageUploadpath;
+                foreach($photoData as $photo){
+                    $file['files'][$i]['name'] = $photo->original_name;
+                    $i++;
+                }
+            }else{
+                $file['status'] = 'fail';
+            }
             if($user->user_role_id==2){ //Service Provider
                 $userData['averageHeartRating'] = 0;
                 Session::put('feedbackSkip', 4);
@@ -81,15 +99,12 @@ class CommonController extends BaseController {
 
                 }
                 /* Feddback Logic End */
-                return View::make('profile.viewServiceProvider')->with(array('userData'=>$userData,'spIsSameAsLoggedInUser'=>$spIsSameAsLoggedInUser,'feedbackFlag'=>$feedbackFlag,'feedbackMessage'=>$feedbackMessage));
+                return View::make('profile.viewServiceProvider')->with(array('userData'=>$userData,'spIsSameAsLoggedInUser'=>$spIsSameAsLoggedInUser,'feedbackFlag'=>$feedbackFlag,'feedbackMessage'=>$feedbackMessage,'userExtrafile'=>$file));
             }elseif($user->user_role_id==1){ //Customer
                 $userData['systemUser'] = $user;
                 $userData['customer'] = Customer::find($user->customer_id);
-                return View::make('profile.viewCustomer')->with(array('userData'=>$userData));
+                return View::make('profile.viewCustomer')->with(array('userData'=>$userData,'userExtrafile'=>$file));
             }
-            //return View::make('profile.serviceProviderEdit')->with(array('ethnicitys'=> $ethnicity,'hairColors'=>$hairColor,'genders'=>$gender,'eyeColors'=>$eyeColor,'userData'=>$userData));
-
-
         }else{
             return Redirect::to('/');
         }
