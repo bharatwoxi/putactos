@@ -84,7 +84,8 @@ Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
 
 
     /* Cron Routes */
-    Route::get('update/age', array('uses' => 'CronController@updateUserAge'));
+    Route::get('cron-update-age', array('uses' => 'CronController@updateUserAge'));
+    Route::get('cron-update-rise-up', array('uses' => 'CronController@updateRiseUp'));
     /* Profile Completeness (In future it should be run as cron or Update value on each profile update) */
     Route::get('profile-complete', array('uses' => 'ServiceProviderController@updateProfileCompleteness'));
 
@@ -200,7 +201,8 @@ Route::group(
 
 
         /* Cron Routes */
-        Route::get('update/age', array('uses' => 'CronController@updateUserAge'));
+        Route::get('cron-update-age', array('uses' => 'CronController@updateUserAge'));
+        Route::get('cron-update-rise-up', array('uses' => 'CronController@updateRiseUp'));
         /* Profile Completeness (In future it should be run as cron or Update value on each profile update) */
         Route::get('profile-complete', array('uses' => 'ServiceProviderController@updateProfileCompleteness'));
 
