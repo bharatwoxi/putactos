@@ -20,61 +20,43 @@ class UserController extends BaseController {
 
     public function checkLogin(){
         $input = Input::all();
-        /* Check reCaptcha */
-        $secret = $_ENV['reCaptchaSecretKey'];
-        $reCaptcha = new ReCaptcha($secret);
-
-        // The response from reCAPTCHA
-                $resp = null;
-        // The error code from reCAPTCHA, if any
-                $error = null;
-        if ($input["g-recaptcha-response"]) {
-            $resp = $reCaptcha->verifyResponse(
-                $_SERVER["REMOTE_ADDR"],
-                $input["g-recaptcha-response"]
-            );
-        }
-        if ($resp != null && $resp->success) {
-            $rules = array(
-                'email' => 'required|email',
-                'password' => 'required|min:6'
-            );
-            $validation = Validator::make($input,$rules);
-            $data = array(
-                'email' => $input['email'],
-                'password' => $input['password']
-            );
-            if($validation->passes()){
-                $id = DB::table('system_users')->where('email', $input['email'])->pluck('id');
-                $user = User::find($id);
-                if($id == NULL || $user == NULL){
-                    Session::flash('message', 'It looks like you entered the wrong email or password');
-                    return Redirect::to('login')->withInput();;
-                }elseif($user->is_active == 0){
-                    Session::flash('message', 'Please confirm your email address');
-                    return Redirect::to('login');
-                }elseif (Auth::attempt($data))
-                {
-                    $this->saveIpBrowserInformation();
-                    if(Auth::user()->user_role_id==1){
-                        return Redirect::to('search/login=true');
-                    }else{
-                        return Redirect::to('service-provider/editprofile');
-                    }
+        $rules = array(
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+            'sckey' => 'sweetcaptcha',
+        );
+        $validation = Validator::make($input,$rules);
+        $data = array(
+            'email' => $input['email'],
+            'password' => $input['password'],
+        );
+        if($validation->passes()){
+            $id = DB::table('system_users')->where('email', $input['email'])->pluck('id');
+            $user = User::find($id);
+            if($id == NULL || $user == NULL){
+                Session::flash('message', 'It looks like you entered the wrong email or password');
+                return Redirect::to('login')->withInput();;
+            }elseif($user->is_active == 0){
+                Session::flash('message', 'Please confirm your email address');
+                return Redirect::to('login');
+            }elseif (Auth::attempt($data))
+            {
+                $this->saveIpBrowserInformation();
+                if(Auth::user()->user_role_id==1){
+                    return Redirect::to('search/login=true');
                 }else{
-                    /* Check Query Log With Time*/
-                    /*$queries = DB::getQueryLog();
-                    $last_query = end($queries);*/
-                    return Redirect::to('login')
-                        ->with('message', 'It looks like you entered the wrong email or password')
-                        ->withInput();
+                    return Redirect::to('service-provider/editprofile');
                 }
             }else{
-                return Redirect::to('login')->withInput()->withErrors($validation);
+                /* Check Query Log With Time*/
+                /*$queries = DB::getQueryLog();
+                $last_query = end($queries);*/
+                return Redirect::to('login')
+                    ->with('message', 'It looks like you entered the wrong email or password')
+                    ->withInput();
             }
         }else{
-            Session::flash('message', 'Please re-enter your reCAPTCHA.');
-            return Redirect::to('login');
+            return Redirect::to('login')->withInput()->withErrors($validation);
         }
     }
 
