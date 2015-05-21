@@ -124,6 +124,7 @@ return array(
         'Barryvdh\Debugbar\ServiceProvider',
         'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
         'Intervention\Image\ImageServiceProvider',
+        'Jordij\SweetCaptcha\SweetCaptchaServiceProvider',
 
 	),
 

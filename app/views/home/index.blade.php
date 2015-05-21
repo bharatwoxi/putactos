@@ -5,18 +5,6 @@
  * Date: 9/12/14
  * Time: 11:01 AM
  */
-// Register API keys at https://www.google.com/recaptcha/admin
-$siteKey = $_ENV['reCaptchSiteKey'];
-$secret = $_ENV['reCaptchaSecretKey'];
-// reCAPTCHA supported 40+ languages listed here: https://developers.google.com/recaptcha/docs/language
-$lang = "en";
-
-// The response from reCAPTCHA
-$resp = null;
-// The error code from reCAPTCHA, if any
-$error = null;
-
-
 ?>
 @extends('layouts.home')
 @section('content')
@@ -128,10 +116,7 @@ background-repeat: repeat;
                                         <div class="form-group">
                                             {{ Form::label('captcha', 'Captcha', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                                             <div class="col-sm-3">
-                                                <div class="g-recaptcha" data-sitekey="<?php echo $siteKey;?>" data-theme="dark"></div>
-                                                <script type="text/javascript"
-                                                        src="https://www.google.com/recaptcha/api.js?hl=<?php echo $lang;?>">
-                                                </script>
+                                                {{ Form::sweetcaptcha() }}
                                             </div><br/> <div class="clearfix"></div>
                                             <div class="form-group">
                                                 <div class="col-sm-5" style="overflow: hidden; margin-left: 10px;z-index: 100;">

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "38f087431fa9ed0997c59cc4e0c4d380",
+    "hash": "65b422ab5fa23b6a7e217cf415c7b0a6",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -449,6 +449,52 @@
                 "tokenizer"
             ],
             "time": "2013-10-09 04:20:00"
+        },
+        {
+            "name": "jordij/sweet-captcha",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jordij/sweet-captcha.git",
+                "reference": "6d5acb1a89731fe3854ae0b8a597c25ae96398c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jordij/sweet-captcha/zipball/6d5acb1a89731fe3854ae0b8a597c25ae96398c9",
+                "reference": "6d5acb1a89731fe3854ae0b8a597c25ae96398c9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "4.2.*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations"
+                ],
+                "psr-0": {
+                    "Jordij\\SweetCaptcha\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi J. Tablada",
+                    "email": "hi@jordijoan.me"
+                }
+            ],
+            "description": "Sweet Captcha for Laravel 4",
+            "keywords": [
+                "Laravel 4",
+                "captcha",
+                "laravel",
+                "sweetcaptcha"
+            ],
+            "time": "2015-05-09 07:19:50"
         },
         {
             "name": "laravel/framework",
@@ -1957,7 +2003,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "gabrielbull/browser": 20
+        "gabrielbull/browser": 20,
+        "jordij/sweet-captcha": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

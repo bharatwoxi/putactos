@@ -2014,5 +2014,53 @@
             "imagick",
             "laravel"
         ]
+    },
+    {
+        "name": "jordij/sweet-captcha",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jordij/sweet-captcha.git",
+            "reference": "6d5acb1a89731fe3854ae0b8a597c25ae96398c9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/jordij/sweet-captcha/zipball/6d5acb1a89731fe3854ae0b8a597c25ae96398c9",
+            "reference": "6d5acb1a89731fe3854ae0b8a597c25ae96398c9",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "4.2.*",
+            "php": ">=5.3.0"
+        },
+        "time": "2015-05-09 07:19:50",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "classmap": [
+                "src/migrations"
+            ],
+            "psr-0": {
+                "Jordij\\SweetCaptcha\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jordi J. Tablada",
+                "email": "hi@jordijoan.me"
+            }
+        ],
+        "description": "Sweet Captcha for Laravel 4",
+        "keywords": [
+            "Laravel 4",
+            "captcha",
+            "laravel",
+            "sweetcaptcha"
+        ]
     }
 ]
