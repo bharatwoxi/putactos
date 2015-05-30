@@ -7,11 +7,11 @@
     <title>Profile</title>
 
     <!-- Bootstrap -->
-    <link href="{{URL::asset('public/assets/registration/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('public/assets/registration/star_rating/css/star-rating.min.css')}}" media="all" rel="stylesheet" type="text/css" />
-    <link href="{{URL::asset('public/assets/registration/css/font-awesome.min.css')}}" rel="stylesheet">
-    <!-- <link href="{{URL::asset('public/assets/registration/css/styles.css')}}" media="all" rel="stylesheet">-->
-    <link href="{{URL::asset('public/assets/registration/css/jquery.nstSlider.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/star_rating/css/star-rating.min.css')}}" media="all" rel="stylesheet" type="text/css" />
+    <link href="{{URL::asset('assets/registration/css/font-awesome.min.css')}}" rel="stylesheet">
+    <!-- <link href="{{URL::asset('assets/registration/css/styles.css')}}" media="all" rel="stylesheet">-->
+    <link href="{{URL::asset('assets/registration/css/jquery.nstSlider.css')}}" rel="stylesheet">
 
 
 </head>
@@ -181,7 +181,7 @@
     .new_msg{ background:#f74d4d; padding:3px 0 3px 5px;color:#fff}
     .to_name{ border:none; outline:none; }
 </style>
-<script src="{{URL::asset('public/assets/registration/js/jquery.js')}}" type="text/javascript"></script>
+<script src="{{URL::asset('assets/registration/js/jquery.js')}}" type="text/javascript"></script>
 <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
 <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
 
@@ -197,9 +197,9 @@
 
 <!-- 4. Add nstSlider.js after jQuery -->
 
-<script src="{{URL::asset('public/assets/registration/js/jquery-1.11.0.min.js')}}"></script>
-<script src="{{URL::asset('public/assets/registration/js/bootstrap.min.js')}}"></script>
-<script src="{{URL::asset('public/assets/registration/star_rating/js/star-rating.min.js')}}" type="text/javascript"></script>
+<script src="{{URL::asset('assets/registration/js/jquery-1.11.0.min.js')}}"></script>
+<script src="{{URL::asset('assets/registration/js/bootstrap.min.js')}}"></script>
+<script src="{{URL::asset('assets/registration/star_rating/js/star-rating.min.js')}}" type="text/javascript"></script>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script>

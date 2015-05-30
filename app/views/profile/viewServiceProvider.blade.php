@@ -5,7 +5,7 @@
     <div class="container">
         <div class="col-sm-3 col-md-5 col-lg-12" >
             <div>
-                <a href="#" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('public/assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
+                <a href="#" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
             </div>
         </div><!-- navbar navbar-inverse navbar-static-top close-->
     </div> <!--Container close-->
@@ -35,7 +35,7 @@
     {{ Session::get('message') }}
 </div>
 @endif
-<div class="container-fluid" style="background-image: url(../../../public/assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;padding-left:0">
+<div class="container-fluid" style="background-image: url(../../../assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;padding-left:0">
     <div class="col-sm-3 col-md-10 col-lg-12" style="padding:0">
         <div class="container" style="padding-left:0">
 
@@ -43,7 +43,7 @@
                 <div id="personal_detail" class="col-sm-12">
                     <div id="user_profile" class="col-sm-4 ">
                         <div class="col-md-12 col-xs-7 " id="profile_thumb">
-                            <img src="{{URL::to('public/uploads/userdata/service_provider')}}/{{ sha1($userData['userData']->id) }}/profile_image/{{ $userData['userData']->image_330by220 }}" class="img-responsive pull-left" style="margin:0 0 2%;height:220px;width:330px;">
+                            <img src="{{URL::to('uploads/userdata/service_provider')}}/{{ sha1($userData['userData']->id) }}/profile_image/{{ $userData['userData']->image_330by220 }}" class="img-responsive pull-left" style="margin:0 0 2%;height:220px;width:330px;">
                             @if($userExtrafile['status']=='success')
                                 @foreach($userExtrafile['files'] as $file)
                                     <img src="{{URL::to($userExtrafile['path'])}}/{{ $file['name'] }}" class="img-responsive pull-left" style=" margin:0 1.5% 1% 0;height:54px;width:77px;">
@@ -65,7 +65,7 @@
                             </a>
                             @endif
                             <div id="login-box" class="login-popup">
-                                <a href="#" class="close"><img src="{{URL::asset('public/assets/registration/img/close_pop.png')}}" class="btn_close" title="Close Window" alt="Close" /></a>
+                                <a href="#" class="close"><img src="{{URL::asset('assets/registration/img/close_pop.png')}}" class="btn_close" title="Close Window" alt="Close" /></a>
                                 <form method="post" class="signin" action="{{URL::to('/messages/addnew')}}">
                                     <div id="text_detail">
                                         <p class="new_msg"><b>Send New Message</b></p>
@@ -85,7 +85,7 @@
                                             </div>
                                             */ ?>
                                             <div id="reply">
-                                                <a id="send_new_msg" href="javascript:void(0)"><img src="{{URL::asset('public/assets/registration/img/send.png')}}"></a>
+                                                <a id="send_new_msg" href="javascript:void(0)"><img src="{{URL::asset('assets/registration/img/send.png')}}"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -201,7 +201,7 @@
                                 <div id="feedback_detail">
                                     <div id="feed_img">
                                         <?php $customer = User::find($feedback['customer_id']) ?>
-                                        <img height="54" width="62" src="{{URL::to('public/uploads/userdata/customer')}}/{{ sha1($customer->id) }}/profile_image/{{ $customer->image_62by54 }}">
+                                        <img height="54" width="62" src="{{URL::to('uploads/userdata/customer')}}/{{ sha1($customer->id) }}/profile_image/{{ $customer->image_62by54 }}">
                                     </div>
                                     <div id="feed_detail">
                                         <p><b>{{ ucwords($customer->user_first_name) }} {{ ucwords($customer->user_last_name) }}</b></p>
@@ -214,7 +214,7 @@
                                 </div>
                             </div>
                             @endforeach
-                            <span id="feedback_loader" style="display:none;"><img style="display:block;margin: auto auto;" src="{{URL::asset('public/assets/registration/img/message_ajax_loader.gif')}}"></span>
+                            <span id="feedback_loader" style="display:none;"><img style="display:block;margin: auto auto;" src="{{URL::asset('assets/registration/img/message_ajax_loader.gif')}}"></span>
                         </div>
                         @else
                         <div id="customer_feedback" class="col-sm-12">

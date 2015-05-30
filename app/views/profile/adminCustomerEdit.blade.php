@@ -12,7 +12,7 @@
     <div class="container">
         <div class="col-sm-3 col-md-5 col-lg-12" >
             <div>
-                <a href="#" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('public/assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
+                <a href="#" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
             </div>
         </div><!-- navbar navbar-inverse navbar-static-top close-->
     </div> <!--Container close-->
@@ -79,7 +79,7 @@
             </div>
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-5 control-label" style="text-align: left;">Image Preview</label>
-                <div class="col-md-4"><img height="100" width="100" id="profileImagePreview" src="{{URL::to('public/uploads/userdata/customer')}}/{{ sha1($userData['systemUser']->id) }}/profile_image/{{ $userData['systemUser']->profile_image }}" alt="your image" /></div><br/>
+                <div class="col-md-4"><img height="100" width="100" id="profileImagePreview" src="{{URL::to('uploads/userdata/customer')}}/{{ sha1($userData['systemUser']->id) }}/profile_image/{{ $userData['systemUser']->profile_image }}" alt="your image" /></div><br/>
             </div>
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-5 control-label" style="text-align: left;">Profile Picture</label>
@@ -89,7 +89,7 @@
                 </div>
             </div>
             <div class="pull-left" style="margin-top:30px;margin-bottom: 30px;">
-                <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
+                <input type="image" src="{{URL::asset('assets/registration/img/save.png')}}" style="width: 100px;">
             </div>
             {{ Form::close() }}
         </div>
@@ -115,7 +115,7 @@
                 </div>
             </div>
             <div class="pull-left" style="margin-top:30px;margin-bottom: 30px;">
-                <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
+                <input type="image" src="{{URL::asset('assets/registration/img/save.png')}}" style="width: 100px;">
             </div>
             {{ Form::close() }}
         </div>
@@ -174,7 +174,7 @@
                 {{ Form::hidden('city',$userData['systemUser']->city,array('class'=>'form-control','id'=>'city')) }}
                 {{ Form::hidden('country',$userData['systemUser']->country,array('class'=>'form-control','id'=>'country')) }}
                 <div class="pull-left" style="margin-top:30px;margin-bottom: 30px;">
-                    <input type="image" src="{{URL::asset('public/assets/registration/img/save.png')}}" style="width: 100px;">
+                    <input type="image" src="{{URL::asset('assets/registration/img/save.png')}}" style="width: 100px;">
                 </div>
                 {{ Form::close() }}
             </div>
@@ -182,23 +182,23 @@
     </div>
 </div>
 
-<div class="col-lg-12" style="background-image:url(../../public/assets/registration/img/background.png); background-repeat:repeat;"> <!--Footer start-->
+<div class="col-lg-12" style="background-image:url(../../assets/registration/img/background.png); background-repeat:repeat;"> <!--Footer start-->
     <div class="container">
         <div class="row" style="margin:30px 0">
             <div class="col-md-3">
                 <h4 style="margin-bottom: 20px;">CONNECT WITH US</h4>
-                <a href="#" ><img src="{{URL::asset('public/assets/registration/img/youtube.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
-                <a href="#" ><img src="{{URL::asset('public/assets/registration/img/social.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
-                <a href="#" ><img src="{{URL::asset('public/assets/registration/img/twitter.png')}}" style="width:52px; margin: 0 0 10px 0px"></a>
+                <a href="#" ><img src="{{URL::asset('assets/registration/img/youtube.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
+                <a href="#" ><img src="{{URL::asset('assets/registration/img/social.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
+                <a href="#" ><img src="{{URL::asset('assets/registration/img/twitter.png')}}" style="width:52px; margin: 0 0 10px 0px"></a>
                 <div class="clearfix"></div>
-                <a href="#" ><img src="{{URL::asset('public/assets/registration/img/skype.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
-                <a href="#" ><img src="{{URL::asset('public/assets/registration/img/linkedin.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
-                <a href="#" ><img src="{{URL::asset('public/assets/registration/img/facebook.png')}}" style="width:52px; margin: 0 0 10px 0px"></a>
+                <a href="#" ><img src="{{URL::asset('assets/registration/img/skype.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
+                <a href="#" ><img src="{{URL::asset('assets/registration/img/linkedin.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
+                <a href="#" ><img src="{{URL::asset('assets/registration/img/facebook.png')}}" style="width:52px; margin: 0 0 10px 0px"></a>
             </div>
             <div class="col-md-4" style="border-left: 2px solid #0f0f0f; padding-left: 70px;">
                 <h4 style="margin-bottom: 20px;">GET IN TOUCH</h4>
-                <p><a href="#" ><img src="{{URL::asset('public/assets/registration/img/tele.png')}}" style="width:52px"></a>         <strong>1-800-355-2626</strong> </p>
-                <P><a href="#" ><img src="{{URL::asset('public/assets/registration/img/msg.png')}}" style="width:52px"></a>      <strong>abc@putactos.com</strong>
+                <p><a href="#" ><img src="{{URL::asset('assets/registration/img/tele.png')}}" style="width:52px"></a>         <strong>1-800-355-2626</strong> </p>
+                <P><a href="#" ><img src="{{URL::asset('assets/registration/img/msg.png')}}" style="width:52px"></a>      <strong>abc@putactos.com</strong>
                 </P>
             </div>
             <div class="col-md-4" style="border-left: 2px solid #0f0f0f; height: 175px;">

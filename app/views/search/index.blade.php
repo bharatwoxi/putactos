@@ -12,7 +12,7 @@
     <div class="container">
         <div class="col-lg-12" >
             <div>
-                <a href="{{ URL::to('/') }}" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('public/assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
+                <a href="{{ URL::to('/') }}" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
 <!--                <div class="pull-right">-->
 <!--                    <p  style="padding-top: 15px;">Not a Member?-->
 <!--                        <button type="button" class="btn btn-default" style="background-color:#a92124; color:#ffffff">Join Putactos</button>-->
@@ -49,7 +49,7 @@
 
 
 
-<div class="container-fluid" style="background-image:url(../../public/assets/registration/img/background1.png); background-repeat:repeat;"> <!--Content start-->
+<div class="container-fluid" style="background-image:url(../../assets/registration/img/background1.png); background-repeat:repeat;"> <!--Content start-->
 <div class="col-md-12">
     <div class="col-md-5 pull-right" >
 
@@ -80,7 +80,7 @@
 
         </div>
         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-            <div class="panel-body" style="background-image:url(../../public/assets/registration/img/background1.png); background-repeat:repeat;">
+            <div class="panel-body" style="background-image:url(../../assets/registration/img/background1.png); background-repeat:repeat;">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -312,8 +312,8 @@
                             <div class="col-md-3" style="padding-top: 20px; margin-left: 30px;">
                                 <p style=" padding:5px; font-family: Calibri; font-size: 20px;"> USE OUR ADVANCED SEARCH FILTERS TO GET THE PRECISE RESULTS YOU ARE LOOKING FOR. HAPPY HUNTING!!</p>
                                 <br>
-                                <input type="image" src="{{URL::asset('public/assets/registration/img/Cancel.png')}}" style="width: 110px;">
-                                <input id="search-button" type="image" src="{{URL::asset('public/assets/registration/img/Search.png')}}" style="width: 110px; margin-left: 20px;">
+                                <input type="image" src="{{URL::asset('assets/registration/img/Cancel.png')}}" style="width: 110px;">
+                                <input id="search-button" type="image" src="{{URL::asset('assets/registration/img/Search.png')}}" style="width: 110px; margin-left: 20px;">
                                 {{ Form::close() }}
                                 <input type="hidden" name="isFilter1" id="isFilter1" value="0" />
                             </div>
@@ -331,29 +331,29 @@
     <input type="hidden" id="take" value="4" />
     <input type="hidden" id="isDataAvailable" value="1"/>
 </div>
-<div id="loaderImage" class="row text-center" style="display:none;"><img style="margin: 0 auto;" src="{{ URL::to('/public/assets/images/loader/heart.GIF') }}"></div>
+<div id="loaderImage" class="row text-center" style="display:none;"><img style="margin: 0 auto;" src="{{ URL::to('/assets/images/loader/heart.GIF') }}"></div>
 
 </div> <!--Content ends-->
 
 
 
-<div class="col-lg-12" style="background-image:url(../../public/assets/registration/img/background.png); background-repeat:repeat;"> <!--Footer start-->
+<div class="col-lg-12" style="background-image:url(../../assets/registration/img/background.png); background-repeat:repeat;"> <!--Footer start-->
     <div class="container">
         <div class="row" style="margin:30px 0">
             <div class="col-md-3">
                 <h4 style="margin-bottom: 20px;">CONNECT WITH US</h4>
-                <a href="#" ><img src="{{URL::asset('public/assets/registration/img/youtube.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
-                <a href="#" ><img src="{{URL::asset('public/assets/registration/img/social.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
-                <a href="#" ><img src="{{URL::asset('public/assets/registration/img/twitter.png')}}" style="width:52px; margin: 0 0 10px 0px"></a>
+                <a href="#" ><img src="{{URL::asset('assets/registration/img/youtube.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
+                <a href="#" ><img src="{{URL::asset('assets/registration/img/social.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
+                <a href="#" ><img src="{{URL::asset('assets/registration/img/twitter.png')}}" style="width:52px; margin: 0 0 10px 0px"></a>
                 <div class="clearfix"></div>
-                <a href="#" ><img src="{{URL::asset('public/assets/registration/img/skype.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
-                <a href="#" ><img src="{{URL::asset('public/assets/registration/img/linkedin.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
-                <a href="#" ><img src="{{URL::asset('public/assets/registration/img/facebook.png')}}" style="width:52px; margin: 0 0 10px 0px"></a>
+                <a href="#" ><img src="{{URL::asset('assets/registration/img/skype.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
+                <a href="#" ><img src="{{URL::asset('assets/registration/img/linkedin.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
+                <a href="#" ><img src="{{URL::asset('assets/registration/img/facebook.png')}}" style="width:52px; margin: 0 0 10px 0px"></a>
             </div>
             <div class="col-md-4" style="border-left: 2px solid #0f0f0f; padding-left: 70px;">
                 <h4 style="margin-bottom: 20px;">GET IN TOUCH</h4>
-                <p><a href="#" ><img src="{{URL::asset('public/assets/registration/img/tele.png')}}" style="width:52px"></a>         <strong>1-800-355-2626</strong> </p>
-                <P><a href="#" ><img src="{{URL::asset('public/assets/registration/img/msg.png')}}" style="width:52px"></a>      <strong>abc@putactos.com</strong>
+                <p><a href="#" ><img src="{{URL::asset('assets/registration/img/tele.png')}}" style="width:52px"></a>         <strong>1-800-355-2626</strong> </p>
+                <P><a href="#" ><img src="{{URL::asset('assets/registration/img/msg.png')}}" style="width:52px"></a>      <strong>abc@putactos.com</strong>
                 </P>
             </div>
 

@@ -8,7 +8,7 @@
         @foreach($userMessage as $message)
             @if($i==1)
             <?php $className = 'xyz'.rand(1,10000000); ?>
-            <span id="messageLoaderUp" style="display:none;"><img style="display:block;margin: auto auto;" src="{{URL::asset('public/assets/registration/img/message_ajax_loader.gif')}}"></span>
+            <span id="messageLoaderUp" style="display:none;"><img style="display:block;margin: auto auto;" src="{{URL::asset('assets/registration/img/message_ajax_loader.gif')}}"></span>
             <div id="msg_detail" class="{{$className}}">
                 <input type="hidden" id="newClassName" value="{{$className}}" />
             @else
@@ -24,21 +24,21 @@
             </div>
             <?php $i++;?>
         @endforeach
-        <span id="messageLoaderDown" style="display:none;"><img style="display:block;margin: auto auto;" src="{{URL::asset('public/assets/registration/img/message_ajax_loader.gif')}}"></span>
+        <span id="messageLoaderDown" style="display:none;"><img style="display:block;margin: auto auto;" src="{{URL::asset('assets/registration/img/message_ajax_loader.gif')}}"></span>
         </div>
         <div id="text_detail">
             <textarea id="msg_area" placeholder="Write a reply"></textarea>
             <div id="reply_msg">
                 <!--<div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
+                    <span><img src="{{URL::asset('assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
                     <input type="file" class="upload" />
                 </div>
                 <div class="fileUpload btn btn-primary">
-                    <!--<span><img src="{{URL::asset('public/assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
+                    <!--<span><img src="{{URL::asset('assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
                     <input type="file" class="upload" />
                 </div>-->
                 <div id="reply">
-                    <img style="padding-bottom:10px;cursor:pointer;" onclick="postNewMessage('{{ $sendMessageUserId }}')" src="{{URL::asset('public/assets/registration/img/reply.png')}}">
+                    <img style="padding-bottom:10px;cursor:pointer;" onclick="postNewMessage('{{ $sendMessageUserId }}')" src="{{URL::asset('assets/registration/img/reply.png')}}">
                 </div>
                 <span style="color:#F74D4D;font-weight:800;" id="character-message"></span>
             </div>
@@ -47,7 +47,7 @@
         @foreach($userMessage as $message)
             @if($i==1)
             <?php $className = 'xyz'.rand(1,10000000); ?>
-            <span id="messageLoaderUp" style="display:none;"><img style="display:block;margin: auto auto;" src="{{URL::asset('public/assets/registration/img/message_ajax_loader.gif')}}"></span>
+            <span id="messageLoaderUp" style="display:none;"><img style="display:block;margin: auto auto;" src="{{URL::asset('assets/registration/img/message_ajax_loader.gif')}}"></span>
             <div id="msg_detail" class="{{$className}}">
             <input type="hidden" id="newClassName" value="{{$className}}" />
             @else

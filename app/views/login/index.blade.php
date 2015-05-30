@@ -12,7 +12,7 @@
     <div class="container">
         <div class="col-sm-3 col-md-5 col-lg-12 xyz" >
             <div>
-                <a href="{{ URL::to('/') }}" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('public/assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
+                <a href="{{ URL::to('/') }}" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
                 <div class="pull-right">
                     <p  style="padding-top: 15px;">Not a Member?
                         <button type="button" class="btn btn-default" style="background-color:#a92124; color:#ffffff"><a href="{{ URL::to('/signup/customer') }}" style="text-decoration: none;color:#FFF">Join Putactos</a></button>
@@ -54,7 +54,7 @@
 </div>
 @endif
 
-<div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;">
+<div class="container-fluid" style="background-image: url(../../assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;">
     <div class="col-sm-3 col-md-10 col-lg-12">
         <div class="container">
                 {{ Form::open(array('url' => 'authenticate','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'customerRegistration')) }}

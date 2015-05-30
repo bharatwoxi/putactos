@@ -18,7 +18,7 @@
 <?php
         $totalResultCount = count($serviceProviderDetails);
         for($i=0;$i<$totalResultCount;$i++){
-            $profileImage = URL::to('/').'/public/uploads/userdata/service_provider/'.sha1($serviceProviderDetails[$i]['system_user']['id'])."/"."profile_image/".$serviceProviderDetails[$i]['system_user']['image_250by180'];
+            $profileImage = URL::to('/').'/uploads/userdata/service_provider/'.sha1($serviceProviderDetails[$i]['system_user']['id'])."/"."profile_image/".$serviceProviderDetails[$i]['system_user']['image_250by180'];
 ?>
                     <div class="col-md-3">
                         <p class="pull-left text-justify" style="padding:10px; font-family:Calibri Light">

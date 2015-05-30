@@ -37,9 +37,9 @@
         <tr>
             <td>
                 @if($user['user_role_id'] == 1)
-                <img class="avatar" height="45" width="45" alt="" src="{{URL::to('public/uploads/userdata/customer')}}/{{ sha1($user['user_id']) }}/profile_image/{{ $user['profile_image'] }}"/>
+                <img class="avatar" height="45" width="45" alt="" src="{{URL::to('uploads/userdata/customer')}}/{{ sha1($user['user_id']) }}/profile_image/{{ $user['profile_image'] }}"/>
                 @else
-                <img  class="avatar" height="45" width="45" alt="" src="{{URL::to('public/uploads/userdata/service_provider')}}/{{ sha1($user['user_id']) }}/profile_image/{{ $user['profile_image'] }}"/>
+                <img  class="avatar" height="45" width="45" alt="" src="{{URL::to('uploads/userdata/service_provider')}}/{{ sha1($user['user_id']) }}/profile_image/{{ $user['profile_image'] }}"/>
                 @endif
             </td>
             <td>

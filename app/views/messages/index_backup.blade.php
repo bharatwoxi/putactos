@@ -4,7 +4,7 @@
     <div class="container">
         <div class="col-sm-3 col-md-5 col-lg-12" >
             <div>
-                <a href="#" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('public/assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
+                <a href="#" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
             </div>
         </div><!-- navbar navbar-inverse navbar-static-top close-->
     </div> <!--Container close-->
@@ -29,11 +29,11 @@
 </div><!-- End of Container Fluid-->
 <div class="clearfix"></div>
 
-<div class="container-fluid" style="background-image: url(../../../public/assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;">
+<div class="container-fluid" style="background-image: url(../../../assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;">
 <div class="col-sm-3 col-md-10 col-lg-12">
 <div class="container">
 <div id="msg_search"  class="col-sm-3 col-md-10 col-lg-12">
-    <input type="text" class="txt" /><a href="#"><img src="{{URL::asset('public/assets/registration/img/search.png')}}" class="search"/></a>
+    <input type="text" class="txt" /><a href="#"><img src="{{URL::asset('assets/registration/img/search.png')}}" class="search"/></a>
 </div>
 
 <div id="tabs">
@@ -42,7 +42,7 @@
         <a href="#a">
             <div>
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/profile_pic.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/profile_pic.jpg')}}">
                 </div>
                 <div id="profile_name">
                     Rahul Despande1<br/>
@@ -58,7 +58,7 @@
         <a href="#b">
             <div>
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/profile_pic.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/profile_pic.jpg')}}">
                 </div>
                 <div id="profile_name">
                     Rahul Despande<br/>
@@ -74,7 +74,7 @@
         <a href="#c">
             <div>
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/profile_pic.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/profile_pic.jpg')}}">
                 </div>
                 <div id="profile_name">
                     Rahul Despande<br/>
@@ -90,7 +90,7 @@
         <a href="#d">
             <div>
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/profile_pic.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/profile_pic.jpg')}}">
                 </div>
                 <div id="profile_name">
                     Rahul Despande<br/>
@@ -106,7 +106,7 @@
         <a href="#e">
             <div>
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/profile_pic.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/profile_pic.jpg')}}">
                 </div>
                 <div id="profile_name">
                     Rahul Despande<br/>
@@ -122,7 +122,7 @@
         <a href="#f">
             <div>
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/profile_pic.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/profile_pic.jpg')}}">
                 </div>
                 <div id="profile_name">
                     Rahul Despande<br/>
@@ -138,7 +138,7 @@
         <a href="#g">
             <div>
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/profile_pic.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/profile_pic.jpg')}}">
                 </div>
                 <div id="profile_name">
                     Rahul Despande<br/>
@@ -154,7 +154,7 @@
         <a href="#h">
             <div>
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/profile_pic.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/profile_pic.jpg')}}">
                 </div>
                 <div id="profile_name">
                     Rahul Despande<br/>
@@ -170,7 +170,7 @@
         <a href="#i">
             <div>
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/profile_pic.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/profile_pic.jpg')}}">
                 </div>
                 <div id="profile_name">
                     Rahul Despande<br/>
@@ -186,7 +186,7 @@
         <a href="#j">
             <div>
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/profile_pic.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/profile_pic.jpg')}}">
                 </div>
                 <div id="profile_name">
                     Rahul Despande<br/>
@@ -202,7 +202,7 @@
         <a href="#k">
             <div>
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/profile_pic.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/profile_pic.jpg')}}">
                 </div>
                 <div id="profile_name">
                     Rahul Despande<br/>
@@ -218,7 +218,7 @@
         <a href="#l">
             <div>
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/profile_pic.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/profile_pic.jpg')}}">
                 </div>
                 <div id="profile_name">
                     Rahul Despande<br/>
@@ -240,7 +240,7 @@
         <div id="msg_desc">
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -249,7 +249,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -259,7 +259,7 @@
             </div>
             <div id="msg_detail" style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -268,7 +268,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -278,7 +278,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -287,7 +287,7 @@
             </div>
             <div style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -297,7 +297,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -306,7 +306,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -320,15 +320,15 @@
             </textarea>
             <div id="reply_msg">
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
+                    <span><img src="{{URL::asset('assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
                     <input type="file" class="upload" />
                 </div>
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
+                    <span><img src="{{URL::asset('assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
                     <input type="file" class="upload" />
                 </div>
                 <div id="reply">
-                    <a href="#"><img src="{{URL::asset('public/assets/registration/img/reply.png')}}"></a>
+                    <a href="#"><img src="{{URL::asset('assets/registration/img/reply.png')}}"></a>
                 </div>
             </div>
         </div>
@@ -342,7 +342,7 @@
         <div id="msg_desc">
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -351,7 +351,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -361,7 +361,7 @@
             </div>
             <div id="msg_detail" style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -370,7 +370,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -380,7 +380,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -389,7 +389,7 @@
             </div>
             <div style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -399,7 +399,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -408,7 +408,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -422,15 +422,15 @@
             </textarea>
             <div id="reply_msg">
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
+                    <span><img src="{{URL::asset('assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
                     <input type="file" class="upload" />
                 </div>
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
+                    <span><img src="{{URL::asset('assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
                     <input type="file" class="upload" />
                 </div>
                 <div id="reply">
-                    <a href="#"><img src="{{URL::asset('public/assets/registration/img/reply.png')}}"></a>
+                    <a href="#"><img src="{{URL::asset('assets/registration/img/reply.png')}}"></a>
                 </div>
             </div>
         </div>
@@ -444,7 +444,7 @@
         <div id="msg_desc">
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -453,7 +453,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -463,7 +463,7 @@
             </div>
             <div id="msg_detail" style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -472,7 +472,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -482,7 +482,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -491,7 +491,7 @@
             </div>
             <div style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -501,7 +501,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -510,7 +510,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -524,15 +524,15 @@
             </textarea>
             <div id="reply_msg">
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
+                    <span><img src="{{URL::asset('assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
                     <input type="file" class="upload" />
                 </div>
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
+                    <span><img src="{{URL::asset('assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
                     <input type="file" class="upload" />
                 </div>
                 <div id="reply">
-                    <a href="#"><img src="{{URL::asset('public/assets/registration/img/reply.png')}}"></a>
+                    <a href="#"><img src="{{URL::asset('assets/registration/img/reply.png')}}"></a>
                 </div>
             </div>
         </div>
@@ -546,7 +546,7 @@
         <div id="msg_desc">
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -555,7 +555,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -565,7 +565,7 @@
             </div>
             <div id="msg_detail" style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -574,7 +574,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -584,7 +584,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -593,7 +593,7 @@
             </div>
             <div style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -603,7 +603,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -612,7 +612,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -626,15 +626,15 @@
             </textarea>
             <div id="reply_msg">
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
+                    <span><img src="{{URL::asset('assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
                     <input type="file" class="upload" />
                 </div>
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
+                    <span><img src="{{URL::asset('assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
                     <input type="file" class="upload" />
                 </div>
                 <div id="reply">
-                    <a href="#"><img src="{{URL::asset('public/assets/registration/img/reply.png')}}"></a>
+                    <a href="#"><img src="{{URL::asset('assets/registration/img/reply.png')}}"></a>
                 </div>
             </div>
         </div>
@@ -648,7 +648,7 @@
         <div id="msg_desc">
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -657,7 +657,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -667,7 +667,7 @@
             </div>
             <div id="msg_detail" style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -676,7 +676,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -686,7 +686,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -695,7 +695,7 @@
             </div>
             <div style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -705,7 +705,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -714,7 +714,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -728,15 +728,15 @@
             </textarea>
             <div id="reply_msg">
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
+                    <span><img src="{{URL::asset('assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
                     <input type="file" class="upload" />
                 </div>
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
+                    <span><img src="{{URL::asset('assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
                     <input type="file" class="upload" />
                 </div>
                 <div id="reply">
-                    <a href="#"><img src="{{URL::asset('public/assets/registration/img/reply.png')}}"></a>
+                    <a href="#"><img src="{{URL::asset('assets/registration/img/reply.png')}}"></a>
                 </div>
             </div>
         </div>
@@ -750,7 +750,7 @@
         <div id="msg_desc">
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -759,7 +759,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -769,7 +769,7 @@
             </div>
             <div id="msg_detail" style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -778,7 +778,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -788,7 +788,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -797,7 +797,7 @@
             </div>
             <div style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -807,7 +807,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -816,7 +816,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -830,15 +830,15 @@
             </textarea>
             <div id="reply_msg">
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
+                    <span><img src="{{URL::asset('assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
                     <input type="file" class="upload" />
                 </div>
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
+                    <span><img src="{{URL::asset('assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
                     <input type="file" class="upload" />
                 </div>
                 <div id="reply">
-                    <a href="#"><img src="{{URL::asset('public/assets/registration/img/reply.png')}}"></a>
+                    <a href="#"><img src="{{URL::asset('assets/registration/img/reply.png')}}"></a>
                 </div>
             </div>
         </div>
@@ -852,7 +852,7 @@
         <div id="msg_desc">
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -861,7 +861,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -871,7 +871,7 @@
             </div>
             <div id="msg_detail" style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -880,7 +880,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -890,7 +890,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -899,7 +899,7 @@
             </div>
             <div style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -909,7 +909,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -918,7 +918,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -932,15 +932,15 @@
             </textarea>
             <div id="reply_msg">
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
+                    <span><img src="{{URL::asset('assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
                     <input type="file" class="upload" />
                 </div>
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
+                    <span><img src="{{URL::asset('assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
                     <input type="file" class="upload" />
                 </div>
                 <div id="reply">
-                    <a href="#"><img src="{{URL::asset('public/assets/registration/img/reply.png')}}"></a>
+                    <a href="#"><img src="{{URL::asset('assets/registration/img/reply.png')}}"></a>
                 </div>
             </div>
         </div>
@@ -954,7 +954,7 @@
         <div id="msg_desc">
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -963,7 +963,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -973,7 +973,7 @@
             </div>
             <div id="msg_detail" style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -982,7 +982,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -992,7 +992,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1001,7 +1001,7 @@
             </div>
             <div style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1011,7 +1011,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1020,7 +1020,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1034,15 +1034,15 @@
             </textarea>
             <div id="reply_msg">
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
+                    <span><img src="{{URL::asset('assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
                     <input type="file" class="upload" />
                 </div>
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
+                    <span><img src="{{URL::asset('assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
                     <input type="file" class="upload" />
                 </div>
                 <div id="reply">
-                    <a href="#"><img src="{{URL::asset('public/assets/registration/img/reply.png')}}"></a>
+                    <a href="#"><img src="{{URL::asset('assets/registration/img/reply.png')}}"></a>
                 </div>
             </div>
         </div>
@@ -1056,7 +1056,7 @@
         <div id="msg_desc">
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1065,7 +1065,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1075,7 +1075,7 @@
             </div>
             <div id="msg_detail" style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1084,7 +1084,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1094,7 +1094,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1103,7 +1103,7 @@
             </div>
             <div style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1113,7 +1113,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1122,7 +1122,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1136,15 +1136,15 @@
             </textarea>
             <div id="reply_msg">
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
+                    <span><img src="{{URL::asset('assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
                     <input type="file" class="upload" />
                 </div>
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
+                    <span><img src="{{URL::asset('assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
                     <input type="file" class="upload" />
                 </div>
                 <div id="reply">
-                    <a href="#"><img src="{{URL::asset('public/assets/registration/img/reply.png')}}"></a>
+                    <a href="#"><img src="{{URL::asset('assets/registration/img/reply.png')}}"></a>
                 </div>
             </div>
         </div>
@@ -1158,7 +1158,7 @@
         <div id="msg_desc">
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1167,7 +1167,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1177,7 +1177,7 @@
             </div>
             <div id="msg_detail" style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1186,7 +1186,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1196,7 +1196,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1205,7 +1205,7 @@
             </div>
             <div style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1215,7 +1215,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1224,7 +1224,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1238,15 +1238,15 @@
             </textarea>
             <div id="reply_msg">
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
+                    <span><img src="{{URL::asset('assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
                     <input type="file" class="upload" />
                 </div>
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
+                    <span><img src="{{URL::asset('assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
                     <input type="file" class="upload" />
                 </div>
                 <div id="reply">
-                    <a href="#"><img src="{{URL::asset('public/assets/registration/img/reply.png')}}"></a>
+                    <a href="#"><img src="{{URL::asset('assets/registration/img/reply.png')}}"></a>
                 </div>
             </div>
         </div>
@@ -1260,7 +1260,7 @@
         <div id="msg_desc">
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1269,7 +1269,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1279,7 +1279,7 @@
             </div>
             <div id="msg_detail" style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1288,7 +1288,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1298,7 +1298,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1307,7 +1307,7 @@
             </div>
             <div style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1317,7 +1317,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1326,7 +1326,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1340,15 +1340,15 @@
             </textarea>
             <div id="reply_msg">
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
+                    <span><img src="{{URL::asset('assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
                     <input type="file" class="upload" />
                 </div>
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
+                    <span><img src="{{URL::asset('assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
                     <input type="file" class="upload" />
                 </div>
                 <div id="reply">
-                    <a href="#"><img src="{{URL::asset('public/assets/registration/img/reply.png')}}"></a>
+                    <a href="#"><img src="{{URL::asset('assets/registration/img/reply.png')}}"></a>
                 </div>
             </div>
         </div>
@@ -1362,7 +1362,7 @@
         <div id="msg_desc">
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1371,7 +1371,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1381,7 +1381,7 @@
             </div>
             <div id="msg_detail" style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1390,7 +1390,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1400,7 +1400,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1409,7 +1409,7 @@
             </div>
             <div style="border-bottom:1px solid #c6c6c6">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1419,7 +1419,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     Rahul Despande<br/>
@@ -1428,7 +1428,7 @@
             </div>
             <div id="msg_detail">
                 <div id="profile_img">
-                    <img src="{{URL::asset('public/assets/registration/img/pp.jpg')}}">
+                    <img src="{{URL::asset('assets/registration/img/pp.jpg')}}">
                 </div>
                 <div id="profile_name_inner">
                     User<br/>
@@ -1442,15 +1442,15 @@
             </textarea>
             <div id="reply_msg">
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
+                    <span><img src="{{URL::asset('assets/registration/img/atach.png')}}">&nbsp;&nbsp;Add Ffile</span>
                     <input type="file" class="upload" />
                 </div>
                 <div class="fileUpload btn btn-primary">
-                    <span><img src="{{URL::asset('public/assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
+                    <span><img src="{{URL::asset('assets/registration/img/cam.png')}}">&nbsp;&nbsp;Add Photo</span>
                     <input type="file" class="upload" />
                 </div>
                 <div id="reply">
-                    <a href="#"><img src="{{URL::asset('public/assets/registration/img/reply.png')}}"></a>
+                    <a href="#"><img src="{{URL::asset('assets/registration/img/reply.png')}}"></a>
                 </div>
             </div>
         </div>

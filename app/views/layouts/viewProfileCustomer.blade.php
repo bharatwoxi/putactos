@@ -7,9 +7,9 @@
     <title>Profile</title>
 
     <!-- Bootstrap -->
-    <link href="{{URL::asset('public/assets/registration/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('public/assets/registration/css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('public/assets/registration/css/jquery.nstSlider.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/css/jquery.nstSlider.css')}}" rel="stylesheet">
 
 
 </head>
@@ -150,10 +150,10 @@
 
 @yield('content')
 @include('footer.index')
-<script src="{{URL::asset('public/assets/registration/js/jquery-1.11.0.min.js')}}"></script>
+<script src="{{URL::asset('assets/registration/js/jquery-1.11.0.min.js')}}"></script>
 <!-- 4. Add nstSlider.js after jQuery -->
-<script src="{{URL::asset('public/assets/registration/js/jquery.nstSlider.min.js')}}"></script>
-<script src="{{URL::asset('public/assets/registration/js/bootstrap.min.js')}}"></script>
+<script src="{{URL::asset('assets/registration/js/jquery.nstSlider.min.js')}}"></script>
+<script src="{{URL::asset('assets/registration/js/bootstrap.min.js')}}"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script>
     $('.nstSlider').nstSlider({

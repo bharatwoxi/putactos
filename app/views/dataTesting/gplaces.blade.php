@@ -9,7 +9,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
     <title>Laravel PHP Framework</title>
-    <script type="text/javascript" src="{{URL::asset('public/assets/dbTest/jquery/jquery-1.11.1.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('assets/dbTest/jquery/jquery-1.11.1.min.js')}}"></script>
     <script>
         $(document).ready(function(){
             //alert(1);

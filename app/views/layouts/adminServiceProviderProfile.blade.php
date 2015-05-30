@@ -15,12 +15,12 @@
     <title>Edit Your Information</title>
 
     <!-- Bootstrap -->
-    <link href="{{URL::asset('public/assets/registration/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('public/assets/registration/css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('public/assets/registration/css/styles.css')}}" media="all" rel="stylesheet">
-    <link href="{{URL::asset('public/assets/registration/css/edit_info.css')}}" media="all" rel="stylesheet">
-    <link href="{{URL::asset('public/assets/registration/css/bootstrap-slider.css')}}" media="all" rel="stylesheet">
-    <link href="{{URL::asset('public/assets/registration/datepicker/css/datepicker.css')}}" media="all" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/css/styles.css')}}" media="all" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/css/edit_info.css')}}" media="all" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/css/bootstrap-slider.css')}}" media="all" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/datepicker/css/datepicker.css')}}" media="all" rel="stylesheet">
     <style>
         /* Disclaimer: remove 'powered by Google' */
         .pac-container:after {
@@ -89,8 +89,8 @@
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="{{URL::asset('public/assets/registration/js/bootstrap.min.js')}}"></script>
-<script type='text/javascript' src="{{URL::asset('public/assets/registration/js/bootstrap-slider.js')}}"></script>
+<script src="{{URL::asset('assets/registration/js/bootstrap.min.js')}}"></script>
+<script type='text/javascript' src="{{URL::asset('assets/registration/js/bootstrap-slider.js')}}"></script>
 <script type='text/javascript'>
     $(document).ready(function() {
         /* Example 2 */
@@ -366,7 +366,7 @@
 //    });
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
-<script src="{{URL::asset('public/assets/registration/js/custom/google-place.js')}}"></script>
-<script src="{{URL::asset('public/assets/registration/datepicker/js/bootstrap-datepicker.js')}}"></script>
+<script src="{{URL::asset('assets/registration/js/custom/google-place.js')}}"></script>
+<script src="{{URL::asset('assets/registration/datepicker/js/bootstrap-datepicker.js')}}"></script>
 @include('toastr.index')
 </html>

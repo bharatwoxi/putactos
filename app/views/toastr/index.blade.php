@@ -1,5 +1,5 @@
-<link href="{{URL::asset('public/assets/registration/toastr/toastr.css')}}" rel="stylesheet" type="text/css" />
-<script src="{{URL::asset('public/assets/registration/toastr/toastr.js')}}"></script>
+<link href="{{URL::asset('assets/registration/toastr/toastr.css')}}" rel="stylesheet" type="text/css" />
+<script src="{{URL::asset('assets/registration/toastr/toastr.js')}}"></script>
 <script>
     toastr.options = {
         "closeButton": true,

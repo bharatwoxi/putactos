@@ -4,7 +4,7 @@
     <div class="container">
         <div class="col-sm-3 col-md-5 col-lg-12" >
             <div>
-                <a href="#" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('public/assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
+                <a href="#" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
             </div>
         </div><!-- navbar navbar-inverse navbar-static-top close-->
     </div> <!--Container close-->
@@ -22,14 +22,14 @@
     </div>
 </div><!-- End of Container Fluid-->
 <div class="clearfix"></div>
-<div class="container-fluid" style="background-image: url(../../../public/assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;padding-left:0">
+<div class="container-fluid" style="background-image: url(../../../assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;padding-left:0">
     <div class="col-sm-3 col-md-10 col-lg-12" style="padding:0">
         <div class="container" style="padding-left:0">
             <div id="msg_search"  class="col-sm-3 col-md-10 col-lg-12">
                 <div id="personal_detail" class="col-sm-12">
                     <div id="user_profile" class="col-sm-4 ">
                         <div class="col-md-12 col-xs-7 " id="profile_thumb">
-                            <img src="{{URL::to('public/uploads/userdata/customer')}}/{{ sha1($userData['systemUser']->id) }}/profile_image/{{ $userData['systemUser']->image_330by220 }}" class="img-responsive pull-left" style="margin:0 0 2%;height:220px;width:330px;">
+                            <img src="{{URL::to('uploads/userdata/customer')}}/{{ sha1($userData['systemUser']->id) }}/profile_image/{{ $userData['systemUser']->image_330by220 }}" class="img-responsive pull-left" style="margin:0 0 2%;height:220px;width:330px;">
                             @if($userExtrafile['status']=='success')
                                 @foreach($userExtrafile['files'] as $file)
                                     <img src="{{URL::to($userExtrafile['path'])}}/{{ $file['name'] }}" class="img-responsive pull-left" style=" margin:0 1.5% 1% 0;height:54px;width:77px;">

@@ -4,7 +4,7 @@
     <div class="container">
         <div class="col-sm-3 col-md-5 col-lg-12" >
             <div>
-                <a href="{{ URL::to('/') }}" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('public/assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
+                <a href="{{ URL::to('/') }}" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
             </div>
         </div><!-- navbar navbar-inverse navbar-static-top close-->
     </div> <!--Container close-->
@@ -28,7 +28,7 @@
 </div><!-- End of Container Fluid-->
 <div class="clearfix"></div>
 
-<div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;">
+<div class="container-fluid" style="background-image: url(../../assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;">
     <div class="col-sm-12 col-md-10 col-lg-12">
         <div class="container">
             <div id="msg_search"  class="col-sm-3 col-md-8 col-lg-8">
@@ -58,12 +58,12 @@
 <!--                                <input type="file" class="upload">-->
                             </div>
                             <div id="reply">
-                                <a href="javascript:void(0)" onclick="postNewMessage('{{$toUserId}}')"><img src="../../public/assets/registration/img/reply.png"></a>
+                                <a href="javascript:void(0)" onclick="postNewMessage('{{$toUserId}}')"><img src="../../assets/registration/img/reply.png"></a>
                             </div>
                             <span style="color:#F74D4D;font-weight:800;" id="character-message"></span>
                         </div>
                     </div>
-                    <span id="message-loader-up" style="display:none;"><img style="display:block;margin: auto auto;" src="{{URL::asset('public/assets/registration/img/message_ajax_loader.gif')}}"></span>
+                    <span id="message-loader-up" style="display:none;"><img style="display:block;margin: auto auto;" src="{{URL::asset('assets/registration/img/message_ajax_loader.gif')}}"></span>
                     <div id="message-div">
                         @if($userMessage!=null)
                         @foreach($userMessage as $user)
@@ -88,7 +88,7 @@
                         @endforeach
                         @endif
                     </div>
-                    <span id="message-loader-down" style="display:none;"><img style="display:block;margin: auto auto;" src="{{URL::asset('public/assets/registration/img/message_ajax_loader.gif')}}"></span>
+                    <span id="message-loader-down" style="display:none;"><img style="display:block;margin: auto auto;" src="{{URL::asset('assets/registration/img/message_ajax_loader.gif')}}"></span>
                 </div>
             </div>
         </div>

@@ -3,9 +3,9 @@
 <tr>
     <td class="fit">
         @if($user->user_role_id == 1)
-        <img class="user-pic" height="30" width="30" alt="img" src="{{URL::to('public/uploads/userdata/customer')}}/{{ sha1($user->id) }}/profile_image/{{ $user->profile_image }}"/>
+        <img class="user-pic" height="30" width="30" alt="img" src="{{URL::to('uploads/userdata/customer')}}/{{ sha1($user->id) }}/profile_image/{{ $user->profile_image }}"/>
         @else
-        <img class="user-pic" height="30" width="30"  alt="img" src="{{URL::to('public/uploads/userdata/service_provider')}}/{{ sha1($user->id) }}/profile_image/{{ $user->profile_image }}"/>
+        <img class="user-pic" height="30" width="30"  alt="img" src="{{URL::to('uploads/userdata/service_provider')}}/{{ sha1($user->id) }}/profile_image/{{ $user->profile_image }}"/>
         @endif
     </td>
     <td>
