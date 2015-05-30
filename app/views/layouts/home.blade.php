@@ -46,7 +46,7 @@
 <body>
     @yield('content')
     <!--footer-->
-    <div class="col-lg-12" style="background-image:url(../../public/assets/registration/img/background.png); background-repeat:repeat;"> <!--Footer start-->
+    <div class="col-lg-12" style="background-image:url(../../assets/registration/img/background.png); background-repeat:repeat;"> <!--Footer start-->
         <div class="container">
             <div class="row" style="margin:30px 0">
                 <div class="col-md-3">

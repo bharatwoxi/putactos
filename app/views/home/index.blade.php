@@ -34,10 +34,10 @@
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content" style="border-radius: 15px;">
-                            <div class="modal-header" style="background: url(../../public/assets/registration/img/background1.png); background-repeat: repeat; border-top-right-radius: 10px; border-top-left-radius: 10px; border-bottom: none;">
+                            <div class="modal-header" style="background: url(../../assets/registration/img/background1.png); background-repeat: repeat; border-top-right-radius: 10px; border-top-left-radius: 10px; border-bottom: none;">
                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                             </div>
-                            <div class="modal-body" style="background: url(../../public/assets/registration/img/background1.png);
+                            <div class="modal-body" style="background: url(../../assets/registration/img/background1.png);
 background-repeat: repeat;background-repeat: repeat; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;">
                                 <div class="container-fluid">
                                     <div class="container">
@@ -86,11 +86,11 @@ background-repeat: repeat;background-repeat: repeat; border-bottom-right-radius:
                 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header" style="background: url(../../public/assets/registration/img/background1.png);
+                            <div class="modal-header" style="background: url(../../assets/registration/img/background1.png);
 background-repeat: repeat; border-top-right-radius: 10px; border-top-left-radius: 10px; border-bottom: none;">
                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                             </div>
-                            <div class="modal-body" style="background: url(../../public/assets/registration/img/background1.png);
+                            <div class="modal-body" style="background: url(../../assets/registration/img/background1.png);
 background-repeat: repeat;
  border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; border-bottom: none;">
                                 <div class="container-fluid">
@@ -156,9 +156,9 @@ background-repeat: repeat;
                 <div class=""><a href="#" class="da-link" style="margin-top: 60px;"><img src="img/join.png" width="180" style="border:2px solid #fff;"></a></div>
             </div>
         </div>-->
-        <div class="da-slide" style="background:url(../../public/assets/registration/slider/images/slide.png) repeat;">
+        <div class="da-slide" style="background:url(../../assets/registration/slider/images/slide.png) repeat;">
 
-            <div style="background:url(../../public/assets/registration/slider/images/transperant.png) no-repeat; min-height:200px;margin: 70px 0px; width:100%;">
+            <div style="background:url(../../assets/registration/slider/images/transperant.png) no-repeat; min-height:200px;margin: 70px 0px; width:100%;">
                 <h2 style="font-family:Roboto Th; color:#000; font-size:24px;text-shadow: 0px 0px 1px #BABABA; text-transform:uppercase;"><strong>Get exactly what</strong></h2>
                 <p style="font-family:Roboto Th; color:#000;">
                     <span style="font-family:Roboto Th; font-size:54px; color:#fff;text-shadow: -2px 1px 3px #000000;text-transform:uppercase;">you</span><br>
@@ -170,8 +170,8 @@ background-repeat: repeat;
             </div>
         </div>
 
-        <div class="da-slide" style="background:url(../../public/assets/registration/slider/images/slide.png) repeat;">
-            <div style="background:url(../../public/assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
+        <div class="da-slide" style="background:url(../../assets/registration/slider/images/slide.png) repeat;">
+            <div style="background:url(../../assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
                 <h2 style="font-family:Roboto Th; color:#000; font-size:24px;text-shadow: 0px 0px 1px #BABABA;text-transform:uppercase;"><strong>You only see</strong></h2>
                 <p style="font-family:Roboto Th; color:#000;">
                     <span style="font-family:Roboto Th; font-size:54px; color:#fff;text-shadow: -2px 1px 3px #000000;text-transform:uppercase;">people</span><br>
@@ -181,8 +181,8 @@ background-repeat: repeat;
 
             <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
         </div>
-        <div class="da-slide" style="background:url(../../public/assets/registration/slider/images/slide.png) repeat;">
-            <div style="background:url(../../public/assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
+        <div class="da-slide" style="background:url(../../assets/registration/slider/images/slide.png) repeat;">
+            <div style="background:url(../../assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
                 <h2 style="font-family:Roboto Th; color:#000; font-size:24px;text-shadow: 0px 0px 1px #BABABA;text-transform:uppercase;"><strong>Leave</strong></h2>
                 <p style="font-family:Roboto Th; color:#000;">
                     <span style="font-family:Roboto Th; font-size:54px; color:#fff;text-shadow: -2px 1px 3px #000000;text-transform:uppercase;">no trace</span><br>
@@ -192,8 +192,8 @@ background-repeat: repeat;
 
             <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
         </div>
-        <div class="da-slide" style="background:url(../../public/assets/registration/slider/images/slide.png) repeat; ">
-            <div style="background:url(../../public/assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
+        <div class="da-slide" style="background:url(../../assets/registration/slider/images/slide.png) repeat; ">
+            <div style="background:url(../../assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
                 <h2 style="font-family:Roboto Th; color:#000; font-size:24px;text-shadow: 0px 0px 1px #BABABA;text-transform:uppercase;"><strong>Straight</strong></h2>
                 <p style="font-family:Roboto Th; color:#000;">
                     <span style="font-family:Roboto Th; font-size:54px; color:#fff;text-shadow: -2px 1px 3px #000000;text-transform:uppercase;">to the </span><br>
@@ -205,8 +205,8 @@ background-repeat: repeat;
         </div>
 
 
-        <div class="da-slide" style="background:url(../../public/assets/registration/slider/images/slide.png) repeat; ">
-            <div style="background:url(../../public/assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
+        <div class="da-slide" style="background:url(../../assets/registration/slider/images/slide.png) repeat; ">
+            <div style="background:url(../../assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
                 <h2 style="font-family:Roboto Th; color:#000; font-size:24px;text-shadow: 0px 0px 1px #BABABA;text-transform:uppercase;"><strong>No</strong></h2>
                 <p style="font-family:Roboto Th; color:#000;">
                     <span style="font-family:Roboto Th; font-size:54px; color:#fff;text-shadow: -2px 1px 3px #000000;text-transform:uppercase;">disappointments</span><br>
@@ -229,7 +229,7 @@ background-repeat: repeat;
 
 
 </div> <!--slider ends here-->
-<div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png);background-repeat: repeat;">
+<div class="container-fluid" style="background-image: url(../../assets/registration/img/background1.png);background-repeat: repeat;">
     <div class="container" style="">
 
         <!--<div class="row">
@@ -307,7 +307,7 @@ background-repeat: repeat;
 </div>
 
 
-<div class="container-fluid" style="background-image:url(../../public/assets/registration/img/grp_people.png); width:100%; max-width:1600px; height:655px;">
+<div class="container-fluid" style="background-image:url(../../assets/registration/img/grp_people.png); width:100%; max-width:1600px; height:655px;">
     <!--<img src="img/grp_people.png" class="img-responsive">-->
 
     <img src="{{ URL::to('assets/registration/img/matches.png')}}" class="img-responsive center-block" style="padding-top: 50px;">
@@ -356,7 +356,7 @@ background-repeat: repeat;
 </div>
 
 
-<div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png);background-repeat: repeat;">
+<div class="container-fluid" style="background-image: url(../../assets/registration/img/background1.png);background-repeat: repeat;">
 
     <p class="text-center center-block" style="font-family: calibri;font-size: 60px; margin:0">
         GET PUTACTOS NOW
@@ -390,11 +390,11 @@ background-repeat: repeat;
 </div>
 
 
-<div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png);background-repeat: repeat; padding:10px 0"></div>
+<div class="container-fluid" style="background-image: url(../../assets/registration/img/background1.png);background-repeat: repeat; padding:10px 0"></div>
 
 
 <div class="container-fluid" style="background-color: #b13935;">
-    <div class="container" style="background:url(../../public/assets/registration/img/all_grp_people.png); width:100%; max-width:1378px; height:510px;">
+    <div class="container" style="background:url(../../assets/registration/img/all_grp_people.png); width:100%; max-width:1378px; height:510px;">
 
         <div class="col-md-3 col-xs-offset-1" style="padding-top:40px;">
 
@@ -427,7 +427,7 @@ background-repeat: repeat;
     </div>
 </div>
 
-<div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png);background-repeat: repeat;">
+<div class="container-fluid" style="background-image: url(../../assets/registration/img/background1.png);background-repeat: repeat;">
     <div class="container" style="padding: 50px 0px;">
         <div class="row">
             <div class="col-md-6">
@@ -454,7 +454,7 @@ background-repeat: repeat;
     </div>
 </div>
 @if(!Auth::check())
-<div class="container-fluid" style="background-image: url(../../public/assets/registration/img/blacl_strip.png);background-repeat: repeat;height: 286px;">
+<div class="container-fluid" style="background-image: url(../../assets/registration/img/blacl_strip.png);background-repeat: repeat;height: 286px;">
 
     <p style="text-align:center; font-family:Roboto Th; font-size:54px;color: #fff;padding-top: 70px;">
         SIGN UP NOW
@@ -468,8 +468,8 @@ background-repeat: repeat;
 </div>
 @endif
 
-<div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png);background-repeat: repeat; background-color:#dbdbdb;">
-    <div class="container" style="padding:0; background:url(../../public/assets/registration/img/bg_pelple.png); width:100%; max-width:1327px; min-height:944px;margin-top: 80px;">
+<div class="container-fluid" style="background-image: url(../../assets/registration/img/background1.png);background-repeat: repeat; background-color:#dbdbdb;">
+    <div class="container" style="padding:0; background:url(../../assets/registration/img/bg_pelple.png); width:100%; max-width:1327px; min-height:944px;margin-top: 80px;">
         <div class="container">
 
             <div class="col-lg-6" style="padding-top: 100px;">
