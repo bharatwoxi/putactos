@@ -12,7 +12,7 @@
 <div class="container">
     <div class="col-lg-12" >
         <div>
-            <a href="#" class="navbar-static pull-left" style="margin:0"><img src="{{ URL::to('/public/assets/registration/img/Puktatos 3 b.png') }}" class="img-responsive" width="150"  /></a>
+            <a href="#" class="navbar-static pull-left" style="margin:0"><img src="{{ URL::to('assets/registration/img/Puktatos 3 b.png') }}" class="img-responsive" width="150"  /></a>
             <div class="pull-right">
                 @if(!Auth::check())
                 <p  style="padding-top: 15px;">Not a Member?
@@ -71,7 +71,7 @@ background-repeat: repeat;background-repeat: repeat; border-bottom-right-radius:
                                                     <label class="radio-inline">
                                                         <input type="radio" name="looking_for" id="inlineRadio2" value="both" checked="checked"> Both
                                                     </label>
-                                                    <a href="#" target="_blank" style="text-decoration:none"><input type="image" src="{{ URL::to('/public/assets/registration/img/Go.png')}}" class="img-responsive" style="width:60px; padding-top:20px">
+                                                    <a href="#" target="_blank" style="text-decoration:none"><input type="image" src="{{ URL::to('assets/registration/img/Go.png')}}" class="img-responsive" style="width:60px; padding-top:20px">
                                                     </a>
                                                 </div>
                                             </div>
@@ -120,7 +120,7 @@ background-repeat: repeat;
                                             </div><br/> <div class="clearfix"></div>
                                             <div class="form-group">
                                                 <div class="col-sm-5" style="overflow: hidden; margin-left: 10px;z-index: 100;">
-                                                    <input type="image" src="{{ URL::to('/public/assets/registration/img/LOgin.png')}}" class="img-responsive center-block" style="width:70px; margin-top: 20px;cursor:pointer;" id="login-image">
+                                                    <input type="image" src="{{ URL::to('assets/registration/img/LOgin.png')}}" class="img-responsive center-block" style="width:70px; margin-top: 20px;cursor:pointer;" id="login-image">
                                                 </div>
                                             </div>
                                             </form>
@@ -165,7 +165,7 @@ background-repeat: repeat;
                     <span style="font-family:Roboto Th; font-size:32px;color:#000;text-shadow: 0px 0px 1px #BABABA;text-transform:uppercase;"><strong>want when</strong></span><br>
                     <strong>you want it</strong></p><br>
                 @if(Auth::guest())
-                <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('/public/assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
+                <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
                 @endif
             </div>
         </div>
@@ -179,7 +179,7 @@ background-repeat: repeat;
                     <strong>nearby, and are up for a date</strong></p><br>
             </div>
 
-            <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('/public/assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
+            <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
         </div>
         <div class="da-slide" style="background:url(../../public/assets/registration/slider/images/slide.png) repeat;">
             <div style="background:url(../../public/assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
@@ -190,7 +190,7 @@ background-repeat: repeat;
                     <strong>Putactos is a great way to find real people</strong></p><br>-->
             </div>
 
-            <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('/public/assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
+            <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
         </div>
         <div class="da-slide" style="background:url(../../public/assets/registration/slider/images/slide.png) repeat; ">
             <div style="background:url(../../public/assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
@@ -201,7 +201,7 @@ background-repeat: repeat;
                     <!--  <strong>Putactos is a great way to find real people</strong></p><br>-->
             </div>
 
-            <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('/public/assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
+            <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
         </div>
 
 
@@ -214,7 +214,7 @@ background-repeat: repeat;
                      <strong>Putactos is a great way to find real people</strong></p><br>-->
             </div>
 
-            <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('/public/assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a>
+            <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a>
 
 
             </div>
@@ -246,14 +246,14 @@ background-repeat: repeat;
         <div class="row">
 
             <div class="col-md-3" style="margin: 50px 0px;">
-                <img src="{{ URL::to('/public/assets/registration/img/tv.png')}}" class="img-responsive center-block">
+                <img src="{{ URL::to('assets/registration/img/tv.png')}}" class="img-responsive center-block">
             </div>
 
 
 
 
             <div class="col-md-3" style="text-align:center; margin-top:250px;">
-                <img src="{{ URL::to('/public/assets/registration/img/right_mark_lgo.png')}}">
+                <img src="{{ URL::to('assets/registration/img/right_mark_lgo.png')}}">
 
                 <h3><strong>SAFE</strong></h3>
                 <p style="font-weight: 600;">
@@ -265,13 +265,13 @@ background-repeat: repeat;
 
 
             <div class="col-md-3" style="margin-top:70px;">
-                <img src="{{ URL::to('/public/assets/registration/img/apple.png')}}" width="235" class="img-responsive center-block">
+                <img src="{{ URL::to('assets/registration/img/apple.png')}}" width="235" class="img-responsive center-block">
             </div>
 
 
 
             <div class="col-md-3" style="text-align:center; margin-top:80px;">
-                <img src="{{ URL::to('/public/assets/registration/img/gift.png')}}" style="margin-right: 100px;">
+                <img src="{{ URL::to('assets/registration/img/gift.png')}}" style="margin-right: 100px;">
 
 
                 <p style="font-weight: 600;">
@@ -291,7 +291,7 @@ background-repeat: repeat;
                     Using Putactos is easy, fast<br> and fun. In few simple clicks<br> you will be ready
                     to meet<br> thousands of people across<br> the world and in locality<br> near you
                 </p>
-                <img src="{{ URL::to('/public/assets/registration/img/tea.png')}}" style="margin: -50px 0 0 200px;">
+                <img src="{{ URL::to('assets/registration/img/tea.png')}}" style="margin: -50px 0 0 200px;">
             </div>
 
         </div>
@@ -310,7 +310,7 @@ background-repeat: repeat;
 <div class="container-fluid" style="background-image:url(../../public/assets/registration/img/grp_people.png); width:100%; max-width:1600px; height:655px;">
     <!--<img src="img/grp_people.png" class="img-responsive">-->
 
-    <img src="{{ URL::to('/public/assets/registration/img/matches.png')}}" class="img-responsive center-block" style="padding-top: 50px;">
+    <img src="{{ URL::to('assets/registration/img/matches.png')}}" class="img-responsive center-block" style="padding-top: 50px;">
 
 
 
@@ -320,7 +320,7 @@ background-repeat: repeat;
     </p>
 
 
-    <img src="{{ URL::to('/public/assets/registration/img/play_enconter.png')}}" class="img-responsive center-block" style="padding-top:50px;">
+    <img src="{{ URL::to('assets/registration/img/play_enconter.png')}}" class="img-responsive center-block" style="padding-top:50px;">
 
 </div>
 
@@ -328,12 +328,12 @@ background-repeat: repeat;
 
     <div class="col-md-3 col-xs-offset-1" style="padding-top:40px;">
 
-        <img src="{{ URL::to('/public/assets/registration/img/hand_phone.png')}}" class="img-responsive">
+        <img src="{{ URL::to('assets/registration/img/hand_phone.png')}}" class="img-responsive">
 
     </div>
     <div class="col-md-7" style="padding-top: 100px;">
 
-        <img src="{{ URL::to('/public/assets/registration/img/chat_anywhere.png')}}" class="img-responsive pull-left center-block">
+        <img src="{{ URL::to('assets/registration/img/chat_anywhere.png')}}" class="img-responsive pull-left center-block">
 
 
 
@@ -350,7 +350,7 @@ background-repeat: repeat;
 
     <div class="col-md-5" style="padding-top: 50px;">
 
-        <img src="{{ URL::to('/public/assets/registration/img/download.png')}}" class="img-responsive center-block">
+        <img src="{{ URL::to('assets/registration/img/download.png')}}" class="img-responsive center-block">
 
     </div>
 </div>
@@ -373,17 +373,17 @@ background-repeat: repeat;
     <div class="container">
         <div class="col-md-4" style="padding: 50px 0px;">
 
-            <img src="{{ URL::to('/public/assets/registration/img/android.png')}}" class="img-responsive center-block">
+            <img src="{{ URL::to('assets/registration/img/android.png')}}" class="img-responsive center-block">
 
         </div>
         <div class="col-md-4" style="padding: 50px 0px;">
 
-            <img src="{{ URL::to('/public/assets/registration/img/apple_logo.png')}}" class="img-responsive center-block">
+            <img src="{{ URL::to('assets/registration/img/apple_logo.png')}}" class="img-responsive center-block">
 
         </div>
         <div class="col-md-4" style="padding: 50px 0px;">
 
-            <img src="{{ URL::to('/public/assets/registration/img/blackberry.png')}}" class="img-responsive center-block">
+            <img src="{{ URL::to('assets/registration/img/blackberry.png')}}" class="img-responsive center-block">
 
         </div>
     </div>
@@ -398,12 +398,12 @@ background-repeat: repeat;
 
         <div class="col-md-3 col-xs-offset-1" style="padding-top:40px;">
 
-            <img src="{{ URL::to('/public/assets/registration/img/profile.png')}}" class="img-responsive">
+            <img src="{{ URL::to('assets/registration/img/profile.png')}}" class="img-responsive">
 
         </div>
         <div class="col-md-8 pull-right" style="padding-top: 100px;">
 
-            <img src="{{ URL::to('/public/assets/registration/img/people_nearby.png')}}" class="img-responsive pull-left">
+            <img src="{{ URL::to('assets/registration/img/people_nearby.png')}}" class="img-responsive pull-left">
 
 
 
@@ -420,7 +420,7 @@ background-repeat: repeat;
 
         <div class="col-md-5" style="padding-top: 50px;">
 
-            <img src="{{ URL::to('/public/assets/registration/img/find.png')}}" class="img-responsive center-block">
+            <img src="{{ URL::to('assets/registration/img/find.png')}}" class="img-responsive center-block">
 
         </div>
 
@@ -432,13 +432,13 @@ background-repeat: repeat;
         <div class="row">
             <div class="col-md-6">
 
-                <img src="{{ URL::to('/public/assets/registration/img/six_icons.png')}}" class="img-responsive">
+                <img src="{{ URL::to('assets/registration/img/six_icons.png')}}" class="img-responsive">
 
             </div>
 
             <div class="col-md-6" style="padding-top:40px;">
 
-                <img src="{{ URL::to('/public/assets/registration/img/share_intrest.png')}}" class="img-responsive">
+                <img src="{{ URL::to('assets/registration/img/share_intrest.png')}}" class="img-responsive">
 
 
                 <p class="pull-left" style="font-family:Roboto Th; padding-left:30px;font-size: 32px;line-height: 36px;padding-top: 10px;color: #b73c34;
@@ -474,7 +474,7 @@ background-repeat: repeat;
 
             <div class="col-lg-6" style="padding-top: 100px;">
 
-                <img src="{{ URL::to('/public/assets/registration/img/testi1.png')}}" class="img-responsive">
+                <img src="{{ URL::to('assets/registration/img/testi1.png')}}" class="img-responsive">
 
             </div>
             <div class="col-md-6" style="padding-top: 90px;">
@@ -512,7 +512,7 @@ background-repeat: repeat;
             </div>
             <div class="col-lg-6" style="padding-top: 100px;">
 
-                <img src="{{ URL::to('/public/assets/registration/img/testi2.png')}}" class="img-responsive">
+                <img src="{{ URL::to('assets/registration/img/testi2.png')}}" class="img-responsive">
 
             </div>
 
