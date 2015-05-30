@@ -211,7 +211,7 @@ class CommonController extends BaseController {
             if(!file_exists($ImageUploadpath)){
                 File::makeDirectory($ImageUploadpath, $mode = 0777,true,true);
                 //chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId), 0777);
-                chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."extra_images/", 0777);
+                @chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."extra_images/", 0777);
             }
         }
         if(Auth::User()->user_role_id==2){ //Service Provider
@@ -219,19 +219,18 @@ class CommonController extends BaseController {
             if(!file_exists($ImageUploadpath)){
                 File::makeDirectory($ImageUploadpath, $mode = 0777,true,true);
                 //chmod($_ENV['SP_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId), 0777);
-                chmod($_ENV['SP_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."extra_images/", 0777);
+                @chmod($_ENV['SP_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."extra_images/", 0777);
             }
         }
         $extension = Input::file('file')->getClientOriginalExtension();
         $filename = Input::file('file')->getClientOriginalName();//sha1($systemUserInsertedId.time()).".{$extension}";
         Input::file('file')->move($ImageUploadpath, $filename);
         if(Auth::User()->user_role_id==1){ //Customer
-            chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."extra_images/", 0777);
+            @chmod($_ENV['CUSTOMER_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."extra_images/", 0777);
         }
         if(Auth::User()->user_role_id==2){ //Service Provider
-            chmod($_ENV['SP_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."extra_images/", 0777);
+            @chmod($_ENV['SP_FILE_UPLOAD_PATH']."/".sha1($systemUserInsertedId)."/"."extra_images/", 0777);
         }
-
         DB::table('customer_additional_photos')->insert(
             array(
                 'system_user_id'  =>$systemUserInsertedId,
