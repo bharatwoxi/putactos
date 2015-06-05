@@ -480,6 +480,7 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
               thisDropzone.options.addedfile.call(thisDropzone, mockFile);
               thisDropzone.options.thumbnail.call(thisDropzone, mockFile, value.path+"/"+value.name);
               //this._addFilesFromItems(mockFile);
+              console.log(value.path);
               //thisDropzone.options.addedfile.call(thisDropzone, mockFile);
 
           });
