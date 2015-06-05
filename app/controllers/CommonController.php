@@ -278,6 +278,10 @@ class CommonController extends BaseController {
         }else{
             $file['status'] = 'fail';
         }
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+        header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Request-With');
+        header('Access-Control-Allow-Credentials: true');
         echo json_encode($file);
     }
 }
