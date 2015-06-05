@@ -469,9 +469,7 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
       thisDropzone = this;
       <!-- 4 -->
       $.get('http://putactos-beta.woxiapps.com/show-multiple-images', function(data) {
-          alert(1);
         var json = $.parseJSON(data);
-        console.log(json.files);
           <!-- 5 -->
           $.each(json.files, function(key,value){
               thisDropzone.options.maxFiles = thisDropzone.options.maxFiles -1;
@@ -481,7 +479,6 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
               thisDropzone.options.addedfile.call(thisDropzone, mockFile);
               thisDropzone.options.thumbnail.call(thisDropzone, mockFile, value.path+"/"+value.name);
               //this._addFilesFromItems(mockFile);
-              console.log(value.path);
               //thisDropzone.options.addedfile.call(thisDropzone, mockFile);
 
           });
