@@ -469,6 +469,7 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
       thisDropzone = this;
       <!-- 4 -->
       $.get('http://putactos.woxiapps.com/show-multiple-images', function(data) {
+          alert(1);
         var json = $.parseJSON(data);
         console.log(json.files);
           <!-- 5 -->
