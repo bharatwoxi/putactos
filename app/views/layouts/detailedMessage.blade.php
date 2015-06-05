@@ -193,7 +193,8 @@
         count: 'up',
         goal: 150,
         append: false,
-        target: '#character-message'
+        target: '#character-message',
+        css:'margin-left:10px'
     });
     function postNewMessage(toUserId){
         var message = $.trim($('#msg_area').val());
