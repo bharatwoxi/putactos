@@ -36,8 +36,8 @@
                                 @endforeach
                             @endif
                         </div>
-                        <div id="star_rating" class="pull-left col-xs-12" >
-                            <a href="{{ URL::to('/user/editprofile') }}" style="padding-right:20px;"><button class="btn btn-small btn-danger btn-inverse" style="width: 100px;border: 2px solid #fa4d51;padding: 2px 6px;box-shadow: none;text-transform: uppercase;font-size: 16px;text-align: center;font-weight: bold;color: #fff;border-radius: 5px;float: left;background-color: #fa4d51;height: 25px;margin: 0 0 0 20px;outline:none" type="submit">{{ trans('peopleNearBy.EDITPROFILE') }}</button></a>
+                        <div id="star_rating">
+                            <a href="{{ URL::to('/user/editprofile') }}"><button class="btn btn-small btn-danger btn-inverse" style="width: 100px;border: 2px solid #fa4d51;padding: 2px 6px;box-shadow: none;text-transform: uppercase;font-size: 16px;text-align: center;font-weight: bold;color: #fff;border-radius: 5px;float: left;background-color: #fa4d51;height: 25px;outline:none" type="submit">{{ trans('peopleNearBy.EDITPROFILE') }}</button></a>
                         </div>
                         <div id="profile_details" class="col-sm-10 col-xs-12">
                             <div id="profile_name">
