@@ -50,7 +50,7 @@
                                 @endforeach
                             @endif
                         </div>
-                        <div id="star_rating" class="pull-left col-xs-12" >
+                        <div id="star_rating" >
                             <input id="input-2b" value="{{ $userData['averageHeartRating'] }}" readonly="true" type="number" class="rating form-control hide original_star" min="0" max="5" step="0.5" data-size="xs" data-symbol="" data-default-caption="{rating} hearts" data-star-captions="{}">
                         </div>
                         <div id="star_rating">
