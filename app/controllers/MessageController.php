@@ -297,10 +297,10 @@ class MessageController extends BaseController {
                 $userListingForMessages[$i]['name'] = ucfirst($useData->user_first_name).' '.ucfirst($useData->user_last_name);
 
                 if($useData->user_role_id==1){
-                    $userListingForMessages[$i]['profilePicture'] = 'public/uploads/userdata/customer'."/".sha1($useData->id)."/"."profile_image/".$useData->profile_image;
+                    $userListingForMessages[$i]['profilePicture'] = 'uploads/userdata/customer'."/".sha1($useData->id)."/"."profile_image/".$useData->profile_image;
                 }
                 if($useData->user_role_id==2){
-                    $userListingForMessages[$i]['profilePicture'] = 'public/uploads/userdata/service_provider'."/".sha1($useData->id)."/"."profile_image/".$useData->profile_image;
+                    $userListingForMessages[$i]['profilePicture'] = 'uploads/userdata/service_provider'."/".sha1($useData->id)."/"."profile_image/".$useData->profile_image;
                 }
                 $userListingForMessages[$i]['message'] = mb_strimwidth($message,0,15,"...");
                 $userListingForMessages[$i]['day'] = $getDayFromDate;
@@ -349,11 +349,11 @@ class MessageController extends BaseController {
             }
             $userMessage[$i]['name'] = ucwords($user->user_first_name.' '.$user->user_last_name);
             if($user->user_role_id==1){
-                $userMessage[$i]['image'] = 'public/uploads/userdata/customer'."/".sha1($user->id)."/"."profile_image/".$user->profile_image;
+                $userMessage[$i]['image'] = 'uploads/userdata/customer'."/".sha1($user->id)."/"."profile_image/".$user->profile_image;
                 $userMessage[$i]['role'] = 'customer';
             }
             if($user->user_role_id==2){
-                $userMessage[$i]['image'] = 'public/uploads/userdata/service_provider'."/".sha1($user->id)."/"."profile_image/".$user->profile_image;
+                $userMessage[$i]['image'] = 'uploads/userdata/service_provider'."/".sha1($user->id)."/"."profile_image/".$user->profile_image;
                 $userMessage[$i]['role'] = 'service_provider';
             }
             $userMessage[$i]['message'] = $message['message'];
