@@ -4,4 +4,5 @@
 .idea/
 /public/uploads/
 public/phpmyadmin
+xyz
 #app/storage/debugbar/
