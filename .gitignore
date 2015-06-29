@@ -3,4 +3,6 @@
 .env.php
 .idea/
 /public/uploads/
+xyz
+public/phpmyadmin
 #app/storage/debugbar/
