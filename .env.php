@@ -1,4 +1,5 @@
 <?php
+
 return array(
     'DB_HOST' => 'localhost',
     'DB_UNAME' => 'root',
