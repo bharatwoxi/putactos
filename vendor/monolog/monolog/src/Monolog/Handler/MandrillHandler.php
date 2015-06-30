@@ -56,13 +56,16 @@ class MandrillHandler extends MailHandler
 
         curl_setopt($ch, CURLOPT_URL, 'https://mandrillapp.com/api/1.0/messages/send-raw.json');
         curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
             'key' => $this->apiKey,
             'raw_message' => (string) $message,
             'async' => false,
         )));
 
-        curl_exec($ch);
+        if (curl_exec($ch) === false) {
+            throw new \RuntimeException(sprintf('Curl error (code %s): %s', curl_errno($ch), curl_error($ch)));
+        }
         curl_close($ch);
     }
 }
