@@ -2,7 +2,7 @@
 .env.*.php
 .env.php
 .idea/
-/public/uploads/
+public/uploads/
 xyz
 public/phpmyadmin
-#app/storage/debugbar/
+app/storage/
