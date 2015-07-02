@@ -15,10 +15,12 @@
     <title>PEOPLE NEARBY</title>
 
     <!-- Bootstrap -->
-    <link href="{{URL::asset('public/assets/registration/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('public/assets/registration/css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('public/assets/registration/css/styles.css')}}" media="all" rel="stylesheet">
-    <script src="{{URL::asset('public/assets/registration/js/modernizr.min.js')}}"></script>
+    <link href="{{URL::asset('assets/registration/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/css/styles.css')}}" media="all" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/css/people_near_en.css')}}" media="all" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/css/people_near_by_slyder.css')}}" media="all" rel="stylesheet">
+    <script src="{{URL::asset('assets/registration/js/modernizr.min.js')}}"></script>
 
 </head>
 <style type="text/css">
@@ -52,7 +54,7 @@
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-        background: transparent url(../../public/assets/registration/img/arrow.png) no-repeat right center;
+        background: transparent url(../../assets/registration/img/arrow.png) no-repeat right center;
         left: -5px!important;
     }
     .mini_nav a{
@@ -86,12 +88,14 @@
 @yield('content')
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="{{URL::asset('public/assets/registration/js/jquery.min.js')}}"></script>
+<script src="{{URL::asset('assets/registration/js/jquery.min.js')}}"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{{URL::asset('public/assets/registration/js/bootstrap.min.js')}}"></script>
-<script src="{{URL::asset('public/assets/registration/js/jquery-1.10.2.min.js')}}"></script>
-<script src="{{URL::asset('public/assets/registration/js/plugin.js')}}"></script>
-<script src="{{URL::asset('public/assets/registration/js/main.js')}}"></script>
+<script src="{{URL::asset('assets/registration/js/bootstrap.min.js')}}"></script>
+<!--<script src="{{URL::asset('assets/registration/js/jquery-1.10.2.min.js')}}"></script>-->
+<script src="{{URL::asset('assets/registration/js/plugin.js')}}"></script>
+<script src="{{URL::asset('assets/registration/js/main.js')}}"></script>
+<script src="{{URL::asset('assets/registration/js/jquery.min.js')}}"></script>
+<script type='text/javascript' src="{{URL::asset('assets/registration/js/bootstrap-slider.js')}}"></script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
 <script type="text/javascript">
     var geocoder;
@@ -125,17 +129,18 @@
                 if(json_data=='Geocoder failed'){
                     alert(1);
                 }else{
-                    //results.forEach(function(entry) {
-                            <?php
-                            /*
-                            k:lat
-                            D:long
-                            */
-                            ?>
-                        getUserData(latlng.k,latlng.D);
-                    //});
+                    <?php
+                    /*
+                    k:lat
+                    D:long
+                    */
+                    ?>
+                    var latlogAfterParse = [ ];
+                    for (var prop in latlng) {
+                        latlogAfterParse.push(latlng[prop]);
+                    }
 
-
+                    getUserData(latlogAfterParse[0],latlogAfterParse[1]);
                 }
                 if (results[1]) {
                     //formatted address
@@ -198,7 +203,7 @@
                 //$(".LoaderImage").css("display", "block");
                 var skip = $('#skip').val();
                 var take = $('#take').val();
-                var isFilter = $('#isFilter').val();
+                var isFilter = $('#isFilter1').val();
                 $('#skip').remove();
                 $('#take').remove();
                 $('#isDataAvailable').remove();
@@ -239,12 +244,12 @@
     $(document).ready(function(){
         $('#advanceSearch').submit(function(event){
             event.preventDefault();
-            $('#isFilter').val(1);
             var searchFilters = $('#advanceSearch').serializeArray();
             var hips = 0;
             var bust = 0;
             var waist = 0;
-            var cup = 0;
+            var penis = 0;
+            //var cup = 0;
             if($('#hips').val()!=''){
                 hips = $('#hips').val();
             }
@@ -254,10 +259,13 @@
             if($('#waist').val()!=''){
                 waist = $('#waist').val();
             }
-            if($('#cup').val()!=''){
-                cup = $('#cup').val();
+//            if($('#cup').val()!=''){
+//                cup = $('#cup').val();
+//            }
+            if($('#penis').val()!=''){
+                penis = $('#penis').val();
             }
-            searchFilters.push({name: 'hips', value:hips },{name: 'bust', value: bust},{name: 'waist', value: waist},{name: 'cup', value: cup},{name: 'isFilter', value:1},{name: 'isScroll', value:0},{name: 'skip', value:0},{name: 'take', value:3});
+            searchFilters.push({name: 'hips', value:hips },{name: 'bust', value: bust},{name: 'waist', value: waist},{name: 'penis', value: penis},{name: 'isFilter', value:1},{name: 'isScroll', value:0},{name: 'skip', value:0},{name: 'take', value:3});
             $("#loaderImage").css("display", "block");
             $.ajax({
                 type: "GET",
@@ -276,13 +284,23 @@
                 }
             });
         });
+        $("#hips, #bust, #waist, #penis").slider({});
+        $(".gender_male").click(function() {
+            //var value = $("#gender_male").val();
+            $('#women_only').hide();
+            $('#men_only').show();
+        });
+        $(".gender_female").click(function() {
+            //var value = $("#gender_female").val();
+            $('#women_only').show();
+            $('#men_only').hide();
+        });
     });
 </script>
 
 <script>
     // This example displays an address form, using the autocomplete feature
     // of the Google Places API to help users fill in the information.
-
     var placeSearch, autocomplete;
     var componentForm = {
         street_number: 'short_name',
@@ -319,11 +337,17 @@
         /* Get Geolocation */
         var addressGeoCode = place.geometry.location;
         $('#selectedLocation').html(obj);
-        getUserData(addressGeoCode.k,addressGeoCode.D);
+        var latlogAfterParse = [ ];
+        for (var prop in addressGeoCode) {
+            latlogAfterParse.push(addressGeoCode[prop]);
+        }
+
+        getUserData(latlogAfterParse[0],latlogAfterParse[1]);
         $('#currentLocation').val('');
     }
     initializeGetLocation();
     initializeAutoSuggest();
 </script>
+@include('toastr.index')
 </body>
 </html>

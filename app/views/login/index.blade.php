@@ -5,29 +5,17 @@
  * Date: 9/12/14
  * Time: 11:01 AM
  */
-// Register API keys at https://www.google.com/recaptcha/admin
-$siteKey = $_ENV['reCaptchSiteKey'];
-$secret = $_ENV['reCaptchaSecretKey'];
-// reCAPTCHA supported 40+ languages listed here: https://developers.google.com/recaptcha/docs/language
-$lang = "en";
-
-// The response from reCAPTCHA
-$resp = null;
-// The error code from reCAPTCHA, if any
-$error = null;
-
-
 ?>
 @extends('layouts.login')
 @section('content')
 <div class="container-fluid"> <!--Header start-->
     <div class="container">
-        <div class="col-sm-3 col-md-5 col-lg-12" >
+        <div class="col-sm-3 col-md-5 col-lg-12 xyz" >
             <div>
-                <a href="{{ URL::to('/') }}" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('public/assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
+                <a href="{{ URL::to('/') }}" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
                 <div class="pull-right">
                     <p  style="padding-top: 15px;">Not a Member?
-                        <button type="button" class="btn btn-default" style="background-color:#a92124; color:#ffffff"><a href="#" style="text-decoration: none;color:#FFF">Join Putactos</a></button>
+                        <button type="button" class="btn btn-default" style="background-color:#a92124; color:#ffffff"><a href="{{ URL::to('/signup/customer') }}" style="text-decoration: none;color:#FFF">Join Putactos</a></button>
                     </p>
                 </div>
             </div>
@@ -60,10 +48,13 @@ $error = null;
 </div>
 @endif
 @if (Session::has('message'))
-<div class="alert alert-danger">{{ Session::get('message') }}</div>
+<div class="alert alert-danger">
+    <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
+    {{ Session::get('message') }}
+</div>
 @endif
 
-<div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;">
+<div class="container-fluid" style="background-image: url(../../assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;">
     <div class="col-sm-3 col-md-10 col-lg-12">
         <div class="container">
                 {{ Form::open(array('url' => 'authenticate','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'customerRegistration')) }}
@@ -77,7 +68,7 @@ $error = null;
                     {{ Form::label('password', 'Password', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3" style="overflow: hidden;">
                         {{ Form::password('password',array('class'=>'form-control','style'=>'padding-left:5px','id'=>'password','required'=>'required')) }}
-                        <p style="font-size:12px;"><a href="#" style="text-decoration:none; color:#000">Forgot Password</a></p>
+                        <p style="font-size:12px;"><a href="{{ URL::to('/forgot-passowrd') }}" style="text-decoration:none; color:#000">Forgot Password</a></p>
 
                         <!--<input type="image" src="img/Captcha.png" class="img-responsive">
                          <p style="font-size:16px; font-weight:bold">Type the words</p>
@@ -87,16 +78,13 @@ $error = null;
                 <div class="form-group">
                     {{ Form::label('captcha', 'Captcha', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3"">
-                        <div class="g-recaptcha" data-sitekey="<?php echo $siteKey;?>" data-theme="dark"></div>
-                        <script type="text/javascript"
-                                src="https://www.google.com/recaptcha/api.js?hl=<?php echo $lang;?>">
-                        </script>
+                    {{ Form::sweetcaptcha() }}
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-3" style="overflow: hidden;">
-                    {{ Form::submit('Login',array('name'=>'submit','id'=>'submit','class'=>'btn btn-small btn-danger btn-inverse','style'=>'width: 100px'))}}
-                    {{ Form::reset('Reset',array('id'=>'reset','class'=>'btn btn-small btn-danger btn-inverse','style'=>'width: 85px'))}}
+                    {{ Form::submit('Login',array('name'=>'submit','id'=>'submit','class'=>'btn btn-small btn-danger btn-inverse','style'=>'width: 100px;border: 2px solid #fa4d51;padding: 2px 6px;box-shadow: none;text-transform: uppercase;font-size: 16px;text-align: center;font-weight: bold;color: #fff;border-radius: 5px;float: left;background-color: #fa4d51;height: 25px;margin: 0 0 0 20px;outline:none;'))}}
+                    {{ Form::reset('Reset',array('id'=>'reset','class'=>'btn btn-small btn-danger btn-inverse','style'=>'width: 100px;border: 2px solid #fa4d51;padding: 2px 6px;box-shadow: none;text-transform: uppercase;font-size: 16px;text-align: center;font-weight: bold;color: #fff;border-radius: 5px;float: left;background-color: #fa4d51;height: 25px;margin: 0 0 0 20px;outline:none;'))}}
                     </div>
                 </div>
             {{ Form::close() }}

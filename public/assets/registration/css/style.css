@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+/****************** Body ***************************************/
+@import url(http://fonts.googleapis.com/css?family=Roboto:100);
+body {background-color:#fff;overflow-x:hidden;}
+#container {margin: 0px auto;width: 100%;overflow:hidden; background:#fff}
+.span-1 {width: 100px;}
+.span-2 {width: 200px;}
+.span-3 {width: 300px;}
+.span-4 {width: 400px;}
+.span-5 {width: 500px;}
+.span-6 {width: 600px;}
+.span-7 {width: 700px;}
+.span-8 {width: 800px;}
+.span-9 {width: 900px;}
+.span-10 {width: 100%;}
+a {text-decoration:none; outline:none}
+/*****************************************************************/
+#logo{ margin:15px 0 0 40px; float:left}
+#join{ float:right; margin:30px 180px 0 0; font-size:16px}
+#join_now{ width:180px; height:40px; text-align:center; font-size:22px; font-weight:bold; float:right; background:#a92124; color:#fff; padding:5px 0 0}
+
+/*****************************************************************/
+#content{float:left; background:#f74d4d; height:290px;}
+#message{ color:#fff; width:450px; float:left;font-family: 'Roboto', sans-serif; font-size:48px;margin: 10% 0 0 5%;}
+#inbox{ font-size:16px; }
+.txt{ height:47px; width:285px;; font-size:24px; border-radius: 5px 0px 0px 5px;
+-moz-border-radius: 5px 0px 0px 5px;
+-webkit-border-radius: 5px 0px 0px 5px;
+border: 3px solid #f74d4d; float:left}
+.search{ float:left; margin:0.75% 0 0}
+#content1{ margin:2% 0 0 5%}
+#msg_search{width:460px; float:left}
+
+
+/*****************************************************************/
+
+
+
+/*****************************************************************/
+
+
+
+/*****************************************************************/
+
+
+

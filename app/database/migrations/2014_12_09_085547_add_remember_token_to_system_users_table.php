@@ -14,7 +14,7 @@ class AddRememberTokenToSystemUsersTable extends Migration {
 	{
 		Schema::table('system_users', function(Blueprint $table)
 		{
-            $table->string('remember_token',255)->nullable()->after('country');;
+            $table->string('remember_token',255)->nullable()->after('country');
 		});
 	}
 

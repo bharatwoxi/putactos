@@ -85,7 +85,8 @@ Route::filter('csrf', function()
 {
 	if (Session::token() != Input::get('_token'))
 	{
-		throw new Illuminate\Session\TokenMismatchException;
+		//throw new Illuminate\Session\TokenMismatchException;
+        return Redirect::to('/')->with('message', 'Your session has expired. Please try again.');
 	}
 });
 
@@ -112,6 +113,43 @@ Route::filter('isServiceProvider', function()
     $user = Auth::user()->id;
     $roleId = User::find($user);
     if($roleId->user_role_id!=2){
+        Session::flash('unauth-msg','Oops.. You are not authorized to access this page');
+        return Redirect::to('/');
+    }
+});
+
+/* Check if user is Guest i.e. User is not logged in */
+Route::filter('isGuest', function()
+{
+    if (!Auth::guest())
+    {
+        Session::flash('unauth-msg','Oops.. You are not authorized to access this page');
+        return Redirect::to('/');
+    }
+});
+
+//Check is Admin Accessing Page Or Not
+Route::filter('isAdmin', function()
+{
+    $user = Auth::user()->id;
+    $roleId = User::find($user);
+    if($roleId->user_role_id!=3){
+        Session::flash('unauth-msg','Oops.. You are not authorized to access this page');
+        return Redirect::to('/');
+    }
+});
+Route::filter('isGuestOrAdmin', function()
+{
+    if(Auth::check()){
+        if(Auth::user()->user_role_id==3){
+            return Redirect::to('admin/home');
+        }else{
+            Session::flash('unauth-msg','Oops.. You are not authorized to access this page');
+            return Redirect::to('/');
+        }
+    }
+    elseif (!Auth::guest())
+    {
         Session::flash('unauth-msg','Oops.. You are not authorized to access this page');
         return Redirect::to('/');
     }

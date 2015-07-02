@@ -6,7 +6,11 @@
 	"require": {
 		"laravel/framework": "4.2.*",
         "barryvdh/laravel-debugbar": "1.*",
-        "gabrielbull/browser": "dev-master"
+        "gabrielbull/browser": "dev-master",
+        "mcamara/laravel-localization": " 0.15.*",
+		"intervention/image": "~2.1",
+		"intervention/imagecache": "~2.1",
+		"jordij/sweet-captcha": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

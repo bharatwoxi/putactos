@@ -11,16 +11,16 @@
     <meta name="author" content="mogoolab.com" />
     <meta http-equiv="X-UA-Compatible" content="IE=8">
     <link href='http://fonts.googleapis.com/css?family=Istok+Web|Chivo|Lekton' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/assets/errors/js/impromptu/css.css')}}" />
-    <link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/assets/errors/style.css')}}" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('assets/errors/js/impromptu/css.css')}}" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('assets/errors/style.css')}}" />
 
     <!--[if lte IE 7]>
-    <link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/assets/errors/style_ie7.css')}}" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('assets/errors/style_ie7.css')}}" />
     <![endif]-->
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-    <script type="text/javascript" src="{{URL::asset('public/assets/errors/js/impromptu/jquery-impromptu.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('public/assets/errors/js/jquery-global.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('assets/errors/js/impromptu/jquery-impromptu.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('assets/errors/js/jquery-global.js')}}"></script>
 
     <!--[if IE]>
     <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
