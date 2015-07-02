@@ -221,6 +221,7 @@ class RegistrationController extends BaseController {
 
     public function saveSpData(){
         $input = Input::all();
+
         $rules = array(
 
             'firstName' => 'required|min:5|max:20',
@@ -363,6 +364,8 @@ class RegistrationController extends BaseController {
 
     public function saveCustomerData(){
         $input = Input::all();
+
+
 
         $ageValueIfEmpty = '16,60';
         if(Input::get('ageRange')==''){

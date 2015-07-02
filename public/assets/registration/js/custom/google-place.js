@@ -17,6 +17,7 @@ var componentForm = {
 function initialize() {
     // Create the autocomplete object, restricting the search
     // to geographical location types.
+
     autocomplete = new google.maps.places.Autocomplete(
         /** @type {HTMLInputElement} */(document.getElementById('currentLocation')),
         { types: ['geocode'] });
@@ -32,10 +33,13 @@ function fillInAddress() {
     // Get the place details from the autocomplete object.
     var place = autocomplete.getPlace();
     /* Get Geo location */
+    //console.log(place);
 
     /* Traverse Array To get City & Country*/
+    console.log(place.address_components.length);
     for (var i = 0, l = place.address_components.length; i < l; i++) {
         var obj = place.address_components[i];
+        //console.log(obj);
         if(obj.types[0]=='country')
         /* Country Name */
             $('#country').val(obj.long_name);
@@ -46,9 +50,18 @@ function fillInAddress() {
     }
     /* Get Geolocation */
     var addressGeoCode = place.geometry.location;
-    //console.log('<span>Lat: <b>'+addressGeoCode.k+'</b></span>'+'<br><span>Long: <b>'+addressGeoCode.B+'</b></span>');
-    $('#latitude').val(addressGeoCode.k);
-    $('#longitude').val(addressGeoCode.D);
+
+    var latlogAfterParse = [ ];
+    for (var prop in addressGeoCode) {
+        latlogAfterParse.push(addressGeoCode[prop]);
+    }
+
+    //getUserData(latlogAfterParse[0],latlogAfterParse[1]);
+
+
+    //console.log('<span>Lat: <b>'+latlogAfterParse[0]+'</b></span>'+'<br><span>Long: <b>'+latlogAfterParse[1]+'</b></span>');
+    $('#latitude').val(latlogAfterParse[0]);
+    $('#longitude').val(latlogAfterParse[1]);
     $('#map-canvas').hide();
     initializeGoogleMap(addressGeoCode.k,addressGeoCode.D);
 
