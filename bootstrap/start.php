@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('sagar'),
+	'local' => array('woxi-Lenovo-G50-70'),
 
 ));
 

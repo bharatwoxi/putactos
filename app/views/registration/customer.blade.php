@@ -148,7 +148,7 @@
                 <div class="form-group">
                     {{ Form::label('location', 'Birth Date*', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
-                        {{ Form::text('birthDate',null,array('class'=>'form-control','readonly'=>'readonly','id'=>'birth_date','required'=>'required')) }}
+                        {{ Form::text('birthDate',null,array('class'=>'form-control readonly','id'=>'birth_date','required'=>'required')) }}
                     </div>
                 </div>
                 <div class="form-group">
