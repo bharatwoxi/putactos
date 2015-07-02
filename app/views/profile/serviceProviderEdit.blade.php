@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="Name" class="col-sm-5 control-label" style="text-align: left;">Screename/Username</label>
+                    <label for="Name" class="col-sm-5 control-label" style="text-align: left;">Screen-name/Username</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="userName" name="userName" value="{{ $userData['systemUser']->username }}" disabled="disabled">
                     </div>
@@ -125,6 +125,7 @@
             </fieldset>
         </div>
         <div class="col-md-6 ecolsix">
+            <span>Drop files to upload or click</span>
             {{ Form::open(array('url' => 'add-multiple-images','class'=>'dropzone uploadform no-margin dz-clickable form-horizontal','role'=>'form','files'=>true,'id'=>'myDropzone')) }} {{Form::close()}}
             <!--                <form action="#" enctype="multipart/form-data" method="POST" class="dropzone uploadform no-margin dz-clickable" id="myDropzone"></form>-->
         </div>

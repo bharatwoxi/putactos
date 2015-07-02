@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ Form::label('username', 'Screename/Username*', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
+                    {{ Form::label('username', 'Screen-name/Username*', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
                         {{ Form::text('username',Input::old('username'),array('class'=>'form-control','id'=>'username','required'=>'required')) }}
                         <span id="username-error"></span>
