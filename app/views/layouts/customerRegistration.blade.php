@@ -112,6 +112,10 @@
         $('#birth_date').datepicker({
             format: 'yyyy-mm-dd'
         });
+
+        $(".readonly").keydown(function(e){
+            e.preventDefault();
+        });
     });
 </script>
 <script>
