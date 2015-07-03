@@ -111,7 +111,7 @@
     }
 
     function errorFunction(){
-        alert("Geocoder failed");
+        //alert("Geocoder failed");
         $('#selectedLocation').html('Pune');
         getUserData(0,0);
     }

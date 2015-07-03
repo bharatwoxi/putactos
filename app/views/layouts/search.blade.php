@@ -111,7 +111,7 @@
     }
 
     function errorFunction(){
-        alert("Geocoder failed");
+      //  alert("Geocoder failed");
         $('#selectedLocation').html('{{Auth::user()->city}} {{Auth::user()->country}}');
         getUserData(0,0);
     }
