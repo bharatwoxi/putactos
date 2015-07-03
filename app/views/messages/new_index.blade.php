@@ -37,7 +37,7 @@
 <div class="container">
 @if($userListingForMessages!=null)
 <div class="row">
-    @if($userListingForMessages[0]!=null)
+    @if(isset($userListingForMessages[0]) && $userListingForMessages[0]!=null)
     <div id="tabs" class="col-sm-5">
     <ul>
         @foreach($userListingForMessages[0] as $user)
@@ -61,7 +61,7 @@
     </div>
     @endif
     <div class="col-sm-1"></div>
-    @if($userListingForMessages[1]!=null)
+    @if(isset($userListingForMessages[1]) && $userListingForMessages[1]!=null)
     <div id="tabs" class="col-sm-5">
     <ul>
         @foreach($userListingForMessages[1] as $user)

@@ -6318,16 +6318,13 @@ button.close {
 }
 @media print {
   .hidden-print {
-    display: none !important;
+    display: none !import-#touch{border-left: 2px solid #0f0f0f; padding-left: 70px;}
+      @media (max-width:767px){
+      #connect{ padding-bottom:20px;
+          }
+          #footer_about{}
+          #touch{border:none !important;padding-bottom:20px;}
+          .colfour{border:none !important;}
+      }ant;
   }
-}
-
-
-#touch{border-left: 2px solid #0f0f0f; padding-left: 70px;}
-@media (max-width:767px){
-    #connect{ padding-bottom:20px;
-    }
-    #footer_about{}
-    #touch{border:none !important;padding-bottom:20px;}
-    .colfour{border:none !important;}
 }

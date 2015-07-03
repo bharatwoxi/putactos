@@ -81,7 +81,7 @@
     #msg_name{font-size:30px; float:left; width:100%;border-bottom:1px solid #f74d4d; line-height:60px}
     #msg_detail{float:left;width:100%;margin:2% 0 0}
     #profile_name_inner{font-size:22px; float:left; margin:2.5% 0 0; line-height:18px; color:#f74d4d;background-color: #ddd;    padding: 10px; }
-    #profile_name_inner_user{font-size:24px; float:left; margin:2.5% 0 0; line-height:18px; color:#FFF;background-color: #fc4b47;  padding: 10px; }
+    #profile_name_inner_user{font-size:24px; float:left; margin:2.5% 0 0; line-height:18px; color:#FFF;background-color: #fc4b47;  padding: 10px; word-wrap: break-word;}
     #text_detail{float:left; width:100%; margin:2% 0 0}
     #msg_area{width: 100%;height: 100px;resize: none;outline:none}
     input[type="file"]{display:initial}
