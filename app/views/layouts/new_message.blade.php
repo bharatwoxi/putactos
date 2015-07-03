@@ -67,7 +67,7 @@
         border: 3px solid #f74d4d; float:left; outline:none; padding:0 5px}
     .search{ float:left; margin:0 0 0}
     #profile_image{width:70px;-moz-border-radius: 50px;	-webkit-border-radius: 50px;	border-radius: 50px;}
-    #tabs ul{ list-style:none; float:left; margin:3% 0 5% 1%; padding:0;}
+    #tabs ul{ list-style:none; float:left; margin:3% 0 5% 1%; padding:0; width:100%;}
     #tabs ul li{ float:left; width:100%;border-bottom: 1px solid #f74d4d;}
     #tabs ul li a{ text-decoration:none; outline:none; width:100%; float:left; color:#000}
     #tabs ul li a:hover{ background:#f74d4d; color:#fff}
