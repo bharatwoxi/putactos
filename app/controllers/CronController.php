@@ -27,6 +27,24 @@ class CronController extends BaseController {
     }
 
     /*
+    *function Name: updateRiseUp
+    *Desc: Update rise meup
+    *Created By: Sagar Acharya
+    *Created Date: 27 December 2014
+    *return: NA
+   */
+    public function updateRiseUp(){
+        $users = ServiceProvider::all();
+        foreach($users as $user){
+            if($user->riseme_up==1){
+                 DB::table('service_providers')
+                ->where('id', $user->id)
+                ->update(array('riseme_up' => 0));
+            }
+        }
+    }
+
+    /*
  *function Name: checkUserName
  *Desc: checkUserName for service provider & customer if it exists or not
  *Created By: Sagar Acharya

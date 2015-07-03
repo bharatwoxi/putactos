@@ -1,6 +1,8 @@
-/bootstrap/compiled.php
-#.env.*.php
-#.env.php
+#/bootstrap/compiled.php
+.env.*.php
+.env.php
 .idea/
-#/public/uploads/
-#app/storage/debugbar/
+public/uploads/
+xyz
+public/phpmyadmin
+app/storage/

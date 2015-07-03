@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => false,
+	'debug' => true,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -122,6 +122,9 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
+        'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
+        'Intervention\Image\ImageServiceProvider',
+        'Jordij\SweetCaptcha\SweetCaptchaServiceProvider',
 
 	),
 
@@ -189,7 +192,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-
+        'LaravelLocalization'   => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
+        'Image' => 'Intervention\Image\Facades\Image',
 	),
 
 );

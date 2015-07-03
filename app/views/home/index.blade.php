@@ -5,18 +5,6 @@
  * Date: 9/12/14
  * Time: 11:01 AM
  */
-// Register API keys at https://www.google.com/recaptcha/admin
-$siteKey = $_ENV['reCaptchSiteKey'];
-$secret = $_ENV['reCaptchaSecretKey'];
-// reCAPTCHA supported 40+ languages listed here: https://developers.google.com/recaptcha/docs/language
-$lang = "en";
-
-// The response from reCAPTCHA
-$resp = null;
-// The error code from reCAPTCHA, if any
-$error = null;
-
-
 ?>
 @extends('layouts.home')
 @section('content')
@@ -24,7 +12,7 @@ $error = null;
 <div class="container">
     <div class="col-lg-12" >
         <div>
-            <a href="#" class="navbar-static pull-left" style="margin:0"><img src="{{ URL::to('/public/assets/registration/img/Puktatos 3 b.png') }}" class="img-responsive" width="150"  /></a>
+            <a href="#" class="navbar-static pull-left" style="margin:0"><img src="{{ URL::to('assets/registration/img/Puktatos 3 b.png') }}" class="img-responsive" width="150"  /></a>
             <div class="pull-right">
                 @if(!Auth::check())
                 <p  style="padding-top: 15px;">Not a Member?
@@ -34,33 +22,40 @@ $error = null;
                     </a>
                     <button type="button" class="btn btn-primary" style="background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModal1"><strong>Login Now</strong></button>
                 </p>
+                @else
+                <p style="padding-top:15px;">
+                    @if(Auth::user()->user_role_id==1)
+                    <a href="{{ URL::to('/user/editprofile') }}" style="text-decoration:none;padding-right:20px;color:#AE2729">Hello, <span style="font-weight:900">{{ Auth::user()->username}}</span></a>
+                    @else
+                    <a href="{{ URL::to('/service-provider/editprofile') }}" style="text-decoration:none;padding-right:20px;color:#AE2729">Hello, <span style="font-weight:900">{{ Auth::user()->username}}</span></a>
+                    @endif
+                </p>
                 @endif
-
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content" style="border-radius: 15px;">
-                            <div class="modal-header" style="background: url(../../public/assets/registration/img/background1.png); background-repeat: repeat; border-top-right-radius: 10px; border-top-left-radius: 10px; border-bottom: none;">
+                            <div class="modal-header" style="background: url(../../assets/registration/img/background1.png); background-repeat: repeat; border-top-right-radius: 10px; border-top-left-radius: 10px; border-bottom: none;">
                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                             </div>
-                            <div class="modal-body" style="background: url(../../public/assets/registration/img/background1.png);
+                            <div class="modal-body" style="background: url(../../assets/registration/img/background1.png);
 background-repeat: repeat;background-repeat: repeat; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;">
                                 <div class="container-fluid">
                                     <div class="container">
-                                        <form class="form-horizontal" role="form">
+                                            {{ Form::open(array('url' => 'search/login=guest','method' => 'get','class'=>'form-horizontal','role'=>'form'))}}
                                             <div class="form-group">
                                                 <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Age Range</label>
                                                 <div class="col-sm-3">
-                                                    <div class="nstSlider" data-range_min="14" data-range_max="50"
-                                                         data-cur_min="10"  data-cur_max="90" style="width: 240px;">
-
+                                                    <div class="nstSlider" data-range_min="18" data-range_max="99"
+                                                         data-cur_min="18"  data-cur_max="99" style="width: 240px;">
                                                         <div class="highlightPanel"></div>
                                                         <div class="bar"></div>
                                                         <div class="leftGrip"></div>
                                                         <div class="rightGrip"></div>
                                                     </div>
-
                                                     <div class="leftLabel" style=""></div>
                                                     <div class="rightLabel" style="margin-top: -25px; padding-left: 224px;"></div>
+                                                    <input type="hidden" name="minimumAge" id="minimumAge" />
+                                                    <input type="hidden" name="maximumAge" id="maximumAge" />
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -68,22 +63,19 @@ background-repeat: repeat;background-repeat: repeat; border-bottom-right-radius:
                                                 <label for="Name" class="col-sm-2 control-label" style="text-align: -webkit-auto;">Looking for</label>
                                                 <div class="col-sm-3">
                                                     <label class="radio-inline">
-                                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Male
+                                                        <input type="radio" name="looking_for" id="inlineRadio1" value="male"> Male
                                                     </label>
                                                     <label class="radio-inline">
-                                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Female
+                                                        <input type="radio" name="looking_for" id="inlineRadio2" value="female"> Female
                                                     </label>
                                                     <label class="radio-inline">
-                                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Both
+                                                        <input type="radio" name="looking_for" id="inlineRadio2" value="both" checked="checked"> Both
                                                     </label>
-                                                    <a href="people_near_by_en.html" target="_blank" style="text-decoration:none"><input type="image" src="{{ URL::to('/public/assets/registration/img/Go.png')}}" class="img-responsive" style="width:60px; padding-top:20px">
+                                                    <a href="#" target="_blank" style="text-decoration:none"><input type="image" src="{{ URL::to('assets/registration/img/Go.png')}}" class="img-responsive" style="width:60px; padding-top:20px">
                                                     </a>
-
                                                 </div>
-
                                             </div>
-
-                                        </form>
+                                            {{ Form::close() }}
                                     </div><!--End of container-->
                                 </div> <!--End of container-fluid-->
                             </div>
@@ -94,11 +86,11 @@ background-repeat: repeat;background-repeat: repeat; border-bottom-right-radius:
                 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header" style="background: url(../../public/assets/registration/img/background1.png);
+                            <div class="modal-header" style="background: url(../../assets/registration/img/background1.png);
 background-repeat: repeat; border-top-right-radius: 10px; border-top-left-radius: 10px; border-bottom: none;">
                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                             </div>
-                            <div class="modal-body" style="background: url(../../public/assets/registration/img/background1.png);
+                            <div class="modal-body" style="background: url(../../assets/registration/img/background1.png);
 background-repeat: repeat;
  border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; border-bottom: none;">
                                 <div class="container-fluid">
@@ -114,7 +106,7 @@ background-repeat: repeat;
                                             {{ Form::label('password', 'Password', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                                             <div class="col-sm-3" style="overflow: hidden;">
                                                 {{ Form::password('password',array('class'=>'form-control','style'=>'padding-left:5px','id'=>'password','required'=>'required')) }}
-                                                <p style="font-size:12px; padding-bottom: 30px;"><a href="#" style="text-decoration:none; color:#000">Forgot Password</a></p>
+                                                <p style="font-size:12px; padding-bottom: 30px;"><a href="{{ URL::to('/forgot-passowrd') }}" style="text-decoration:none; color:#000">Forgot Password</a></p>
 
                                                 <!-- <input type="image" src="img/Captcha.png" class="img-responsive">
                                                   <p style="font-size:16px; font-weight:bold">Type the words</p>
@@ -124,14 +116,11 @@ background-repeat: repeat;
                                         <div class="form-group">
                                             {{ Form::label('captcha', 'Captcha', array('class' => 'col-sm-2 control-label','style'=>'text-align: -webkit-auto')) }}
                                             <div class="col-sm-3">
-                                                <div class="g-recaptcha" data-sitekey="<?php echo $siteKey;?>" data-theme="dark"></div>
-                                                <script type="text/javascript"
-                                                        src="https://www.google.com/recaptcha/api.js?hl=<?php echo $lang;?>">
-                                                </script>
+                                                {{ Form::sweetcaptcha() }}
                                             </div><br/> <div class="clearfix"></div>
                                             <div class="form-group">
-                                                <div class="col-sm-5" style="overflow: hidden; margin-left: 10px;">
-                                                    <input type="image" src="{{ URL::to('/public/assets/registration/img/LOgin.png')}}" class="img-responsive center-block" style="width:70px; margin-top: 20px;cursor:pointer;" id="login-image">
+                                                <div class="col-sm-5" style="overflow: hidden; margin-left: 10px;z-index: 100;">
+                                                    <input type="image" src="{{ URL::to('assets/registration/img/LOgin.png')}}" class="img-responsive center-block" style="width:70px; margin-top: 20px;cursor:pointer;" id="login-image">
                                                 </div>
                                             </div>
                                             </form>
@@ -167,21 +156,22 @@ background-repeat: repeat;
                 <div class=""><a href="#" class="da-link" style="margin-top: 60px;"><img src="img/join.png" width="180" style="border:2px solid #fff;"></a></div>
             </div>
         </div>-->
-        <div class="da-slide" style="background:url(../../public/assets/registration/slider/images/slide.png) repeat;">
+        <div class="da-slide" style="background:url(../../assets/registration/slider/images/slide.png) repeat;">
 
-            <div style="background:url(../../public/assets/registration/slider/images/transperant.png) no-repeat; min-height:200px;margin: 70px 0px; width:100%;">
+            <div style="background:url(../../assets/registration/slider/images/transperant.png) no-repeat; min-height:200px;margin: 70px 0px; width:100%;">
                 <h2 style="font-family:Roboto Th; color:#000; font-size:24px;text-shadow: 0px 0px 1px #BABABA; text-transform:uppercase;"><strong>Get exactly what</strong></h2>
                 <p style="font-family:Roboto Th; color:#000;">
                     <span style="font-family:Roboto Th; font-size:54px; color:#fff;text-shadow: -2px 1px 3px #000000;text-transform:uppercase;">you</span><br>
                     <span style="font-family:Roboto Th; font-size:32px;color:#000;text-shadow: 0px 0px 1px #BABABA;text-transform:uppercase;"><strong>want when</strong></span><br>
                     <strong>you want it</strong></p><br>
-
-                <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('/public/assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
+                @if(Auth::guest())
+                <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
+                @endif
             </div>
         </div>
 
-        <div class="da-slide" style="background:url(../../public/assets/registration/slider/images/slide.png) repeat;">
-            <div style="background:url(../../public/assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
+        <div class="da-slide" style="background:url(../../assets/registration/slider/images/slide.png) repeat;">
+            <div style="background:url(../../assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
                 <h2 style="font-family:Roboto Th; color:#000; font-size:24px;text-shadow: 0px 0px 1px #BABABA;text-transform:uppercase;"><strong>You only see</strong></h2>
                 <p style="font-family:Roboto Th; color:#000;">
                     <span style="font-family:Roboto Th; font-size:54px; color:#fff;text-shadow: -2px 1px 3px #000000;text-transform:uppercase;">people</span><br>
@@ -189,10 +179,10 @@ background-repeat: repeat;
                     <strong>nearby, and are up for a date</strong></p><br>
             </div>
 
-            <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('/public/assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
+            <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
         </div>
-        <div class="da-slide" style="background:url(../../public/assets/registration/slider/images/slide.png) repeat;">
-            <div style="background:url(../../public/assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
+        <div class="da-slide" style="background:url(../../assets/registration/slider/images/slide.png) repeat;">
+            <div style="background:url(../../assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
                 <h2 style="font-family:Roboto Th; color:#000; font-size:24px;text-shadow: 0px 0px 1px #BABABA;text-transform:uppercase;"><strong>Leave</strong></h2>
                 <p style="font-family:Roboto Th; color:#000;">
                     <span style="font-family:Roboto Th; font-size:54px; color:#fff;text-shadow: -2px 1px 3px #000000;text-transform:uppercase;">no trace</span><br>
@@ -200,10 +190,10 @@ background-repeat: repeat;
                     <strong>Putactos is a great way to find real people</strong></p><br>-->
             </div>
 
-            <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('/public/assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
+            <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
         </div>
-        <div class="da-slide" style="background:url(../../public/assets/registration/slider/images/slide.png) repeat; ">
-            <div style="background:url(../../public/assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
+        <div class="da-slide" style="background:url(../../assets/registration/slider/images/slide.png) repeat; ">
+            <div style="background:url(../../assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
                 <h2 style="font-family:Roboto Th; color:#000; font-size:24px;text-shadow: 0px 0px 1px #BABABA;text-transform:uppercase;"><strong>Straight</strong></h2>
                 <p style="font-family:Roboto Th; color:#000;">
                     <span style="font-family:Roboto Th; font-size:54px; color:#fff;text-shadow: -2px 1px 3px #000000;text-transform:uppercase;">to the </span><br>
@@ -211,12 +201,12 @@ background-repeat: repeat;
                     <!--  <strong>Putactos is a great way to find real people</strong></p><br>-->
             </div>
 
-            <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('/public/assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
+            <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
         </div>
 
 
-        <div class="da-slide" style="background:url(../../public/assets/registration/slider/images/slide.png) repeat; ">
-            <div style="background:url(../../public/assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
+        <div class="da-slide" style="background:url(../../assets/registration/slider/images/slide.png) repeat; ">
+            <div style="background:url(../../assets/registration/slider/images/transperant.png) no-repeat; height:200px;margin: 70px 0px; width:100%;">
                 <h2 style="font-family:Roboto Th; color:#000; font-size:24px;text-shadow: 0px 0px 1px #BABABA;text-transform:uppercase;"><strong>No</strong></h2>
                 <p style="font-family:Roboto Th; color:#000;">
                     <span style="font-family:Roboto Th; font-size:54px; color:#fff;text-shadow: -2px 1px 3px #000000;text-transform:uppercase;">disappointments</span><br>
@@ -224,7 +214,7 @@ background-repeat: repeat;
                      <strong>Putactos is a great way to find real people</strong></p><br>-->
             </div>
 
-            <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('/public/assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a>
+            <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a>
 
 
             </div>
@@ -239,7 +229,7 @@ background-repeat: repeat;
 
 
 </div> <!--slider ends here-->
-<div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png);background-repeat: repeat;">
+<div class="container-fluid" style="background-image: url(../../assets/registration/img/background1.png);background-repeat: repeat;">
     <div class="container" style="">
 
         <!--<div class="row">
@@ -256,14 +246,14 @@ background-repeat: repeat;
         <div class="row">
 
             <div class="col-md-3" style="margin: 50px 0px;">
-                <img src="{{ URL::to('/public/assets/registration/img/tv.png')}}" class="img-responsive center-block">
+                <img src="{{ URL::to('assets/registration/img/tv.png')}}" class="img-responsive center-block">
             </div>
 
 
 
 
             <div class="col-md-3" style="text-align:center; margin-top:250px;">
-                <img src="{{ URL::to('/public/assets/registration/img/right_mark_lgo.png')}}">
+                <img src="{{ URL::to('assets/registration/img/right_mark_lgo.png')}}">
 
                 <h3><strong>SAFE</strong></h3>
                 <p style="font-weight: 600;">
@@ -275,17 +265,17 @@ background-repeat: repeat;
 
 
             <div class="col-md-3" style="margin-top:70px;">
-                <img src="{{ URL::to('/public/assets/registration/img/apple.png')}}" width="235" class="img-responsive center-block">
+                <img src="{{ URL::to('assets/registration/img/apple.png')}}" width="235" class="img-responsive center-block">
             </div>
 
 
 
             <div class="col-md-3" style="text-align:center; margin-top:80px;">
-                <img src="{{ URL::to('/public/assets/registration/img/gift.png')}}" style="margin-right: 100px;">
+                <img src="{{ URL::to('assets/registration/img/gift.png')}}" style="margin-right: 100px;">
 
 
                 <p style="font-weight: 600;">
-                    Putactosis free, and there are<br> no additional charges when<br> you use it.
+                    Putactos is {{ trans('home.free') }}, and there are<br> no additional charges when<br> you use it.
                     It’s like swiping your<br> card - only faster, safer and<br> more convenient.
                 </p>
             </div>
@@ -301,7 +291,7 @@ background-repeat: repeat;
                     Using Putactos is easy, fast<br> and fun. In few simple clicks<br> you will be ready
                     to meet<br> thousands of people across<br> the world and in locality<br> near you
                 </p>
-                <img src="{{ URL::to('/public/assets/registration/img/tea.png')}}" style="margin: -50px 0 0 200px;">
+                <img src="{{ URL::to('assets/registration/img/tea.png')}}" style="margin: -50px 0 0 200px;">
             </div>
 
         </div>
@@ -317,10 +307,10 @@ background-repeat: repeat;
 </div>
 
 
-<div class="container-fluid" style="background-image:url(../../public/assets/registration/img/grp_people.png); width:100%; max-width:1600px; height:655px;">
+<div class="container-fluid" style="background-image:url(../../assets/registration/img/grp_people.png); width:100%; max-width:1600px; height:655px;">
     <!--<img src="img/grp_people.png" class="img-responsive">-->
 
-    <img src="{{ URL::to('/public/assets/registration/img/matches.png')}}" class="img-responsive center-block" style="padding-top: 50px;">
+    <img src="{{ URL::to('assets/registration/img/matches.png')}}" class="img-responsive center-block" style="padding-top: 50px;">
 
 
 
@@ -330,7 +320,7 @@ background-repeat: repeat;
     </p>
 
 
-    <img src="{{ URL::to('/public/assets/registration/img/play_enconter.png')}}" class="img-responsive center-block" style="padding-top:50px;">
+    <img src="{{ URL::to('assets/registration/img/play_enconter.png')}}" class="img-responsive center-block" style="padding-top:50px;">
 
 </div>
 
@@ -338,12 +328,12 @@ background-repeat: repeat;
 
     <div class="col-md-3 col-xs-offset-1" style="padding-top:40px;">
 
-        <img src="{{ URL::to('/public/assets/registration/img/hand_phone.png')}}" class="img-responsive">
+        <img src="{{ URL::to('assets/registration/img/hand_phone.png')}}" class="img-responsive">
 
     </div>
     <div class="col-md-7" style="padding-top: 100px;">
 
-        <img src="{{ URL::to('/public/assets/registration/img/chat_anywhere.png')}}" class="img-responsive pull-left center-block">
+        <img src="{{ URL::to('assets/registration/img/chat_anywhere.png')}}" class="img-responsive pull-left center-block">
 
 
 
@@ -360,13 +350,13 @@ background-repeat: repeat;
 
     <div class="col-md-5" style="padding-top: 50px;">
 
-        <img src="{{ URL::to('/public/assets/registration/img/download.png')}}" class="img-responsive center-block">
+        <img src="{{ URL::to('assets/registration/img/download.png')}}" class="img-responsive center-block">
 
     </div>
 </div>
 
 
-<div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png);background-repeat: repeat;">
+<div class="container-fluid" style="background-image: url(../../assets/registration/img/background1.png);background-repeat: repeat;">
 
     <p class="text-center center-block" style="font-family: calibri;font-size: 60px; margin:0">
         GET PUTACTOS NOW
@@ -383,44 +373,44 @@ background-repeat: repeat;
     <div class="container">
         <div class="col-md-4" style="padding: 50px 0px;">
 
-            <img src="{{ URL::to('/public/assets/registration/img/android.png')}}" class="img-responsive center-block">
+            <img src="{{ URL::to('assets/registration/img/android.png')}}" class="img-responsive center-block">
 
         </div>
         <div class="col-md-4" style="padding: 50px 0px;">
 
-            <img src="{{ URL::to('/public/assets/registration/img/apple_logo.png')}}" class="img-responsive center-block">
+            <img src="{{ URL::to('assets/registration/img/apple_logo.png')}}" class="img-responsive center-block">
 
         </div>
         <div class="col-md-4" style="padding: 50px 0px;">
 
-            <img src="{{ URL::to('/public/assets/registration/img/blackberry.png')}}" class="img-responsive center-block">
+            <img src="{{ URL::to('assets/registration/img/blackberry.png')}}" class="img-responsive center-block">
 
         </div>
     </div>
 </div>
 
 
-<div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png);background-repeat: repeat; padding:10px 0"></div>
+<div class="container-fluid" style="background-image: url(../../assets/registration/img/background1.png);background-repeat: repeat; padding:10px 0"></div>
 
 
 <div class="container-fluid" style="background-color: #b13935;">
-    <div class="container" style="background:url(../../public/assets/registration/img/all_grp_people.png); width:100%; max-width:1378px; height:510px;">
+    <div class="container" style="background:url(../../assets/registration/img/all_grp_people.png); width:100%; max-width:1378px; height:510px;">
 
         <div class="col-md-3 col-xs-offset-1" style="padding-top:40px;">
 
-            <img src="{{ URL::to('/public/assets/registration/img/profile.png')}}" class="img-responsive">
+            <img src="{{ URL::to('assets/registration/img/profile.png')}}" class="img-responsive">
 
         </div>
         <div class="col-md-8 pull-right" style="padding-top: 100px;">
 
-            <img src="{{ URL::to('/public/assets/registration/img/people_nearby.png')}}" class="img-responsive pull-left">
+            <img src="{{ URL::to('assets/registration/img/people_nearby.png')}}" class="img-responsive pull-left">
 
 
 
             <p class="pull-left" style="font-family:Roboto Th; padding-left:40px;font-size: 32px;line-height: 36px;padding-top: 10px;color: #fff;
     text-transform: uppercase;font-weight: 600;">
                 We won’t show your exact <br>
-                location, but you’ll be ABLE<br>
+                location, but you’ll be<br>
                 able to find people nearby who<br>
                 like the same things you do.
             </p>
@@ -430,25 +420,25 @@ background-repeat: repeat;
 
         <div class="col-md-5" style="padding-top: 50px;">
 
-            <img src="{{ URL::to('/public/assets/registration/img/find.png')}}" class="img-responsive center-block">
+            <img src="{{ URL::to('assets/registration/img/find.png')}}" class="img-responsive center-block">
 
         </div>
 
     </div>
 </div>
 
-<div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png);background-repeat: repeat;">
+<div class="container-fluid" style="background-image: url(../../assets/registration/img/background1.png);background-repeat: repeat;">
     <div class="container" style="padding: 50px 0px;">
         <div class="row">
             <div class="col-md-6">
 
-                <img src="{{ URL::to('/public/assets/registration/img/six_icons.png')}}" class="img-responsive">
+                <img src="{{ URL::to('assets/registration/img/six_icons.png')}}" class="img-responsive">
 
             </div>
 
             <div class="col-md-6" style="padding-top:40px;">
 
-                <img src="{{ URL::to('/public/assets/registration/img/share_intrest.png')}}" class="img-responsive">
+                <img src="{{ URL::to('assets/registration/img/share_intrest.png')}}" class="img-responsive">
 
 
                 <p class="pull-left" style="font-family:Roboto Th; padding-left:30px;font-size: 32px;line-height: 36px;padding-top: 10px;color: #b73c34;
@@ -463,8 +453,8 @@ background-repeat: repeat;
         </div>
     </div>
 </div>
- 
-<div class="container-fluid" style="background-image: url(../../public/assets/registration/img/blacl_strip.png);background-repeat: repeat;height: 286px;">
+@if(!Auth::check())
+<div class="container-fluid" style="background-image: url(../../assets/registration/img/blacl_strip.png);background-repeat: repeat;height: 286px;">
 
     <p style="text-align:center; font-family:Roboto Th; font-size:54px;color: #fff;padding-top: 70px;">
         SIGN UP NOW
@@ -476,15 +466,15 @@ background-repeat: repeat;
     </p>
 
 </div>
+@endif
 
-
-<div class="container-fluid" style="background-image: url(../../public/assets/registration/img/background1.png);background-repeat: repeat; background-color:#dbdbdb;">
-    <div class="container" style="padding:0; background:url(../../public/assets/registration/img/bg_pelple.png); width:100%; max-width:1327px; min-height:944px;margin-top: 80px;">
+<div class="container-fluid" style="background-image: url(../../assets/registration/img/background1.png);background-repeat: repeat; background-color:#dbdbdb;">
+    <div class="container" style="padding:0; background:url(../../assets/registration/img/bg_pelple.png); width:100%; max-width:1327px; min-height:944px;margin-top: 80px;">
         <div class="container">
 
             <div class="col-lg-6" style="padding-top: 100px;">
 
-                <img src="{{ URL::to('/public/assets/registration/img/testi1.png')}}" class="img-responsive">
+                <img src="{{ URL::to('assets/registration/img/testi1.png')}}" class="img-responsive">
 
             </div>
             <div class="col-md-6" style="padding-top: 90px;">
@@ -522,7 +512,7 @@ background-repeat: repeat;
             </div>
             <div class="col-lg-6" style="padding-top: 100px;">
 
-                <img src="{{ URL::to('/public/assets/registration/img/testi2.png')}}" class="img-responsive">
+                <img src="{{ URL::to('assets/registration/img/testi2.png')}}" class="img-responsive">
 
             </div>
 

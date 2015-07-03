@@ -15,14 +15,25 @@
     <title>USER REGISTRATION</title>
 
     <!-- Bootstrap -->
-    <link href="{{URL::asset('public/assets/registration/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('public/assets/registration/css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('public/assets/registration/css/styles.css')}}" media="all" rel="stylesheet">
-    <link href="{{URL::asset('public/assets/registration/css/bootstrap-slider.css')}}" media="all" rel="stylesheet">
-    <script src="{{URL::asset('public/assets/registration/js/modernizr.min.js')}}"></script>
+    <link href="{{URL::asset('assets/registration/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/css/styles.css')}}" media="all" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/css/bootstrap-slider.css')}}" media="all" rel="stylesheet">
+    <link href="{{URL::asset('assets/registration/datepicker/css/datepicker.css')}}" media="all" rel="stylesheet">
+    <script src="{{URL::asset('assets/registration/js/modernizr.min.js')}}"></script>
 
 </head>
 <style type="text/css">
+
+    .validation-success{
+        border:2px solid green;
+    }
+    .validation-fail{
+        border:2px solid red;
+    }
+    .error-class{
+        color:red;font-size: 12px; padding: 8px 0;
+    }
     /* Disclaimer: remove 'powered by Google' */
     .pac-container:after {
         background-image: none !important;
@@ -80,192 +91,46 @@
 
 
 </style>
-<body onload="initialize()">
+<body onload="initialize();">
 
 
 @yield('content')
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<!--<script src="{{URL::asset('public/assets/registration/js/jquery.min.js')}}"></script>-->
+<!--<script src="{{URL::asset('assets/registration/js/jquery.min.js')}}"></script>-->
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{{URL::asset('public/assets/registration/js/jquery-1.10.2.min.js')}}"></script>
-<script src="{{URL::asset('public/assets/registration/js/bootstrap.min.js')}}"></script>
-<script src="{{URL::asset('public/assets/registration/js/plugin.js')}}"></script>
-<script src="{{URL::asset('public/assets/registration/js/main.js')}}"></script>
-<script type='text/javascript' src="{{URL::asset('public/assets/registration/js/bootstrap-slider.js')}}"></script>
+<script src="{{URL::asset('assets/registration/js/jquery-1.10.2.min.js')}}"></script>
+<script src="{{URL::asset('assets/registration/js/bootstrap.min.js')}}"></script>
+<script src="{{URL::asset('assets/registration/js/plugin.js')}}"></script>
+<script src="{{URL::asset('assets/registration/js/main.js')}}"></script>
+<script type='text/javascript' src="{{URL::asset('assets/registration/js/bootstrap-slider.js')}}"></script>
 <script type='text/javascript'>
     $(document).ready(function() {
         /* Example 2 */
         $("#ex2").slider({});
+        $('#birth_date').datepicker({
+            format: 'yyyy-mm-dd'
+        });
+
+        $(".readonly").keydown(function(e){
+            e.preventDefault();
+        });
     });
 </script>
 <script>
-    $(document).ready(function(){
-        $('#latitude').val('');
-        $('#longitude').val('');
-        $('#city').val('');
-        $('#country').val('');
-
-        /* Check Form Submit */
-        $('#customerRegistration').submit(function(event){
-
-            if($('#latitude').val()!='' && $('#longitude').val()!=''){
-                return true;
-            }else{
-                event.preventDefault();
-                alert('Please select your location from google places');
-            }
-
-        });
-
-        $('#username').keyup(function(e) {
-            var username = $('#username').val();
-            var mydata = 'username='+username;
-            //##### Send Ajax request to response.php #########
-            $.ajax({
-                type: "POST", // HTTP method POST or GET
-                url: "{{URL::to('/')}}/check-username", //Where to make Ajax calls
-                dataType:"json", // Data type, HTML, json etc.
-                data:mydata, //Form variables
-                success:function(response){
-                    if(response.success == false)
-                    {
-
-                        var arr = response.errors;
-                        $("#display-errors").html('');
-                        $.each(arr, function(index, value)
-                        {
-                            if (value.length != 0)
-                            {
-                                //$('#submit').attr('disabled','disabled');
-                                $("#validation-errors").show();
-                                $("#submit").attr("disabled", true);
-                                $("#display-errors").append('<li class="error"><strong>'+ value +'</strong></li>');
-                            }
-                        });
-                    }
-                    else{
-                        $("#validation-errors").hide();
-                        $('#submit').removeAttr('disabled');
-                    }
-
-
-
-                },
-                error:function (xhr, ajaxOptions, thrownError){
-                    //On error, we alert user
-                    alert(thrownError);
-                }
-            });
-
-
-
-        });
-    });
+    var checkUsernameUrl = "{{URL::to('/check-username')}}";
+    var checkFnameUrl = "{{URL::to('/check-firstname')}}";
+    var checkLnameUrl = "{{URL::to('/check-lastname')}}";
+    var checkEmailUrl = "{{URL::to('/check-email')}}";
+    var checkPasswordUrl = "{{URL::to('/check-password')}}";
+    var checkCpasswordUrl = "{{URL::to('/check-cpassword')}}";
 </script>
+<script src="{{URL::asset('assets/registration/js/custom/registration-validation.js')}}"></script>
 <!-- Google Places -->
 <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
+<script src="{{URL::asset('assets/registration/js/custom/google-place.js')}}"></script>
+<script src="{{URL::asset('assets/registration/datepicker/js/bootstrap-datepicker.js')}}"></script>
 
-<script>
-    // This example displays an address form, using the autocomplete feature
-    // of the Google Places API to help users fill in the information.
-
-    var placeSearch, autocomplete;
-    var componentForm = {
-        street_number: 'short_name',
-        route: 'long_name',
-        locality: 'long_name',
-        administrative_area_level_1: 'short_name',
-        country: 'long_name',
-        postal_code: 'short_name'
-    };
-
-    function initialize() {
-        // Create the autocomplete object, restricting the search
-        // to geographical location types.
-        autocomplete = new google.maps.places.Autocomplete(
-            /** @type {HTMLInputElement} */(document.getElementById('currentLocation')),
-            { types: ['geocode'] });
-        // When the user selects an address from the dropdown,
-        // populate the address fields in the form.
-        google.maps.event.addListener(autocomplete, 'place_changed', function() {
-            fillInAddress();
-        });
-    }
-
-    // [START region_fillform]
-    function fillInAddress() {
-        // Get the place details from the autocomplete object.
-        var place = autocomplete.getPlace();
-        /* Get Geo location */
-
-        /* Traverse Array To get City & Country*/
-        for (var i = 0, l = place.address_components.length; i < l; i++) {
-            var obj = place.address_components[i];
-            if(obj.types[0]=='country')
-            /* Country Name */
-            $('#country').val(obj.long_name);
-            if(obj.types[0]=='locality')
-            /* City Name */
-            $('#city').val(obj.long_name);
-
-        }
-        /* Get Geolocation */
-        var addressGeoCode = place.geometry.location;
-        //console.log(place.geometry.location);
-        //console.log('<span>Lat: <b>'+addressGeoCode.k+'</b></span>'+'<br><span>Long: <b>'+addressGeoCode.B+'</b></span>');
-        $('#latitude').val(addressGeoCode.k);
-        $('#longitude').val(addressGeoCode.B);
-        $('#map-canvas').show();
-        initializeGoogleMap(addressGeoCode.k,addressGeoCode.B);
-
-        //document.getElementById('addressGeoCode').innerHTML='<span>Lat: <b>'+addressGeoCode.k+'</b></span>'+'<br><span>Long: <b>'+addressGeoCode.B+'</b></span>';
-        //alert(addressGeoCode);
-        /*Get Geolocation end*/
-//        for (var component in componentForm) {
-//            document.getElementById(component).value = '';
-//            document.getElementById(component).disabled = false;
-//        }
-
-        // Get each component of the address from the place details
-        // and fill the corresponding field on the form.
-//        for (var i = 0; i < place.address_components.length; i++) {
-//            var addressType = place.address_components[i].types[0];
-//            if (componentForm[addressType]) {
-//                var val = place.address_components[i][componentForm[addressType]];
-//                document.getElementById(addressType).value = val;
-//            }
-//        }
-    }
-    // [END region_fillform]
-
-    // [START region_geolocation]
-    // Bias the autocomplete object to the user's geographical location,
-    // as supplied by the browser's 'navigator.geolocation' object.
-    function geolocate() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                var geolocation = new google.maps.LatLng(
-                    position.coords.latitude, position.coords.longitude);
-                autocomplete.setBounds(new google.maps.LatLngBounds(geolocation,
-                    geolocation));
-            });
-        }
-    }
-    // [END region_geolocation]
-
-
-    var map;
-    function initializeGoogleMap(lat,long) {
-        var mapOptions = {
-            zoom: 8,
-            center: new google.maps.LatLng(lat,long)
-        };
-        map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
-    }
-
-</script>
 </body>
 </html>

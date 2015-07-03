@@ -20,7 +20,7 @@ class CreateSystemUserIpLogsTable extends Migration {
             $table->string('ip_address',255)->nullable();
             $table->string('browser',255)->nullable();
             $table->string('os',255)->nullable();
-            $table->string('login_time',255)->nullable();
+            $table->timestamp('login_time');
             $table->timestamps();
 		});
 	}
