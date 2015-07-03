@@ -124,7 +124,6 @@
         var latlng = new google.maps.LatLng(lat, lng);
         geocoder.geocode({'latLng': latlng}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
-
                 var json_data = JSON.stringify(results);
                 if(json_data=='Geocoder failed'){
                     alert(1);
