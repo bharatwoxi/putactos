@@ -367,7 +367,7 @@ class RegistrationController extends BaseController {
 
 
 
-        $ageValueIfEmpty = '16,60';
+        $ageValueIfEmpty = '18,99';
         if(Input::get('ageRange')==''){
             $age = explode(',',$ageValueIfEmpty);
         }else{
