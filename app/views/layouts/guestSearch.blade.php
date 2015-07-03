@@ -124,21 +124,12 @@
         var latlng = new google.maps.LatLng(lat, lng);
         geocoder.geocode({'latLng': latlng}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
-                //console.log(results);
+
                 var json_data = JSON.stringify(results);
                 if(json_data=='Geocoder failed'){
                     alert(1);
                 }else{
-                    //results.forEach(function(entry) {
-                            <?php
-                            /*
-                            k:lat
-                            D:long
-                            */
-                            ?>
                         getUserData(latlng.k,latlng.D);
-                    //});
-
 
                 }
                 if (results[1]) {
@@ -199,7 +190,7 @@
 
             if (isPreviousEventComplete && isDataAvailable==1) {
                 isPreviousEventComplete = false;
-                //$(".LoaderImage").css("display", "block");
+
                 var skip = $('#skip').val();
                 var take = $('#take').val();
                 var isFilter = $('#isFilter').val();
@@ -248,7 +239,7 @@
             var hips = 0;
             var bust = 0;
             var waist = 0;
-            //var cup = 0;
+
             if($('#hips').val()!=''){
                 hips = $('#hips').val();
             }
@@ -258,9 +249,6 @@
             if($('#waist').val()!=''){
                 waist = $('#waist').val();
             }
-//            if($('#cup').val()!=''){
-//                cup = $('#cup').val();
-//            }
             searchFilters.push({name: 'hips', value:hips },{name: 'bust', value: bust},{name: 'waist', value: waist},{name: 'isFilter', value:1},{name: 'isScroll', value:0},{name: 'skip', value:0},{name: 'take', value:3});
             $("#loaderImage").css("display", "block");
             $.ajax({
@@ -282,12 +270,12 @@
         });
         $("#hips, #bust, #waist, #penis").slider({});
         $(".gender_male").click(function() {
-            //var value = $("#gender_male").val();
+
             $('#women_only').hide();
             $('#men_only').show();
         });
         $(".gender_female").click(function() {
-            //var value = $("#gender_female").val();
+
             $('#women_only').show();
             $('#men_only').hide();
         });
@@ -332,9 +320,15 @@
             obj=  obj +' '+ place.address_components[i].long_name;
         }
         /* Get Geolocation */
+
         var addressGeoCode = place.geometry.location;
         $('#selectedLocation').html(obj);
-        getUserData(addressGeoCode.k,addressGeoCode.D);
+        var latlogAfterParse = [ ];
+        for (var prop in addressGeoCode) {
+            latlogAfterParse.push(addressGeoCode[prop]);
+        }
+
+        getUserData(latlogAfterParse[0],latlogAfterParse[1]);
         $('#currentLocation').val('');
     }
     initializeGetLocation();
