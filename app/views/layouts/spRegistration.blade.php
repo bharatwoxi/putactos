@@ -105,6 +105,9 @@
         $('#birth_date').datepicker({
             format: 'yyyy-mm-dd'
         });
+        $(".readonly").keydown(function(e){
+            e.preventDefault();
+        });
     });
 </script>
 <script src="{{URL::asset('assets/registration/js/custom/registration-validation.js')}}"></script>

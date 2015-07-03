@@ -33,13 +33,13 @@ function fillInAddress() {
     // Get the place details from the autocomplete object.
     var place = autocomplete.getPlace();
     /* Get Geo location */
-    //console.log(place);
+
 
     /* Traverse Array To get City & Country*/
     console.log(place.address_components.length);
     for (var i = 0, l = place.address_components.length; i < l; i++) {
         var obj = place.address_components[i];
-        //console.log(obj);
+
         if(obj.types[0]=='country')
         /* Country Name */
             $('#country').val(obj.long_name);
@@ -56,22 +56,15 @@ function fillInAddress() {
         latlogAfterParse.push(addressGeoCode[prop]);
     }
 
-    //getUserData(latlogAfterParse[0],latlogAfterParse[1]);
 
 
-    //console.log('<span>Lat: <b>'+latlogAfterParse[0]+'</b></span>'+'<br><span>Long: <b>'+latlogAfterParse[1]+'</b></span>');
+
+
     $('#latitude').val(latlogAfterParse[0]);
     $('#longitude').val(latlogAfterParse[1]);
     $('#map-canvas').hide();
     initializeGoogleMap(addressGeoCode.k,addressGeoCode.D);
 
-    //document.getElementById('addressGeoCode').innerHTML='<span>Lat: <b>'+addressGeoCode.k+'</b></span>'+'<br><span>Long: <b>'+addressGeoCode.B+'</b></span>';
-    //alert(addressGeoCode);
-    /*Get Geolocation end*/
-//        for (var component in componentForm) {
-//            document.getElementById(component).value = '';
-//            document.getElementById(component).disabled = false;
-//        }
 
     // Get each component of the address from the place details
     // and fill the corresponding field on the form.
