@@ -111,7 +111,7 @@
     }
 
     function errorFunction(){
-        alert("Geocoder failed");
+        //alert("Geocoder failed");
         $('#selectedLocation').html('{{Auth::user()->city}} {{Auth::user()->country}}');
         getUserData(0,0);
     }
@@ -127,7 +127,7 @@
                 //console.log(results);
                 var json_data = JSON.stringify(results);
                 if(json_data=='Geocoder failed'){
-                    alert(1);
+                   // alert(1);
                 }else{
                     <?php
                     /*
@@ -165,7 +165,7 @@
                     alert("No results found");
                 }
             } else {
-                alert("Geocoder failed due to: " + status);
+               // alert("Geocoder failed due to: " + status);
             }
         });
     }
