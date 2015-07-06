@@ -17,7 +17,7 @@ $(document).ready(function(){
         }else{
             event.preventDefault();
             //$("#username-error").show();
-            $("#location-error").append('<li class="error-class"><strong>Please select your location from google places</strong></li>');
+            $("#location-error").empty().append('<li class="error-class"><strong>Please select your location from google places</strong></li>');
             $('#currentLocation').removeClass('validation-success');
             $('#currentLocation').addClass('validation-fail');
 
