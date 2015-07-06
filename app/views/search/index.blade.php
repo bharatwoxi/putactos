@@ -60,7 +60,7 @@
         {{ Form::open(array('class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'setNewLocation')) }}
         <div class="form-group">
             <div class="col-sm-3">
-                {{ Form::text('currentLocation',NULL,array('class'=>'form-control', 'style'=>'width:285px','id'=>'currentLocation','placeholder'=>'set new location')) }}
+                {{ Form::text('currentLocation',NULL,array('class'=>'form-control', 'style'=>'width:285px','id'=>'currentLocation','placeholder'=>'set new location','onkeydown'=>'if(event.keyCode == 13){return false;S}')) }}
             </div>
         </div>
         {{ Form::close() }}
