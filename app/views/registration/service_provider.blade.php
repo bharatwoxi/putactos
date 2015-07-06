@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ Form::label('lastName', 'Last Name*', array('class' => 'col-sm-3 control-label','style'=>'text-align: -webkit-auto')) }}
+                    {{ Form::label('lastName', 'Last Name*', array('class' => 'col-sm-3  control-label','style'=>'text-align: -webkit-auto')) }}
                     <div class="col-sm-3">
                         {{ Form::text('lastName',Input::old('lastName'),array('class'=>'form-control','id'=>'lastName','required'=>'required')) }}
                         <span id="lname-error"></span>

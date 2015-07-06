@@ -164,7 +164,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-3 control-label" style="text-align: -webkit-auto;">Upload Picture*</label>
+                    <label for="inputPassword3" class="col-sm-3  control-label" style="text-align: -webkit-auto;">Upload Picture*</label>
                     <div class="col-md-2">
                         {{ Form::file('profilePicture',array('class'=>'btn btn-small btn-danger btn-inverse','id'=>'profilePicture','required'=>'required')) }}
                         <span id="profilePicture-error" class="error-class">file type:jpeg,jpg,png (2MB max)</span>
