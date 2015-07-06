@@ -56,14 +56,10 @@ function fillInAddress() {
         latlogAfterParse.push(addressGeoCode[prop]);
     }
 
-
-
-
-
     $('#latitude').val(latlogAfterParse[0]);
     $('#longitude').val(latlogAfterParse[1]);
     $('#map-canvas').hide();
-    initializeGoogleMap(addressGeoCode.k,addressGeoCode.D);
+    //initializeGoogleMap(addressGeoCode.k,addressGeoCode.D);
 
 
     // Get each component of the address from the place details
