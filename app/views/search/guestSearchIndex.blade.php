@@ -16,7 +16,7 @@
                 <a href="{{ URL::to('/') }}" class="navbar-static pull-left" style="margin:0"><img src="{{URL::asset('assets/registration/img/Puktatos 3 b.png')}}" class="img-responsive" width="150"  /></a>
                 <div class="pull-right">
                     <p  style="padding-top: 15px;">{{ trans('peopleNearBy.NotaMember?') }}
-                        <button type="button" class="btn btn-default" style="background-color:#a92124; color:#ffffff">{{ trans('peopleNearBy.JoinPutactos') }}</button>
+                        <a href="{{ URL::to('/signup/customer') }}" style="text-decoration: none;color:#FFF"><button type="button" class="btn btn-default" style="background-color:#a92124; color:#ffffff">{{ trans('peopleNearBy.JoinPutactos') }}</button></a>
                     </p>
                 </div>
             </div>
