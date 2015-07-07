@@ -197,7 +197,7 @@
 <div class="col-lg-12" style="background-image:url(../../assets/registration/img/background.png); background-repeat:repeat;"> <!--Footer start-->
     <div class="container">
         <div class="row" style="margin:30px 0">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <h4 style="margin-bottom: 20px;">CONNECT WITH US</h4>
                 <a href="#" ><img src="{{URL::asset('assets/registration/img/youtube.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
                 <a href="#" ><img src="{{URL::asset('assets/registration/img/social.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
@@ -207,7 +207,7 @@
                 <a href="#" ><img src="{{URL::asset('assets/registration/img/linkedin.png')}}" style="width:52px; margin: 0 15px 10px 0px"></a>
                 <a href="#" ><img src="{{URL::asset('assets/registration/img/facebook.png')}}" style="width:52px; margin: 0 0 10px 0px"></a>
             </div>
-            <div class="col-md-4" style="border-left: 2px solid #0f0f0f; padding-left: 70px;">
+            <div class="col-md-4" style="border-left: 2px solid #0f0f0f;">
                 <h4 style="margin-bottom: 20px;">GET IN TOUCH</h4>
                 <p><a href="#" ><img src="{{URL::asset('assets/registration/img/tele.png')}}" style="width:52px"></a>         <strong>1-800-355-2626</strong> </p>
                 <P><a href="#" ><img src="{{URL::asset('assets/registration/img/msg.png')}}" style="width:52px"></a>      <strong>abc@putactos.com</strong>
