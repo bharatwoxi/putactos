@@ -1,5 +1,8 @@
+
 @extends('layouts.viewProfileServiceProvider')
 @section('content')
+
+
 <div class="container-fluid"> <!--Header start-->
 
     <div class="container">
@@ -53,9 +56,13 @@
                         <div id="star_rating" >
                             <input id="input-2b" value="{{ $userData['averageHeartRating'] }}" readonly="true" type="number" class="rating form-control hide original_star" min="0" max="5" step="0.5" data-size="xs" data-symbol="" data-default-caption="{rating} hearts" data-star-captions="{}">
                         </div>
-                        <div id="star_rating">
+                        @if(Auth::user()->username == $userData['userData']->username)
+                       <div id="star_rating">
+
                             <a href="{{URL::to('service-provider/editprofile')}}"><button class="btn btn-small btn-danger btn-inverse" style="width: 100px;border: 2px solid #fa4d51;padding: 2px 6px;box-shadow: none;text-transform: uppercase;font-size: 16px;text-align: center;font-weight: bold;color: #fff;border-radius: 5px;float: left;background-color: #fa4d51;height: 25px;outline:none" type="submit">{{ trans('peopleNearBy.EDITPROFILE') }}</button></a>
-                        </div>
+
+                       </div>
+                        @endif
                         <div id="msg" class="pull-left col-xs-5 col-md-8">
                             @if(Auth::user()->user_role_id==1)
                             <a href="#login-box" class="login-window">
@@ -95,6 +102,7 @@
 <!--                                <p style="border:2px solid #fa4d51; padding:2px 6px; text-align:center;font-weight: bold;color: #fa4d51;border-radius: 5px; float:left; font-size:12px;">SHOW INTEREST</p>-->
 <!--                            </a>-->
                         </div>
+
                         <div id="profile_details" class="col-sm-10 col-xs-12">
                             <div id="profile_name">
                                 {{ ucwords($userData['userData']->user_first_name) }} {{ ucwords($userData['userData']->user_last_name) }}
