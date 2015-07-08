@@ -257,9 +257,7 @@
                                     <div id="submit_feedback" style="width:175px;height:32px;font-size:18px;background-color: #fa4d51;color:#fff">SUBMIT FEEDBACK</div>
                                 </a>
                                 @else
-
                                     <input type="submit" value="SUBMIT FEEDBACK" style="width:175px;height:32px;font-size:18px;background-color: #fa4d51;color:#fff"/>
-
                                 @endif
                             </div>
                             @if($feedbackMessage!=null)
