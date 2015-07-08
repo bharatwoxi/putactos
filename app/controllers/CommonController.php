@@ -90,6 +90,7 @@ class CommonController extends BaseController {
                             $checkMessagesFromCustomer = Message::where('from_user_id','=',$authenticatedUser->id)->where('to_user_id','=',$user->id)->get();
                             if($checkMessagesFromSP->count()>3 && $checkMessagesFromCustomer->count()>0){
                                 $feedbackFlag = 1;
+                                $feedbackMessage = "your feedback has been saved !!!";
                             }else{
                                 $feedbackFlag = 0;  // From SP there should be more than 3 MSG & From Cust at least 1
                                 $feedbackMessage = 'To submit feedback there should be atleast three message send by current service provider to you';
@@ -129,7 +130,6 @@ class CommonController extends BaseController {
         $serviceProviderId = DB::table('system_users')->where('username','like',$username)->where('user_role_id','=',2)->pluck('id');
         $validation = Validator::make($input,$rules);
         if($validation->passes()){
-
             DB::table('customer_feedbacks')->insert(
                 array(
                     'service_provider_id'  =>$serviceProviderId,

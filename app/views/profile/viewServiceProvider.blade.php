@@ -21,6 +21,7 @@
                 @include('header.userMenu')
                 <div style="color:#fff;  font-size:36px; margin:5% 0 0">PROFILE </div>
 
+
             </div>
         </div>
     </div>
@@ -101,6 +102,7 @@
 <!--                            <a href="#">-->
 <!--                                <p style="border:2px solid #fa4d51; padding:2px 6px; text-align:center;font-weight: bold;color: #fa4d51;border-radius: 5px; float:left; font-size:12px;">SHOW INTEREST</p>-->
 <!--                            </a>-->
+
                         </div>
 
                         <div id="profile_details" class="col-sm-10 col-xs-12">
@@ -201,8 +203,10 @@
                                 </tr>
                             </table>
                         </div>-->
+
                         @if($userData['feedbackData']!=NULL || !empty($userData['feedbackData']))
                         <div id="customer_feedback" class="col-sm-12">
+
                             @foreach($userData['feedbackData'] as $feedback)
                             <div id="feedback_customer" class="col-sm-12">
                                 <h3>Customer Feedback</h3>
@@ -247,9 +251,14 @@
                                 <input type="hidden" id="feedback_flag" value="{{$feedbackFlag}}"/>
                             </div>
                             <div id="feed_rating" class="col-md-12 col-xs-8">
+
+                                @if($feedbackFlag==0)
                                 <a href="#">
                                     <div id="submit_feedback" style="width:175px;height:32px;font-size:18px;background-color: #fa4d51;color:#fff">SUBMIT FEEDBACK</div>
                                 </a>
+                                @else
+                                    <input type="submit" value="SUBMIT FEEDBACK" style="width:175px;height:32px;font-size:18px;background-color: #fa4d51;color:#fff"/>
+                                @endif
                             </div>
                             @if($feedbackMessage!=null)
                             <div class="col-md-12 col-xs-8" style="display:none;" id="feedback_msg">
