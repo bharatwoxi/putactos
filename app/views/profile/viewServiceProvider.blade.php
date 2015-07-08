@@ -247,9 +247,13 @@
                                 <input type="hidden" id="feedback_flag" value="{{$feedbackFlag}}"/>
                             </div>
                             <div id="feed_rating" class="col-md-12 col-xs-8">
+                                @if($feedbackFlag==0)
                                 <a href="#">
                                     <div id="submit_feedback" style="width:175px;height:32px;font-size:18px;background-color: #fa4d51;color:#fff">SUBMIT FEEDBACK</div>
                                 </a>
+                                @else
+                                <input type="submit" value="SUBMIT FEEDBACK" style="width:175px;height:32px;font-size:18px;background-color: #fa4d51;color:#fff"/>
+                                @endif
                             </div>
                             @if($feedbackMessage!=null)
                             <div class="col-md-12 col-xs-8" style="display:none;" id="feedback_msg">
