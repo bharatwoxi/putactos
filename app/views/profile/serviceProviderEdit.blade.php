@@ -140,7 +140,7 @@
 {{ Form::open(array('url' => 'service-provider/saveProfileData','class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'saveSpData')) }}
 <div class="clearfix"></div>
 <div class="form-group">
-    <label class="col-sm-5 ecolfour" control-label>Pubic Hair</label>
+    <label class="col-sm-5 ecolfour" control-label>P H</label>
     <div class="col-sm-7">
         <label class="col-sm-3" style="padding-left: 0;">
             <input type="radio" name="pubicHair" id="pubicHair" value="1" @if($userData['serviceProvider']->pubic_hair==1) checked="true" @endif>Yes
@@ -200,7 +200,7 @@
 </div>
 @if($userData['systemUser']->gender == 2)
 <div class="form-group">
-    <label class="col-sm-5 ecolfour" control-label>Cup Size</label>
+    <label class="col-sm-5 ecolfour" control-label>C S</label>
     <div class="col-sm-4 selectContainer">
         <select class="fonza custom-select1" name="cup_size" id="cup_size">
             @if($userData['serviceProvider']->cup_size==NULL)
@@ -214,7 +214,7 @@
 </div>
 <div class="clearfix"></div>
 <div class="form-group">
-    <label class="col-sm-5 ecolfour" control-label>Bust</label>
+    <label class="col-sm-5 ecolfour" control-label>B</label>
     <div class="col-sm-4 selectContainer">
         <input type="text" class="form-control" name="bust" id="bust" value="{{ $userData['serviceProvider']->bust }}" placeholder="in cm"/>
     </div>
@@ -222,14 +222,14 @@
 
 <div class="clearfix"></div>
 <div class="form-group">
-    <label class="col-sm-5 ecolfour" control-label>Waist</label>
+    <label class="col-sm-5 ecolfour" control-label>W</label>
     <div class="col-sm-4 selectContainer">
         <input type="text" class="form-control" name="waist" id="waist" value="{{ $userData['serviceProvider']->waist }}" placeholder="in cm"/>
     </div>
 </div>
 <div class="clearfix"></div>
 <div class="form-group">
-    <label class="col-sm-5 ecolfour" control-label>Hips</label>
+    <label class="col-sm-5 ecolfour" control-label>H</label>
     <div class="col-sm-4 selectContainer">
         <input type="text" class="form-control" name="hips" id="hips" value="{{ $userData['serviceProvider']->hips }}" placeholder="in cm"/>
     </div>
@@ -238,7 +238,7 @@
 @if($userData['systemUser']->gender == 1)
 <div class="clearfix"></div>
 <div class="form-group">
-    <label class="col-sm-5 ecolfour" control-label>Penis Size</label>
+    <label class="col-sm-5 ecolfour" control-label>P S</label>
     <div class="col-sm-4 selectContainer">
         <input type="text" class="form-control" name="penis_size" id="penis_size" value="{{ $userData['serviceProvider']->penis_size }}" placeholder="in cm"/>
     </div>
