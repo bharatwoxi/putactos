@@ -468,7 +468,7 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
       init: function() {
       thisDropzone = this;
       <!-- 4 -->
-      $.get('http://putactos.com/show-multiple-images', function(data) {
+      $.get('http://putactos-beta.woxiapps.com//show-multiple-images', function(data) {
         var json = $.parseJSON(data);
           <!-- 5 -->
           $.each(json.files, function(key,value){
@@ -2010,6 +2010,6 @@ xmlhttp.onreadystatechange=function()
 
     }
   }
-xmlhttp.open("GET","http://putactos.com/delete-multiple-images?file_name="+value,true);
+xmlhttp.open("GET","http://putactos-beta.woxiapps.com/delete-multiple-images?file_name="+value,true);
 xmlhttp.send();
 }
