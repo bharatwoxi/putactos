@@ -51,10 +51,10 @@
                 <p style="padding:20px 15px 0;font-size: 13px; font-family:Calibri Light;">{{ trans('peopleNearBy.Yourlocationissetautomaticallyto') }} <strong><span id="selectedLocation"> </span></strong><br>
                     {{ trans('peopleNearBy.Ifyouthinkwehavegotiswrongpleaseselect') }}
                 </p>
-                <div class="container">
+                <div>
                     {{ Form::open(array('class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'setNewLocation')) }}
                     <div class="form-group">
-                        <div class="col-sm-3">
+                        <div class="col-sm-10">
                             {{ Form::text('currentLocation',NULL,array('class'=>'form-control','id'=>'currentLocation','placeholder'=>'set new location','onkeydown'=>'if(event.keyCode == 13){return false;S}')) }}
                         </div>
                     </div>
