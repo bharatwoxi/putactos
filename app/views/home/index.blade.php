@@ -13,8 +13,9 @@
     <div class="col-lg-12" >
         <div>
             <a href="#" class="navbar-static pull-left" style="margin:0"><img src="{{ URL::to('assets/registration/img/Puktatos 3 b.png') }}" class="img-responsive" width="150"  /></a>
-            <div class="pull-right col-lg-5">
+
                 @if(!Auth::check())
+            <div class="pull-right col-lg-5">
                 <div style="padding: 15px 0px 0px 0px;" >
                     <div class="col-sm-5"><span>Not a Member?</span></div>
                     <div class="col-sm-7">
@@ -26,7 +27,9 @@
                     <button type="button" class="btn btn-primary" style="background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModal1"><strong>Login Now</strong></button>
                     </div>
                 </div>
+                </div>
                 @else
+                <div class="pull-right col-lg-3">
                 <p style="padding-top:15px;">
                     @if(Auth::user()->user_role_id==1)
                     <a href="{{ URL::to('/user/editprofile') }}" style="text-decoration:none;padding-right:20px;color:#AE2729">Hello, <span style="font-weight:900">{{ Auth::user()->username}}</span></a>
@@ -34,7 +37,9 @@
                     <a href="{{ URL::to('/service-provider/editprofile') }}" style="text-decoration:none;padding-right:20px;color:#AE2729">Hello, <span style="font-weight:900">{{ Auth::user()->username}}</span></a>
                     @endif
                 </p>
+            </div>
                 @endif
+
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content" style="border-radius: 15px;">
