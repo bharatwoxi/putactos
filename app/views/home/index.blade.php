@@ -29,7 +29,7 @@
                 </div>
                 </div>
                 @else
-                <div class="pull-right col-lg-3">
+                <div class="pull-right ">
                 <p style="padding-top:15px;">
                     @if(Auth::user()->user_role_id==1)
                     <a href="{{ URL::to('/user/editprofile') }}" style="text-decoration:none;padding-right:20px;color:#AE2729">Hello, <span style="font-weight:900">{{ Auth::user()->username}}</span></a>
