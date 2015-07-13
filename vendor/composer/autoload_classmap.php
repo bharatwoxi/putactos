@@ -94,6 +94,7 @@ return array(
     'CreateCustomersTable' => $baseDir . '/app/database/migrations/2014_11_29_110552_create_customers_table.php',
     'CreateEthnicityMasterTable' => $baseDir . '/app/database/migrations/2014_12_29_221044_create_ethnicity_master_table.php',
     'CreateEyeColorMasterTable' => $baseDir . '/app/database/migrations/2014_12_29_221316_create_eye_color_master_table.php',
+    'CreateFeedbackMailTable' => $baseDir . '/app/database/migrations/2015_07_13_162015_create_feedback_mail_table.php',
     'CreateGenderMasterTable' => $baseDir . '/app/database/migrations/2014_12_29_221542_create_gender_master_table.php',
     'CreateHairColorMasterTable' => $baseDir . '/app/database/migrations/2014_12_29_221401_create_hair_color_master_table.php',
     'CreateKnownLanguagesTable' => $baseDir . '/app/database/migrations/2014_11_29_110841_create_known_languages_table.php',
