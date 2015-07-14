@@ -27,7 +27,7 @@
 <div class="container-fluid" style="background-color:#f74d4d; padding-bottom: 30px;"> <!--Sub Header Start-->
     <div class="container" >
         <div class="col-md-12" style="font-family:Calibri">
-            <h1 style="color:#fff;  font-size:60px; float:left;font-family: Roboto Th;">{{ trans('peopleNearBy.PEOPLENEARBY') }}</h1>
+            <h1 style="color:#fff;  font-size:36px; margin-top:5%; float:left;font-family: Roboto Th;">{{ trans('peopleNearBy.PEOPLENEARBY') }}</h1>
             @include('header.userMenu')
         </div> <!--End of col-md-12-->
 
@@ -42,7 +42,7 @@
 <!---->
 <!--        </div>-->
 <!--    </div><!-- End of row-->
-    <div style="border-bottom:1px solid #dbdbdb;padding: 5px 0px;"></div>
+
 
 </div> <!--End of Container-->
 </div> <!--Sub Header Ends-->

@@ -22,9 +22,9 @@
 <div class="container-fluid" style="background-color:#f74d4d;">
     <div class="container">
         <div class="col-sm-12 col-md-12 col-lg-12">
-            <div class="row erawa">
-                <span style="color:#fff;  font-size:43px; float:left;">EDIT YOUR INFORMATION</span>
-                @include('header.userMenu');
+            <div class="row" style="font-family:Roboto Th; color:#fff; padding: 20px;">
+                <span style="color:#fff;  font-size:36px;margin-top:5%; float:left;">EDIT YOUR INFORMATION</span>
+                @include('header.userMenu')
             </div>
         </div>
     </div>

@@ -16,16 +16,15 @@
 
 
 
-<div class="container-fluid" style="background-color:#f74d4d;">
-    <div class="container">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-            <div class="row erawa">
-                <span style="color:#fff;  font-size:43px; float:left;">INBOX</span>
-                @include('header.userMenu')
-            </div>
-        </div>
-    </div>
-</div><!-- End of Container Fluid-->
+<div class="container-fluid" style="background-color:#f74d4d; padding-bottom: 30px;"> <!--Sub Header Start-->
+    <div class="container" >
+        <div class="col-md-12" style="font-family:Calibri">
+            <h1 style="color:#fff;  font-size:36px; margin-top:5%; float:left;font-family: Roboto Th;">INBOX</h1>
+            @include('header.userMenu')
+        </div> <!--End of col-md-12-->
+
+    </div><!-- End of Container Fluid-->
+   </div>
 <div class="clearfix"></div>
 
 <div class="container-fluid" style="background-image: url(../../../assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;">
