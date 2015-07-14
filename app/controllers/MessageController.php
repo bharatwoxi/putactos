@@ -210,6 +210,7 @@ class MessageController extends BaseController {
     *return: true/false based on message insertion
    */
     public function insertNewMessageViewProfile(){
+
         $input = Input::all();
         $insertedMessageId = DB::table('user_messages')->insertGetId(
             array(
@@ -308,12 +309,9 @@ class MessageController extends BaseController {
                 $userListingForMessages[$i]['username'] = $useData->username;
                 $i++;
             }
-
             $userCount =  count($userListingForMessages);
             $chunkValue = round($userCount/2);
             $userListingForMessages = array_chunk($userListingForMessages,$chunkValue);
-//            echo "<pre>";print_r($userListingForMessages);echo "</pre>";
-//            exit;
         }
         return View::make('messages.new_index')->with('userListingForMessages',$userListingForMessages);
     }
@@ -358,12 +356,8 @@ class MessageController extends BaseController {
             }
             $userMessage[$i]['message'] = $message['message'];
             $userMessage[$i]['sent_time'] = $message['sent_time'];
-
-
             $i++;
         }
-//        echo "<pre>";print_r($userMessage);
-//        exit;
         if(Input::get('isScroll')!=null && Input::get('isScroll')==1){
             return View::make('messages.newDetailedMessageScroll')->with(array('userMessage'=>$userMessage,'userFullName'=>$userFullName,'showMessageForUser'=>$showMessageForUser));
         }else{
@@ -387,6 +381,33 @@ class MessageController extends BaseController {
         );
         $message = Message::find($insertedMessageId);
         $fromUser = User::find(Auth::user()->id);
+        $toUser = User::find($message->to_user_id);
+        $feed=FeedbackMail::where('customer_id','=',$fromUser->id)->where('service_provider_id','=',$toUser->id)->get();
+        if($feed->count() == 0)
+        {
+        $checkMessagesFromSP = Message::where('from_user_id','=',$toUser->id)->where('to_user_id','=',$fromUser->id)->get();
+        $checkMessagesFromCustomer = Message::where('from_user_id','=',$fromUser->id)->where('to_user_id','=', $toUser->id)->get();
+
+            if($fromUser->user_role_id == 1 && $checkMessagesFromSP->count()>3 && $checkMessagesFromCustomer->count()>1)
+            {
+                $arrUser=array();
+                $arrUser['email']=$fromUser->email;
+                $arrUser['firstName']=$fromUser->user_first_name;
+                Mail::send('email.feedback', $arrUser, function($message) use ($arrUser){
+                    $message->to($arrUser['email'])->subject('Feedback Required');
+                });
+                $mailInsId=DB::table('feedback_mail')->insertGetId(
+                    array(
+                        'service_provider_id'=>$toUser->id,
+                        'customer_id'=>$fromUser->id,
+                        'mail_sent'=>'1',
+                        'created_at'=>date('Y-m-d H:m:s'),
+                        'updated_at'=> date('Y-m-d H:m:s')
+                    )
+                );
+            }
+        }
+
         if($fromUser->user_role_id==1){
             $user['image'] = 'public/uploads/userdata/customer'."/".sha1($fromUser->id)."/"."profile_image/".$fromUser->profile_image;
             $user['role'] = 'customer';

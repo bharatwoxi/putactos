@@ -14,8 +14,8 @@
     <div class="col-sm-3 col-md-10 col-lg-12">
         <div class="container">
             <div class="row" style="font-family:Roboto Th; color:#fff; padding: 20px;">
+                <div style="color:#fff;  font-size:36px; margin:5% 0 0;float:left;">PROFILE </div>
                 @include('header.userMenu')
-                <div style="color:#fff;  font-size:36px; margin:5% 0 0">PROFILE </div>
 
             </div>
         </div>

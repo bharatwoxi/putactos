@@ -18,8 +18,8 @@
     <div class="col-sm-3 col-md-10 col-lg-12">
         <div class="container">
             <div class="row" style="font-family:Roboto Th; color:#fff; padding: 20px;">
+                <div style="color:#fff;  font-size:36px; margin:5% 0 0; float:left;">PROFILE </div>
                 @include('header.userMenu')
-                <div style="color:#fff;  font-size:36px; margin:5% 0 0">PROFILE </div>
 
             </div>
         </div>
@@ -207,11 +207,11 @@
                             <div id="feedback_customer" class="col-sm-12">
                                 <h3>Customer Feedback</h3>
                                 <div id="feedback_detail">
-                                    <div id="feed_img">
+                                    <div id="feed_img" class="col-sm-4">
                                         <?php $customer = User::find($feedback['customer_id']) ?>
-                                        <img height="54" width="62" src="{{URL::to('uploads/userdata/customer')}}/{{ sha1($customer->id) }}/profile_image/{{ $customer->image_62by54 }}">
+                                        <img height="54" width="62" class="img img-responsive" src="{{URL::to('uploads/userdata/customer')}}/{{ sha1($customer->id) }}/profile_image/{{ $customer->image_62by54 }}">
                                     </div>
-                                    <div id="feed_detail">
+                                    <div id="feed_detail" class="col-sm-8">
                                         <p><b>{{ ucwords($customer->user_first_name) }} {{ ucwords($customer->user_last_name) }}</b></p>
                                         <p>{{$feedback->feedback}}</p>
                                     </div>

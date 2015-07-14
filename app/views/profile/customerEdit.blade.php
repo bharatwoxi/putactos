@@ -23,7 +23,7 @@
     <div class="container">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="row erawa">
-                <span style="color:#fff;  font-size:43px">EDIT YOUR INFORMATION</span>
+                <span style="color:#fff;  font-size:43px; float:left;">EDIT YOUR INFORMATION</span>
                 @include('header.userMenu');
             </div>
         </div>
