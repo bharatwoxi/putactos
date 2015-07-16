@@ -17,14 +17,14 @@
                 @if(!Auth::check())
             <div class="pull-right col-lg-5">
                 <div style="padding: 15px 0px 0px 0px;" >
-                    <div class="col-sm-5"><span>Not a Member?</span></div>
+                    <div class="col-sm-5" style="margin:5px 0px 0px 0px;"><span>Not a Member?</span></div>
                     <div class="col-sm-7">
                     <a href="{{ URL::to('/signup/customer') }}" style="text-decoration:none; color:#ffffff">
-                    <button type="button" class="btn btn-default" style="background-color:#a92124; color:#ffffff">
+                    <button type="button" class="btn btn-default" style="margin:5px 0px 5px 0px; background-color:#a92124; color:#ffffff">
                         <strong>Join Putactos</strong></button>
                     </a>
 
-                    <button type="button" class="btn btn-primary" style="background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModal1"><strong>Login Now</strong></button>
+                    <button type="button" class="btn btn-primary" style="margin:5px 0px 5px 0px;background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModal1"><strong>Login Now</strong></button>
                     </div>
                 </div>
                 </div>
@@ -132,7 +132,7 @@ background-repeat: repeat;
                                                     <input type="image" src="{{ URL::to('assets/registration/img/LOgin.png')}}" class="img-responsive center-block" style="width:70px; margin-top: 20px;cursor:pointer;" id="login-image">
                                                 </div>
                                             </div>
-                                            </form>
+
                                         </div><!--End of container-->
                                     </div> <!--End of container-fluid-->
                                 </div>

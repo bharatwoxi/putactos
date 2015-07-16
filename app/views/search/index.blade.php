@@ -27,7 +27,7 @@
 <div class="container-fluid" style="background-color:#f74d4d; padding-bottom: 30px;"> <!--Sub Header Start-->
     <div class="container" >
         <div class="col-md-12" style="font-family:Calibri">
-            <h1 style="color:#fff;  font-size:36px; margin-top:5%; float:left;font-family: Roboto Th;">{{ trans('peopleNearBy.PEOPLENEARBY') }}</h1>
+            <h1 style="color:#fff;  font-size:26px; margin-top:5%; float:left;font-family: Roboto Th;">{{ trans('peopleNearBy.PEOPLENEARBY') }}</h1>
             @include('header.userMenu')
         </div> <!--End of col-md-12-->
 
@@ -51,22 +51,7 @@
 
 <div class="container-fluid" style="background-image:url(../../assets/registration/img/background1.png); background-repeat:repeat;"> <!--Content start-->
 <div class="col-md-12">
-    <div class="col-md-5 pull-right" >
 
-        <p style="padding:20px 15px 0;font-size: 13px; font-family:Calibri Light; color:#f74d4d">{{ trans('peopleNearBy.Yourlocationissetautomaticallyto') }} <strong><span id="selectedLocation"> </span></strong><br>
-            {{ trans('peopleNearBy.Ifyouthinkwehavegotiswrongpleaseselect') }}
-        </p>
-
-        {{ Form::open(array('class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'setNewLocation')) }}
-        <div class="form-group">
-            <div class="col-sm-3">
-                {{ Form::text('currentLocation',NULL,array('class'=>'form-control', 'style'=>'width:285px','id'=>'currentLocation','placeholder'=>'set new location','onkeydown'=>'if(event.keyCode == 13){return false;S}')) }}
-            </div>
-        </div>
-        {{ Form::close() }}
-
-    </div><!-- End of row-->
-</div>
 
 <div class="container" >
     <div class="">
@@ -106,11 +91,11 @@
                                     <div class="form-group">
                                         <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">{{ trans('peopleNearBy.Gender') }}</label>
                                         <div class="col-sm-6">
-                                            <div class="btn-group" data-toggle="buttons" id="gender">
-                                                <label class="btn btn-default gender_male"  style="font-family:Calibri Light; font-weight:bold;">
+                                            <div class="btn-group col-sm-12" data-toggle="buttons" id="gender" style="padding: 0px !important;">
+                                                <label class="btn btn-default gender_male col-sm-6"  style="font-family:Calibri Light; font-weight:bold;">
                                                     <input type="radio" name="gender" value="1" id="gender_male"/> {{ trans('peopleNearBy.Male') }}
                                                 </label>
-                                                <label class="btn btn-default gender_female active" style="font-family:Calibri Light; font-weight:bold;">
+                                                <label class="btn btn-default gender_female col-sm-6 active" style="font-family:Calibri Light; font-weight:bold;">
                                                     <input type="radio" name="gender" value="2" checked id="gender_female"/> {{ trans('peopleNearBy.Female') }}
                                                 </label>
                                             </div>
@@ -193,11 +178,11 @@
                             <div class="col-xs-12 col-md-3 center-block" style="background-color:#f74d4d">
                                 <h4 style="color:#FFF; font-family:Calibri">{{ trans('peopleNearBy.PUBICHAIR') }}</h4>
 
-                                <div class="btn-group" data-toggle="buttons" style="padding-left: 60px;">
-                                    <label class="btn btn-default btn-lg fonza">
+                                <div class="btn-group col-sm-12" data-toggle="buttons" style="padding-left: 21px; margin:0px 0px 4px 0px;">
+                                    <label class="btn btn-default btn-lg fonza col-sm-6">
                                         <input type="radio" name="pubicHair" value="1" /> {{ trans('peopleNearBy.Yes') }}
                                     </label>
-                                    <label class="btn btn-default btn-lg fonza active">
+                                    <label class="btn btn-default btn-lg fonza active col-sm-6">
                                         <input type="radio" name="pubicHair" value="0" checked/ > {{ trans('peopleNearBy.No') }}
                                     </label>
                                 </div>
@@ -215,7 +200,7 @@
                                     <h6 style="color:#FFF">{{ trans('peopleNearBy.HIPS') }}</h6>
                                     <div class="slider-example">
                                         <div class="well" style="padding: 5px 0px 5px 0px;">
-                                            <b style="color:#FFF">40&nbsp;&nbsp;</b>
+
                                             <div class="slider1 slider-horizontal1" id="">
                                                 <div class="tooltip tooltip-main top" style="left: 40%; margin-left: -24px;">
                                                     <div class="tooltip-arrow"></div><div class="tooltip-inner">40 : 90</div>
@@ -227,13 +212,13 @@
                                                     <div class="tooltip-arrow"></div><div class="tooltip-inner">90</div>
                                                 </div>
                                             </div>
-                                            <input id="hips" type="text" name="hips" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"> <b style="color:#FFF">&nbsp;&nbsp;&nbsp;90</b>
+                                            <span style="color:#FFF; margin: 0px 12px 0px 4px;">40</span><input id="bust" type="text" name="bust" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"><span style="color:#FFF; margin: 0px 4px 0px 8px;">90</span>
                                         </div>
                                     </div>
                                     <h6 style="color:#FFF">{{ trans('peopleNearBy.BUST') }}</h6>
                                     <div class="slider-example">
                                         <div class="well" style="padding: 5px 0px 5px 0px;">
-                                            <b style="color:#FFF">40&nbsp;&nbsp;</b>
+
                                             <div class="slider1 slider-horizontal1" id="">
                                                 <div class="tooltip tooltip-main top" style="left: 40%; margin-left: -24px;">
                                                     <div class="tooltip-arrow"></div><div class="tooltip-inner">40 : 90</div>
@@ -245,13 +230,12 @@
                                                     <div class="tooltip-arrow"></div><div class="tooltip-inner">90</div>
                                                 </div>
                                             </div>
-                                            <input id="bust" type="text" name="bust" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"> <b style="color:#FFF">&nbsp;&nbsp;&nbsp;90</b>
+                                            <span style="color:#FFF; margin: 0px 12px 0px 4px;">40</span><input id="bust" type="text" name="bust" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"><span style="color:#FFF; margin: 0px 4px 0px 8px;">90</span>
                                         </div>
                                     </div>
                                     <h6 style="color:#FFF">{{ trans('peopleNearBy.WAIST') }}</h6>
                                     <div class="slider-example">
                                         <div class="well" style="padding: 5px 0px 5px 0px;">
-                                            <b style="color:#FFF">40&nbsp;&nbsp;</b>
                                             <div class="slider1 slider-horizontal1" id="">
                                                 <div class="tooltip tooltip-main top" style="left: 40%; margin-left: -24px;">
                                                     <div class="tooltip-arrow"></div><div class="tooltip-inner">40 : 90</div>
@@ -263,7 +247,7 @@
                                                     <div class="tooltip-arrow"></div><div class="tooltip-inner">90</div>
                                                 </div>
                                             </div>
-                                            <input id="waist" type="text" name="waist" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"> <b style="color:#FFF">&nbsp;&nbsp;&nbsp;90</b>
+                                            <span style="color:#FFF; margin: 0px 12px 0px 4px;">40</span><input id="waist" type="text" name="waist" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"><span style="color:#FFF; margin: 0px 4px 0px 8px;">90</span>
                                         </div>
                                     </div>
 <!--                                    <h6 style="color:#FFF">{{ trans('peopleNearBy.CUPSIZE') }}</h6>-->
@@ -289,7 +273,7 @@
                                     <h6 style="color:#FFF">Penis Size</h6>
                                     <div class="slider-example">
                                         <div class="well" style="padding: 5px 0px 5px 0px;">
-                                            <b style="color:#FFF">40&nbsp;&nbsp;</b>
+
                                             <div class="slider1 slider-horizontal1" id="">
                                                 <div class="tooltip tooltip-main top" style="left: 40%; margin-left: -24px;">
                                                     <div class="tooltip-arrow"></div><div class="tooltip-inner">40 : 90</div>
@@ -301,9 +285,10 @@
                                                     <div class="tooltip-arrow"></div><div class="tooltip-inner">90</div>
                                                 </div>
                                             </div>
-                                            <input id="penis" type="text" name="penis" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"> <b style="color:#FFF">&nbsp;&nbsp;&nbsp;90</b>
+                                            <span style="color:#FFF; margin: 0px 12px 0px 4px;">40</span><input id="bust" type="text" name="bust" class="span2" value="40,90" data-slider-min="40" data-slider-max="90" data-slider-step="1" data-slider-value="[40,90]" data="value: '40,90'" style="display: none;"><span style="color:#FFF; margin: 0px 4px 0px 8px;">90</span>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
 
@@ -312,18 +297,33 @@
                             <div class="col-md-3" style="padding-top: 20px; margin-left: 30px;">
                                 <p style=" padding:5px; font-family: Calibri; font-size: 20px;"> USE OUR ADVANCED SEARCH FILTERS TO GET THE PRECISE RESULTS YOU ARE LOOKING FOR. HAPPY HUNTING!!</p>
                                 <br>
-                                <input type="image" src="{{URL::asset('assets/registration/img/Cancel.png')}}" style="width: 110px;">
-                                <input id="search-button" type="image" src="{{URL::asset('assets/registration/img/Search.png')}}" style="width: 110px; margin-left: 20px;">
+                                <input type="image" src="{{URL::asset('assets/registration/img/Cancel.png')}}" style="width: 110px; margin: 5px;">
+                                <input id="search-button" type="image" src="{{URL::asset('assets/registration/img/Search.png')}}" style="width: 110px; margin: 5px;">
                                 {{ Form::close() }}
                                 <input type="hidden" name="isFilter1" id="isFilter1" value="0" />
                             </div>
                         </div>
                     </div> <!--End of row-->
                 </div><!-- end of container-->
-
             </div>
         </div>
     </div>
+</div>
+<div class="col-md-5 pull-right" >
+
+    <p style="padding:20px 15px 0;font-size: 13px; font-family:Calibri Light; color:#f74d4d">{{ trans('peopleNearBy.Yourlocationissetautomaticallyto') }} <strong><span id="selectedLocation"> </span></strong><br>
+        {{ trans('peopleNearBy.Ifyouthinkwehavegotiswrongpleaseselect') }}
+    </p>
+
+    {{ Form::open(array('class'=>'form-horizontal','role'=>'form','files'=>true,'id'=>'setNewLocation')) }}
+    <div class="form-group">
+        <div class="col-sm-3">
+            {{ Form::text('currentLocation',NULL,array('class'=>'form-control', 'style'=>'width:285px','id'=>'currentLocation','placeholder'=>'set new location','onkeydown'=>'if(event.keyCode == 13){return false;S}')) }}
+        </div>
+    </div>
+    {{ Form::close() }}
+
+</div><!-- End of row-->
 </div>
 <div class="clearfix"></div>
 <div class="container" id="container">
