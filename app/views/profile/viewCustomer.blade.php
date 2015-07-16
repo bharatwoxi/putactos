@@ -37,7 +37,7 @@
                             @endif
                         </div>
                         @if(Auth::user()->username == $userData['systemUser']->username)
-                        <div id="star_rating">
+                        <div id="star_rating" class="col-xs-4">
                             <a href="{{ URL::to('/user/editprofile') }}"><button class="btn btn-small btn-danger btn-inverse" style="width: 100px;border: 2px solid #fa4d51;padding: 2px 6px;box-shadow: none;text-transform: uppercase;font-size: 16px;text-align: center;font-weight: bold;color: #fff;border-radius: 5px;float: left;background-color: #fa4d51;height: 25px;outline:none" type="submit">{{ trans('peopleNearBy.EDITPROFILE') }}</button></a>
                         </div>
                         @endif
