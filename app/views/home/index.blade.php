@@ -24,7 +24,7 @@
                         <strong>Join Putactos</strong></button>
                     </a>
 
-                    <button type="button" class="btn btn-primary" style="margin:5px 0px 5px 0px;background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModal1"><strong>Login Now</strong></button>
+                    <button type="button" class="btn btn-primary" style="margin:5px 0px 5px 0px;width:99px;background-color:#a92124; color:#ffffff" data-toggle="modal" data-target="#myModal1"><strong>Login Now</strong></button>
                     </div>
                 </div>
                 </div>
@@ -168,11 +168,12 @@ background-repeat: repeat;
         <div class="da-slide" style="background:url(../../assets/registration/slider/images/slide.png) repeat;">
 
             <div style="background:url(../../assets/registration/slider/images/transperant.png) no-repeat; min-height:200px;margin: 70px 0px; width:100%;">
-                <h2 style="font-family:Roboto Th; color:#000; font-size:24px;text-shadow: 0px 0px 1px #BABABA; text-transform:uppercase;"><strong>Get exactly what</strong></h2>
-                <p style="font-family:Roboto Th; color:#000;">
-                    <span style="font-family:Roboto Th; font-size:54px; color:#fff;text-shadow: -2px 1px 3px #000000;text-transform:uppercase;">you</span><br>
-                    <span style="font-family:Roboto Th; font-size:32px;color:#000;text-shadow: 0px 0px 1px #BABABA;text-transform:uppercase;"><strong>want when</strong></span><br>
-                    <strong>you want it</strong></p><br>
+                <h3 style="font-family:Roboto Th; color:#000; padding:6px; font-size:24px;text-shadow: 0px 0px 1px #BABABA; text-transform:uppercase;">
+                    <strong>Get exactly what</strong>
+                </h3>
+                    <h3 style="font-family:Roboto Th; padding:6px; margin:0px; font-size:54px; color:#fff;text-shadow: -2px 1px 3px #000000;text-transform:uppercase;">you want</h3>
+                    <span style="font-family:Roboto Th; font-size:32px;color:#000;text-shadow: 0px 0px 1px #BABABA;text-transform:uppercase;"><strong>when you want it</strong></span>
+                </span>
                 @if(Auth::guest())
                 <div class=""><a href="#" data-toggle="modal" data-target="#myModal" class="da-link" style="margin-top: 60px;"><img src="{{ URL::to('assets/registration/img/join.png')}}" width="180" style="border:2px solid #fff;"></a></div>
                 @endif
@@ -261,7 +262,7 @@ background-repeat: repeat;
 
 
 
-            <div class="col-md-3" style="text-align:center; margin-top:250px;">
+            <div class="col-md-3" style="text-align:center; margin-top:150px;">
                 <img src="{{ URL::to('assets/registration/img/right_mark_lgo.png')}}">
 
                 <h3><strong>SAFE</strong></h3>
@@ -316,7 +317,7 @@ background-repeat: repeat;
 </div>
 
 
-<div class="container-fluid" style="background-image:url(../../assets/registration/img/grp_people.png); width:100%; max-width:1600px; height:655px;">
+<div class="container-fluid" style="background-image:url(../../assets/registration/img/grp_people.png); background-position: 100% 100%;width:100%; max-width:1600px; min-height:655px;">
     <!--<img src="img/grp_people.png" class="img-responsive">-->
 
     <img src="{{ URL::to('assets/registration/img/matches.png')}}" class="img-responsive center-block" style="padding-top: 50px;">
@@ -329,7 +330,7 @@ background-repeat: repeat;
     </p>
 
 
-    <img src="{{ URL::to('assets/registration/img/play_enconter.png')}}" class="img-responsive center-block" style="padding-top:50px;">
+    <img src="{{ URL::to('assets/registration/img/play_enconter.png')}}" class="img-responsive center-block" style="padding-top:50px; margin:0px 0px 10px 0px;">
 
 </div>
 
@@ -342,7 +343,7 @@ background-repeat: repeat;
     </div>
     <div class="col-md-7" style="padding-top: 100px;">
 
-        <img src="{{ URL::to('assets/registration/img/chat_anywhere.png')}}" class="img-responsive pull-left center-block">
+        <img src="{{ URL::to('assets/registration/img/chat_anywhere.png')}}" class="img-responsive pull-center center-block">
 
 
 
@@ -403,7 +404,7 @@ background-repeat: repeat;
 
 
 <div class="container-fluid" style="background-color: #b13935;">
-    <div class="container" style="background:url(../../assets/registration/img/all_grp_people.png); width:100%; max-width:1378px; height:510px;">
+    <div class="container" style="background:url(../../assets/registration/img/all_grp_people.png); width:100%; max-width:1378px; min-height:510px;">
 
         <div class="col-md-3 col-xs-offset-1" style="padding-top:40px;">
 
@@ -412,7 +413,7 @@ background-repeat: repeat;
         </div>
         <div class="col-md-8 pull-right" style="padding-top: 100px;">
 
-            <img src="{{ URL::to('assets/registration/img/people_nearby.png')}}" class="img-responsive pull-left">
+            <img src="{{ URL::to('assets/registration/img/people_nearby.png')}}" style="margin-left:50px;" class="img-responsive pull-left">
 
 
 
@@ -427,7 +428,7 @@ background-repeat: repeat;
 
         </div>
 
-        <div class="col-md-5" style="padding-top: 50px;">
+        <div class="col-md-5" style="margin:0px 0px 20px 0px;padding-top: 50px;">
 
             <img src="{{ URL::to('assets/registration/img/find.png')}}" class="img-responsive center-block">
 
@@ -445,7 +446,7 @@ background-repeat: repeat;
 
             </div>
 
-            <div class="col-md-6" style="padding-top:40px;">
+            <div class="col-md-6" style="margin-left:50px;padding-top:40px;">
 
                 <img src="{{ URL::to('assets/registration/img/share_intrest.png')}}" class="img-responsive">
 
@@ -463,7 +464,7 @@ background-repeat: repeat;
     </div>
 </div>
 @if(!Auth::check())
-<div class="container-fluid" style="background-image: url(../../assets/registration/img/blacl_strip.png);background-repeat: repeat;height: 286px;">
+<div class="container-fluid" style="background-image: url(../../assets/registration/img/blacl_strip.png);background-repeat-y:no-repeat;min-height: 286px; background-position:100% 100%;">
 
     <p style="text-align:center; font-family:Roboto Th; font-size:54px;color: #fff;padding-top: 70px;">
         SIGN UP NOW
