@@ -85,7 +85,7 @@
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-5 control-label" style="text-align: left;">Profile Picture</label>
                 <div class="col-md-6">
-                    {{ Form::file('profilePicture',array('class'=>'btn btn-small btn-danger btn-inverse','id'=>'profilePicture')) }}
+                    {{ Form::file('profilePicture',array('class'=>'btn btn-small btn-danger btn-inverse form-control','id'=>'profilePicture')) }}
                     <span style="color: #f74d4d;font-size:16px;font-weight:900">(Max upload size is 2MB)</span>
                 </div>
             </div>
@@ -136,7 +136,7 @@
                     <div class="col-md-7">
                         <div class='slider-example'>
                             <div class="well">
-                                <b>18&nbsp;&nbsp;</b><input name="ageRange" id="ex2" type="text" class="span2" value="" data-slider-min="18" data-slider-max="99" data-slider-step="1" data-slider-value="[{{ $userData['systemUser']->from_age }},{{ $userData['systemUser']->to_age }}]"/><b>&nbsp;&nbsp;99</b>
+                                <span style="color:#FFF; margin: 0px 12px 0px 4px;">18</span><input name="ageRange" id="ex2" type="text" class="span2" value="" data-slider-min="18" data-slider-max="99" data-slider-step="1" data-slider-value="[{{ $userData['systemUser']->from_age }},{{ $userData['systemUser']->to_age }}]"/><span style="color:#FFF; margin: 0px 4px 0px 12px;">99</span>
                             </div>
                         </div>
                     </div>
