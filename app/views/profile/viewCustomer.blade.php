@@ -23,8 +23,8 @@
 </div><!-- End of Container Fluid-->
 <div class="clearfix"></div>
 <div class="container-fluid" style="background-image: url(../../../assets/registration/img/background1.png); background-repeat: repeat; padding-top:30px; font-family:Calibri;padding-left:0">
-    <div class="col-sm-3 col-md-10 col-lg-12" style="padding:0">
-        <div class="container" style="padding-left:0">
+    <div class="col-sm-3 col-md-10 col-lg-12">
+        <div class="container">
             <div id="msg_search"  class="col-sm-3 col-md-10 col-lg-12">
                 <div id="personal_detail" class="col-sm-12">
                     <div id="user_profile" class="col-sm-4 ">
