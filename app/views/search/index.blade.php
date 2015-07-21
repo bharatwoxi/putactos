@@ -91,11 +91,11 @@
                                     <div class="form-group">
                                         <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">{{ trans('peopleNearBy.Gender') }}</label>
                                         <div class="col-sm-6">
-                                            <div class="btn-group col-sm-12" data-toggle="buttons" id="gender" style="padding: 0px !important;">
-                                                <label class="btn btn-default gender_male col-sm-6"  style="font-family:Calibri Light; font-weight:bold;">
+                                            <div class="btn-group col-sm-12 col-xs-12" data-toggle="buttons" id="gender" style="padding: 0px !important;">
+                                                <label class="btn btn-default gender_male col-sm-6 col-xs-6"  style="font-family:Calibri Light; font-weight:bold;">
                                                     <input type="radio" name="gender" value="1" id="gender_male"/> {{ trans('peopleNearBy.Male') }}
                                                 </label>
-                                                <label class="btn btn-default gender_female col-sm-6 active" style="font-family:Calibri Light; font-weight:bold;">
+                                                <label class="btn btn-default gender_female col-sm-6 col-xs-6 active" style="font-family:Calibri Light; font-weight:bold;">
                                                     <input type="radio" name="gender" value="2" checked id="gender_female"/> {{ trans('peopleNearBy.Female') }}
                                                 </label>
                                             </div>

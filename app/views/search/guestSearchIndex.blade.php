@@ -107,11 +107,11 @@
                                     <div class="form-group">
                                         <label class="col-sm-5" control-label style="font-family: calibri; font-size: 20px;">{{ trans('peopleNearBy.Gender') }}</label>
                                         <div class="col-sm-6">
-                                            <div class="btn-group" data-toggle="buttons">
-                                                <label class="btn btn-default gender_male"  style="font-family:Calibri Light; font-weight:bold;">
+                                            <div class="btn-group col-sm-12 col-xs-12" data-toggle="buttons" style="padding:0px !important;">
+                                                <label class="btn btn-default gender_male col-sm-6 col-xs-6"  style="font-family:Calibri Light; font-weight:bold;">
                                                     <input type="radio" name="gender" value="1" /> Male
                                                 </label>
-                                                <label class="btn btn-default active gender_female" style="font-family:Calibri Light; font-weight:bold;">
+                                                <label class="btn btn-default active gender_female col-sm-6 col-xs-6" style="font-family:Calibri Light; font-weight:bold;">
                                                     <input type="radio" name="gender" value="2" checked /> Female
                                                 </label>
                                             </div>
@@ -194,7 +194,7 @@
                             <div class="col-xs-12 col-md-3 center-block" style="background-color:#f74d4d">
                                 <h4 style="color:#FFF; font-family:Calibri">{{ trans('peopleNearBy.PUBICHAIR') }}</h4>
 
-                                <div class="btn-group" data-toggle="buttons" style="padding-left: 60px;">
+                                <div class="btn-group col-sm-12 col-xs-12" data-toggle="buttons">
                                     <label class="btn btn-default btn-lg fonza">
                                         <input type="radio" name="pubicHair" value="1" /> {{ trans('peopleNearBy.Yes') }}
                                     </label>
@@ -309,11 +309,11 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3" style="padding-top: 20px; margin-left: 30px;">
+                            <div class="col-xs-12 col-md-3" style="padding-top: 20px; ">
                                 <p style="background:#FFF; padding:5px; font-family: Calibri; font-size: 20px;"> USE OUR ADVANCED SEARCH FILTERS TO GET THE PRECISE RESULTS YOU ARE LOOKING FOR. HAPPY HAUNTING!!</p>
                                 <br>
-                                <input type="image" src="{{URL::asset('assets/registration/img/Cancel.png')}}" style="width: 110px;">
-                                <input type="image" src="{{URL::asset('assets/registration/img/Search.png')}}" style="width: 110px; margin-left: 20px;">
+                                <input type="image" src="{{URL::asset('assets/registration/img/Cancel.png')}}" style="width: 110px; margin-left: 4px;">
+                                <input type="image" src="{{URL::asset('assets/registration/img/Search.png')}}" style="width: 110px; margin-left: 4px;">
                                 {{ Form::close() }}
                                 <input type="hidden" name="isFilter" id="isFilter" value="0" />
                             </div>
