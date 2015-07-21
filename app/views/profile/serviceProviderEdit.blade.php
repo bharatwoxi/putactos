@@ -86,7 +86,7 @@
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-5 control-label" style="text-align: left;">Profile Picture</label>
                     <div class="col-md-6">
-                        {{ Form::file('profilePicture',array('class'=>'btn btn-small btn-danger btn-inverse','id'=>'profilePicture')) }}
+                        {{ Form::file('profilePicture',array('class'=>'btn btn-small btn-danger btn-inverse form-control','id'=>'profilePicture')) }}
                         <span style="color: #f74d4d;font-size:16px;font-weight:900">(Max upload size is 2MB)</span>
                     </div>
                 </div>
@@ -386,7 +386,7 @@
                 @endforeach
                 @else
                 <div id="TextBoxDiv0" class="col-md-11">
-                    <div class="input-group col-md-12" style="padding-top: 5px;">
+                    <div class="input-group col-md-12 col-xs-12" style="padding-top: 5px;">
                         <label for="day" class="col-sm-1 control-label" style="padding-left: 0; font-weight:bold">Day</label>
                         <div class="col-sm-3 selectContainer ">
                                             <span class="select-wrapper1" name="textboxto1">
@@ -433,8 +433,8 @@
                                                 </select>
                                             </span>
                         </div>
-                        <label for="Name" class="col-sm-1 control-label" style="text-align: left;">To</label>
-                        <div class="col-sm-2 selectContainer " style="padding:0;">
+                        <label for="Name" class="col-sm-1 control-label" style="text-align: left; padding-left:0px;">To</label>
+                        <div class="col-sm-2 selectContainer " >
                                             <span class="select-wrapper1" name="textboxto1">
                                                 <select name="avail_to[static][]" class="fonza custom-select1" id="name" name="textboxto1" value="">
                                                     <option value="00">00</option>
