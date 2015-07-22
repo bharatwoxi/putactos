@@ -446,9 +446,9 @@ background-repeat: repeat;
 
             </div>
 
-            <div class="col-md-6" style="margin-left:50px;padding-top:40px;">
+            <div class="col-md-6" style="padding-top:40px;">
 
-                <img src="{{ URL::to('assets/registration/img/share_intrest.png')}}" class="img-responsive">
+                <img src="{{ URL::to('assets/registration/img/share_intrest.png')}}" style="margin-left:50px; margin-bottom:12px;" class="img-responsive">
 
 
                 <p class="pull-left" style="font-family:Roboto Th; padding-left:30px;font-size: 32px;line-height: 36px;padding-top: 10px;color: #b73c34;
